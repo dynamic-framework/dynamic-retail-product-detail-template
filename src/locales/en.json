@@ -1,0 +1,81 @@
+{
+  "collapse": {
+    "actions": {
+      "transfer": "Transfer",
+      "payment": "Payments",
+      "makePayment": "Make payment",
+      "applyCredit": "Apply for a loan",
+      "advance": "Advances",
+      "statement": "Statements",
+      "paymentPlan": "Payment schedule"
+    },
+    "details": {
+      "availableAmount": "Total available funds",
+      "fundsOnHold": "Funds on hold",
+      "totalBalance": "Total balance",
+      "interestRate": "Interest rate",
+      "overdraftAmount": "Overdraft amount",
+      "daysInOverdraft": "Days in overdraft",
+      "minimumPayment": "Minimum payment",
+      "paymentDate": "Payment date",
+      "totalPayment": "Total payment",
+      "availableCredit": "Available credit",
+      "cashAdvanceLimit": "Cash advance limit",
+      "balance": "Balance",
+      "nextPayment": "Next payment",
+      "nextPaymentDate": "Next payment date",
+      "paymentNumber": "Payment number",
+      "annualInterestRate": "Annual interest rate",
+      "loanRepaymentDate": "Loan repayment date",
+      "outstandingBalance": "Outstanding balance"
+    }
+  },
+  "tabs": {
+    "transactions": "Transactions",
+    "upcoming": "Upcoming"
+  },
+  "filters": {
+    "search": "Search",
+    "dateRange": "Date range",
+    "amount": "Amount",
+    "type": "Type",
+    "download": "Download",
+    "filter": "Filter",
+    "filterBy": "Filter by",
+    "cancel": "Cancel"
+  },
+  "modal": {
+    "details": {
+      "paymentDate": "Payment date",
+      "status": "Status",
+      "value": "Amount"
+    },
+    "actions": {
+      "accept": "Accept"
+    },
+    "status": {
+      "completed": "Completed",
+      "rejected": "Rejected",
+      "failed": "Failed",
+      "in_progress": "In progress"
+    }
+  },
+  "noData": {
+    "noPayments": "You don't have any payment",
+    "noUpcomingPayments": "You don't have any upcoming payments",
+    "schedulePayment": "Schedule your first payment here",
+    "noQueryPayments": "No transactions found with the search \"{search}\""
+  },
+  "filter": {
+    "title": "More filters",
+    "amountFrom": "From",
+    "amountTo": "To",
+    "typeCredit": "Credit",
+    "typeDebit": "Debit"
+  },
+  "button": {
+    "accept": "Accept",
+    "clear": "Clear",
+    "close": "Close"
+  }
+}

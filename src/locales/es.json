@@ -1,0 +1,81 @@
+{
+  "collapse": {
+    "actions": {
+      "transfer": "Transferir",
+      "payment": "Pagar",
+      "makePayment": "Pagar",
+      "applyCredit": "Solicitar crédito",
+      "advance": "Avance",
+      "statement": "Extracto",
+      "paymentPlan": "Plan de pagos"
+    },
+    "details": {
+      "availableAmount": "Saldo disponible",
+      "fundsOnHold": "Saldo en canje",
+      "totalBalance": "Saldo total",
+      "interestRate": "Tasa de interés",
+      "overdraftAmount": "Cupo de sobregiro",
+      "daysInOverdraft": "Días en sobregiro",
+      "minimumPayment": "Pago mínimo",
+      "paymentDate": "Fecha de pago",
+      "totalPayment": "Pago total",
+      "availableCredit": "Cupo disponible",
+      "cashAdvanceLimit": "Cupo avances",
+      "balance": "Cupo total",
+      "nextPayment": "Valor cuota",
+      "nextPaymentDate": "Fecha de pago",
+      "paymentNumber": "Numero de cuota",
+      "annualInterestRate": "Tasa de interés",
+      "loanRepaymentDate": "Fecha de fin de crédito",
+      "outstandingBalance": "Total deuda"
+    }
+  },
+  "tabs": {
+    "transactions": "Transacciones",
+    "upcoming": "Programado"
+  },
+  "filters": {
+    "search": "Buscar",
+    "dateRange": "Rango de fecha",
+    "amount": "Monto",
+    "type": "Tipo",
+    "download": "Descargar",
+    "filter": "Filtrar",
+    "filterBy": "Filtrar por",
+    "cancel": "Cancelar"
+  },
+  "modal": {
+    "details": {
+      "paymentDate": "Fecha de pago",
+      "status": "Estado",
+      "value": "Valor"
+    },
+    "actions": {
+      "accept": "Aceptar"
+    },
+    "status": {
+      "completed": "Completado",
+      "rejected": "Rechazado",
+      "failed": "Fallido",
+      "in_progress": "En progreso"
+    }
+  },
+  "noData": {
+    "noPayments": "No tienes ningún pago",
+    "noUpcomingPayments": "No tienes pagos programados",
+    "schedulePayment": "Programa tú primer pago aquí",
+    "noQueryPayments": "No se han encontrado transacciones con la búsqueda \"{search}\""
+  },
+  "filter": {
+    "title": "Filtros avanzados",
+    "amountFrom": "Desde",
+    "amountTo": "Hasta",
+    "typeCredit": "Crédito",
+    "typeDebit": "Débito"
+  },
+  "button": {
+    "accept": "Aceptar",
+    "clear": "Limpiar",
+    "close": "Cerrar"
+  }
+}

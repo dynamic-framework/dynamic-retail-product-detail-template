@@ -1,0 +1,34 @@
+{
+  "site": {
+    "name": "My Site",
+    "language": "es",
+    "url": "#"
+  },
+  "account": {
+    "url": "https://un.modyo.cloud"
+  },
+  "user": {
+    "access_token": null
+  },
+  "vars": {
+    "currency-symbol": "$",
+    "currency-precision": 2,
+    "currency-separator": ".",
+    "currency-decimal": ",",
+    "product-filter-by-type": "loan",
+    "transfers-path": "transfers",
+    "pay-debt-path": "pay-debt",
+    "loan-application-path": "loan-application",
+    "payments-path": "payments",
+
+    "api-user-id": "8a44df697ba7e4b3017ba9d3796315b5",
+    "api-path": "https://nyjx3vieqb.execute-api.us-east-1.amazonaws.com/certification",
+
+    "use-authentication": "false",
+    "mock-products": "true",
+    "mock-transactions": "true",
+
+    "format-date": "dd/MM/yyyy",
+    "format-date-full": "dd/MM/yyyy hh:mm a"
+  }
+}

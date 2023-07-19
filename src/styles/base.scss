@@ -1,0 +1,84 @@
+@import "~@modyo-dynamic/modyo-design-system/src/style/abstracts/+import";
+
+body {
+  background-color: var(--#{$prefix}light);
+}
+
+.selected-product button {
+  --#{$prefix}m-quick-action-button-padding: 16px 24px;
+}
+
+.product-selector {
+  .m-popover-content {
+    z-index: 10;
+  }
+}
+
+p.transaction-name::first-letter {
+  text-transform: capitalize;
+}
+
+.offcanvas {
+  --#{$prefix}offcanvas-width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .offcanvas {
+    --#{$prefix}offcanvas-width: 50%;
+  }
+}
+
+.modal-detail-transaction {
+  .modal {
+    --bs-modal-header-padding: 2rem 1.5rem 0;
+
+    .m-modal-slot.modal-body {
+      padding: 0 1.875rem 3rem;
+      .transaction-name::first-letter {
+        text-transform: capitalize;
+      }
+    }
+  }
+}
+
+.btn-filters .m-button {
+  --#{$prefix}btn-padding-x: #{$h6-font-size};
+}
+
+.custom-details {
+  --bs-bg-opacity: .3;
+  position: sticky;
+  top: 1rem;
+}
+
+.drop-product {
+  background-color: var(--bs-white);
+  border: 1px solid var(--bs-gray-300);
+
+  .m-quick-action-button {
+    overflow: hidden;
+    position: relative;
+    --bs-m-quick-action-button-component-border-radius: 0;
+    --bs-m-quick-action-button-border: 0;
+    --bs-m-quick-action-button-box-shadow: 0;
+  }
+
+  m-quick-action-button:not(:last-child) .m-quick-action-button {
+    --bs-m-quick-action-button-border-bottom: 1px solid var(--bs-gray-300);
+  }
+
+  .selected { // Only for support
+    .m-quick-action-button {
+      &::after {
+        content: '';
+        width: 5px;
+        height: 5px;
+        border-radius: 50rem;
+        position: absolute;
+        background-color: var(--bs-info);
+        top: calc(50% - 2.5px);
+        right: 1rem;
+      }
+    }
+  }
+}
