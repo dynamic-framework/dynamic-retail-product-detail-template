@@ -15,7 +15,7 @@ export enum ApiAccountType {
   CurrentAccount = 'CURRENT_ACCOUNT',
   Loan = 'LOAN',
   CreditCard = 'CREDIT_CARD',
-};
+}
 
 export const AccountTypeConfig = {
   [AccountType.Checking]: {

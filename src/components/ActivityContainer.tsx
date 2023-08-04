@@ -6,7 +6,7 @@ import ActivityList from './ActivityList';
 import ActivityListScheduled from './ActivityListScheduled';
 import AccountListLoader from './loaders/AccountListLoader';
 import { useAppSelector } from '../store/hooks';
-import { getIsLoadingAccounts, getSelectedAccount } from '../store/selectors';
+import { getIsLoadingAccounts } from '../store/selectors';
 
 export default function ActivityContainer() {
   const { t } = useTranslation();
