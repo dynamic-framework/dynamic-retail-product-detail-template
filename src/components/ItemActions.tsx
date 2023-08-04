@@ -1,4 +1,4 @@
-import { MButton } from '@modyo-dynamic/modyo-design-system-react';
+import { MButton } from '@dynamic-framework/ui-react';
 
 type Props = {
   primaryText: string;

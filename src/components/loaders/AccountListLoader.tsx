@@ -1,6 +1,6 @@
-import { MSkeleton } from '@modyo-dynamic/modyo-design-system-react';
+import { MSkeleton } from '@dynamic-framework/ui-react';
 
-export default function TransactionsListLoader() {
+export default function AccountListLoader() {
   return (
     <div className="py-3">
       <div className="d-none d-lg-block mt-3">

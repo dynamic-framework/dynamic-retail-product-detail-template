@@ -1,6 +1,6 @@
-import { MSkeleton } from '@modyo-dynamic/modyo-design-system-react';
+import { MSkeleton } from '@dynamic-framework/ui-react';
 
-export default function SelectedProductNameLoader() {
+export default function SelectedAccountNameLoader() {
   return (
     <>
       <div className="d-none d-md-block col-12 col-md-5">

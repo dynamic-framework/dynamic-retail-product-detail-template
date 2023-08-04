@@ -1,43 +1,45 @@
 import { createDraftSafeSelector } from '@reduxjs/toolkit';
-import type { Transaction } from '@modyo-dynamic/modyo-service-retail';
-import { RootState } from './store';
+
+import type { RootState } from './store';
+import type { Activity } from '../services/interface';
 
 const getState = (state: RootState) => state.widget;
 
-export const getProducts = createDraftSafeSelector(
+export const getAccounts = createDraftSafeSelector(
   getState,
-  (widget) => widget.products,
+  (widget) => widget.accounts,
 );
 
-export const getSelectedProduct = createDraftSafeSelector(
+export const getSelectedAccount = createDraftSafeSelector(
   getState,
-  (widget) => widget.selectedProduct,
+  (widget) => widget.selectedAccount,
 );
 
-export const getTransactions = createDraftSafeSelector(
+export const getIsLoadingAccounts = createDraftSafeSelector(
   getState,
-  (widget) => widget.transactions,
+  (widget) => widget.isLoadingAccounts || !widget.selectedAccount,
 );
 
-export const getFilterTransactions = createDraftSafeSelector(
+export const getActivities = createDraftSafeSelector(
   getState,
-  (widget) => widget.filterTransactions,
+  (widget) => widget.activities,
 );
 
-export const getFilteredTransactions = createDraftSafeSelector(
-  getTransactions,
-  getFilterTransactions,
-  (transactions, filter) => {
+export const getFilterActivities = createDraftSafeSelector(
+  getState,
+  (widget) => widget.filterActivities,
+);
+
+export const getFilteredActivities = createDraftSafeSelector(
+  getActivities,
+  getFilterActivities,
+  (activities, filter) => {
     if (filter.query === '') {
-      return transactions;
+      return activities;
     }
 
-    return transactions.filter(({ name }: Transaction) => (
-      name.toLowerCase().includes(filter.query)));
+    return activities.filter(({ name }: Activity) => (
+      name.toLowerCase().includes(filter.query)
+    ));
   },
-);
-
-export const getTransactionsScheduled = createDraftSafeSelector(
-  getState,
-  (widget) => widget.transactionsScheduled,
 );
