@@ -1,27 +1,29 @@
+import { useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   MButton,
   MInputSearch,
   useOffcanvasContext,
-} from '@modyo-dynamic/modyo-design-system-react';
-import { Transaction } from '@modyo-dynamic/modyo-service-retail';
-import { useTranslation } from 'react-i18next';
+} from '@dynamic-framework/ui-react';
+
 import { useAppSelector, useAppDispatch } from '../store/hooks';
-import { getFilterTransactions } from '../store/selectors';
-import { setQueryFilterTransaction } from '../store/slice';
+import type { Activity } from '../services/interface';
+import { getFilterActivities } from '../store/selectors';
+import { setQueryFilterActivities } from '../store/slice';
 
 type Prop = {
-  transactions: Transaction[],
+  activities: Array<Activity>,
 };
 
-export function TransactionListFilter({ transactions }: Prop) {
-  const { query } = useAppSelector(getFilterTransactions);
+export function ActivityListFilter({ activities }: Prop) {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
   const { openOffcanvas } = useOffcanvasContext();
+  const { query } = useAppSelector(getFilterActivities);
 
-  const inputSearchHandler = ({ detail }: CustomEvent) => {
-    dispatch(setQueryFilterTransaction(detail as string));
-  };
+  const inputSearchHandler = useCallback(({ detail }: CustomEvent<string>) => {
+    dispatch(setQueryFilterActivities(detail));
+  }, [dispatch]);
 
   return (
     <>
@@ -35,9 +37,9 @@ export function TransactionListFilter({ transactions }: Prop) {
         <MInputSearch
           mId="inputSearch"
           value={query}
-          isDisabled={!transactions.length}
+          isDisabled={activities.length === 0}
           placeholder={t('filters.search')}
-          onMChange={(e: CustomEvent) => inputSearchHandler(e)}
+          onMChange={inputSearchHandler}
         />
         <MButton
           className="btn-filters d-grid"

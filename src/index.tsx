@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 
-import '@modyo-dynamic/modyo-design-system/dist/css/design-system.css';
-import '@modyo-dynamic/modyo-design-system-react/dist/css/design-system-react.css';
 import {
   LiquidContextProvider,
   ModalContextProvider,
   OffcanvasContextProvider,
-} from '@modyo-dynamic/modyo-design-system-react';
+} from '@dynamic-framework/ui-react';
+import '@dynamic-framework/ui/dist/css/dynamic-ui.css';
+import '@dynamic-framework/ui-react/dist/css/dynamic-ui-react.css';
 
 import './styles/base.scss';
 import './config/liquidConfig';
@@ -17,7 +17,7 @@ import './config/i18nConfig';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './store/store';
-import ModalDetailTransaction from './components/ModalDetailTransaction';
+import ModalActivityDetail from './components/ModalActivityDetail';
 import OffcanvasAdvancedFilters from './components/OffcanvasAdvancedFilters';
 
 const root = ReactDOM.createRoot(document.getElementById('productDetails') as Element);
@@ -34,7 +34,7 @@ root.render(
           <ModalContextProvider
             portalName="modalPortal"
             availableModals={{
-              detailTransaction: ModalDetailTransaction,
+              detailTransaction: ModalActivityDetail,
             }}
           >
             <App />

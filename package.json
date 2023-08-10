@@ -1,11 +1,10 @@
 {
-  "name": "@modyo-dynamic/modyo-widget-retail-product-detail",
+  "name": "@dynamic-framework/dynamic-retail-product-detail-template",
   "version": "0.2.0",
   "private": true,
   "dependencies": {
-    "@modyo-dynamic/modyo-design-system": "^1.1.0",
-    "@modyo-dynamic/modyo-design-system-react": "^1.1.0",
-    "@modyo-dynamic/modyo-service-retail": "^0.7.1",
+    "@dynamic-framework/ui": "^1.1.3",
+    "@dynamic-framework/ui-react": "^1.1.4",
     "@reduxjs/toolkit": "^1.8.4",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",

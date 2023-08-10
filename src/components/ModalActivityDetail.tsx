@@ -1,21 +1,21 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { DateTime } from 'luxon';
-
+import classNames from 'classnames';
 import {
   MButton,
   MModal,
   ModalProps,
   useFormatCurrency,
-} from '@modyo-dynamic/modyo-design-system-react';
-import type { TransactionStatus } from '@modyo-dynamic/modyo-service-retail';
-
+} from '@dynamic-framework/ui-react';
 import { useTranslation } from 'react-i18next';
-import { FORMAT_DATE } from '../config/widgetConfig';
 
-export default function ModalDetailTransaction(
+import { FORMAT_DATE } from '../config/widgetConfig';
+import { ActivityStatus } from '../services/config';
+
+export default function ModalActivityDetail(
   {
     payload: {
-      transaction,
+      activity,
     },
     closeModal,
   }: ModalProps,
@@ -34,7 +34,7 @@ export default function ModalDetailTransaction(
       <div slot="body">
         <div className="d-flex flex-column gap-4">
           <h5 className="fw-bold flex-grow-1 transaction-name text-wrap">
-            {transaction.name}
+            {activity.name}
           </h5>
           <div className="bg-light rounded-1 p-3">
             <div className="d-flex flex-column gap-1">
@@ -43,10 +43,13 @@ export default function ModalDetailTransaction(
                   {t('modal.details.value')}
                   :
                 </span>
-                <span className={`flex-grow-1
-              ${transaction.amount > 0 ? 'text-success' : 'text-danger'}`}
+                <span
+                  className={classNames(
+                    'flex-grow-1',
+                    activity.amount > 0 ? 'text-success' : 'text-danger',
+                  )}
                 >
-                  {formatCurrency.format(transaction.amount as number)}
+                  {formatCurrency.format(activity.amount as number)}
                 </span>
               </div>
               <div className="d-flex align-items-center gap-1">
@@ -55,7 +58,7 @@ export default function ModalDetailTransaction(
                   :
                 </span>
                 <span className="flex-grow-1">
-                  {DateTime.fromISO(transaction.date as string).toFormat(FORMAT_DATE)}
+                  {DateTime.fromISO(activity.date as string).toFormat(FORMAT_DATE)}
                 </span>
               </div>
               <div className="d-flex align-items-center gap-1">
@@ -63,9 +66,9 @@ export default function ModalDetailTransaction(
                   {t('modal.details.status')}
                   :
                 </span>
-                {transaction.status && (
+                {activity.status && (
                   <span className="flex-grow-1">
-                    {t(`modal.status.${transaction.status as TransactionStatus}`)}
+                    {t(`modal.status.${activity.status as ActivityStatus}`)}
                   </span>
                 )}
               </div>

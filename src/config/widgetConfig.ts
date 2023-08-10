@@ -1,4 +1,4 @@
-import { liquidParser } from '@modyo-dynamic/modyo-design-system';
+import { liquidParser } from '@dynamic-framework/ui';
 
 export const ICONS = {
   pay: 'credit-card',
@@ -17,6 +17,8 @@ export const TRANSFER_PATH = liquidParser.parse('{{vars.transfers-path}}');
 export const PAY_DEBT_PATH = liquidParser.parse('{{vars.pay-debt-path}}');
 export const PAYMENTS_PATH = liquidParser.parse('{{vars.payments-path}}');
 export const LOAN_APPLICATION_PATH = liquidParser.parse('{{vars.loan-application-path}}');
+
+export const API_ACCOUNT_LIST_FILTER = liquidParser.parse('{{vars.account-list-filter}}');
 
 // LANG
 export const LANG = liquidParser.parse('{{site.language}}');

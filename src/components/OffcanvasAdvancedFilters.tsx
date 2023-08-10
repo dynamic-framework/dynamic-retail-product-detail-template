@@ -6,7 +6,7 @@ import {
   MInputCurrency,
   MOffcanvas,
   OffcanvasProps,
-} from '@modyo-dynamic/modyo-design-system-react';
+} from '@dynamic-framework/ui-react';
 import { useTranslation } from 'react-i18next';
 
 export default function OffcanvasAdvancedFilters({ closeOffcanvas }: OffcanvasProps) {
