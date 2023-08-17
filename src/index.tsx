@@ -1,4 +1,4 @@
-import React from 'react';
+import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 
@@ -7,8 +7,8 @@ import {
   ModalContextProvider,
   OffcanvasContextProvider,
 } from '@dynamic-framework/ui-react';
-import '@dynamic-framework/ui/dist/css/dynamic-ui.css';
-import '@dynamic-framework/ui-react/dist/css/dynamic-ui-react.css';
+
+import '@dynamic-framework/ui-react/dist/css/dynamic-ui-all.css';
 
 import './styles/base.scss';
 import './config/liquidConfig';
@@ -20,9 +20,9 @@ import store from './store/store';
 import ModalActivityDetail from './components/ModalActivityDetail';
 import OffcanvasAdvancedFilters from './components/OffcanvasAdvancedFilters';
 
-const root = ReactDOM.createRoot(document.getElementById('productDetails') as Element);
+const root = ReactDOM.createRoot(document.getElementById('accountDetails') as Element);
 root.render(
-  <React.StrictMode>
+  <StrictMode>
     <LiquidContextProvider>
       <Provider store={store}>
         <OffcanvasContextProvider
@@ -34,7 +34,7 @@ root.render(
           <ModalContextProvider
             portalName="modalPortal"
             availableModals={{
-              detailTransaction: ModalActivityDetail,
+              activityDetail: ModalActivityDetail,
             }}
           >
             <App />
@@ -42,7 +42,7 @@ root.render(
         </OffcanvasContextProvider>
       </Provider>
     </LiquidContextProvider>
-  </React.StrictMode>,
+  </StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function

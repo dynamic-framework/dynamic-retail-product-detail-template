@@ -20,12 +20,12 @@ import AccountDetailLoan from './AccountDetailLoan';
 
 import type { Account, DepositAccount, LoanAccount } from '../services/interface';
 
-const ACTIONS: Record<string, (productId: Account['id']) => void> = {
-  transfer: (productId) => {
-    window.location.href = `${SITE_URL}/${TRANSFER_PATH}?from_account=${productId}`;
+const ACTIONS: Record<string, (accountId: Account['id']) => void> = {
+  transfer: (accountId) => {
+    window.location.href = `${SITE_URL}/${TRANSFER_PATH}?from_account=${accountId}`;
   },
-  pay: (productId) => {
-    window.location.href = `${SITE_URL}/${PAY_DEBT_PATH}?account_id=${productId}`;
+  pay: (accountId) => {
+    window.location.href = `${SITE_URL}/${PAY_DEBT_PATH}?account_id=${accountId}`;
   },
   payments: () => {
     window.location.href = `${SITE_URL}/${PAYMENTS_PATH}`;
@@ -91,8 +91,6 @@ export default function AccountDetail() {
           />
         </>
       )}
-
-      {/* CREDIT CARD */}
       {account?.type === 'credit-card' && (
         <>
           <AccountDetailCreditCard account={account as LoanAccount} />

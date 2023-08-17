@@ -1,14 +1,14 @@
-@import "~@dynamic-framework/ui/src/style/abstracts/+import";
+@import "~@dynamic-framework/ui-react/src/style/abstracts/+import";
 
 body {
   background-color: var(--#{$prefix}light);
 }
 
-.selected-product button {
+.selected-account button {
   --#{$prefix}m-quick-action-button-padding: 16px 24px;
 }
 
-.product-selector {
+.account-selector {
   .m-popover-content {
     z-index: 10;
   }
@@ -51,7 +51,7 @@ p.transaction-name::first-letter {
   top: 1rem;
 }
 
-.drop-product {
+.drop-account {
   background-color: var(--bs-white);
   border: 1px solid var(--bs-gray-300);
 

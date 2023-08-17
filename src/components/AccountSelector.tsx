@@ -34,17 +34,16 @@ export default function AccountSelector() {
       <MQuickActionButton
         line1={selected.alias ?? selected.name}
         line2={`N° ${selected.accountNumber}`}
-        className="selected-product position-relative"
+        className="selected-account position-relative"
         representativeIcon={AccountTypeConfig[selected.type].icon}
         representativeIconTheme={AccountTypeConfig[selected.type].theme}
         representativeIconHasCircle
-        actionIcon="" // TODO: Remove html element if is undefined - DS
       />
     );
   }
 
   return (
-    <div className="product-selector">
+    <div className="account-selector">
       <MPopover
         isOpen={toggle}
         setIsOpen={setToggle}
@@ -52,7 +51,7 @@ export default function AccountSelector() {
           <MQuickActionButton
             line1={selected.alias ?? selected.name}
             line2={`N° ${selected.accountNumber}`}
-            className="selected-product position-relative"
+            className="selected-account position-relative"
             representativeIcon={AccountTypeConfig[selected.type].icon}
             representativeIconTheme={AccountTypeConfig[selected.type].theme}
             representativeIconHasCircle
@@ -60,7 +59,7 @@ export default function AccountSelector() {
           />
         )}
       >
-        <div className="rounded overflow-hidden drop-product">
+        <div className="rounded overflow-hidden drop-account">
           {accounts.map((account: Account) => (
             <MQuickActionButton
               key={account.id}
