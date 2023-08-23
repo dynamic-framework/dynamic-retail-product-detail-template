@@ -1,4 +1,4 @@
-import { liquidParser } from '@dynamic-framework/ui';
+import { liquidParser } from '@dynamic-framework/ui-react';
 
 export const ICONS = {
   pay: 'credit-card',

@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios';
-import { liquidParser } from '@dynamic-framework/ui';
+import { liquidParser } from '@dynamic-framework/ui-react';
 
 import ApiError from './utils/ApiError';
 
