@@ -20,6 +20,9 @@ export const LOAN_APPLICATION_PATH = liquidParser.parse('{{vars.loan-application
 
 export const API_ACCOUNT_LIST_FILTER = liquidParser.parse('{{vars.account-list-filter}}');
 
+// Accounts in slides
+export const SLIDE_VIEWS = ['saving', 'credit-card', 'checking'];
+
 // LANG
 export const LANG = liquidParser.parse('{{site.language}}');
 
