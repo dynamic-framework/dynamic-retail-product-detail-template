@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 import {
   useModalContext,
   useFormatCurrency,
+  MPaginator,
 } from '@dynamic-framework/ui-react';
 
 import { useTranslation } from 'react-i18next';
@@ -14,6 +15,7 @@ import { ActivityListFilter } from './ActivityListFilter';
 import { FORMAT_DATE_FULL } from '../config/widgetConfig';
 import { getFilterActivities, getSelectedAccount } from '../store/selectors';
 import { Account, Activity } from '../services/interface';
+import usePaginator from '../hooks/usePaginator';
 
 export default function ActivityList() {
   const formatCurrency = useFormatCurrency();
@@ -32,6 +34,13 @@ export default function ActivityList() {
   const openActivityDetail = (activity: Activity) => {
     openModal('activityDetail', { payload: { activity } });
   };
+
+  const {
+    callback,
+    currentPage,
+    data,
+    totalPages,
+  } = usePaginator(filteredActivities, 7);
 
   const emptyTransactionsText = useMemo(() => {
     if (query !== '') {
@@ -66,14 +75,14 @@ export default function ActivityList() {
 
         )}
         <div className="px-3">
-          {filteredActivities.map((activity) => (
+          {data.map((activity) => (
             <div
               className="d-flex w-100 cursor-pointer p-3 border-bottom border-gray-200 align-items-center"
               onClick={() => openActivityDetail(activity)}
               key={`activity-${activity.id}`}
               role="button"
               tabIndex={0}
-              onKeyDown={() => {}}
+              onKeyDown={() => { }}
             >
               <div className="flex-grow-1">
                 <p className="fs-6 transaction-name">{activity.name}</p>
@@ -86,6 +95,14 @@ export default function ActivityList() {
               </p>
             </div>
           ))}
+          <div className="d-flex flex-grow-1 justify-content-center py-3">
+            <MPaginator
+              current={currentPage}
+              total={totalPages}
+              onPageChange={(page: number) => callback(page)}
+              maxWidth={375}
+            />
+          </div>
         </div>
       </div>
     </div>
