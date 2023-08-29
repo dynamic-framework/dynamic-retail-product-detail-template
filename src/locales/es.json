@@ -77,5 +77,9 @@
     "accept": "Aceptar",
     "clear": "Limpiar",
     "close": "Cerrar"
+  },
+  "card": {
+    "name": "Nombre del titular",
+    "date": "Fecha de expiración"
   }
 }
