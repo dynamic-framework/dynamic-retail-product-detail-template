@@ -82,3 +82,28 @@ p.transaction-name::first-letter {
     }
   }
 }
+
+.account-card {
+  width: 100%;
+  aspect-ratio: 16/10;
+  display: grid;
+  grid-template-rows: repeat(1fr);
+  padding: var(--#{$prefix}ref-spacer-4);
+  border-radius: var(--#{$prefix}ref-spacer-4);
+  row-gap: var(--#{$prefix}ref-spacer-1);
+  border: 1px solid gray;
+
+  > * {
+    display: flex;
+    align-items: center;
+  }
+
+  .account-card-number {
+    font-family: Helvetica, sans-serif;
+  }
+
+  .account-card-name {
+    font-weight: 700;
+    font-size: 18px;
+  }
+}
