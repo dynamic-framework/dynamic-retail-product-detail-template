@@ -50,7 +50,6 @@ export default function AccountSlider() {
     return (
       <AccountCard
         account={selected}
-        background={AccountTypeConfig[selected.type].theme}
       />
     );
   }
@@ -74,7 +73,6 @@ export default function AccountSlider() {
           >
             <AccountCard
               account={account}
-              background={AccountTypeConfig[selected.type].theme}
             />
           </MCarouselSlide>
         ))}

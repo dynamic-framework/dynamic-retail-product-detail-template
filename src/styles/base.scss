@@ -30,10 +30,11 @@ p.transaction-name::first-letter {
 
 .modal-detail-transaction {
   .modal {
-    --bs-modal-header-padding: 2rem 1.5rem 0;
+    --#{$prefix}modal-header-padding: 2rem 1.5rem 0;
 
     .m-modal-slot.modal-body {
       padding: 0 1.875rem 3rem;
+
       .transaction-name::first-letter {
         text-transform: capitalize;
       }
@@ -46,28 +47,30 @@ p.transaction-name::first-letter {
 }
 
 .custom-details {
-  --bs-bg-opacity: .3;
+  --#{$prefix}bg-opacity: .3;
   position: sticky;
   top: 1rem;
 }
 
 .drop-account {
-  background-color: var(--bs-white);
-  border: 1px solid var(--bs-gray-300);
+  background-color: var(--#{$prefix}white);
+  border: 1px solid var(--#{$prefix}gray-300);
 
   .m-quick-action-button {
     overflow: hidden;
     position: relative;
-    --bs-m-quick-action-button-component-border-radius: 0;
-    --bs-m-quick-action-button-border: 0;
-    --bs-m-quick-action-button-box-shadow: 0;
+    --#{$prefix}m-quick-action-button-component-border-radius: 0;
+    --#{$prefix}m-quick-action-button-border: 0;
+    --#{$prefix}m-quick-action-button-box-shadow: 0;
   }
 
   m-quick-action-button:not(:last-child) .m-quick-action-button {
-    --bs-m-quick-action-button-border-bottom: 1px solid var(--bs-gray-300);
+    --#{$prefix}m-quick-action-button-border-bottom: 1px solid var(--#{$prefix}gray-300);
   }
 
-  .selected { // Only for support
+  .selected {
+
+    // Only for support
     .m-quick-action-button {
       &::after {
         content: '';
@@ -75,7 +78,7 @@ p.transaction-name::first-letter {
         height: 5px;
         border-radius: 50rem;
         position: absolute;
-        background-color: var(--bs-info);
+        background-color: var(--#{$prefix}info);
         top: calc(50% - 2.5px);
         right: 1rem;
       }
@@ -89,21 +92,48 @@ p.transaction-name::first-letter {
   display: grid;
   grid-template-rows: repeat(1fr);
   padding: var(--#{$prefix}ref-spacer-4);
-  border-radius: var(--#{$prefix}ref-spacer-4);
+  border-radius: var(--#{$prefix}ref-spacer-3);
   row-gap: var(--#{$prefix}ref-spacer-1);
-  border: 1px solid gray;
+  color: var(--#{$prefix}white);
+  background-color: var(--#{$prefix}gray);
 
-  > * {
+  &.credit-card {
+    background: rgb(205, 18, 37);
+    background: -moz-linear-gradient(90deg, rgba(205, 18, 37, 1) 0%, rgba(136, 93, 245, 1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(205, 18, 37, 1) 0%, rgba(136, 93, 245, 1) 100%);
+    background: linear-gradient(90deg, rgba(205, 18, 37, 1) 0%, rgba(136, 93, 245, 1) 100%);
+  }
+
+  &.saving {
+    background-color: var(--#{$prefix}danger-300);
+  }
+
+  &.checking {
+    background-color: var(--#{$prefix}danger);
+  }
+
+  >* {
     display: flex;
     align-items: center;
   }
 
   .account-card-number {
     font-family: Helvetica, sans-serif;
+    font-size: var(--#{$prefix}ref-fs-5);
   }
 
-  .account-card-name {
-    font-weight: 700;
-    font-size: 18px;
+  .account-card-details .name {
+    font-weight: var(--#{$prefix}ref-fw-bold);
+    font-size: var(--#{$prefix}ref-fs-6);
+  }
+
+  .account-card-details .date {
+    font-size: var(--#{$prefix}ref-fs-6);
+  }
+}
+
+@media (426px <= width <= 992px) {
+  .account-card {
+    aspect-ratio: 16/5;
   }
 }
