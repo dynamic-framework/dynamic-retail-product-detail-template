@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "private": true,
   "dependencies": {
-    "@dynamic-framework/ui-react": "^1.2.2",
+    "@dynamic-framework/ui-react": "workspace:*",
     "@reduxjs/toolkit": "^1.8.4",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -12,7 +12,7 @@
     "classnames": "^2.3.2",
     "i18next": "~21.9.0",
     "liquidjs": "^9.39.2",
-    "luxon": "~3.0.4",
+    "luxon": "~3.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "~11.18.3",

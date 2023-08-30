@@ -2,8 +2,8 @@
 import { DateTime } from 'luxon';
 import classNames from 'classnames';
 import {
-  MButton,
-  MModal,
+  DButton,
+  DModal,
   ModalProps,
   useFormatCurrency,
 } from '@dynamic-framework/ui-react';
@@ -24,11 +24,11 @@ export default function ModalActivityDetail(
   const { t } = useTranslation();
 
   return (
-    <MModal
+    <DModal
       className="modal-detail-transaction"
       name="modal"
       isCentered
-      onMClose={() => closeModal()}
+      onEventClose={() => closeModal()}
       showCloseButton
     >
       <div slot="body">
@@ -75,14 +75,14 @@ export default function ModalActivityDetail(
             </div>
           </div>
           <div className="d-flex justify-content-center">
-            <MButton
+            <DButton
               text={t('modal.actions.accept')}
-              onMClick={() => closeModal()}
+              onEventClick={() => closeModal()}
               isPill
             />
           </div>
         </div>
       </div>
-    </MModal>
+    </DModal>
   );
 }

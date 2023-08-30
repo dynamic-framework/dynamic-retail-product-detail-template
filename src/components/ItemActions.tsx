@@ -1,4 +1,4 @@
-import { MButton } from '@dynamic-framework/ui-react';
+import { DButton } from '@dynamic-framework/ui-react';
 
 type Props = {
   primaryText: string;
@@ -25,29 +25,29 @@ export default function ItemActions({
 }: Props) {
   return (
     <div className="d-flex flex-column gap-3">
-      <MButton
+      <DButton
         text={primaryText}
         iconEnd={primaryIcon}
         isPill
         className="m-auto"
-        onMClick={primaryAction}
+        onEventClick={primaryAction}
       />
       <div className="d-flex align-items-center justify-content-between">
-        <MButton
+        <DButton
           text={secondaryText}
           iconStart={secondaryIcon}
           variant="link"
           theme="secondary"
           isPill
-          onMClick={secondaryAction}
+          onEventClick={secondaryAction}
         />
-        <MButton
+        <DButton
           text={tertiaryText}
           iconStart={tertiaryIcon}
           variant="link"
           theme="secondary"
           isPill
-          onMClick={tertiaryAction}
+          onEventClick={tertiaryAction}
         />
       </div>
     </div>
