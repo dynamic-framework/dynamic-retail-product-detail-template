@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { MPopover, MQuickActionButton } from '@dynamic-framework/ui-react';
+import { DPopover, DQuickActionButton } from '@dynamic-framework/ui-react';
 
 import AccountSelectorLoader from './loaders/AccountSelectorLoader';
 import useAccountCallback from '../services/hooks/useAccountCallback';
@@ -31,7 +31,7 @@ export default function AccountSelector() {
 
   if (accounts.length === 1) {
     return (
-      <MQuickActionButton
+      <DQuickActionButton
         line1={selected.alias ?? selected.name}
         line2={`N° ${selected.accountNumber}`}
         className="selected-account position-relative"
@@ -44,11 +44,11 @@ export default function AccountSelector() {
 
   return (
     <div className="account-selector">
-      <MPopover
+      <DPopover
         isOpen={toggle}
-        setIsOpen={setToggle}
+        setEventIsOpen={setToggle}
         renderComponent={() => (
-          <MQuickActionButton
+          <DQuickActionButton
             line1={selected.alias ?? selected.name}
             line2={`N° ${selected.accountNumber}`}
             className="selected-account position-relative"
@@ -61,7 +61,7 @@ export default function AccountSelector() {
       >
         <div className="rounded overflow-hidden drop-account">
           {accounts.map((account: Account) => (
-            <MQuickActionButton
+            <DQuickActionButton
               key={account.id}
               line1={account.alias ?? account.name}
               line2={`N° ${account.accountNumber}`}
@@ -70,11 +70,11 @@ export default function AccountSelector() {
               representativeIconTheme={AccountTypeConfig[selected.type].theme}
               representativeIconHasCircle
               actionIcon=""
-              onMClick={() => handlerSelect(account)}
+              onEventClick={() => handlerSelect(account)}
             />
           ))}
         </div>
-      </MPopover>
+      </DPopover>
     </div>
   );
 }

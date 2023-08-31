@@ -3,8 +3,8 @@ import {
   useMemo,
 } from 'react';
 import {
-  MCarousel,
-  MCarouselSlide,
+  DCarousel,
+  DCarouselSlide,
 } from '@dynamic-framework/ui-react';
 
 import AccountSelectorLoader from './loaders/AccountSelectorLoader';
@@ -59,8 +59,8 @@ export default function AccountSlider() {
   }
 
   return (
-    <div className="account-slider">
-      <MCarousel
+    <div className="account-selector">
+      <DCarousel
         options={{
           arrows: true,
           padding: 16,
@@ -78,15 +78,15 @@ export default function AccountSlider() {
         onMoved={(_, index) => handlerSelect(accounts[index])}
       >
         {accounts.map((account: Account) => (
-          <MCarouselSlide
+          <DCarouselSlide
             key={account.id}
           >
             <AccountCard
               account={account}
             />
-          </MCarouselSlide>
+          </DCarouselSlide>
         ))}
-      </MCarousel>
+      </DCarousel>
     </div>
   );
 }

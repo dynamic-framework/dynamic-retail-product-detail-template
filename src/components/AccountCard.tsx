@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
+
 import { Account } from '../services/interface';
 import { API_ACCOUNT_LIST_FILTER } from '../config/widgetConfig';
 

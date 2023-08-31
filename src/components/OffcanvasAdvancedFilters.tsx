@@ -1,10 +1,10 @@
 import {
-  MButton,
-  MIcon,
-  MInput,
-  MInputCheck,
-  MInputCurrency,
-  MOffcanvas,
+  DButton,
+  DIcon,
+  DInput,
+  DInputCheck,
+  DInputCurrency,
+  DOffcanvas,
   OffcanvasProps,
 } from '@dynamic-framework/ui-react';
 import { useTranslation } from 'react-i18next';
@@ -13,23 +13,23 @@ export default function OffcanvasAdvancedFilters({ closeOffcanvas }: OffcanvasPr
   const { t } = useTranslation();
 
   return (
-    <MOffcanvas
+    <DOffcanvas
       name="advancedFilters"
       openFrom="end"
       showCloseButton
       isStatic
-      onMClose={() => closeOffcanvas()}
+      onEventClose={() => closeOffcanvas()}
     >
       <div slot="header">
         <div className="d-flex align-items-center gap-2">
-          <MIcon icon="filter" size="24px" className="p-2" />
+          <DIcon icon="filter" size="24px" className="p-2" />
           <h5 className="fw-bold">{t('filter.title')}</h5>
         </div>
       </div>
       <div slot="body">
         <div className="d-flex flex-column gap-4 pt-3">
-          <MInput
-            mId="date"
+          <DInput
+            innerId="date"
             isDisabled
             label={t('filters.dateRange')}
             placeholder="DD/MM/YYYY >> DD/MM/YYYY"
@@ -40,31 +40,31 @@ export default function OffcanvasAdvancedFilters({ closeOffcanvas }: OffcanvasPr
             {t('filters.amount')}
           </p>
           <div className="d-flex gap-4">
-            <MInputCurrency
-              mId="from"
+            <DInputCurrency
+              innerId="from"
               label={t('filter.amountFrom')}
               class="flex-1"
-              onChange={() => {}}
+              onEventChange={() => {}}
             />
-            <MInputCurrency
-              mId="to"
+            <DInputCurrency
+              innerId="to"
               label={t('filter.amountTo')}
               class="flex-1"
-              onChange={() => {}}
+              onEventChange={() => {}}
             />
           </div>
           <hr className="my-0" />
           <div>
             <p className="fw-bold sp mb-3">{t('filters.type')}</p>
             <div className="d-flex gap-3">
-              <MInputCheck
-                mId="out"
+              <DInputCheck
+                innerId="out"
                 name="tipo"
                 type="radio"
                 label={t('filter.typeCredit')}
               />
-              <MInputCheck
-                mId="in"
+              <DInputCheck
+                innerId="in"
                 name="tipo"
                 type="radio"
                 label={t('filter.typeDebit')}
@@ -74,21 +74,21 @@ export default function OffcanvasAdvancedFilters({ closeOffcanvas }: OffcanvasPr
         </div>
       </div>
       <div slot="footer">
-        <MButton
+        <DButton
           text={t('filters.cancel')}
           variant="outline"
           theme="secondary"
           className="d-grid"
-          onMClick={() => closeOffcanvas()}
+          onEventClick={() => closeOffcanvas()}
           isPill
         />
-        <MButton
+        <DButton
           text={t('filters.filter')}
           className="d-grid"
-          onMClick={() => closeOffcanvas()}
+          onEventClick={() => closeOffcanvas()}
           isPill
         />
       </div>
-    </MOffcanvas>
+    </DOffcanvas>
   );
 }
