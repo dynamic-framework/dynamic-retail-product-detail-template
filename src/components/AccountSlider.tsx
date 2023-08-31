@@ -59,7 +59,7 @@ export default function AccountSlider() {
   }
 
   return (
-    <div className="account-selector">
+    <div className="account-slider">
       <DCarousel
         options={{
           arrows: true,
