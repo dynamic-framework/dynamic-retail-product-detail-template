@@ -14,7 +14,6 @@ import { getAccounts } from '../store/selectors';
 
 import type { Account } from '../services/interface';
 import AccountCard from './AccountCard';
-import { AccountTypeConfig } from '../services/config';
 
 export default function AccountSlider() {
   const accounts = useAppSelector(getAccounts);
@@ -43,27 +42,38 @@ export default function AccountSlider() {
   }, [accounts, selected]);
 
   if (loading) {
-    return <AccountSelectorLoader />;
+    return (
+      <div className="px-3 pt-3">
+        <AccountSelectorLoader />
+        <br />
+      </div>
+    );
   }
 
   if (accounts.length === 1) {
     return (
-      <AccountCard
-        account={selected}
-      />
+      <div className="p-3">
+        <AccountCard account={selected} />
+      </div>
     );
   }
 
   return (
-    <div className="account-selector">
+    <div className="account-slider">
       <MCarousel
         options={{
           arrows: true,
-          padding: 0,
-          gap: 16,
+          padding: 16,
+          gap: 8,
           start: currentAccountIndex,
           updateOnMove: true,
           rewind: true,
+          mediaQuery: 'max',
+          breakpoints: {
+            576: {
+              arrows: false,
+            },
+          },
         }}
         onMoved={(_, index) => handlerSelect(accounts[index])}
       >

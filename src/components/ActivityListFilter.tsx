@@ -42,7 +42,7 @@ export function ActivityListFilter({ activities }: Prop) {
           onMChange={inputSearchHandler}
         />
         <MButton
-          className="btn-filters d-grid"
+          className="btn-filters"
           theme="secondary"
           variant="outline"
           iconEnd="filter"

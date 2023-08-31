@@ -5,7 +5,7 @@ body {
 }
 
 .selected-account button {
-  --#{$prefix}m-quick-action-button-padding: 16px 24px;
+  --#{$prefix}m-quick-action-button-padding: var(--#{$prefix}ref-spacer-3) var(--#{$prefix}ref-spacer-5);
 }
 
 .account-selector {
@@ -30,10 +30,10 @@ p.transaction-name::first-letter {
 
 .modal-detail-transaction {
   .modal {
-    --#{$prefix}modal-header-padding: 2rem 1.5rem 0;
+    --#{$prefix}modal-header-padding: var(--#{$prefix}ref-spacer-5) var(--#{$prefix}ref-spacer-4) 0;
 
     .m-modal-slot.modal-body {
-      padding: 0 1.875rem 3rem;
+      padding: 0 var(--#{$prefix}ref-spacer-5) var(--#{$prefix}ref-spacer-7);
 
       .transaction-name::first-letter {
         text-transform: capitalize;
@@ -43,13 +43,13 @@ p.transaction-name::first-letter {
 }
 
 .btn-filters .m-button {
-  --#{$prefix}btn-padding-x: #{$h6-font-size};
+  --#{$prefix}btn-padding-x: var(--#{$prefix}ref-fs-6);
 }
 
 .custom-details {
   --#{$prefix}bg-opacity: .3;
   position: sticky;
-  top: 1rem;
+  top: var(--#{$prefix}ref-spacer-3);
 }
 
 .drop-account {
@@ -86,6 +86,10 @@ p.transaction-name::first-letter {
   }
 }
 
+.account-slider {
+  padding-block: var(--#{$prefix}ref-spacer-5);
+}
+
 .account-card {
   width: 100%;
   aspect-ratio: 16/10;
@@ -97,23 +101,14 @@ p.transaction-name::first-letter {
   color: var(--#{$prefix}white);
   background-color: var(--#{$prefix}gray);
 
-  &.credit-card {
-    background: rgb(205, 18, 37);
-    background: -moz-linear-gradient(90deg, rgba(205, 18, 37, 1) 0%, rgba(136, 93, 245, 1) 100%);
-    background: -webkit-linear-gradient(90deg, rgba(205, 18, 37, 1) 0%, rgba(136, 93, 245, 1) 100%);
-    background: linear-gradient(90deg, rgba(205, 18, 37, 1) 0%, rgba(136, 93, 245, 1) 100%);
-  }
-
-  &.saving {
-    background-color: var(--#{$prefix}danger-300);
-  }
-
-  &.checking {
-    background-color: var(--#{$prefix}danger);
-  }
-
   >* {
     display: flex;
+    align-items: center;
+  }
+
+  .account-card-icons {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
   }
 
@@ -130,6 +125,55 @@ p.transaction-name::first-letter {
   .account-card-details .date {
     font-size: var(--#{$prefix}ref-fs-6);
   }
+}
+
+.m-carousel {
+  --bs-m-carousel-pagination-bottom: calc(var(--#{$prefix}ref-spacer-5) * -1);
+}
+
+// Theme colors for saving slides
+
+.m-carousel .m-carousel-slide:nth-child(3n-2) .saving,
+.account-card.saving {
+  background-color: var(--#{$prefix}warning);
+}
+
+.m-carousel .m-carousel-slide:nth-child(3n-1) .saving {
+  background-color: var(--#{$prefix}danger-300);
+}
+
+.m-carousel .m-carousel-slide:nth-child(3n) .saving {
+  background-color:var(--#{$prefix}info);
+}
+
+// Theme colors for checking slides
+
+.m-carousel .m-carousel-slide:nth-child(3n-2) .checking,
+.account-card.checking {
+  background-color: var(--#{$prefix}success);
+}
+
+.m-carousel .m-carousel-slide:nth-child(3n-1) .checking {
+  background-color: var(--#{$prefix}danger);
+}
+
+.m-carousel .m-carousel-slide:nth-child(3n) .checking {
+  background-color:var(--#{$prefix}indigo);
+}
+
+// Theme colors for credit-card slides
+
+.m-carousel .m-carousel-slide:nth-child(3n-2) .credit-card,
+.account-card.credit-card {
+  background: linear-gradient(90deg, rgba(254, 111, 45, 1) 0%, rgba(253, 206, 56, 1) 100%);
+}
+
+.m-carousel .m-carousel-slide:nth-child(3n-1) .credit-card {
+  background: linear-gradient(90deg, rgba(205, 18, 37, 1) 0%, rgba(136, 93, 245, 1) 100%);
+}
+
+.m-carousel .m-carousel-slide:nth-child(3n) .credit-card {
+  background: linear-gradient(90deg, rgba(66, 133, 244, 1) 0%, rgba(52, 168, 83, 1) 100%);
 }
 
 @media (426px <= width <= 992px) {
