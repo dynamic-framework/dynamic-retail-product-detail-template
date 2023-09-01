@@ -46,7 +46,7 @@ body {
 }
 
 .custom-details {
-  background-color: rgba(var(--#{$prefix}gray-200-rgb), 0.5);
+  background-color: var(--#{$prefix}gray-200);
   padding: var(--#{$prefix}ref-spacer-3);
   position: sticky;
   top: var(--#{$prefix}ref-spacer-3);
