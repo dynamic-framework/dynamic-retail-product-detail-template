@@ -5,35 +5,34 @@ body {
 }
 
 .selected-account button {
-  --#{$prefix}m-quick-action-button-padding: 16px 24px;
+  --#{$prefix}quick-action-button-padding: var(--#{$prefix}ref-spacer-3) var(--#{$prefix}ref-spacer-4);
 }
 
 .account-selector {
-  .m-popover-content {
+  .d-popover-content {
     z-index: 10;
   }
 }
 
-p.transaction-name::first-letter {
+.transaction-name::first-letter {
   text-transform: capitalize;
 }
 
 .offcanvas {
   --#{$prefix}offcanvas-width: 100%;
-}
 
-@media screen and (min-width: 768px) {
-  .offcanvas {
+  @include media-breakpoint-up(md) {
     --#{$prefix}offcanvas-width: 50%;
   }
 }
 
+
 .modal-detail-transaction {
   .modal {
-    --#{$prefix}modal-header-padding: 2rem 1.5rem 0;
+    --#{$prefix}modal-header-padding: var(--#{$prefix}ref-spacer-5) var(--#{$prefix}ref-spacer-4) 0;
 
-    .m-modal-slot.modal-body {
-      padding: 0 1.875rem 3rem;
+    .d-modal-slot.modal-body {
+      padding: 0 1.875rem var(--#{$prefix}ref-spacer-7);
 
       .transaction-name::first-letter {
         text-transform: capitalize;
@@ -42,64 +41,71 @@ p.transaction-name::first-letter {
   }
 }
 
-.btn-filters .m-button {
-  --#{$prefix}btn-padding-x: #{$h6-font-size};
+.btn-filters .btn {
+  --#{$prefix}btn-padding-x: var(--#{$prefix}ref-fs-6);
 }
 
 .custom-details {
   --#{$prefix}bg-opacity: .3;
+
   position: sticky;
-  top: 1rem;
+  top: var(--#{$prefix}ref-spacer-3);
 }
 
 .drop-account {
   background-color: var(--#{$prefix}white);
   border: 1px solid var(--#{$prefix}gray-300);
 
-  .m-quick-action-button {
-    overflow: hidden;
+  .d-quick-action-button {
+    --#{$prefix}quick-action-button-component-border-radius: 0;
+    --#{$prefix}quick-action-button-border: 0;
+    --#{$prefix}quick-action-button-box-shadow: 0;
+
     position: relative;
-    --#{$prefix}m-quick-action-button-component-border-radius: 0;
-    --#{$prefix}m-quick-action-button-border: 0;
-    --#{$prefix}m-quick-action-button-box-shadow: 0;
+    overflow: hidden;
   }
 
-  m-quick-action-button:not(:last-child) .m-quick-action-button {
-    --#{$prefix}m-quick-action-button-border-bottom: 1px solid var(--#{$prefix}gray-300);
+  d-quick-action-button:not(:last-child) .d-quick-action-button {
+    --#{$prefix}quick-action-button-border-bottom: 1px solid var(--#{$prefix}gray-300);
   }
 
   .selected {
-
     // Only for support
-    .m-quick-action-button {
+    .d-quick-action-button {
       &::after {
-        content: '';
+        position: absolute;
+        top: calc(50% - 2.5px);
+        right: var(--#{$prefix}ref-spacer-3);
         width: 5px;
         height: 5px;
-        border-radius: 50rem;
-        position: absolute;
+        content: "";
         background-color: var(--#{$prefix}info);
-        top: calc(50% - 2.5px);
-        right: 1rem;
+        border-radius: var(--#{$prefix}border-radius-pill);
       }
     }
   }
 }
 
 .account-card {
+  display: grid;
+  grid-template-rows: repeat(1, 1fr);
+  row-gap: var(--#{$prefix}ref-spacer-1);
   width: 100%;
   aspect-ratio: 16/10;
-  display: grid;
-  grid-template-rows: repeat(1fr);
   padding: var(--#{$prefix}ref-spacer-4);
-  border-radius: var(--#{$prefix}ref-spacer-3);
-  row-gap: var(--#{$prefix}ref-spacer-1);
   color: var(--#{$prefix}white);
   background-color: var(--#{$prefix}gray);
+  border-radius: var(--#{$prefix}ref-spacer-3);
+
+  @include media-breakpoint-between(sm, lg) {
+    aspect-ratio: 16/5;
+  }
 
   &.credit-card {
     background: rgb(205, 18, 37);
+    // stylelint-disable-next-line value-no-vendor-prefix
     background: -moz-linear-gradient(90deg, rgba(205, 18, 37, 1) 0%, rgba(136, 93, 245, 1) 100%);
+    // stylelint-disable-next-line value-no-vendor-prefix
     background: -webkit-linear-gradient(90deg, rgba(205, 18, 37, 1) 0%, rgba(136, 93, 245, 1) 100%);
     background: linear-gradient(90deg, rgba(205, 18, 37, 1) 0%, rgba(136, 93, 245, 1) 100%);
   }
@@ -123,17 +129,11 @@ p.transaction-name::first-letter {
   }
 
   .account-card-details .name {
-    font-weight: var(--#{$prefix}ref-fw-bold);
     font-size: var(--#{$prefix}ref-fs-6);
+    font-weight: var(--#{$prefix}ref-fw-bold);
   }
 
   .account-card-details .date {
     font-size: var(--#{$prefix}ref-fs-6);
-  }
-}
-
-@media (426px <= width <= 992px) {
-  .account-card {
-    aspect-ratio: 16/5;
   }
 }

@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
-  MButton,
-  MInputSearch,
+  DButton,
+  DInputSearch,
   useOffcanvasContext,
 } from '@dynamic-framework/ui-react';
 
@@ -34,19 +34,19 @@ export function ActivityListFilter({ activities }: Prop) {
         <div className="d-none d-lg-flex align-items-center">
           <p className="text-gray-600">{t('filters.filterBy')}</p>
         </div>
-        <MInputSearch
-          mId="inputSearch"
+        <DInputSearch
+          innerId="inputSearch"
           value={query}
           isDisabled={activities.length === 0}
           placeholder={t('filters.search')}
-          onMChange={inputSearchHandler}
+          onEventChange={inputSearchHandler}
         />
-        <MButton
+        <DButton
           className="btn-filters d-grid"
           theme="secondary"
           variant="outline"
           iconEnd="filter"
-          onMClick={() => openOffcanvas('advancedFilters')}
+          onEventClick={() => openOffcanvas('advancedFilters')}
         />
       </div>
     </>

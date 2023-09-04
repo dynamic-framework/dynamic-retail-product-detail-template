@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import {
   useModalContext,
   useFormatCurrency,
-  MPaginator,
+  DPaginator,
 } from '@dynamic-framework/ui-react';
 
 import { useTranslation } from 'react-i18next';
@@ -96,10 +96,10 @@ export default function ActivityList() {
             </div>
           ))}
           <div className="d-flex flex-grow-1 justify-content-center py-3">
-            <MPaginator
-              current={currentPage}
+            <DPaginator
+              page={currentPage}
               total={totalPages}
-              onPageChange={(page: number) => callback(page)}
+              onEventPageChange={(page: number) => callback(page)}
               maxWidth={375}
             />
           </div>
