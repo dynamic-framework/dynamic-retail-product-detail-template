@@ -46,8 +46,8 @@ body {
 }
 
 .custom-details {
-  --#{$prefix}bg-opacity: .3;
-
+  background-color: var(--#{$prefix}gray-200);
+  padding: var(--#{$prefix}ref-spacer-3);
   position: sticky;
   top: var(--#{$prefix}ref-spacer-3);
 }
@@ -67,28 +67,28 @@ body {
 
   d-quick-action-button:not(:last-child) .d-quick-action-button {
     --#{$prefix}quick-action-button-border-bottom: 1px solid var(--#{$prefix}gray-300);
+
+    &:active {
+      border-color: var(--#{$prefix}gray-300);
+    }
   }
 
   .selected {
-    // Only for support
+    position: relative;
+
     .d-quick-action-button {
-      &::after {
-        position: absolute;
-        top: calc(50% - 2.5px);
-        right: var(--#{$prefix}ref-spacer-3);
-        width: 5px;
-        height: 5px;
-        content: "";
-        background-color: var(--#{$prefix}info);
-        border-radius: var(--#{$prefix}border-radius-pill);
-      }
+      background-color: rgba(var(--#{$prefix}gray-200-rgb), 0.5);
     }
   }
 }
 
+.account-slider {
+  padding-block: var(--#{$prefix}ref-spacer-4);
+}
+
 .account-card {
   display: grid;
-  grid-template-rows: repeat(1, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   row-gap: var(--#{$prefix}ref-spacer-1);
   width: 100%;
   aspect-ratio: 16/10;
@@ -101,26 +101,13 @@ body {
     aspect-ratio: 16/5;
   }
 
-  &.credit-card {
-    background: rgb(205, 18, 37);
-    // stylelint-disable-next-line value-no-vendor-prefix
-    background: -moz-linear-gradient(90deg, rgba(205, 18, 37, 1) 0%, rgba(136, 93, 245, 1) 100%);
-    // stylelint-disable-next-line value-no-vendor-prefix
-    background: -webkit-linear-gradient(90deg, rgba(205, 18, 37, 1) 0%, rgba(136, 93, 245, 1) 100%);
-    background: linear-gradient(90deg, rgba(205, 18, 37, 1) 0%, rgba(136, 93, 245, 1) 100%);
-  }
-
-  &.saving {
-    background-color: var(--#{$prefix}danger-300);
-  }
-
-  &.checking {
-    background-color: var(--#{$prefix}danger);
-  }
-
   >* {
     display: flex;
     align-items: center;
+  }
+
+  .account-card-icons {
+    justify-content: space-between;
   }
 
   .account-card-number {
@@ -136,4 +123,53 @@ body {
   .account-card-details .date {
     font-size: var(--#{$prefix}ref-fs-6);
   }
+}
+
+.d-carousel {
+  --bs-carousel-pagination-bottom: calc(var(--#{$prefix}ref-spacer-5) * -1);
+}
+
+// Theme colors for saving slides
+
+.d-carousel .d-carousel-slide:nth-child(3n-2) .saving,
+.account-card.saving {
+  background-color: var(--#{$prefix}warning);
+}
+
+.d-carousel .d-carousel-slide:nth-child(3n-1) .saving {
+  background-color: var(--#{$prefix}danger-300);
+}
+
+.d-carousel .d-carousel-slide:nth-child(3n) .saving {
+  background-color:var(--#{$prefix}info);
+}
+
+// Theme colors for checking slides
+
+.d-carousel .d-carousel-slide:nth-child(3n-2) .checking,
+.account-card.checking {
+  background-color: var(--#{$prefix}success);
+}
+
+.d-carousel .d-carousel-slide:nth-child(3n-1) .checking {
+  background-color: var(--#{$prefix}danger);
+}
+
+.d-carousel .d-carousel-slide:nth-child(3n) .checking {
+  background-color:var(--#{$prefix}indigo);
+}
+
+// Theme colors for credit-card slides
+
+.d-carousel .d-carousel-slide:nth-child(3n-2) .credit-card,
+.account-card.credit-card {
+  background: linear-gradient(90deg, rgba(254, 111, 45, 1) 0%, rgba(253, 206, 56, 1) 100%);
+}
+
+.d-carousel .d-carousel-slide:nth-child(3n-1) .credit-card {
+  background: linear-gradient(90deg, rgba(205, 18, 37, 1) 0%, rgba(136, 93, 245, 1) 100%);
+}
+
+.d-carousel .d-carousel-slide:nth-child(3n) .credit-card {
+  background: linear-gradient(90deg, rgba(66, 133, 244, 1) 0%, rgba(52, 168, 83, 1) 100%);
 }

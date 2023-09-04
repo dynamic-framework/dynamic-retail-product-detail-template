@@ -1,14 +1,17 @@
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import classNames from 'classnames';
 import ItemActions from './ItemActions';
 import AccountDetailLoader from './loaders/AccountDetailsLoader';
 import {
+  API_ACCOUNT_LIST_FILTER,
   ICONS,
   LOAN_APPLICATION_PATH,
   PAYMENTS_PATH,
   PAY_DEBT_PATH,
   SITE_URL,
+  SLIDE_VIEWS,
   TRANSFER_PATH,
 } from '../config/widgetConfig';
 import { useAppSelector } from '../store/hooks';
@@ -52,11 +55,23 @@ export default function AccountDetail() {
   }, [account?.id]);
 
   if (loading) {
-    return <AccountDetailLoader />;
+    return (
+      <div className={classNames(SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) && 'px-3 pb-3')}>
+        <AccountDetailLoader />
+      </div>
+    );
   }
 
   return (
-    <div className="card border-0 p-4 gap-3">
+    <div className={classNames(
+      'd-flex flex-column p-4 gap-3',
+      { 'card border-0 shadow-none': !SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) },
+    )}
+    >
+      {SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) && (
+        <hr className="m-0 px-3" />
+      )}
+
       {account?.type === 'saving' && (
         <>
           <AccountDetailSaving account={account as DepositAccount} />
