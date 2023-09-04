@@ -1,11 +1,11 @@
 import { useCallback } from 'react';
 
 import { AccountRepository } from '../repositories';
-import { setIsLoadingAccounts, setSelectedAccount } from '../../store/slice';
+import { setIsLoadingSelectedAccount, setSelectedAccount } from '../../store/slice';
 import errorHandler from '../../utils/errorHandler';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 
-import { getIsLoadingAccounts, getSelectedAccount } from '../../store/selectors';
+import { getIsLoading, getSelectedAccount } from '../../store/selectors';
 
 import type { Account } from '../interface';
 import setAccountIdQueryString from '../utils/setAccountIdQueryString';
@@ -13,22 +13,22 @@ import setAccountIdQueryString from '../utils/setAccountIdQueryString';
 export default function useAccountCallback() {
   const dispatch = useAppDispatch();
 
-  const loading = useAppSelector(getIsLoadingAccounts);
+  const loading = useAppSelector(getIsLoading);
   // we know that at this point the account exists.
   const selected = useAppSelector(getSelectedAccount) as Account;
 
   const callback = useCallback(async (accountBaseType: Account['baseType'], accountId: Account['id']) => {
     try {
-      dispatch(setIsLoadingAccounts(true));
+      dispatch(setIsLoadingSelectedAccount(true));
       dispatch(setSelectedAccount(undefined));
 
       const data = await AccountRepository.get(accountBaseType, accountId);
       dispatch(setSelectedAccount(data));
-      dispatch(setIsLoadingAccounts(false));
+      dispatch(setIsLoadingSelectedAccount(false));
 
       setAccountIdQueryString(data.id);
     } catch (error) {
-      dispatch(setIsLoadingAccounts(false));
+      dispatch(setIsLoadingSelectedAccount(false));
       errorHandler(error);
       throw error;
     }

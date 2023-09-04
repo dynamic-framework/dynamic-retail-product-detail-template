@@ -15,9 +15,25 @@ export const getSelectedAccount = createDraftSafeSelector(
   (widget) => widget.selectedAccount,
 );
 
+export const getIsLoadingSelectedAccount = createDraftSafeSelector(
+  getState,
+  (widget) => widget.isLoadingSelectedAccount,
+);
+
 export const getIsLoadingAccounts = createDraftSafeSelector(
   getState,
-  (widget) => widget.isLoadingAccounts || !widget.selectedAccount,
+  (widget) => widget.isLoadingAccounts,
+);
+
+export const getIsLoading = createDraftSafeSelector(
+  getIsLoadingSelectedAccount,
+  getIsLoadingAccounts,
+  getSelectedAccount,
+  (isLoadingSelectedAccount, isLoadingAccounts, selectedAccount) => Boolean(
+    isLoadingAccounts
+    || isLoadingSelectedAccount
+    || !selectedAccount,
+  ),
 );
 
 export const getActivities = createDraftSafeSelector(

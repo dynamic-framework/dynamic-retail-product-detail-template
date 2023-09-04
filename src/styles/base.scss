@@ -8,6 +8,14 @@ body {
   --#{$prefix}quick-action-button-padding: var(--#{$prefix}ref-spacer-3) var(--#{$prefix}ref-spacer-4);
 }
 
+.selected-account-name-loader {
+  @include rfs($h4-font-size, --#{$prefix}account-name-loader-height);
+
+  svg {
+    height: calc(var(--#{$prefix}account-name-loader-height) * var(--#{$prefix}body-line-height));
+  }
+}
+
 .account-selector {
   .d-popover-content {
     z-index: 10;

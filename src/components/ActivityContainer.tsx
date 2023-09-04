@@ -6,11 +6,11 @@ import ActivityList from './ActivityList';
 import ActivityListScheduled from './ActivityListScheduled';
 import AccountListLoader from './loaders/AccountListLoader';
 import { useAppSelector } from '../store/hooks';
-import { getIsLoadingAccounts } from '../store/selectors';
+import { getIsLoading } from '../store/selectors';
 
 export default function ActivityContainer() {
   const { t } = useTranslation();
-  const isLoading = useAppSelector(getIsLoadingAccounts);
+  const isLoading = useAppSelector(getIsLoading);
 
   const options: DTabOption[] = useMemo(() => [
     { label: t('tabs.transactions'), tab: 'transactions' },

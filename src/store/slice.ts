@@ -6,6 +6,7 @@ export type WidgetState = {
   accounts: Array<Account>,
   selectedAccount?: Account;
   isLoadingAccounts: boolean;
+  isLoadingSelectedAccount: boolean;
   activities: Array<Activity>;
   filterActivities: {
     query: string;
@@ -36,6 +37,9 @@ const slice = createSlice({
     setIsLoadingAccounts(state, action: PayloadAction<boolean>) {
       state.isLoadingAccounts = action.payload;
     },
+    setIsLoadingSelectedAccount(state, action: PayloadAction<boolean>) {
+      state.isLoadingSelectedAccount = action.payload;
+    },
     setActivities(state, action: PayloadAction<Array<Activity>>) {
       state.activities = action.payload;
     },
@@ -49,6 +53,7 @@ export const {
   setAccounts,
   setSelectedAccount,
   setIsLoadingAccounts,
+  setIsLoadingSelectedAccount,
   setActivities,
   setQueryFilterActivities,
 } = slice.actions;

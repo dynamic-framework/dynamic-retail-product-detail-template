@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { DCard } from '@dynamic-framework/ui-react';
+
 import { API_ACCOUNT_LIST_FILTER, SLIDE_VIEWS } from '../config/widgetConfig';
 import AccountSlider from './AccountSlider';
 import AccountSelector from './AccountSelector';

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 import { AccountRepository } from '../repositories';
-import { setIsLoadingAccounts, setSelectedAccount } from '../../store/slice';
+import { setIsLoadingSelectedAccount, setSelectedAccount } from '../../store/slice';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { getAccounts } from '../../store/selectors';
 import errorHandler from '../../utils/errorHandler';
@@ -17,7 +17,7 @@ export default function useAccountEffect() {
 
     if (accounts.length > 0) {
       (async () => {
-        dispatch(setIsLoadingAccounts(true));
+        dispatch(setIsLoadingSelectedAccount(true));
 
         try {
           const accountId = getAccountIdQueryString();
@@ -33,7 +33,7 @@ export default function useAccountEffect() {
             { abortSignal: abortController.signal },
           );
           dispatch(setSelectedAccount(completeAccount));
-          dispatch(setIsLoadingAccounts(false));
+          dispatch(setIsLoadingSelectedAccount(false));
         } catch (error) {
           errorHandler(error);
         }

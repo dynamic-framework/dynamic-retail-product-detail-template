@@ -10,21 +10,25 @@ import {
 import AccountSelectorLoader from './loaders/AccountSelectorLoader';
 import useAccountCallback from '../services/hooks/useAccountCallback';
 import { useAppSelector } from '../store/hooks';
-import { getAccounts } from '../store/selectors';
+import { getAccounts, getIsLoadingAccounts } from '../store/selectors';
 
 import type { Account } from '../services/interface';
 import AccountCard from './AccountCard';
 
 export default function AccountSlider() {
   const accounts = useAppSelector(getAccounts);
+  const loading = useAppSelector(getIsLoadingAccounts);
   const {
-    loading,
     selected,
     callback,
   } = useAccountCallback();
 
   const handlerSelect = useCallback(async (account: Account) => {
-    if (selected && selected.id !== account.id) {
+    if (!selected) {
+      return callback(account.baseType, account.id);
+    }
+
+    if (selected.id !== account.id) {
       await callback(account.baseType, account.id);
     }
   }, [callback, selected]);
