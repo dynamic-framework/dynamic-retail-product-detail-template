@@ -30,6 +30,7 @@ export default function ActivityDetailModal(
       isCentered
       onEventClose={() => closeModal()}
       showCloseButton
+      innerClass="d-block"
     >
       <div slot="body">
         <div className="d-flex flex-column gap-4">
