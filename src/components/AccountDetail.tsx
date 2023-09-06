@@ -15,7 +15,7 @@ import {
   TRANSFER_PATH,
 } from '../config/widgetConfig';
 import { useAppSelector } from '../store/hooks';
-import { getIsLoadingSelectedAccount, getSelectedAccount } from '../store/selectors';
+import { getAccountSelected, getIsLoadingAccountDetail } from '../store/selectors';
 import AccountDetailSaving from './AccountDetailSaving';
 import AccountDetailChecking from './AccountDetailChecking';
 import AccountDetailCreditCard from './AccountDetailCreditCard';
@@ -45,8 +45,8 @@ export default function AccountDetail() {
   const { t } = useTranslation();
 
   // we know that at this point the account exists.
-  const loading = useAppSelector(getIsLoadingSelectedAccount);
-  const account = useAppSelector(getSelectedAccount) as Account;
+  const loading = useAppSelector(getIsLoadingAccountDetail);
+  const account = useAppSelector(getAccountSelected) as Account;
 
   const action = useCallback((option: string) => {
     if (account?.id) {

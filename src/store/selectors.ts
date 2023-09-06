@@ -10,29 +10,29 @@ export const getAccounts = createDraftSafeSelector(
   (widget) => widget.accounts,
 );
 
-export const getSelectedAccount = createDraftSafeSelector(
+export const getAccountSelected = createDraftSafeSelector(
   getState,
-  (widget) => widget.selectedAccount,
+  (widget) => widget.accountSelected,
 );
 
-export const getIsLoadingSelectedAccount = createDraftSafeSelector(
+export const getIsLoadingAccountList = createDraftSafeSelector(
   getState,
-  (widget) => widget.isLoadingSelectedAccount,
+  (widget) => widget.isLoadingAccountList,
 );
 
-export const getIsLoadingAccounts = createDraftSafeSelector(
+export const getIsLoadingAccountDetail = createDraftSafeSelector(
   getState,
-  (widget) => widget.isLoadingAccounts,
+  (widget) => widget.isLoadingAccountDetail,
 );
 
-export const getIsLoading = createDraftSafeSelector(
-  getIsLoadingSelectedAccount,
-  getIsLoadingAccounts,
-  getSelectedAccount,
-  (isLoadingSelectedAccount, isLoadingAccounts, selectedAccount) => Boolean(
-    isLoadingAccounts
-    || isLoadingSelectedAccount
-    || !selectedAccount,
+export const getIsNotReady = createDraftSafeSelector(
+  getIsLoadingAccountList,
+  getIsLoadingAccountDetail,
+  getAccountSelected,
+  (isLoadingAccountList, isLoadingAccountDetail, accountSelected) => Boolean(
+    isLoadingAccountList
+    || isLoadingAccountDetail
+    || !accountSelected,
   ),
 );
 

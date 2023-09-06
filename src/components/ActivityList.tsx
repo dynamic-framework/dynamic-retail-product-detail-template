@@ -13,7 +13,7 @@ import AccountListLoader from './loaders/AccountListLoader';
 import { useAppSelector } from '../store/hooks';
 import { ActivityListFilter } from './ActivityListFilter';
 import { FORMAT_DATE_FULL } from '../config/widgetConfig';
-import { getFilterActivities, getSelectedAccount } from '../store/selectors';
+import { getFilterActivities, getAccountSelected } from '../store/selectors';
 import { Account, Activity } from '../services/interface';
 import usePaginator from '../hooks/usePaginator';
 
@@ -22,7 +22,7 @@ export default function ActivityList() {
   const { t } = useTranslation();
   const { openModal } = useModalContext();
 
-  const account = useAppSelector(getSelectedAccount) as Account;
+  const account = useAppSelector(getAccountSelected) as Account;
   const { query } = useAppSelector(getFilterActivities);
 
   const {

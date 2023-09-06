@@ -2,8 +2,8 @@ import classNames from 'classnames';
 import { DCard } from '@dynamic-framework/ui-react';
 
 import { API_ACCOUNT_LIST_FILTER, SLIDE_VIEWS } from '../config/widgetConfig';
-import AccountSlider from './AccountSlider';
-import AccountSelector from './AccountSelector';
+import AccountSelectorSlider from './AccountSelectorSlider';
+import AccountSelectorPicker from './AccountSelectorPicker';
 import AccountDetail from './AccountDetail';
 
 export default function Accounts() {
@@ -16,11 +16,11 @@ export default function Accounts() {
       )}
     >
       {!SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) && (
-        <AccountSelector />
+        <AccountSelectorPicker />
       )}
       <DCard className="shadow-none border-0">
         {SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) && (
-          <AccountSlider />
+          <AccountSelectorSlider />
         )}
         <AccountDetail />
       </DCard>

@@ -1,11 +1,11 @@
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
-import { Account } from '../services/interface';
+import { BaseAccount } from '../services/interface';
 import { API_ACCOUNT_LIST_FILTER } from '../config/widgetConfig';
 
 type Props = {
-  account: Account;
+  account: BaseAccount;
 };
 
 export default function AccountCard({ account }: Props) {

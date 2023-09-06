@@ -35,14 +35,14 @@ body {
 }
 
 
-.modal-detail-transaction {
+.activity-detail-modal {
   .modal {
     --#{$prefix}modal-header-padding: var(--#{$prefix}ref-spacer-5) var(--#{$prefix}ref-spacer-4) 0;
 
     .d-modal-slot.modal-body {
       padding: 0 1.875rem var(--#{$prefix}ref-spacer-7);
 
-      .transaction-name::first-letter {
+      .activity-name::first-letter {
         text-transform: capitalize;
       }
     }

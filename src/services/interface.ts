@@ -1,15 +1,18 @@
 import { AccountBaseType, AccountType, ActivityStatus } from './config';
 
-export type BaseAccount<T extends AccountBaseType> = {
+export type BaseAccount = {
   id: string;
   name: string;
   alias?: string;
   accountNumber: string;
   type: AccountType;
+};
+
+export type BaseAccountDiscriminator<T extends AccountBaseType> = BaseAccount & {
   baseType: T;
 };
 
-export type DepositAccount = BaseAccount<AccountBaseType.Deposit> & {
+export type DepositAccount = BaseAccountDiscriminator<AccountBaseType.Deposit> & {
   balanceAvailable?: number;
   balanceTotal?: number;
   balanceUnavailable?: number;
@@ -17,7 +20,7 @@ export type DepositAccount = BaseAccount<AccountBaseType.Deposit> & {
   overdraftAvailable?: number;
 };
 
-export type LoanAccount = BaseAccount<AccountBaseType.Loan> & {
+export type LoanAccount = BaseAccountDiscriminator<AccountBaseType.Loan> & {
   due?: number;
   amount?: number;
   balanceOwed?: number;

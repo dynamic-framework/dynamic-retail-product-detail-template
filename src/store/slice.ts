@@ -4,9 +4,9 @@ import type { Account, Activity } from '../services/interface';
 
 export type WidgetState = {
   accounts: Array<Account>,
-  selectedAccount?: Account;
-  isLoadingAccounts: boolean;
-  isLoadingSelectedAccount: boolean;
+  accountSelected?: Account;
+  isLoadingAccountList: boolean;
+  isLoadingAccountDetail: boolean;
   activities: Array<Activity>;
   filterActivities: {
     query: string;
@@ -15,9 +15,9 @@ export type WidgetState = {
 
 const initialState: WidgetState = {
   accounts: [],
-  selectedAccount: undefined,
-  isLoadingAccounts: false,
-  isLoadingSelectedAccount: false,
+  accountSelected: undefined,
+  isLoadingAccountList: false,
+  isLoadingAccountDetail: false,
   activities: [],
   filterActivities: {
     query: '',
@@ -31,14 +31,14 @@ const slice = createSlice({
     setAccounts(state, action: PayloadAction<Array<Account>>) {
       state.accounts = action.payload;
     },
-    setSelectedAccount(state, action: PayloadAction<Account | undefined>) {
-      state.selectedAccount = action.payload;
+    setAccountSelected(state, action: PayloadAction<Account | undefined>) {
+      state.accountSelected = action.payload;
     },
-    setIsLoadingAccounts(state, action: PayloadAction<boolean>) {
-      state.isLoadingAccounts = action.payload;
+    setIsLoadingAccountList(state, action: PayloadAction<boolean>) {
+      state.isLoadingAccountList = action.payload;
     },
-    setIsLoadingSelectedAccount(state, action: PayloadAction<boolean>) {
-      state.isLoadingSelectedAccount = action.payload;
+    setIsLoadingAccountDetail(state, action: PayloadAction<boolean>) {
+      state.isLoadingAccountDetail = action.payload;
     },
     setActivities(state, action: PayloadAction<Array<Activity>>) {
       state.activities = action.payload;
@@ -51,9 +51,9 @@ const slice = createSlice({
 
 export const {
   setAccounts,
-  setSelectedAccount,
-  setIsLoadingAccounts,
-  setIsLoadingSelectedAccount,
+  setAccountSelected,
+  setIsLoadingAccountList,
+  setIsLoadingAccountDetail,
   setActivities,
   setQueryFilterActivities,
 } = slice.actions;

@@ -4,7 +4,7 @@ import { AccountRepository } from '../repositories';
 import { useAppDispatch } from '../../store/hooks';
 import { API_ACCOUNT_LIST_FILTER } from '../../config/widgetConfig';
 import { AccountType } from '../config';
-import { setAccounts, setIsLoadingAccounts } from '../../store/slice';
+import { setAccounts, setIsLoadingAccountList } from '../../store/slice';
 import errorHandler from '../../utils/errorHandler';
 
 export default function useAccountsEffect() {
@@ -14,7 +14,7 @@ export default function useAccountsEffect() {
     const abortController = new AbortController();
 
     (async () => {
-      dispatch(setIsLoadingAccounts(true));
+      dispatch(setIsLoadingAccountList(true));
 
       try {
         const data = await AccountRepository.list(
@@ -22,7 +22,7 @@ export default function useAccountsEffect() {
           { abortSignal: abortController.signal },
         );
         dispatch(setAccounts(data));
-        dispatch(setIsLoadingAccounts(false));
+        dispatch(setIsLoadingAccountList(false));
       } catch (error) {
         errorHandler(error);
       }
