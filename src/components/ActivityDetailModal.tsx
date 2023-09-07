@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next';
 import { FORMAT_DATE } from '../config/widgetConfig';
 import { ActivityStatus } from '../services/config';
 
-export default function ModalActivityDetail(
+export default function ActivityDetailModal(
   {
     payload: {
       activity,
@@ -25,15 +25,16 @@ export default function ModalActivityDetail(
 
   return (
     <DModal
-      className="modal-detail-transaction"
+      className="activity-detail-modal"
       name="modal"
       isCentered
       onEventClose={() => closeModal()}
       showCloseButton
+      innerClass="d-block"
     >
       <div slot="body">
         <div className="d-flex flex-column gap-4">
-          <h5 className="fw-bold flex-grow-1 transaction-name text-wrap">
+          <h5 className="fw-bold flex-grow-1 activity-name text-wrap">
             {activity.name}
           </h5>
           <div className="bg-light rounded-1 p-3">

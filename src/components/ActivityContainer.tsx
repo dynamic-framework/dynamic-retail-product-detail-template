@@ -6,11 +6,11 @@ import ActivityList from './ActivityList';
 import ActivityListScheduled from './ActivityListScheduled';
 import AccountListLoader from './loaders/AccountListLoader';
 import { useAppSelector } from '../store/hooks';
-import { getIsLoadingAccounts } from '../store/selectors';
+import { getIsNotReady } from '../store/selectors';
 
 export default function ActivityContainer() {
   const { t } = useTranslation();
-  const isLoading = useAppSelector(getIsLoadingAccounts);
+  const isNotReady = useAppSelector(getIsNotReady);
 
   const options: DTabOption[] = useMemo(() => [
     { label: t('tabs.transactions'), tab: 'transactions' },
@@ -23,7 +23,7 @@ export default function ActivityContainer() {
     setContainer(option);
   };
 
-  if (isLoading) {
+  if (isNotReady) {
     return (
       <div className="bg-white rounded p-3 pt-5">
         <br />

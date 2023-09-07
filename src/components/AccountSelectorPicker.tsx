@@ -5,27 +5,25 @@ import AccountSelectorLoader from './loaders/AccountSelectorLoader';
 import useAccountCallback from '../services/hooks/useAccountCallback';
 import { AccountTypeConfig } from '../services/config';
 import { useAppSelector } from '../store/hooks';
-import { getAccounts } from '../store/selectors';
+import { getAccounts, getIsLoadingAccountList } from '../store/selectors';
 
 import type { Account } from '../services/interface';
 
-export default function AccountSelector() {
+export default function AccountSelectorPicker() {
   const [toggle, setToggle] = useState(false);
+  const loading = useAppSelector(getIsLoadingAccountList);
   const accounts = useAppSelector(getAccounts);
   const {
-    loading,
-    selected,
     callback,
+    selected,
   } = useAccountCallback();
 
-  const handlerSelect = useCallback(async (account: Account) => {
-    if (selected && selected.id !== account.id) {
-      await callback(account.baseType, account.id);
-    }
+  const handleSelect = useCallback(async (account: Account) => {
     setToggle(false);
-  }, [callback, selected]);
+    await callback(account);
+  }, [callback]);
 
-  if (loading) {
+  if (loading || !selected) {
     return <AccountSelectorLoader />;
   }
 
@@ -49,8 +47,8 @@ export default function AccountSelector() {
         setEventIsOpen={setToggle}
         renderComponent={() => (
           <DQuickActionButton
-            line1={selected.alias ?? selected.name}
-            line2={`N° ${selected.accountNumber}`}
+            line1={selected?.alias ?? selected?.name}
+            line2={`N° ${selected?.accountNumber}`}
             className="selected-account position-relative"
             representativeIcon={AccountTypeConfig[selected.type].icon}
             representativeIconTheme={AccountTypeConfig[selected.type].theme}
@@ -65,12 +63,12 @@ export default function AccountSelector() {
               key={account.id}
               line1={account.alias ?? account.name}
               line2={`N° ${account.accountNumber}`}
-              className={selected.id === account.id ? 'selected' : undefined}
-              representativeIcon={AccountTypeConfig[selected.type].icon}
-              representativeIconTheme={AccountTypeConfig[selected.type].theme}
+              className={selected?.id === account.id ? 'selected' : undefined}
+              representativeIcon={AccountTypeConfig[account.type].icon}
+              representativeIconTheme={AccountTypeConfig[account.type].theme}
               representativeIconHasCircle
               actionIcon=""
-              onEventClick={() => handlerSelect(account)}
+              onEventClick={() => handleSelect(account)}
             />
           ))}
         </div>

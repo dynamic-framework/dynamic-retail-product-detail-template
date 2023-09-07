@@ -1,10 +1,11 @@
-import { DateTime } from 'luxon';
 import classnames from 'classnames';
 import { useMemo } from 'react';
 import {
   useModalContext,
   useFormatCurrency,
   DPaginator,
+  DList,
+  DListItemMovement,
 } from '@dynamic-framework/ui-react';
 
 import { useTranslation } from 'react-i18next';
@@ -12,17 +13,15 @@ import useActivitiesEffect from '../services/hooks/useActivitiesEffect';
 import AccountListLoader from './loaders/AccountListLoader';
 import { useAppSelector } from '../store/hooks';
 import { ActivityListFilter } from './ActivityListFilter';
-import { FORMAT_DATE_FULL } from '../config/widgetConfig';
-import { getFilterActivities, getSelectedAccount } from '../store/selectors';
+import { getFilterActivities, getAccountSelected } from '../store/selectors';
 import { Account, Activity } from '../services/interface';
 import usePaginator from '../hooks/usePaginator';
 
 export default function ActivityList() {
-  const formatCurrency = useFormatCurrency();
   const { t } = useTranslation();
   const { openModal } = useModalContext();
 
-  const account = useAppSelector(getSelectedAccount) as Account;
+  const account = useAppSelector(getAccountSelected) as Account;
   const { query } = useAppSelector(getFilterActivities);
 
   const {
@@ -75,26 +74,17 @@ export default function ActivityList() {
 
         )}
         <div className="px-3">
-          {data.map((activity) => (
-            <div
-              className="d-flex w-100 cursor-pointer p-3 border-bottom border-gray-200 align-items-center"
-              onClick={() => openActivityDetail(activity)}
-              key={`activity-${activity.id}`}
-              role="button"
-              tabIndex={0}
-              onKeyDown={() => { }}
-            >
-              <div className="flex-grow-1">
-                <p className="fs-6 transaction-name">{activity.name}</p>
-                <small className="sp text-gray-700">
-                  {DateTime.fromISO(activity.date).toFormat(FORMAT_DATE_FULL)}
-                </small>
-              </div>
-              <p className={`fs-6 ${activity.amount > 0 ? 'text-green-300' : 'text-danger'}`}>
-                {formatCurrency.format(activity.amount)}
-              </p>
-            </div>
-          ))}
+          <DList isFlush>
+            {data.map((activity) => (
+              <DListItemMovement
+                key={`activity-${activity.id}`}
+                onEventClick={() => openActivityDetail(activity)}
+                amount={activity.amount}
+                date={activity.date}
+                description={activity.name}
+              />
+            ))}
+          </DList>
           <div className="d-flex flex-grow-1 justify-content-center py-3">
             <DPaginator
               page={currentPage}

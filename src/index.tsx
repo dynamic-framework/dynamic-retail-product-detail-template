@@ -17,7 +17,7 @@ import './config/i18nConfig';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './store/store';
-import ModalActivityDetail from './components/ModalActivityDetail';
+import ActivityDetailModal from './components/ActivityDetailModal';
 import OffcanvasAdvancedFilters from './components/OffcanvasAdvancedFilters';
 
 const root = ReactDOM.createRoot(document.getElementById('accountDetails') as Element);
@@ -34,7 +34,7 @@ root.render(
           <ModalContextProvider
             portalName="modalPortal"
             availableModals={{
-              activityDetail: ModalActivityDetail,
+              activityDetail: ActivityDetailModal,
             }}
           >
             <App />

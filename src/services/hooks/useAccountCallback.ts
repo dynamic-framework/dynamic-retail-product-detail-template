@@ -1,41 +1,55 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 
 import { AccountRepository } from '../repositories';
-import { setIsLoadingAccounts, setSelectedAccount } from '../../store/slice';
+import { setAccountSelected, setIsLoadingAccountDetail } from '../../store/slice';
 import errorHandler from '../../utils/errorHandler';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 
-import { getIsLoadingAccounts, getSelectedAccount } from '../../store/selectors';
-
-import type { Account } from '../interface';
+import { getAccounts, getAccountSelected } from '../../store/selectors';
 import setAccountIdQueryString from '../utils/setAccountIdQueryString';
+import getAccountIdQueryString from '../utils/getAccountIdQueryString';
+
+import type { Account, BaseAccount } from '../interface';
 
 export default function useAccountCallback() {
   const dispatch = useAppDispatch();
 
-  const loading = useAppSelector(getIsLoadingAccounts);
-  // we know that at this point the account exists.
-  const selected = useAppSelector(getSelectedAccount) as Account;
+  const accounts = useAppSelector(getAccounts);
+  const accountSelected = useAppSelector(getAccountSelected);
 
-  const callback = useCallback(async (accountBaseType: Account['baseType'], accountId: Account['id']) => {
+  const accountFromList = useMemo<BaseAccount | undefined>(() => {
+    const accountId = getAccountIdQueryString();
+    return accounts.find(({ id }) => id === accountId) ?? accounts[0];
+  }, [accounts]);
+
+  const selected = useMemo(
+    () => accountSelected || accountFromList,
+    [accountSelected, accountFromList],
+  );
+
+  const select = useCallback(async (accountBaseType: Account['baseType'], accountId: Account['id']) => {
     try {
-      dispatch(setIsLoadingAccounts(true));
-      dispatch(setSelectedAccount(undefined));
+      dispatch(setIsLoadingAccountDetail(true));
 
       const data = await AccountRepository.get(accountBaseType, accountId);
-      dispatch(setSelectedAccount(data));
-      dispatch(setIsLoadingAccounts(false));
+      dispatch(setAccountSelected(data));
+      dispatch(setIsLoadingAccountDetail(false));
 
       setAccountIdQueryString(data.id);
     } catch (error) {
-      dispatch(setIsLoadingAccounts(false));
+      dispatch(setIsLoadingAccountDetail(false));
       errorHandler(error);
       throw error;
     }
   }, [dispatch]);
 
+  const callback = useCallback(async (account: Account) => {
+    if (!accountSelected || accountSelected.id !== account.id) {
+      await select(account.baseType, account.id);
+    }
+  }, [select, accountSelected]);
+
   return {
-    loading,
     callback,
     selected,
   };

@@ -8,6 +8,14 @@ body {
   --#{$prefix}quick-action-button-padding: var(--#{$prefix}ref-spacer-3) var(--#{$prefix}ref-spacer-4);
 }
 
+.selected-account-name-loader {
+  @include rfs($h4-font-size, --#{$prefix}account-name-loader-height);
+
+  svg {
+    height: calc(var(--#{$prefix}account-name-loader-height) * var(--#{$prefix}body-line-height));
+  }
+}
+
 .account-selector {
   .d-popover-content {
     z-index: 10;
@@ -27,14 +35,14 @@ body {
 }
 
 
-.modal-detail-transaction {
+.activity-detail-modal {
   .modal {
     --#{$prefix}modal-header-padding: var(--#{$prefix}ref-spacer-5) var(--#{$prefix}ref-spacer-4) 0;
 
     .d-modal-slot.modal-body {
       padding: 0 1.875rem var(--#{$prefix}ref-spacer-7);
 
-      .transaction-name::first-letter {
+      .activity-name::first-letter {
         text-transform: capitalize;
       }
     }

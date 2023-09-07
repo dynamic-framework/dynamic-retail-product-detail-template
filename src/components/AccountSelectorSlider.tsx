@@ -10,38 +10,32 @@ import {
 import AccountSelectorLoader from './loaders/AccountSelectorLoader';
 import useAccountCallback from '../services/hooks/useAccountCallback';
 import { useAppSelector } from '../store/hooks';
-import { getAccounts } from '../store/selectors';
-
-import type { Account } from '../services/interface';
+import { getAccounts, getIsLoadingAccountList } from '../store/selectors';
 import AccountCard from './AccountCard';
 
-export default function AccountSlider() {
+import type { Account } from '../services/interface';
+
+export default function AccountSelectorSlider() {
+  const loading = useAppSelector(getIsLoadingAccountList);
   const accounts = useAppSelector(getAccounts);
   const {
-    loading,
-    selected,
     callback,
+    selected,
   } = useAccountCallback();
 
-  const handlerSelect = useCallback(async (account: Account) => {
-    if (selected && selected.id !== account.id) {
-      await callback(account.baseType, account.id);
-    }
-  }, [callback, selected]);
+  const handleSelect = useCallback(async (account: Account) => {
+    await callback(account);
+  }, [callback]);
 
   const currentAccountIndex = useMemo(() => {
     if (accounts && selected) {
-      // eslint-disable-next-line no-plusplus
-      for (let index = 0; index < accounts.length; index++) {
-        if (accounts[index].id === selected.id) {
-          return index;
-        }
-      }
+      const index = accounts.findIndex(({ id }) => id === selected.id);
+      return index > 0 ? index : 0;
     }
     return 0;
   }, [accounts, selected]);
 
-  if (loading) {
+  if (loading || !selected) {
     return (
       <div className="px-3 pt-3">
         <AccountSelectorLoader />
@@ -75,7 +69,7 @@ export default function AccountSlider() {
             },
           },
         }}
-        onMoved={(_, index) => handlerSelect(accounts[index])}
+        onMoved={(_, index) => handleSelect(accounts[index])}
       >
         {accounts.map((account: Account) => (
           <DCarouselSlide
