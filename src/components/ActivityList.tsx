@@ -1,8 +1,8 @@
 import classnames from 'classnames';
 import { useMemo } from 'react';
+import { DateTime } from 'luxon';
 import {
   useModalContext,
-  useFormatCurrency,
   DPaginator,
   DList,
   DListItemMovement,
@@ -13,9 +13,11 @@ import useActivitiesEffect from '../services/hooks/useActivitiesEffect';
 import AccountListLoader from './loaders/AccountListLoader';
 import { useAppSelector } from '../store/hooks';
 import { ActivityListFilter } from './ActivityListFilter';
+import { FORMAT_DATE_FULL } from '../config/widgetConfig';
 import { getFilterActivities, getAccountSelected } from '../store/selectors';
 import { Account, Activity } from '../services/interface';
 import usePaginator from '../hooks/usePaginator';
+
 
 export default function ActivityList() {
   const { t } = useTranslation();
@@ -80,7 +82,7 @@ export default function ActivityList() {
                 key={`activity-${activity.id}`}
                 onEventClick={() => openActivityDetail(activity)}
                 amount={activity.amount}
-                date={activity.date}
+                date={DateTime.fromISO(activity.date).toFormat(FORMAT_DATE_FULL)}
                 description={activity.name}
               />
             ))}
