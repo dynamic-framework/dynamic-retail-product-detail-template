@@ -36,7 +36,7 @@ export default function OffcanvasAdvancedFilters({ closeOffcanvas }: OffcanvasPr
             iconEnd="calendar"
           />
           <hr className="my-0" />
-          <p className="fw-bold sp">
+          <p className="fw-bold small">
             {t('filters.amount')}
           </p>
           <div className="d-flex gap-4">
@@ -55,7 +55,7 @@ export default function OffcanvasAdvancedFilters({ closeOffcanvas }: OffcanvasPr
           </div>
           <hr className="my-0" />
           <div>
-            <p className="fw-bold sp mb-3">{t('filters.type')}</p>
+            <p className="fw-bold small mb-3">{t('filters.type')}</p>
             <div className="d-flex gap-3">
               <DInputCheck
                 innerId="out"

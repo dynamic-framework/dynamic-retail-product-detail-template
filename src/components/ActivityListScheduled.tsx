@@ -7,10 +7,10 @@ export default function ActivityListScheduled() {
   return (
     <div className={classnames(
       'd-flex flex-column justify-content-center align-items-center',
-      'w-100 my-4 gap-4 text-light-emphasis',
+      'w-100 my-4 gap-4 text-gray-500',
     )}
     >
-      <p className="text-gray fw-bold">{t('noData.noUpcomingPayments')}</p>
+      <p className="text-gray-500 fw-bold">{t('noData.noUpcomingPayments')}</p>
       <img
         className="no-transactions"
         src="https://cloud.modyocdn.com/uploads/c49dfe12-4532-42a3-9dd7-2a07ce0bd82b/original/newCalendar.png"
