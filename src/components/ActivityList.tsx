@@ -18,7 +18,6 @@ import { getFilterActivities, getAccountSelected } from '../store/selectors';
 import { Account, Activity } from '../services/interface';
 import usePaginator from '../hooks/usePaginator';
 
-
 export default function ActivityList() {
   const { t } = useTranslation();
   const { openModal } = useModalContext();
@@ -63,7 +62,7 @@ export default function ActivityList() {
         {(activities.length === 0 || activities.length === 0) && (
           <div className={classnames(
             'd-flex flex-column justify-content-center align-items-center',
-            'w-100 my-4 gap-4 text-light-emphasis',
+            'w-100 my-4 gap-4 text-gray-500',
           )}
           >
             <span>{emptyTransactionsText}</span>
