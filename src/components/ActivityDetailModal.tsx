@@ -27,19 +27,20 @@ export default function ActivityDetailModal(
 
   return (
     <DModal
-      className="activity-detail-modal"
+      className="activity-detail-modal d-block"
       name="modal"
       isCentered
     >
       <DModalHeader
         onClose={() => closeModal()}
         showCloseButton
-      />
+      >
+        <h5 className="fw-bold flex-grow-1 activity-name text-wrap">
+          {activity.name}
+        </h5>
+      </DModalHeader>
       <DModalBody>
         <div className="d-flex flex-column gap-4">
-          <h5 className="fw-bold flex-grow-1 activity-name text-wrap">
-            {activity.name}
-          </h5>
           <div className="bg-light rounded-1 p-3">
             <div className="d-flex flex-column gap-1">
               <div className="d-flex align-items-center gap-1">

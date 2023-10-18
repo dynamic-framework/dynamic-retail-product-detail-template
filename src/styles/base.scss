@@ -1,9 +1,5 @@
 @import "~@dynamic-framework/ui-react/src/style/abstracts/+import";
 
-body {
-  background-color: var(--#{$prefix}light);
-}
-
 .selected-account button {
   --#{$prefix}quick-action-button-padding: var(--#{$prefix}ref-spacer-3) var(--#{$prefix}ref-spacer-4);
 }
@@ -34,13 +30,12 @@ body {
   }
 }
 
-
 .activity-detail-modal {
-  .modal {
+  &.modal {
     --#{$prefix}modal-header-padding: var(--#{$prefix}ref-spacer-5) var(--#{$prefix}ref-spacer-4) 0;
 
-    .d-modal-slot.modal-body {
-      padding: 0 1.875rem var(--#{$prefix}ref-spacer-7);
+    .modal-body {
+      padding: var(--#{$prefix}ref-spacer-4);
 
       .activity-name::first-letter {
         text-transform: capitalize;
