@@ -79,7 +79,7 @@ export default function ActivityList() {
             {data.map((activity) => (
               <DListItemMovement
                 key={`activity-${activity.id}`}
-                onEventClick={() => openActivityDetail(activity)}
+                onClick={() => openActivityDetail(activity)}
                 amount={activity.amount}
                 date={DateTime.fromISO(activity.date).toFormat(FORMAT_DATE_FULL)}
                 description={activity.name}
@@ -90,7 +90,7 @@ export default function ActivityList() {
             <DPaginator
               page={currentPage}
               total={totalPages}
-              onEventPageChange={(page: number) => callback(page)}
+              onPageChange={(page: number) => callback(page)}
               maxWidth={375}
             />
           </div>

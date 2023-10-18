@@ -30,7 +30,7 @@ export default function ItemActions({
         iconEnd={primaryIcon}
         isPill
         className="m-auto"
-        onEventClick={primaryAction}
+        onClick={primaryAction}
       />
       <div className="d-flex align-items-center justify-content-between">
         <DButton
@@ -39,7 +39,7 @@ export default function ItemActions({
           variant="link"
           theme="secondary"
           isPill
-          onEventClick={secondaryAction}
+          onClick={secondaryAction}
         />
         <DButton
           text={tertiaryText}
@@ -47,7 +47,7 @@ export default function ItemActions({
           variant="link"
           theme="secondary"
           isPill
-          onEventClick={tertiaryAction}
+          onClick={tertiaryAction}
         />
       </div>
     </div>

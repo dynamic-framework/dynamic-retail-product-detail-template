@@ -8,9 +8,6 @@ import {
   OffcanvasContextProvider,
 } from '@dynamic-framework/ui-react';
 
-import '@dynamic-framework/ui-react/dist/css/dynamic-ui-react.css';
-
-import './styles/base.scss';
 import './config/liquidConfig';
 import './config/i18nConfig';
 
@@ -19,6 +16,13 @@ import reportWebVitals from './reportWebVitals';
 import store from './store/store';
 import ActivityDetailModal from './components/ActivityDetailModal';
 import OffcanvasAdvancedFilters from './components/OffcanvasAdvancedFilters';
+
+if (process.env.NODE_ENV === 'development') {
+  // eslint-disable-next-line global-require
+  require('@dynamic-framework/ui-react/dist/css/dynamic-ui.css');
+}
+
+require('./styles/base.scss');
 
 const root = ReactDOM.createRoot(document.getElementById('accountDetails') as Element);
 root.render(
