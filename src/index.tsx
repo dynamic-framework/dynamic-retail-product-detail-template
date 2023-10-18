@@ -1,4 +1,3 @@
-/* eslint-disable global-require */
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
@@ -19,13 +18,11 @@ import ActivityDetailModal from './components/ActivityDetailModal';
 import OffcanvasAdvancedFilters from './components/OffcanvasAdvancedFilters';
 
 if (process.env.NODE_ENV === 'development') {
+  // eslint-disable-next-line global-require
   require('@dynamic-framework/ui-react/dist/css/dynamic-ui.css');
-  require('./styles/base.scss');
 }
 
-if (process.env.NODE_ENV === 'production') {
-  require('./styles/base.scss');
-}
+require('./styles/base.scss');
 
 const root = ReactDOM.createRoot(document.getElementById('accountDetails') as Element);
 root.render(
