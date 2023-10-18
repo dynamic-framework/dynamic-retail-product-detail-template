@@ -4,6 +4,8 @@ import classNames from 'classnames';
 import {
   DButton,
   DModal,
+  DModalBody,
+  DModalHeader,
   ModalProps,
   useFormatCurrency,
 } from '@dynamic-framework/ui-react';
@@ -28,11 +30,12 @@ export default function ActivityDetailModal(
       className="activity-detail-modal"
       name="modal"
       isCentered
-      onEventClose={() => closeModal()}
-      showCloseButton
-      innerClass="d-block"
     >
-      <div slot="body">
+      <DModalHeader
+        onClose={() => closeModal()}
+        showCloseButton
+      />
+      <DModalBody>
         <div className="d-flex flex-column gap-4">
           <h5 className="fw-bold flex-grow-1 activity-name text-wrap">
             {activity.name}
@@ -78,12 +81,12 @@ export default function ActivityDetailModal(
           <div className="d-flex justify-content-center">
             <DButton
               text={t('modal.actions.accept')}
-              onEventClick={() => closeModal()}
+              onClick={() => closeModal()}
               isPill
             />
           </div>
         </div>
-      </div>
+      </DModalBody>
     </DModal>
   );
 }

@@ -68,7 +68,7 @@ export default function AccountSelectorPicker() {
               representativeIconTheme={AccountTypeConfig[account.type].theme}
               representativeIconHasCircle
               actionIcon=""
-              onEventClick={() => handleSelect(account)}
+              onClick={() => handleSelect(account)}
             />
           ))}
         </div>

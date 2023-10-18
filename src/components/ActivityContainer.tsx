@@ -37,7 +37,7 @@ export default function ActivityContainer() {
       <DTabs
         options={options}
         defaultSelected={container.tab}
-        onEventChange={handlerSelected}
+        onChange={handlerSelected}
       >
         <DTabContent tab={options[0].tab}>
           <ActivityList />
