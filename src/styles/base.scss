@@ -1,4 +1,4 @@
-@import "~@dynamic-framework/ui-react/src/style/abstracts/+import";
+@import "@dynamic-framework/ui-react/src/style/abstracts/+import";
 
 .selected-account button {
   --#{$prefix}quick-action-button-padding: var(--#{$prefix}ref-spacer-3) var(--#{$prefix}ref-spacer-4);
