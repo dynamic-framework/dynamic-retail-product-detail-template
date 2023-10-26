@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   DButton,
@@ -20,9 +20,11 @@ export function ActivityListFilter({ activities }: Prop) {
   const { t } = useTranslation();
   const { openOffcanvas } = useOffcanvasContext();
   const { query } = useAppSelector(getFilterActivities);
+  const [inputQuery, setInputQuery] = useState<string | undefined>(query);
 
-  const inputSearchHandler = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    dispatch(setQueryFilterActivities(event.currentTarget.value));
+  const inputSearchHandler = useCallback((value: string | undefined) => {
+    setInputQuery(value);
+    dispatch(setQueryFilterActivities(value || ''));
   }, [dispatch]);
 
   return (
@@ -36,8 +38,8 @@ export function ActivityListFilter({ activities }: Prop) {
         </div>
         <DInputSearch
           id="inputSearch"
-          value={query}
-          isDisabled={activities.length === 0}
+          value={inputQuery}
+          disabled={activities.length === 0}
           placeholder={t('filters.search')}
           onChange={inputSearchHandler}
         />
