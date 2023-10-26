@@ -1,6 +1,6 @@
 {
   "name": "@dynamic-framework/dynamic-retail-product-detail-template",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": true,
   "dependencies": {
     "@dynamic-framework/ui-react": "^1.8.1",
@@ -11,13 +11,13 @@
     "axios": "^1.1.2",
     "classnames": "^2.3.2",
     "date-fns": "^2.29.3",
-    "i18next": "~21.9.0",
+    "i18next": "^23.6.0",
     "liquidjs": "^10.9.3",
     "luxon": "~3.2.1",
     "react": "^18.2.0",
     "react-datepicker": "~4.8.0",
     "react-dom": "^18.2.0",
-    "react-i18next": "~11.18.3",
+    "react-i18next": "^13.3.1",
     "react-redux": "^8.0.2",
     "web-vitals": "^2.1.4"
   },
