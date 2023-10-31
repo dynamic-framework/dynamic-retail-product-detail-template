@@ -17,8 +17,11 @@ import store from './store/store';
 import ActivityDetailModal from './components/ActivityDetailModal';
 import OffcanvasAdvancedFilters from './components/OffcanvasAdvancedFilters';
 
-import '@dynamic-framework/ui-react/dist/css/dynamic-ui.css';
-import './styles/base.scss';
+if (process.env.NODE_ENV === 'development') {
+  // eslint-disable-next-line global-require
+  require('@dynamic-framework/ui-react/dist/css/dynamic-ui.css');
+}
+require('./styles/base.scss');
 
 const root = ReactDOM.createRoot(document.getElementById('accountDetails') as Element);
 root.render(
