@@ -1,6 +1,6 @@
 type Props = {
   text: string;
-  value: any;
+  value: string | number;
 };
 
 export default function ItemDetail({ text, value }: Props) {

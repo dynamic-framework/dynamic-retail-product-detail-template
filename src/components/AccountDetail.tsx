@@ -22,6 +22,7 @@ import AccountDetailCreditCard from './AccountDetailCreditCard';
 import AccountDetailLoan from './AccountDetailLoan';
 
 import type { Account, DepositAccount, LoanAccount } from '../services/interface';
+import { AccountType } from '../services/config';
 
 const ACTIONS: Record<string, (accountId: Account['id']) => void> = {
   transfer: (accountId) => {
@@ -72,7 +73,7 @@ export default function AccountDetail() {
         <hr className="m-0 px-3" />
       )}
 
-      {account?.type === 'saving' && (
+      {account?.type === AccountType.Saving && (
         <>
           <AccountDetailSaving account={account as DepositAccount} />
           <hr className="m-0" />
@@ -89,7 +90,7 @@ export default function AccountDetail() {
           />
         </>
       )}
-      {account?.type === 'checking' && (
+      {account?.type === AccountType.Checking && (
         <>
           <AccountDetailChecking account={account as DepositAccount} />
           <hr className="m-0" />
@@ -106,7 +107,7 @@ export default function AccountDetail() {
           />
         </>
       )}
-      {account?.type === 'credit-card' && (
+      {account?.type === AccountType.CreditCard && (
         <>
           <AccountDetailCreditCard account={account as LoanAccount} />
           <hr className="m-0" />
@@ -123,7 +124,7 @@ export default function AccountDetail() {
           />
         </>
       )}
-      {account?.type === 'loan' && (
+      {account?.type === AccountType.Loan && (
         <>
           <AccountDetailLoan account={account as LoanAccount} />
           <hr className="m-0" />

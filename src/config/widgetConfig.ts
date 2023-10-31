@@ -1,4 +1,4 @@
-import { liquidParser } from '@dynamic-framework/ui-react';
+import liquidParser from '../utils/liquidParser';
 
 export const ICONS = {
   pay: 'credit-card',
@@ -8,6 +8,8 @@ export const ICONS = {
   advance: 'wallet2',
   paymentPlan: 'file-earmark-bar-graph',
 };
+
+export const SITE_LANG = liquidParser.parse('{{site.language}}');
 
 // URLs
 export const SITE_URL = liquidParser.parse('{{site.url}}');

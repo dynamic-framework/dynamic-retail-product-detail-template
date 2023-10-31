@@ -1,7 +1,8 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import {
   DButton,
+  DDatePicker,
   DIcon,
-  DInput,
   DInputCheck,
   DInputCurrency,
   DOffcanvas,
@@ -10,10 +11,20 @@ import {
   DOffcanvasHeader,
   OffcanvasProps,
 } from '@dynamic-framework/ui-react';
+import { DateTime } from 'luxon';
+import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export default function OffcanvasAdvancedFilters({ closeOffcanvas }: OffcanvasProps) {
   const { t } = useTranslation();
+  const [startDate, setStartDate] = useState<string | null>(null);
+  const [endDate, setEndDate] = useState<string | null>(null);
+
+  const onChangeDate = useCallback((value: Date | [Date | null, Date | null] | null) => {
+    const [newStartDate, newEndDate] = value as Array<Date>;
+    setStartDate(DateTime.fromJSDate(newStartDate).toISODate());
+    setEndDate(DateTime.fromJSDate(newEndDate).toISODate());
+  }, []);
 
   return (
     <DOffcanvas
@@ -32,12 +43,20 @@ export default function OffcanvasAdvancedFilters({ closeOffcanvas }: OffcanvasPr
       </DOffcanvasHeader>
       <DOffcanvasBody>
         <div className="d-flex flex-column gap-4 pt-3">
-          <DInput
+          <DDatePicker
             id="date"
-            isDisabled
-            label={t('filters.dateRange')}
-            placeholder="DD/MM/YYYY >> DD/MM/YYYY"
-            iconEnd="calendar"
+            placeholderText="DD/MM/YYYY >> DD/MM/YYYY"
+            inputIcon="calendar"
+            onChange={onChangeDate}
+            selectsRange
+            withMonthSelector
+            {...startDate && {
+              selected: DateTime.fromISO(startDate).toJSDate(),
+              startDate: DateTime.fromISO(startDate).toJSDate(),
+            }}
+            {...endDate && {
+              endDate: DateTime.fromISO(endDate).toJSDate(),
+            }}
           />
           <hr className="my-0" />
           <p className="fw-bold small">
