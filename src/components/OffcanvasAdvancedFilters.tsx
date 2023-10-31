@@ -11,23 +11,20 @@ import {
   DOffcanvasHeader,
   OffcanvasProps,
 } from '@dynamic-framework/ui-react';
-// import es from 'date-fns/locale/es';
 import { DateTime } from 'luxon';
-import { useState } from 'react';
-// import { registerLocale } from 'react-datepicker';
+import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-// registerLocale('es', es);
 export default function OffcanvasAdvancedFilters({ closeOffcanvas }: OffcanvasProps) {
   const { t } = useTranslation();
   const [startDate, setStartDate] = useState<string | null>(null);
   const [endDate, setEndDate] = useState<string | null>(null);
 
-  const onChangeDate = (value: Date | [Date | null, Date | null] | null) => {
+  const onChangeDate = useCallback((value: Date | [Date | null, Date | null] | null) => {
     const [newStartDate, newEndDate] = value as Array<Date>;
     setStartDate(DateTime.fromJSDate(newStartDate).toISODate());
     setEndDate(DateTime.fromJSDate(newEndDate).toISODate());
-  };
+  }, []);
 
   return (
     <DOffcanvas
@@ -53,7 +50,6 @@ export default function OffcanvasAdvancedFilters({ closeOffcanvas }: OffcanvasPr
             onChange={onChangeDate}
             selectsRange
             withMonthSelector
-            // locale={es}
             {...startDate && {
               selected: DateTime.fromISO(startDate).toJSDate(),
               startDate: DateTime.fromISO(startDate).toJSDate(),

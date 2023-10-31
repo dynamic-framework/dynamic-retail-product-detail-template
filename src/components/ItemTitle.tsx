@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 type Props = {
   text: string;
-  value?: any;
+  value?: string | number;
 };
 
 export default function ItemTitle({ text, value }: Props) {
