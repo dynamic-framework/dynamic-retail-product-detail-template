@@ -108,6 +108,9 @@
     display: flex;
     align-items: center;
   }
+  &:not(.credit-card){
+    grid-template-rows: repeat(2, 1fr);
+  }
 
   .account-card-icons {
     justify-content: space-between;
