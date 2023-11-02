@@ -49,10 +49,10 @@
 }
 
 .custom-details {
-  background-color: var(--#{$prefix}gray-200);
-  padding: var(--#{$prefix}ref-spacer-3);
   position: sticky;
   top: var(--#{$prefix}ref-spacer-3);
+  padding: var(--#{$prefix}ref-spacer-3);
+  background-color: var(--#{$prefix}gray-200);
 }
 
 .drop-account {
@@ -80,7 +80,7 @@
     position: relative;
 
     .d-quick-action-button {
-      background-color: rgba(var(--#{$prefix}gray-200-rgb), 0.5);
+      background-color: rgba(var(--#{$prefix}gray-200-rgb), .5);
     }
   }
 }
@@ -147,7 +147,7 @@
 }
 
 .d-carousel .d-carousel-slide:nth-child(3n) .saving {
-  background-color:var(--#{$prefix}info);
+  background-color: var(--#{$prefix}info);
 }
 
 // Theme colors for checking slides
@@ -162,7 +162,7 @@
 }
 
 .d-carousel .d-carousel-slide:nth-child(3n) .checking {
-  background-color:var(--#{$prefix}indigo);
+  background-color: var(--#{$prefix}indigo);
 }
 
 // Theme colors for credit-card slides
