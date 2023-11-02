@@ -45,6 +45,7 @@ export default function AccountSelectorPicker() {
       <DPopover
         isOpen={toggle}
         setEventIsOpen={setToggle}
+        adjustContentToRender
         renderComponent={() => (
           <DQuickActionButton
             line1={selected?.alias ?? selected?.name}
