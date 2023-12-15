@@ -2,10 +2,10 @@ import classnames from 'classnames';
 import { useMemo } from 'react';
 import { DateTime } from 'luxon';
 import {
-  useModalContext,
   DPaginator,
   DList,
   DListItemMovement,
+  useDModalContext,
 } from '@dynamic-framework/ui-react';
 
 import { useTranslation } from 'react-i18next';
@@ -18,9 +18,11 @@ import { getFilterActivities, getAccountSelected } from '../store/selectors';
 import { Account, Activity } from '../services/interface';
 import usePaginator from '../hooks/usePaginator';
 
+import type { ModalAvailablePayload } from '../interface';
+
 export default function ActivityList() {
   const { t } = useTranslation();
-  const { openModal } = useModalContext();
+  const { openModal } = useDModalContext<ModalAvailablePayload>();
 
   const account = useAppSelector(getAccountSelected) as Account;
   const { query } = useAppSelector(getFilterActivities);
@@ -32,7 +34,7 @@ export default function ActivityList() {
   } = useActivitiesEffect(account.baseType, account.id);
 
   const openActivityDetail = (activity: Activity) => {
-    openModal('activityDetail', { payload: { activity } });
+    openModal('activityDetail', { activity });
   };
 
   const {
@@ -75,7 +77,7 @@ export default function ActivityList() {
 
         )}
         <div className="px-3">
-          <DList isFlush>
+          <DList flush>
             {data.map((activity) => (
               <DListItemMovement
                 key={`activity-${activity.id}`}

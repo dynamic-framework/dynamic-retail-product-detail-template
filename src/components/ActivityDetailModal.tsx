@@ -12,7 +12,8 @@ import {
 import { useTranslation } from 'react-i18next';
 
 import { FORMAT_DATE } from '../config/widgetConfig';
-import { ActivityStatus } from '../services/config';
+
+import type { ModalAvailablePayload } from '../interface';
 
 export default function ActivityDetailModal(
   {
@@ -20,16 +21,16 @@ export default function ActivityDetailModal(
       activity,
     },
     closeModal,
-  }: ModalProps,
+  }: ModalProps<ModalAvailablePayload['activityDetail']>,
 ) {
   const formatCurrency = useFormatCurrency();
   const { t } = useTranslation();
 
   return (
     <DModal
-      className="activity-detail-modal d-block"
+      className="activity-detail-modal"
       name="modal"
-      isCentered
+      centered
     >
       <DModalHeader
         onClose={() => closeModal()}
@@ -54,7 +55,7 @@ export default function ActivityDetailModal(
                     activity.amount > 0 ? 'text-success' : 'text-danger',
                   )}
                 >
-                  {formatCurrency.format(activity.amount as number)}
+                  {formatCurrency.format(activity.amount)}
                 </span>
               </div>
               <div className="d-flex align-items-center gap-1">
@@ -63,7 +64,7 @@ export default function ActivityDetailModal(
                   :
                 </span>
                 <span className="flex-grow-1">
-                  {DateTime.fromISO(activity.date as string).toFormat(FORMAT_DATE)}
+                  {DateTime.fromISO(activity.date).toFormat(FORMAT_DATE)}
                 </span>
               </div>
               <div className="d-flex align-items-center gap-1">
@@ -73,7 +74,7 @@ export default function ActivityDetailModal(
                 </span>
                 {activity.status && (
                   <span className="flex-grow-1">
-                    {t(`modal.status.${activity.status as ActivityStatus}`)}
+                    {t(`modal.status.${activity.status}`)}
                   </span>
                 )}
               </div>
@@ -83,7 +84,7 @@ export default function ActivityDetailModal(
             <DButton
               text={t('modal.actions.accept')}
               onClick={() => closeModal()}
-              isPill
+              pill
             />
           </div>
         </div>

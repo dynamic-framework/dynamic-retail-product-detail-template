@@ -4,8 +4,8 @@ import { Provider } from 'react-redux';
 
 import {
   DContextProvider,
-  ModalContextProvider,
-  OffcanvasContextProvider,
+  DModalContextProvider,
+  DOffcanvasContextProvider,
 } from '@dynamic-framework/ui-react';
 
 import './config/liquidConfig';
@@ -16,30 +16,35 @@ import reportWebVitals from './reportWebVitals';
 import store from './store/store';
 import ActivityDetailModal from './components/ActivityDetailModal';
 import OffcanvasAdvancedFilters from './components/OffcanvasAdvancedFilters';
+import { SITE_LANG, VARS_CURRENCY } from './config/widgetConfig';
 
 import '@dynamic-framework/ui-react/dist/css/dynamic-ui.css';
 import './styles/base.scss';
+import type { ModalAvailablePayload } from './interface';
 
 const root = ReactDOM.createRoot(document.getElementById('accountDetails') as Element);
 root.render(
   <StrictMode>
-    <DContextProvider>
+    <DContextProvider
+      language={SITE_LANG}
+      currency={VARS_CURRENCY}
+    >
       <Provider store={store}>
-        <OffcanvasContextProvider
+        <DOffcanvasContextProvider
           portalName="offcanvasPortal"
           availableOffcanvas={{
             advancedFilters: OffcanvasAdvancedFilters,
           }}
         >
-          <ModalContextProvider
+          <DModalContextProvider<ModalAvailablePayload>
             portalName="modalPortal"
             availableModals={{
               activityDetail: ActivityDetailModal,
             }}
           >
             <App />
-          </ModalContextProvider>
-        </OffcanvasContextProvider>
+          </DModalContextProvider>
+        </DOffcanvasContextProvider>
       </Provider>
     </DContextProvider>
   </StrictMode>,

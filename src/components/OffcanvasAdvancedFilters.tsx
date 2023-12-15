@@ -30,7 +30,7 @@ export default function OffcanvasAdvancedFilters({ closeOffcanvas }: OffcanvasPr
     <DOffcanvas
       name="advancedFilters"
       openFrom="end"
-      isStatic
+      staticBackdrop
     >
       <DOffcanvasHeader
         onClose={() => closeOffcanvas()}
@@ -100,12 +100,12 @@ export default function OffcanvasAdvancedFilters({ closeOffcanvas }: OffcanvasPr
           variant="outline"
           theme="secondary"
           onClick={() => closeOffcanvas()}
-          isPill
+          pill
         />
         <DButton
           text={t('filters.filter')}
           onClick={() => closeOffcanvas()}
-          isPill
+          pill
         />
       </DOffcanvasFooter>
     </DOffcanvas>
