@@ -1,9 +1,21 @@
+import { useDContext } from '@dynamic-framework/ui-react';
+import { useEffect } from 'react';
 import ActivityContainer from './components/ActivityContainer';
 import useAccountsEffect from './services/hooks/useAccountsEffect';
 import useAccountEffect from './services/hooks/useAccountEffect';
 import Accounts from './components/Accounts';
+import { SITE_LANG, VARS_CURRENCY } from './config/widgetConfig';
 
 export default function App() {
+  const { setContext } = useDContext();
+
+  useEffect(() => {
+    setContext({
+      language: SITE_LANG,
+      currency: VARS_CURRENCY,
+    });
+  }, [setContext]);
+
   useAccountsEffect();
   useAccountEffect();
 

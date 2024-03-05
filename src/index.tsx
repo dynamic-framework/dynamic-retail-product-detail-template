@@ -16,7 +16,6 @@ import reportWebVitals from './reportWebVitals';
 import store from './store/store';
 import ActivityDetailModal from './components/ActivityDetailModal';
 import OffcanvasAdvancedFilters from './components/OffcanvasAdvancedFilters';
-import { SITE_LANG, VARS_CURRENCY } from './config/widgetConfig';
 
 import '@dynamic-framework/ui-react/dist/css/dynamic-ui.css';
 import './styles/base.scss';
@@ -25,10 +24,7 @@ import type { ModalAvailablePayload } from './interface';
 const root = ReactDOM.createRoot(document.getElementById('accountDetails') as Element);
 root.render(
   <StrictMode>
-    <DContextProvider
-      language={SITE_LANG}
-      currency={VARS_CURRENCY}
-    >
+    <DContextProvider>
       <Provider store={store}>
         <DOffcanvasContextProvider
           portalName="offcanvasPortal"
