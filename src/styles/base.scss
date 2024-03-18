@@ -34,12 +34,8 @@
   &.modal {
     --#{$prefix}modal-header-padding: var(--#{$prefix}ref-spacer-5) var(--#{$prefix}ref-spacer-4) 0;
 
-    .modal-body {
-      padding: var(--#{$prefix}ref-spacer-4);
-
-      .activity-name::first-letter {
-        text-transform: capitalize;
-      }
+    .modal-header .activity-name::first-letter {
+      text-transform: capitalize;
     }
   }
 }

@@ -4,7 +4,6 @@ import { DateTime } from 'luxon';
 import {
   DPaginator,
   DList,
-  DListItemMovement,
   useDModalContext,
 } from '@dynamic-framework/ui-react';
 
@@ -19,6 +18,7 @@ import { Account, Activity } from '../services/interface';
 import usePaginator from '../hooks/usePaginator';
 
 import type { ModalAvailablePayload } from '../interface';
+import ListItemMovement from './ListItemMovement';
 
 export default function ActivityList() {
   const { t } = useTranslation();
@@ -79,7 +79,7 @@ export default function ActivityList() {
         <div className="px-3">
           <DList flush>
             {data.map((activity) => (
-              <DListItemMovement
+              <ListItemMovement
                 key={`activity-${activity.id}`}
                 onClick={() => openActivityDetail(activity)}
                 amount={activity.amount}
