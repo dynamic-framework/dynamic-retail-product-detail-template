@@ -42,11 +42,11 @@ export default function OffcanvasAdvancedFilters({ closeOffcanvas }: OffcanvasPr
         </div>
       </DOffcanvasHeader>
       <DOffcanvasBody>
-        <div className="d-flex flex-column gap-4 pt-3">
+        <div className="d-flex flex-column gap-6 pt-3">
           <DDatePicker
             id="date"
             placeholderText="DD/MM/YYYY >> DD/MM/YYYY"
-            inputIcon="calendar"
+            iconInput="calendar"
             onChange={onChangeDate}
             selectsRange
             withMonthSelector
@@ -62,7 +62,7 @@ export default function OffcanvasAdvancedFilters({ closeOffcanvas }: OffcanvasPr
           <p className="fw-bold small">
             {t('filters.amount')}
           </p>
-          <div className="d-flex gap-4">
+          <div className="d-flex gap-6">
             <DInputCurrency
               id="from"
               label={t('filter.amountFrom')}
@@ -77,7 +77,7 @@ export default function OffcanvasAdvancedFilters({ closeOffcanvas }: OffcanvasPr
           <hr className="my-0" />
           <div>
             <p className="fw-bold small mb-3">{t('filters.type')}</p>
-            <div className="d-flex gap-3">
+            <div className="d-flex gap-4">
               <DInputCheck
                 id="out"
                 name="tipo"

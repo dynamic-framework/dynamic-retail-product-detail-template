@@ -32,7 +32,7 @@ export function ActivityListFilter({ activities }: Prop) {
       <div className="d-flex d-lg-none align-items-center pb-2 ps-1">
         <p className="text-gray-600">{t('filters.filterBy')}</p>
       </div>
-      <div className="d-flex align-items-stretch gap-4">
+      <div className="d-flex align-items-stretch gap-6">
         <div className="d-none d-lg-flex align-items-center">
           <p className="text-gray-600">{t('filters.filterBy')}</p>
         </div>

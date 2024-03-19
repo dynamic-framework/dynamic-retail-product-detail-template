@@ -64,7 +64,7 @@ export default function ActivityList() {
         {(activities.length === 0 || activities.length === 0) && (
           <div className={classnames(
             'd-flex flex-column justify-content-center align-items-center',
-            'w-100 my-4 gap-4 text-gray-500',
+            'w-100 my-4 gap-6 text-gray-500',
           )}
           >
             <span>{emptyTransactionsText}</span>

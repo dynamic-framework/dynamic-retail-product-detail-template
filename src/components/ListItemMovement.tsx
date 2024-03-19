@@ -39,7 +39,7 @@ export default function ListItemMovement(
 
   return (
     <DListItem {...props}>
-      <div className="d-flex justify-content-between align-items-center p-3 gap-3">
+      <div className="d-flex justify-content-between align-items-center p-3 gap-4">
         <div className="d-flex flex-column gap-1">
           <span className="fs-6">
             {description}

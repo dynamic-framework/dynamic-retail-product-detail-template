@@ -41,7 +41,7 @@ export default function ActivityDetailModal(
         </h5>
       </DModalHeader>
       <DModalBody>
-        <div className="d-flex flex-column gap-4">
+        <div className="d-flex flex-column gap-6">
           <div className="bg-light rounded-1 p-3">
             <div className="d-flex flex-column gap-1">
               <div className="d-flex align-items-center gap-1">
