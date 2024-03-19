@@ -76,7 +76,7 @@ export default function ActivityList() {
           </div>
 
         )}
-        <div className="px-3">
+        <div className="px-4">
           <DList flush>
             {data.map((activity) => (
               <ListItemMovement
@@ -88,7 +88,7 @@ export default function ActivityList() {
               />
             ))}
           </DList>
-          <div className="d-flex flex-grow-1 justify-content-center py-3">
+          <div className="d-flex flex-grow-1 justify-content-center py-4">
             <DPaginator
               page={currentPage}
               total={totalPages}

@@ -37,7 +37,7 @@ export default function AccountSelectorSlider() {
 
   if (loading || !selected) {
     return (
-      <div className="px-3 pt-3">
+      <div className="px-4 pt-4">
         <AccountSelectorLoader />
         <br />
       </div>
@@ -46,7 +46,7 @@ export default function AccountSelectorSlider() {
 
   if (accounts.length === 1) {
     return (
-      <div className="p-3">
+      <div className="p-4">
         <AccountCard account={selected} />
       </div>
     );
