@@ -8,7 +8,7 @@ export default function SelectedAccountName() {
 
   if (isLoading) {
     return (
-      <div className="mb-3">
+      <div className="mb-4">
         <SelectedAccountNameLoader />
       </div>
     );
@@ -19,7 +19,7 @@ export default function SelectedAccountName() {
   }
 
   return (
-    <h1 className="fs-4 fw-bold mb-3 p-0 pe-md-3">
+    <h1 className="fs-4 fw-bold mb-4 p-0 pe-md-4">
       {selectedAccount.alias ?? selectedAccount.name}
     </h1>
   );

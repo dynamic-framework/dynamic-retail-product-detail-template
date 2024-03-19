@@ -76,7 +76,7 @@ export default function OffcanvasAdvancedFilters({ closeOffcanvas }: OffcanvasPr
           </div>
           <hr className="my-0" />
           <div>
-            <p className="fw-bold small mb-3">{t('filters.type')}</p>
+            <p className="fw-bold small mb-4">{t('filters.type')}</p>
             <div className="d-flex gap-4">
               <DInputCheck
                 id="out"

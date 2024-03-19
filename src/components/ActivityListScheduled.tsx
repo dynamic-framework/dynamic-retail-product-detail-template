@@ -7,7 +7,7 @@ export default function ActivityListScheduled() {
   return (
     <div className={classnames(
       'd-flex flex-column justify-content-center align-items-center',
-      'w-100 my-4 gap-6 text-gray-500',
+      'w-100 my-6 gap-6 text-gray-500',
     )}
     >
       <p className="text-gray-500 fw-bold">{t('noData.noUpcomingPayments')}</p>

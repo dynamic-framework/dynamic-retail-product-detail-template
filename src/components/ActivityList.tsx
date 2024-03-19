@@ -57,14 +57,14 @@ export default function ActivityList() {
 
   return (
     <div className="row overflow-hidden">
-      <div className="col-12 my-3">
+      <div className="col-12 my-4">
         <ActivityListFilter activities={activities} />
       </div>
       <div className="col-12 p-0">
         {(activities.length === 0 || activities.length === 0) && (
           <div className={classnames(
             'd-flex flex-column justify-content-center align-items-center',
-            'w-100 my-4 gap-6 text-gray-500',
+            'w-100 my-6 gap-6 text-gray-500',
           )}
           >
             <span>{emptyTransactionsText}</span>
