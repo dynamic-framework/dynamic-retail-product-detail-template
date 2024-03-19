@@ -84,7 +84,6 @@ export default function ActivityDetailModal(
             <DButton
               text={t('modal.actions.accept')}
               onClick={() => closeModal()}
-              pill
             />
           </div>
         </div>

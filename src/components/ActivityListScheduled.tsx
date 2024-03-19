@@ -10,7 +10,7 @@ export default function ActivityListScheduled() {
       'w-100 my-6 gap-6 text-gray-500',
     )}
     >
-      <p className="text-gray-500 fw-bold">{t('noData.noUpcomingPayments')}</p>
+      <p className="text-gray-500 fw-bold mb-0">{t('noData.noUpcomingPayments')}</p>
       <img
         className="no-transactions"
         src="https://cloud.modyocdn.com/uploads/c49dfe12-4532-42a3-9dd7-2a07ce0bd82b/original/newCalendar.png"

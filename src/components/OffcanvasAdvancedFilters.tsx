@@ -59,7 +59,7 @@ export default function OffcanvasAdvancedFilters({ closeOffcanvas }: OffcanvasPr
             }}
           />
           <hr className="my-0" />
-          <p className="fw-bold small">
+          <p className="fw-bold small mb-0">
             {t('filters.amount')}
           </p>
           <div className="d-flex gap-6">
@@ -100,12 +100,10 @@ export default function OffcanvasAdvancedFilters({ closeOffcanvas }: OffcanvasPr
           variant="outline"
           theme="secondary"
           onClick={() => closeOffcanvas()}
-          pill
         />
         <DButton
           text={t('filters.filter')}
           onClick={() => closeOffcanvas()}
-          pill
         />
       </DOffcanvasFooter>
     </DOffcanvas>
