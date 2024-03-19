@@ -34,6 +34,7 @@ export default function ActivityDetailModal(
     >
       <DModalHeader
         onClose={() => closeModal()}
+        className="px-6"
         showCloseButton
       >
         <h5 className="fw-bold flex-grow-1 activity-name text-wrap">
