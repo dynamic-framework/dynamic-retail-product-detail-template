@@ -43,7 +43,7 @@ export default function OffcanvasAdvancedFilters({ closeOffcanvas }: OffcanvasPr
       </DOffcanvasHeader>
       <DOffcanvasBody>
         <div className="d-flex flex-column gap-6 pt-4">
-          <DDatePicker
+          <DDatePicker<never, true>
             id="date"
             placeholderText="DD/MM/YYYY >> DD/MM/YYYY"
             iconInput="calendar"
