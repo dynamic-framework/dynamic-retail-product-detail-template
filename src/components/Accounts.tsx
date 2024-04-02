@@ -12,7 +12,7 @@ export default function Accounts() {
       className={classNames(
         'custom-details',
         'border-0 shadow-none',
-        SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) ? 'gap-0' : 'gap-3',
+        SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) ? 'gap-0' : 'gap-4',
       )}
     >
       {!SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) && (

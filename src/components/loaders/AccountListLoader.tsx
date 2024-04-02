@@ -2,8 +2,8 @@ import { DSkeleton } from '@dynamic-framework/ui-react';
 
 export default function AccountListLoader() {
   return (
-    <div className="py-3">
-      <div className="d-none d-lg-block mt-3">
+    <div className="py-4">
+      <div className="d-none d-lg-block mt-4">
         <DSkeleton viewBox="0 0 600 180" backgroundColor="#e9e9ff" foregroundColor="#f8f8fb">
           <rect x="0" y="10" rx="4" ry="4" width="410" height="40" />
           <rect x="530" y="20" rx="4" ry="4" width="70" height="20" />

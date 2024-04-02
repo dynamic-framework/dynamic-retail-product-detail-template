@@ -34,6 +34,7 @@ export default function ActivityDetailModal(
     >
       <DModalHeader
         onClose={() => closeModal()}
+        className="px-6"
         showCloseButton
       >
         <h5 className="fw-bold flex-grow-1 activity-name text-wrap">
@@ -41,8 +42,8 @@ export default function ActivityDetailModal(
         </h5>
       </DModalHeader>
       <DModalBody>
-        <div className="d-flex flex-column gap-4">
-          <div className="bg-light rounded-1 p-3">
+        <div className="d-flex flex-column gap-6">
+          <div className="bg-light rounded-1 p-4">
             <div className="d-flex flex-column gap-1">
               <div className="d-flex align-items-center gap-1">
                 <span className="fw-bold">
@@ -84,7 +85,6 @@ export default function ActivityDetailModal(
             <DButton
               text={t('modal.actions.accept')}
               onClick={() => closeModal()}
-              pill
             />
           </div>
         </div>

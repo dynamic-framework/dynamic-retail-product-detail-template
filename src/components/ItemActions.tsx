@@ -24,11 +24,10 @@ export default function ItemActions({
   tertiaryAction,
 }: Props) {
   return (
-    <div className="d-flex flex-column gap-3">
+    <div className="d-flex flex-column gap-4">
       <DButton
         text={primaryText}
         iconEnd={primaryIcon}
-        pill
         className="m-auto"
         onClick={primaryAction}
       />
@@ -38,7 +37,6 @@ export default function ItemActions({
           iconStart={secondaryIcon}
           variant="link"
           theme="secondary"
-          pill
           onClick={secondaryAction}
         />
         <DButton
@@ -46,7 +44,6 @@ export default function ItemActions({
           iconStart={tertiaryIcon}
           variant="link"
           theme="secondary"
-          pill
           onClick={tertiaryAction}
         />
       </div>

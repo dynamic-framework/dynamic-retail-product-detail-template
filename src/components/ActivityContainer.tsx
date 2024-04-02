@@ -25,7 +25,7 @@ export default function ActivityContainer() {
 
   if (isNotReady) {
     return (
-      <div className="bg-white rounded p-3 pt-5">
+      <div className="bg-white rounded p-4 pt-8">
         <br />
         <AccountListLoader />
       </div>
@@ -33,7 +33,7 @@ export default function ActivityContainer() {
   }
 
   return (
-    <div className="d-block py-0 px-3 w-100 bg-white rounded">
+    <div className="d-block py-0 px-4 w-100 bg-white rounded">
       <DTabs
         options={options}
         defaultSelected={container.tab}

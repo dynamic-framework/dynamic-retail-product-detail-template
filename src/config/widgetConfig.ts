@@ -38,3 +38,8 @@ export const FORMAT_DATE_FULL = liquidParser.parse('{{vars.format-date-full}}');
 
 // DEFAULT NO VALUE
 export const DETAIL_NO_VALUE = '-';
+
+export const CONTEXT_CONFIG = {
+  language: SITE_LANG,
+  currency: VARS_CURRENCY,
+};
