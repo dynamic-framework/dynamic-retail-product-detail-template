@@ -4,7 +4,7 @@ import { DateTime } from 'luxon';
 import {
   DPaginator,
   DList,
-  useDModalContext,
+  useDPortalContext,
 } from '@dynamic-framework/ui-react';
 
 import { useTranslation } from 'react-i18next';
@@ -22,7 +22,7 @@ import ListItemMovement from './ListItemMovement';
 
 export default function ActivityList() {
   const { t } = useTranslation();
-  const { openModal } = useDModalContext<ModalAvailablePayload>();
+  const { openPortal } = useDPortalContext<ModalAvailablePayload>();
 
   const account = useAppSelector(getAccountSelected) as Account;
   const { query } = useAppSelector(getFilterActivities);
@@ -34,7 +34,7 @@ export default function ActivityList() {
   } = useActivitiesEffect(account.baseType, account.id);
 
   const openActivityDetail = (activity: Activity) => {
-    openModal('activityDetail', { activity });
+    openPortal('activityDetail', { activity });
   };
 
   const {

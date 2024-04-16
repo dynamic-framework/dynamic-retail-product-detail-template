@@ -1,12 +1,7 @@
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-
-import {
-  DContextProvider,
-  DModalContextProvider,
-  DOffcanvasContextProvider,
-} from '@dynamic-framework/ui-react';
+import { DContextProvider } from '@dynamic-framework/ui-react';
 
 import './config/liquidConfig';
 import './config/i18nConfig';
@@ -19,30 +14,21 @@ import OffcanvasAdvancedFilters from './components/OffcanvasAdvancedFilters';
 
 import '@dynamic-framework/ui-react/dist/css/dynamic-ui.css';
 import './styles/base.scss';
-import type { ModalAvailablePayload } from './interface';
 
 const root = ReactDOM.createRoot(document.getElementById('accountDetails') as Element);
 root.render(
   <StrictMode>
-    <DContextProvider>
-      <Provider store={store}>
-        <DOffcanvasContextProvider
-          portalName="offcanvasPortal"
-          availableOffcanvas={{
-            advancedFilters: OffcanvasAdvancedFilters,
-          }}
-        >
-          <DModalContextProvider<ModalAvailablePayload>
-            portalName="modalPortal"
-            availableModals={{
-              activityDetail: ActivityDetailModal,
-            }}
-          >
-            <App />
-          </DModalContextProvider>
-        </DOffcanvasContextProvider>
-      </Provider>
-    </DContextProvider>
+    <Provider store={store}>
+      <DContextProvider
+        portalName="offcanvasPortal"
+        availablePortals={{
+          activityDetail: ActivityDetailModal,
+          advancedFilters: OffcanvasAdvancedFilters,
+        }}
+      >
+        <App />
+      </DContextProvider>
+    </Provider>
   </StrictMode>,
 );
 
