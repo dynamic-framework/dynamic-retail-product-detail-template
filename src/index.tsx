@@ -15,15 +15,17 @@ import OffcanvasAdvancedFilters from './components/OffcanvasAdvancedFilters';
 import '@dynamic-framework/ui-react/dist/css/dynamic-ui.css';
 import './styles/base.scss';
 
+import type { PortalAvailablePayload } from './interface';
+
 const root = ReactDOM.createRoot(document.getElementById('accountDetails') as Element);
 root.render(
   <StrictMode>
     <Provider store={store}>
-      <DContextProvider
-        portalName="offcanvasPortal"
+      <DContextProvider<PortalAvailablePayload>
+        portalName="portal"
         availablePortals={{
-          activityDetail: ActivityDetailModal,
-          advancedFilters: OffcanvasAdvancedFilters,
+          activityDetailModal: ActivityDetailModal,
+          advancedFiltersOffcanvas: OffcanvasAdvancedFilters,
         }}
       >
         <App />

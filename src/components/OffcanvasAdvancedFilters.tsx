@@ -34,7 +34,7 @@ export default function OffcanvasAdvancedFilters() {
       staticBackdrop
     >
       <DOffcanvasHeader
-        onClose={() => closePortal()}
+        onClose={closePortal}
         showCloseButton
       >
         <div className="d-flex align-items-center gap-2">
@@ -100,11 +100,11 @@ export default function OffcanvasAdvancedFilters() {
           text={t('filters.cancel')}
           variant="outline"
           theme="secondary"
-          onClick={() => closePortal()}
+          onClick={closePortal}
         />
         <DButton
           text={t('filters.filter')}
-          onClick={() => closePortal()}
+          onClick={closePortal}
         />
       </DOffcanvasFooter>
     </DOffcanvas>
