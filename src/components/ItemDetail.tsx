@@ -5,7 +5,7 @@ type Props = {
 
 export default function ItemDetail({ text, value }: Props) {
   return (
-    <div className="d-flex gap-3 align-items-center justify-content-between p-1 small">
+    <div className="d-flex gap-4 align-items-center justify-content-between p-1 small">
       <span className="flex-grow-1">
         {text}
       </span>

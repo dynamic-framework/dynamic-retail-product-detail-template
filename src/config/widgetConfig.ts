@@ -10,9 +10,13 @@ export const ICONS = {
 };
 
 export const SITE_LANG = liquidParser.parse('{{site.language}}');
-
-// URLs
 export const SITE_URL = liquidParser.parse('{{site.url}}');
+export const VARS_CURRENCY = {
+  symbol: liquidParser.parse('{{vars.currency-symbol}}'),
+  precision: Number(liquidParser.parse('{{vars.currency-precision}}')),
+  separator: liquidParser.parse('{{vars.currency-separator}}'),
+  decimal: liquidParser.parse('{{vars.currency-decimal}}'),
+};
 
 // PATHs
 export const TRANSFER_PATH = liquidParser.parse('{{vars.transfers-path}}');
@@ -34,3 +38,8 @@ export const FORMAT_DATE_FULL = liquidParser.parse('{{vars.format-date-full}}');
 
 // DEFAULT NO VALUE
 export const DETAIL_NO_VALUE = '-';
+
+export const CONTEXT_CONFIG = {
+  language: SITE_LANG,
+  currency: VARS_CURRENCY,
+};

@@ -2,10 +2,9 @@ import classnames from 'classnames';
 import { useMemo } from 'react';
 import { DateTime } from 'luxon';
 import {
-  useModalContext,
   DPaginator,
   DList,
-  DListItemMovement,
+  useDPortalContext,
 } from '@dynamic-framework/ui-react';
 
 import { useTranslation } from 'react-i18next';
@@ -18,9 +17,12 @@ import { getFilterActivities, getAccountSelected } from '../store/selectors';
 import { Account, Activity } from '../services/interface';
 import usePaginator from '../hooks/usePaginator';
 
+import type { PortalAvailablePayload } from '../interface';
+import ListItemMovement from './ListItemMovement';
+
 export default function ActivityList() {
   const { t } = useTranslation();
-  const { openModal } = useModalContext();
+  const { openPortal } = useDPortalContext<PortalAvailablePayload>();
 
   const account = useAppSelector(getAccountSelected) as Account;
   const { query } = useAppSelector(getFilterActivities);
@@ -32,7 +34,7 @@ export default function ActivityList() {
   } = useActivitiesEffect(account.baseType, account.id);
 
   const openActivityDetail = (activity: Activity) => {
-    openModal('activityDetail', { payload: { activity } });
+    openPortal('activityDetailModal', { activity });
   };
 
   const {
@@ -55,14 +57,14 @@ export default function ActivityList() {
 
   return (
     <div className="row overflow-hidden">
-      <div className="col-12 my-3">
+      <div className="col-12 my-4">
         <ActivityListFilter activities={activities} />
       </div>
       <div className="col-12 p-0">
         {(activities.length === 0 || activities.length === 0) && (
           <div className={classnames(
             'd-flex flex-column justify-content-center align-items-center',
-            'w-100 my-4 gap-4 text-gray-500',
+            'w-100 my-6 gap-6 text-gray-500',
           )}
           >
             <span>{emptyTransactionsText}</span>
@@ -74,10 +76,10 @@ export default function ActivityList() {
           </div>
 
         )}
-        <div className="px-3">
-          <DList isFlush>
+        <div className="px-4">
+          <DList flush>
             {data.map((activity) => (
-              <DListItemMovement
+              <ListItemMovement
                 key={`activity-${activity.id}`}
                 onClick={() => openActivityDetail(activity)}
                 amount={activity.amount}
@@ -86,7 +88,7 @@ export default function ActivityList() {
               />
             ))}
           </DList>
-          <div className="d-flex flex-grow-1 justify-content-center py-3">
+          <div className="d-flex flex-grow-1 justify-content-center py-4">
             <DPaginator
               page={currentPage}
               total={totalPages}

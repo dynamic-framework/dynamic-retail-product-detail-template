@@ -1,12 +1,7 @@
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-
-import {
-  DContextProvider,
-  ModalContextProvider,
-  OffcanvasContextProvider,
-} from '@dynamic-framework/ui-react';
+import { DContextProvider } from '@dynamic-framework/ui-react';
 
 import './config/liquidConfig';
 import './config/i18nConfig';
@@ -23,28 +18,22 @@ if (process.env.NODE_ENV === 'development') {
 }
 require('./styles/base.scss');
 
+import type { PortalAvailablePayload } from './interface';
+
 const root = ReactDOM.createRoot(document.getElementById('accountDetails') as Element);
 root.render(
   <StrictMode>
-    <DContextProvider>
-      <Provider store={store}>
-        <OffcanvasContextProvider
-          portalName="offcanvasPortal"
-          availableOffcanvas={{
-            advancedFilters: OffcanvasAdvancedFilters,
-          }}
-        >
-          <ModalContextProvider
-            portalName="modalPortal"
-            availableModals={{
-              activityDetail: ActivityDetailModal,
-            }}
-          >
-            <App />
-          </ModalContextProvider>
-        </OffcanvasContextProvider>
-      </Provider>
-    </DContextProvider>
+    <Provider store={store}>
+      <DContextProvider<PortalAvailablePayload>
+        portalName="portal"
+        availablePortals={{
+          activityDetailModal: ActivityDetailModal,
+          advancedFiltersOffcanvas: OffcanvasAdvancedFilters,
+        }}
+      >
+        <App />
+      </DContextProvider>
+    </Provider>
   </StrictMode>,
 );
 

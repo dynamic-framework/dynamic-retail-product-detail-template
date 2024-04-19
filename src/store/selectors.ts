@@ -1,31 +1,31 @@
-import { createDraftSafeSelector } from '@reduxjs/toolkit';
+import { createSelector } from '@reduxjs/toolkit';
 
 import type { RootState } from './store';
 import type { Activity } from '../services/interface';
 
 const getState = (state: RootState) => state.widget;
 
-export const getAccounts = createDraftSafeSelector(
+export const getAccounts = createSelector(
   getState,
   (widget) => widget.accounts,
 );
 
-export const getAccountSelected = createDraftSafeSelector(
+export const getAccountSelected = createSelector(
   getState,
   (widget) => widget.accountSelected,
 );
 
-export const getIsLoadingAccountList = createDraftSafeSelector(
+export const getIsLoadingAccountList = createSelector(
   getState,
   (widget) => widget.isLoadingAccountList,
 );
 
-export const getIsLoadingAccountDetail = createDraftSafeSelector(
+export const getIsLoadingAccountDetail = createSelector(
   getState,
   (widget) => widget.isLoadingAccountDetail,
 );
 
-export const getIsNotReady = createDraftSafeSelector(
+export const getIsNotReady = createSelector(
   getIsLoadingAccountList,
   getIsLoadingAccountDetail,
   getAccountSelected,
@@ -36,17 +36,17 @@ export const getIsNotReady = createDraftSafeSelector(
   ),
 );
 
-export const getActivities = createDraftSafeSelector(
+export const getActivities = createSelector(
   getState,
   (widget) => widget.activities,
 );
 
-export const getFilterActivities = createDraftSafeSelector(
+export const getFilterActivities = createSelector(
   getState,
   (widget) => widget.filterActivities,
 );
 
-export const getFilteredActivities = createDraftSafeSelector(
+export const getFilteredActivities = createSelector(
   getActivities,
   getFilterActivities,
   (activities, filter) => {

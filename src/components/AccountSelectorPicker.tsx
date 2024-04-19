@@ -43,8 +43,8 @@ export default function AccountSelectorPicker() {
   return (
     <div className="account-selector">
       <DPopover
-        isOpen={toggle}
-        setEventIsOpen={setToggle}
+        open={toggle}
+        setOpen={setToggle}
         adjustContentToRender
         renderComponent={() => (
           <DQuickActionButton
