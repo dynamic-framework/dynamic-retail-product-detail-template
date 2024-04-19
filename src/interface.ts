@@ -1,8 +1,8 @@
 import { Activity } from './services/interface';
 
 export type PortalAvailablePayload = {
-  activityDetailModal: {
+  modalActivityDetail: {
     activity: Activity;
   };
-  advancedFiltersOffcanvas: undefined;
+  offcanvasAdvancedFilters: undefined;
 };
