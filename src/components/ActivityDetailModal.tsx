@@ -6,23 +6,24 @@ import {
   DModal,
   DModalBody,
   DModalHeader,
-  ModalProps,
+  PortalProps,
   useFormatCurrency,
+  useDPortalContext,
 } from '@dynamic-framework/ui-react';
 import { useTranslation } from 'react-i18next';
 
 import { FORMAT_DATE } from '../config/widgetConfig';
 
-import type { ModalAvailablePayload } from '../interface';
+import type { PortalAvailablePayload } from '../interface';
 
 export default function ActivityDetailModal(
   {
     payload: {
       activity,
     },
-    closeModal,
-  }: ModalProps<ModalAvailablePayload['activityDetail']>,
+  }: PortalProps<PortalAvailablePayload['activityDetailModal']>,
 ) {
+  const { closePortal } = useDPortalContext();
   const formatCurrency = useFormatCurrency();
   const { t } = useTranslation();
 
@@ -33,7 +34,7 @@ export default function ActivityDetailModal(
       centered
     >
       <DModalHeader
-        onClose={() => closeModal()}
+        onClose={closePortal}
         className="px-6"
         showCloseButton
       >
@@ -84,7 +85,7 @@ export default function ActivityDetailModal(
           <div className="d-flex justify-content-center">
             <DButton
               text={t('modal.actions.accept')}
-              onClick={() => closeModal()}
+              onClick={closePortal}
             />
           </div>
         </div>

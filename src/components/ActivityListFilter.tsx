@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import {
   DButton,
   DInputSearch,
-  useDOffcanvasContext,
+  useDPortalContext,
 } from '@dynamic-framework/ui-react';
 
 import { useAppSelector, useAppDispatch } from '../store/hooks';
@@ -18,7 +18,7 @@ type Prop = {
 export function ActivityListFilter({ activities }: Prop) {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
-  const { openOffcanvas } = useDOffcanvasContext();
+  const { openPortal } = useDPortalContext();
   const { query } = useAppSelector(getFilterActivities);
   const [inputQuery, setInputQuery] = useState<string | undefined>(query);
 
@@ -48,7 +48,7 @@ export function ActivityListFilter({ activities }: Prop) {
           theme="secondary"
           variant="outline"
           iconEnd="filter"
-          onClick={() => openOffcanvas('advancedFilters', undefined)}
+          onClick={() => openPortal('advancedFiltersOffcanvas', undefined)}
         />
       </div>
     </>

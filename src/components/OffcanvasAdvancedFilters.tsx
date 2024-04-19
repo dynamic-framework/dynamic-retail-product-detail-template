@@ -9,14 +9,15 @@ import {
   DOffcanvasBody,
   DOffcanvasFooter,
   DOffcanvasHeader,
-  OffcanvasProps,
+  useDPortalContext,
 } from '@dynamic-framework/ui-react';
 import { DateTime } from 'luxon';
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-export default function OffcanvasAdvancedFilters({ closeOffcanvas }: OffcanvasProps) {
+export default function OffcanvasAdvancedFilters() {
   const { t } = useTranslation();
+  const { closePortal } = useDPortalContext();
   const [startDate, setStartDate] = useState<string | null>(null);
   const [endDate, setEndDate] = useState<string | null>(null);
 
@@ -33,7 +34,7 @@ export default function OffcanvasAdvancedFilters({ closeOffcanvas }: OffcanvasPr
       staticBackdrop
     >
       <DOffcanvasHeader
-        onClose={() => closeOffcanvas()}
+        onClose={closePortal}
         showCloseButton
       >
         <div className="d-flex align-items-center gap-2">
@@ -99,11 +100,11 @@ export default function OffcanvasAdvancedFilters({ closeOffcanvas }: OffcanvasPr
           text={t('filters.cancel')}
           variant="outline"
           theme="secondary"
-          onClick={() => closeOffcanvas()}
+          onClick={closePortal}
         />
         <DButton
           text={t('filters.filter')}
-          onClick={() => closeOffcanvas()}
+          onClick={closePortal}
         />
       </DOffcanvasFooter>
     </DOffcanvas>
