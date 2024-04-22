@@ -48,7 +48,7 @@ export function ActivityListFilter({ activities }: Prop) {
           theme="secondary"
           variant="outline"
           iconEnd="filter"
-          onClick={() => openPortal('advancedFiltersOffcanvas', undefined)}
+          onClick={() => openPortal('offcanvasAdvancedFilters', undefined)}
         />
       </div>
     </>
