@@ -16,12 +16,12 @@ import { FORMAT_DATE } from '../config/widgetConfig';
 
 import type { PortalAvailablePayload } from '../interface';
 
-export default function ActivityDetailModal(
+export default function ModalActivityDetail(
   {
     payload: {
       activity,
     },
-  }: PortalProps<PortalAvailablePayload['activityDetailModal']>,
+  }: PortalProps<PortalAvailablePayload['modalActivityDetail']>,
 ) {
   const { closePortal } = useDPortalContext();
   const formatCurrency = useFormatCurrency();

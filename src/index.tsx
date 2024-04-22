@@ -9,7 +9,7 @@ import './config/i18nConfig';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './store/store';
-import ActivityDetailModal from './components/ActivityDetailModal';
+import ModalActivityDetail from './components/ModalActivityDetail';
 import OffcanvasAdvancedFilters from './components/OffcanvasAdvancedFilters';
 
 if (process.env.NODE_ENV === 'development') {
@@ -27,8 +27,8 @@ root.render(
       <DContextProvider<PortalAvailablePayload>
         portalName="portal"
         availablePortals={{
-          activityDetailModal: ActivityDetailModal,
-          advancedFiltersOffcanvas: OffcanvasAdvancedFilters,
+          modalActivityDetail: ModalActivityDetail,
+          offcanvasAdvancedFilters: OffcanvasAdvancedFilters,
         }}
       >
         <App />

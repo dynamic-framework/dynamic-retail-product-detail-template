@@ -34,7 +34,7 @@ export default function ActivityList() {
   } = useActivitiesEffect(account.baseType, account.id);
 
   const openActivityDetail = (activity: Activity) => {
-    openPortal('activityDetailModal', { activity });
+    openPortal('modalActivityDetail', { activity });
   };
 
   const {
