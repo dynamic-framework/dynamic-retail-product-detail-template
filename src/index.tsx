@@ -27,9 +27,7 @@ root.render(
           offcanvasAdvancedFilters: OffcanvasAdvancedFilters,
         }}
       >
-        <div className="container">
-          <App />
-        </div>
+        <App />
       </DContextProvider>
     </Provider>
   </StrictMode>,
