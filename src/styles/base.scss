@@ -80,11 +80,10 @@
 
   .account-card {
     display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    row-gap: var(--#{$prefix}ref-spacer-1);
+    grid-template-rows: repeat(2, 1fr);
     width: 100%;
-    aspect-ratio: 16/10;
-    padding: var(--#{$prefix}ref-spacer-4);
+    aspect-ratio: 16/9;
+    padding: var(--#{$prefix}ref-spacer-6);
     color: var(--#{$prefix}white);
     background-color: var(--#{$prefix}gray);
     border-radius: var(--#{$prefix}ref-spacer-3);
@@ -93,30 +92,8 @@
       aspect-ratio: 9/3;
     }
 
-    >* {
-      display: flex;
-      align-items: center;
-    }
-    &:not(.credit-card){
-      grid-template-rows: repeat(2, 1fr);
-    }
-
-    .account-card-icons {
-      justify-content: space-between;
-    }
-
     .account-card-number {
-      font-family: Helvetica, sans-serif;
-      font-size: var(--#{$prefix}ref-fs-5);
-    }
-
-    .account-card-details .name {
-      font-size: var(--#{$prefix}ref-fs-6);
-      font-weight: var(--#{$prefix}ref-fw-bold);
-    }
-
-    .account-card-details .date {
-      font-size: var(--#{$prefix}ref-fs-6);
+      font-family: monospace, sans-serif;
     }
   }
 
