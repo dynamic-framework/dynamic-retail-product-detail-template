@@ -1,11 +1,11 @@
-import { useTranslation } from 'react-i18next';
 import { useFormatCurrency } from '@dynamic-framework/ui-react';
+import { useTranslation } from 'react-i18next';
 
-import ItemTitle from './ItemTitle';
-import ItemDetail from './ItemDetail';
 import { DETAIL_NO_VALUE } from '../config/widgetConfig';
-
 import type { DepositAccount } from '../services/interface';
+
+import ItemDetail from './ItemDetail';
+import ItemTitle from './ItemTitle';
 
 type Props = {
   account: DepositAccount;

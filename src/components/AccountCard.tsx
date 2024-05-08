@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
-import { BaseAccount } from '../services/interface';
 import { API_ACCOUNT_LIST_FILTER } from '../config/widgetConfig';
+import { BaseAccount } from '../services/interface';
 
 type Props = {
   account: BaseAccount;

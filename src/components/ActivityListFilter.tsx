@@ -1,13 +1,13 @@
-import { useCallback, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import {
   DButton,
   DInputSearch,
   useDPortalContext,
 } from '@dynamic-framework/ui-react';
+import { useCallback, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { useAppSelector, useAppDispatch } from '../store/hooks';
 import type { Activity } from '../services/interface';
+import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { getFilterActivities } from '../store/selectors';
 import { setQueryFilterActivities } from '../store/slice';
 

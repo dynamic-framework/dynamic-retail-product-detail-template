@@ -1,10 +1,11 @@
 import { useDContext } from '@dynamic-framework/ui-react';
 import { useEffect } from 'react';
-import ActivityContainer from './components/ActivityContainer';
-import useAccountsEffect from './services/hooks/useAccountsEffect';
-import useAccountEffect from './services/hooks/useAccountEffect';
+
 import Accounts from './components/Accounts';
+import ActivityContainer from './components/ActivityContainer';
 import { CONTEXT_CONFIG } from './config/widgetConfig';
+import useAccountEffect from './services/hooks/useAccountEffect';
+import useAccountsEffect from './services/hooks/useAccountsEffect';
 
 export default function App() {
   const { setContext } = useDContext();
