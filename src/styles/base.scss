@@ -1,177 +1,171 @@
 @import "@dynamic-framework/ui-react/src/style/abstracts/+import";
 
-.selected-account button {
-  --#{$prefix}quick-action-button-padding: var(--#{$prefix}ref-spacer-3) var(--#{$prefix}ref-spacer-4);
-}
-
-.selected-account-name-loader {
-  @include rfs($h4-font-size, --#{$prefix}account-name-loader-height);
-
-  svg {
-    height: calc(var(--#{$prefix}account-name-loader-height) * var(--#{$prefix}body-line-height));
-  }
-}
-
-.account-selector {
-  .d-popover-content {
-    z-index: 10;
-  }
-}
-
-.transaction-name::first-letter {
-  text-transform: capitalize;
-}
-
-.offcanvas {
-  --#{$prefix}offcanvas-width: 100%;
-
-  @include media-breakpoint-up(md) {
-    --#{$prefix}offcanvas-width: 50%;
-  }
-}
-
-.activity-detail-modal {
-  &.modal {
-    --#{$prefix}modal-header-padding: var(--#{$prefix}ref-spacer-5) var(--#{$prefix}ref-spacer-4) 0;
-
-    .modal-header .activity-name::first-letter {
-      text-transform: capitalize;
-    }
-  }
-}
-
-.btn-filters .btn {
-  --#{$prefix}btn-padding-x: var(--#{$prefix}ref-fs-6);
-}
-
-.custom-details {
-  position: sticky;
-  top: var(--#{$prefix}ref-spacer-3);
-  padding: var(--#{$prefix}ref-spacer-3);
-  background-color: var(--#{$prefix}gray-200);
-}
-
-.drop-account {
-  background-color: var(--#{$prefix}white);
-  border: 1px solid var(--#{$prefix}gray-300);
-
-  .d-quick-action-button {
-    --#{$prefix}quick-action-button-component-border-radius: 0;
-    --#{$prefix}quick-action-button-border: 0;
-    --#{$prefix}quick-action-button-box-shadow: 0;
-
-    position: relative;
-    overflow: hidden;
+.account-details,
+.d-portal {
+  .selected-account button {
+    --#{$prefix}quick-action-button-padding: var(--#{$prefix}ref-spacer-3) var(--#{$prefix}ref-spacer-4);
   }
 
-  d-quick-action-button:not(:last-child) .d-quick-action-button {
-    --#{$prefix}quick-action-button-border-bottom: 1px solid var(--#{$prefix}gray-300);
+  .selected-account-name-loader {
+    @include rfs($h4-font-size, --#{$prefix}account-name-loader-height);
 
-    &:active {
-      border-color: var(--#{$prefix}gray-300);
+    svg {
+      height: calc(var(--#{$prefix}account-name-loader-height) * var(--#{$prefix}body-line-height));
     }
   }
 
-  .selected {
-    position: relative;
+  .account-selector {
+    .d-popover-content {
+      z-index: 10;
+    }
+  }
+
+  .activity-name::first-letter,
+  .transaction-name::first-letter {
+    text-transform: capitalize;
+  }
+
+  .offcanvas {
+    --#{$prefix}offcanvas-width: 100%;
+
+    @include media-breakpoint-up(md) {
+      --#{$prefix}offcanvas-width: 45%;
+    }
+  }
+
+  .btn-filters .btn {
+    --#{$prefix}btn-padding-x: var(--#{$prefix}ref-fs-6);
+  }
+
+  .custom-details {
+    position: sticky;
+    top: var(--#{$prefix}ref-spacer-3);
+    padding: var(--#{$prefix}ref-spacer-3);
+    background-color: var(--#{$prefix}gray-200);
+  }
+
+  .drop-account {
+    background-color: var(--#{$prefix}white);
+    border: 1px solid var(--#{$prefix}gray-300);
 
     .d-quick-action-button {
-      background-color: rgba(var(--#{$prefix}gray-200-rgb), .5);
+      --#{$prefix}quick-action-button-component-border-radius: 0;
+      --#{$prefix}quick-action-button-border: 0;
+      --#{$prefix}quick-action-button-box-shadow: 0;
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    d-quick-action-button:not(:last-child) .d-quick-action-button {
+      --#{$prefix}quick-action-button-border-bottom: 1px solid var(--#{$prefix}gray-300);
+
+      &:active {
+        border-color: var(--#{$prefix}gray-300);
+      }
+    }
+
+    .selected {
+      position: relative;
+
+      .d-quick-action-button {
+        background-color: rgba(var(--#{$prefix}gray-200-rgb), .5);
+      }
     }
   }
-}
 
-.account-slider {
-  padding-block: var(--#{$prefix}ref-spacer-4);
-}
-
-.account-card {
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  row-gap: var(--#{$prefix}ref-spacer-1);
-  width: 100%;
-  aspect-ratio: 16/10;
-  padding: var(--#{$prefix}ref-spacer-4);
-  color: var(--#{$prefix}white);
-  background-color: var(--#{$prefix}gray);
-  border-radius: var(--#{$prefix}ref-spacer-3);
-
-  @include media-breakpoint-between(sm, lg) {
-    aspect-ratio: 16/5;
+  .account-slider {
+    padding-block: var(--#{$prefix}ref-spacer-4);
   }
 
-  >* {
-    display: flex;
-    align-items: center;
+  .account-card {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    row-gap: var(--#{$prefix}ref-spacer-1);
+    width: 100%;
+    aspect-ratio: 16/10;
+    padding: var(--#{$prefix}ref-spacer-4);
+    color: var(--#{$prefix}white);
+    background-color: var(--#{$prefix}gray);
+    border-radius: var(--#{$prefix}ref-spacer-3);
+
+    @include media-breakpoint-between(sm, lg) {
+      aspect-ratio: 9/3;
+    }
+
+    >* {
+      display: flex;
+      align-items: center;
+    }
+    &:not(.credit-card){
+      grid-template-rows: repeat(2, 1fr);
+    }
+
+    .account-card-icons {
+      justify-content: space-between;
+    }
+
+    .account-card-number {
+      font-family: Helvetica, sans-serif;
+      font-size: var(--#{$prefix}ref-fs-5);
+    }
+
+    .account-card-details .name {
+      font-size: var(--#{$prefix}ref-fs-6);
+      font-weight: var(--#{$prefix}ref-fw-bold);
+    }
+
+    .account-card-details .date {
+      font-size: var(--#{$prefix}ref-fs-6);
+    }
   }
-  &:not(.credit-card){
-    grid-template-rows: repeat(2, 1fr);
+
+  .d-carousel {
+    --bs-carousel-pagination-bottom: calc(var(--#{$prefix}ref-spacer-5) * -1);
   }
 
-  .account-card-icons {
-    justify-content: space-between;
+  // Theme colors for saving slides
+
+  .d-carousel .d-carousel-slide:nth-child(3n-2) .saving,
+  .account-card.saving {
+    background-color: var(--#{$prefix}warning);
   }
 
-  .account-card-number {
-    font-family: Helvetica, sans-serif;
-    font-size: var(--#{$prefix}ref-fs-5);
+  .d-carousel .d-carousel-slide:nth-child(3n-1) .saving {
+    background-color: var(--#{$prefix}danger-300);
   }
 
-  .account-card-details .name {
-    font-size: var(--#{$prefix}ref-fs-6);
-    font-weight: var(--#{$prefix}ref-fw-bold);
+  .d-carousel .d-carousel-slide:nth-child(3n) .saving {
+    background-color: var(--#{$prefix}info);
   }
 
-  .account-card-details .date {
-    font-size: var(--#{$prefix}ref-fs-6);
+  // Theme colors for checking slides
+
+  .d-carousel .d-carousel-slide:nth-child(3n-2) .checking,
+  .account-card.checking {
+    background-color: var(--#{$prefix}success);
   }
-}
 
-.d-carousel {
-  --bs-carousel-pagination-bottom: calc(var(--#{$prefix}ref-spacer-5) * -1);
-}
+  .d-carousel .d-carousel-slide:nth-child(3n-1) .checking {
+    background-color: var(--#{$prefix}danger);
+  }
 
-// Theme colors for saving slides
+  .d-carousel .d-carousel-slide:nth-child(3n) .checking {
+    background-color: var(--#{$prefix}indigo);
+  }
 
-.d-carousel .d-carousel-slide:nth-child(3n-2) .saving,
-.account-card.saving {
-  background-color: var(--#{$prefix}warning);
-}
+  // Theme colors for credit-card slides
 
-.d-carousel .d-carousel-slide:nth-child(3n-1) .saving {
-  background-color: var(--#{$prefix}danger-300);
-}
+  .d-carousel .d-carousel-slide:nth-child(3n-2) .credit-card,
+  .account-card.credit-card {
+    background: linear-gradient(90deg, rgba(254, 111, 45, 1) 0%, rgba(253, 206, 56, 1) 100%);
+  }
 
-.d-carousel .d-carousel-slide:nth-child(3n) .saving {
-  background-color: var(--#{$prefix}info);
-}
+  .d-carousel .d-carousel-slide:nth-child(3n-1) .credit-card {
+    background: linear-gradient(90deg, rgba(205, 18, 37, 1) 0%, rgba(136, 93, 245, 1) 100%);
+  }
 
-// Theme colors for checking slides
-
-.d-carousel .d-carousel-slide:nth-child(3n-2) .checking,
-.account-card.checking {
-  background-color: var(--#{$prefix}success);
-}
-
-.d-carousel .d-carousel-slide:nth-child(3n-1) .checking {
-  background-color: var(--#{$prefix}danger);
-}
-
-.d-carousel .d-carousel-slide:nth-child(3n) .checking {
-  background-color: var(--#{$prefix}indigo);
-}
-
-// Theme colors for credit-card slides
-
-.d-carousel .d-carousel-slide:nth-child(3n-2) .credit-card,
-.account-card.credit-card {
-  background: linear-gradient(90deg, rgba(254, 111, 45, 1) 0%, rgba(253, 206, 56, 1) 100%);
-}
-
-.d-carousel .d-carousel-slide:nth-child(3n-1) .credit-card {
-  background: linear-gradient(90deg, rgba(205, 18, 37, 1) 0%, rgba(136, 93, 245, 1) 100%);
-}
-
-.d-carousel .d-carousel-slide:nth-child(3n) .credit-card {
-  background: linear-gradient(90deg, rgba(66, 133, 244, 1) 0%, rgba(52, 168, 83, 1) 100%);
+  .d-carousel .d-carousel-slide:nth-child(3n) .credit-card {
+    background: linear-gradient(90deg, rgba(66, 133, 244, 1) 0%, rgba(52, 168, 83, 1) 100%);
+  }
 }
