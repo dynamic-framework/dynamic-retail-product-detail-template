@@ -9,8 +9,8 @@ import './config/i18nConfig';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './store/store';
-import ModalActivityDetail from './components/ModalActivityDetail';
-import OffcanvasAdvancedFilters from './components/OffcanvasAdvancedFilters';
+import ModalActivityDetail from './components/modals/ModalActivityDetail';
+import OffcanvasAdvancedFilters from './components/offcanvas/OffcanvasAdvancedFilters';
 
 import '@dynamic-framework/ui-react/dist/css/dynamic-ui.css';
 import './styles/base.scss';
@@ -28,7 +28,9 @@ root.render(
           offcanvasAdvancedFilters: OffcanvasAdvancedFilters,
         }}
       >
-        <App />
+        <div className="container">
+          <App />
+        </div>
       </DContextProvider>
     </Provider>
   </StrictMode>,

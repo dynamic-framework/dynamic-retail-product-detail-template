@@ -12,9 +12,9 @@ import {
 } from '@dynamic-framework/ui-react';
 import { useTranslation } from 'react-i18next';
 
-import { FORMAT_DATE } from '../config/widgetConfig';
+import { FORMAT_DATE } from '../../config/widgetConfig';
 
-import type { PortalAvailablePayload } from '../interface';
+import type { PortalAvailablePayload } from '../../interface';
 
 export default function ModalActivityDetail(
   {
