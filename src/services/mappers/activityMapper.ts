@@ -1,7 +1,6 @@
-import { ActivityStatus } from '../config';
-
-import type { Activity } from '../interface';
 import type { ApiActivity } from '../api-interface';
+import { ActivityStatus } from '../config';
+import type { Activity } from '../interface';
 
 export default function activityMapper(
   apiActivity: ApiActivity,

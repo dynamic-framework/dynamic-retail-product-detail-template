@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 
-import { ActivityRepository } from '../repositories';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { setActivities } from '../../store/slice';
 import { getActivities, getFilteredActivities } from '../../store/selectors';
+import { setActivities } from '../../store/slice';
 import errorHandler from '../../utils/errorHandler';
-
 import type { Account } from '../interface';
+import { ActivityRepository } from '../repositories';
 
 export default function useActivitiesEffect(accountBaseType: Account['baseType'], accountId: Account['id']) {
   const [loading, setLoading] = useState(false);

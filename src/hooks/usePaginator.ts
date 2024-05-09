@@ -4,6 +4,7 @@ import {
   useMemo,
   useState,
 } from 'react';
+
 import { Activity } from '../services/interface';
 
 export default function usePaginator(array: Array<Activity>, peerPage: number) {

@@ -1,9 +1,7 @@
+import classNames from 'classnames';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import classNames from 'classnames';
-import ItemActions from './ItemActions';
-import AccountDetailLoader from './loaders/AccountDetailsLoader';
 import {
   API_ACCOUNT_LIST_FILTER,
   ICONS,
@@ -14,15 +12,17 @@ import {
   SLIDE_VIEWS,
   TRANSFER_PATH,
 } from '../config/widgetConfig';
+import { AccountType } from '../services/config';
+import type { Account, DepositAccount, LoanAccount } from '../services/interface';
 import { useAppSelector } from '../store/hooks';
 import { getAccountSelected, getIsLoadingAccountDetail } from '../store/selectors';
-import AccountDetailSaving from './AccountDetailSaving';
+
 import AccountDetailChecking from './AccountDetailChecking';
 import AccountDetailCreditCard from './AccountDetailCreditCard';
 import AccountDetailLoan from './AccountDetailLoan';
-
-import type { Account, DepositAccount, LoanAccount } from '../services/interface';
-import { AccountType } from '../services/config';
+import AccountDetailSaving from './AccountDetailSaving';
+import ItemActions from './ItemActions';
+import AccountDetailLoader from './loaders/AccountDetailsLoader';
 
 const ACTIONS: Record<string, (accountId: Account['id']) => void> = {
   transfer: (accountId) => {

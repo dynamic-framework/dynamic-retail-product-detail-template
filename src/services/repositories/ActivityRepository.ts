@@ -1,9 +1,8 @@
 import type { GenericAbortSignal } from 'axios';
 
+import { ApiActivity } from '../api-interface';
 import ApiClient from '../clients/apiClient';
 import { AccountBaseType } from '../config';
-
-import { ApiActivity } from '../api-interface';
 import activityMapper from '../mappers/activityMapper';
 
 export async function list(
