@@ -79,7 +79,7 @@ export default function AccountDetail() {
           <ActionsSelectorSlider
             text={t('collapse.actions.transfer')}
             icon={ICONS.transfer}
-            path={`${SITE_URL}/${TRANSFER_PATH}?from_account=${account.id}`}
+            url={`${SITE_URL}/${TRANSFER_PATH}?from_account=${account.id}`}
           />
         </>
       )}
@@ -92,7 +92,7 @@ export default function AccountDetail() {
           <ActionsSelectorSlider
             text={t('collapse.actions.transfer')}
             icon={ICONS.transfer}
-            path={`${SITE_URL}/${TRANSFER_PATH}?from_account=${account.id}`}
+            url={`${SITE_URL}/${TRANSFER_PATH}?from_account=${account.id}`}
           />
         </>
       )}
@@ -105,7 +105,7 @@ export default function AccountDetail() {
           <ActionsSelectorSlider
             text={t('collapse.actions.makePayment')}
             icon={ICONS.pay}
-            path={`${SITE_URL}/${PAY_DEBT_PATH}?account_id=${account.id}`}
+            url={`${SITE_URL}/${PAY_DEBT_PATH}?account_id=${account.id}`}
           />
         </>
       )}

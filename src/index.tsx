@@ -8,6 +8,7 @@ import './config/i18nConfig';
 
 import App from './App';
 import ModalActivityDetail from './components/modals/ModalActivityDetail';
+import ModalMoreActions from './components/modals/ModalMoreActions';
 import OffcanvasAdvancedFilters from './components/offcanvas/OffcanvasAdvancedFilters';
 import type { PortalAvailablePayload } from './interface';
 import reportWebVitals from './reportWebVitals';
@@ -25,6 +26,7 @@ root.render(
         availablePortals={{
           modalActivityDetail: ModalActivityDetail,
           offcanvasAdvancedFilters: OffcanvasAdvancedFilters,
+          modalMoreActions: ModalMoreActions,
         }}
       >
         <App />

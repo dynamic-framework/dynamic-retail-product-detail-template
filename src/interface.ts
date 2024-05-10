@@ -5,4 +5,5 @@ export type PortalAvailablePayload = {
     activity: Activity;
   };
   offcanvasAdvancedFilters: undefined;
+  modalMoreActions: undefined;
 };

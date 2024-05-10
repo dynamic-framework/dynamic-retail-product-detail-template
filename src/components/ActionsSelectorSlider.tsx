@@ -1,18 +1,19 @@
-import { DIcon, DInputSwitch } from '@dynamic-framework/ui-react';
+import { DIcon, DInputSwitch, useDPortalContext } from '@dynamic-framework/ui-react';
 
 import ActionsSelectorButton from './ActionsSelectorButton';
 
 type Props = {
   text: string;
-  path: string;
+  url: string;
   icon: string;
 };
 
 export default function ItemActions({
   icon,
-  path,
+  url,
   text,
 }: Props) {
+  const { openPortal } = useDPortalContext();
   return (
     <div className="d-flex flex-column gap-4">
       <div className="d-flex gap-3">
@@ -33,22 +34,22 @@ export default function ItemActions({
         <ActionsSelectorButton
           text={text}
           icon={icon}
-          path={path}
+          url={url}
         />
         <ActionsSelectorButton
-          text="More actions"
-          icon="three-dots-vertical"
+          text="View card info"
+          icon="eye"
+          action={() => {}}
+        />
+        <ActionsSelectorButton
+          text="Block"
+          icon="ban"
           action={() => {}}
         />
         <ActionsSelectorButton
           text="More actions"
           icon="three-dots-vertical"
-          action={() => {}}
-        />
-        <ActionsSelectorButton
-          text="More actions"
-          icon="three-dots-vertical"
-          action={() => {}}
+          action={() => openPortal('modalMoreActions', undefined)}
         />
       </div>
     </div>
