@@ -38,10 +38,7 @@
   }
 
   .custom-details {
-    position: sticky;
-    top: var(--#{$prefix}ref-spacer-3);
     padding: var(--#{$prefix}ref-spacer-3);
-    background-color: var(--#{$prefix}gray-200);
   }
 
   .drop-account {
@@ -74,27 +71,34 @@
     }
   }
 
-  .account-slider {
-    padding-block: var(--#{$prefix}ref-spacer-4);
-  }
+  // .account-slider {
+  //   padding-block: var(--#{$prefix}ref-spacer-4);
+  // }
 
   .account-card {
-    display: grid;
     grid-template-rows: repeat(2, 1fr);
     width: 100%;
-    aspect-ratio: 16/9;
     padding: var(--#{$prefix}ref-spacer-6);
     color: var(--#{$prefix}white);
     background-color: var(--#{$prefix}gray);
     border-radius: var(--#{$prefix}ref-spacer-3);
 
-    @include media-breakpoint-between(sm, lg) {
-      aspect-ratio: 9/3;
+    &.desktop {
+      aspect-ratio: 16/9;
+    }
+
+    &.mobile {
+      width: 90px;
+      height: 140px;
     }
 
     .account-card-number {
       font-family: monospace, sans-serif;
     }
+  }
+
+  .badge-card {
+    --#{$prefix}badge-font-size: var(--#{$prefix}fs-small);
   }
 
   .d-carousel {
