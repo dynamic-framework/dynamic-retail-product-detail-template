@@ -40,19 +40,15 @@ export default function AccountDetailLoan({ account }: Props) {
           text={t('collapse.details.annualInterestRate')}
           value={account.interestRate ? `${account.interestRate}%` : DETAIL_NO_VALUE}
         />
-      </div>
-      <hr className="m-0" />
-      <ItemTitle
-        text={t('collapse.details.paymentDate')}
-      />
-      <ItemDetail
-        text={t('collapse.details.paymentDate')}
-        value={(
+        <ItemDetail
+          text={t('collapse.details.paymentDate')}
+          value={(
           account.paymentNextDueDate
             ? DateTime.fromISO(account.paymentNextDueDate).toFormat(FORMAT_DATE)
             : DETAIL_NO_VALUE
         )}
-      />
+        />
+      </div>
     </>
   );
 }

@@ -12,7 +12,7 @@
     "details": {
       "availableAmount": "Total available funds",
       "fundsOnHold": "Funds on hold",
-      "totalBalance": "Total balance",
+      "totalBalance": "Balance owed",
       "interestRate": "Interest rate",
       "overdraftAmount": "Overdraft amount",
       "daysInOverdraft": "Days in overdraft",

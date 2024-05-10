@@ -9,19 +9,19 @@ import ItemTitle from './ItemTitle';
 
 type Props = {
   account: DepositAccount;
+  className?: string;
 };
 
-export default function AccountDetailSaving({ account }: Props) {
+export default function AccountDetailSaving({ account, className }: Props) {
   const { t } = useTranslation();
   const { format } = useFormatCurrency();
 
   return (
-    <>
+    <div className={className}>
       <ItemTitle
         text={t('collapse.details.totalBalance')}
         value={account.balanceTotal ? format(account.balanceTotal) : DETAIL_NO_VALUE}
       />
-      <hr className="m-0" />
       <div className="d-flex flex-column">
         <ItemDetail
           text={t('collapse.details.availableAmount')}
@@ -36,6 +36,6 @@ export default function AccountDetailSaving({ account }: Props) {
           value={account.interestRate ? `${account.interestRate}%` : DETAIL_NO_VALUE}
         />
       </div>
-    </>
+    </div>
   );
 }

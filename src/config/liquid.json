@@ -15,7 +15,7 @@
     "currency-precision": 2,
     "currency-separator": ".",
     "currency-decimal": ",",
-    "account-list-filter": "credit-card",
+    "account-list-filter": "loan",
     "transfers-path": "transfers",
     "pay-debt-path": "pay-debt",
     "loan-application-path": "loan-application",

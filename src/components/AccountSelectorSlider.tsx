@@ -64,8 +64,10 @@ export default function AccountSelectorSlider() {
           rewind: true,
           mediaQuery: 'max',
           breakpoints: {
-            576: {
+            991: {
               arrows: false,
+              padding: 0,
+              gap: 16,
             },
           },
         }}
