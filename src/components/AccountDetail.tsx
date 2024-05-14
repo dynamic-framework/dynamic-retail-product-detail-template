@@ -112,7 +112,6 @@ export default function AccountDetail() {
       {account?.type === AccountType.Loan && (
         <>
           <AccountDetailLoan account={account as LoanAccount} />
-          <hr className="m-0" />
           <ActionsSelectorPicker
             primaryText={t('collapse.actions.makePayment')}
             primaryIcon={ICONS.pay}
