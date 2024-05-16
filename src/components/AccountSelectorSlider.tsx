@@ -53,7 +53,7 @@ export default function AccountSelectorSlider() {
   }
 
   return (
-    <div className="account-slider">
+    <div className="account-slider py-4">
       <DCarousel
         options={{
           arrows: true,
@@ -64,7 +64,7 @@ export default function AccountSelectorSlider() {
           rewind: true,
           mediaQuery: 'max',
           breakpoints: {
-            991: {
+            992: {
               arrows: false,
               padding: 0,
               gap: 16,
