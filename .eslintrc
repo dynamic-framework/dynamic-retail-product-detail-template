@@ -41,7 +41,11 @@
           "webpack.config.js"
         ]
       }
-    ]
+    ],
+    "jsx-a11y/label-has-associated-control": [ 2, {
+      "controlComponents": ["DInputSwitch"],
+      "depth": 3
+    }]
   },
   "overrides": [
     {

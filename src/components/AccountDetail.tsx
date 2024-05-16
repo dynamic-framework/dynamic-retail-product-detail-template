@@ -21,7 +21,8 @@ import AccountDetailChecking from './AccountDetailChecking';
 import AccountDetailCreditCard from './AccountDetailCreditCard';
 import AccountDetailLoan from './AccountDetailLoan';
 import AccountDetailSaving from './AccountDetailSaving';
-import ItemActions from './ItemActions';
+import ActionsSelectorPicker from './ActionsSelectorPicker';
+import ActionsSelectorSlider from './ActionsSelectorSlider';
 import AccountDetailLoader from './loaders/AccountDetailsLoader';
 
 const ACTIONS: Record<string, (accountId: Account['id']) => void> = {
@@ -57,7 +58,7 @@ export default function AccountDetail() {
 
   if (loading) {
     return (
-      <div className={classNames(SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) && 'px-4 pb-4')}>
+      <div className={classNames(SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) && 'px-4 pb-4 pt-8')}>
         <AccountDetailLoader />
       </div>
     );
@@ -69,66 +70,49 @@ export default function AccountDetail() {
       { 'card border-0 shadow-none': !SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) },
     )}
     >
-      {SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) && (
-        <hr className="m-0 px-4" />
-      )}
-
       {account?.type === AccountType.Saving && (
         <>
-          <AccountDetailSaving account={account as DepositAccount} />
-          <hr className="m-0" />
-          <ItemActions
-            primaryText={t('collapse.actions.transfer')}
-            primaryIcon={ICONS.transfer}
-            primaryAction={() => action('transfer')}
-            secondaryText={t('collapse.actions.payment')}
-            secondaryIcon={ICONS.pay}
-            secondaryAction={() => action('payments')}
-            tertiaryText={t('collapse.actions.applyCredit')}
-            tertiaryIcon={ICONS.applyCredit}
-            tertiaryAction={() => action('applyCredit')}
+          <AccountDetailSaving
+            className="d-none d-lg-block"
+            account={account as DepositAccount}
+          />
+          <ActionsSelectorSlider
+            text={t('collapse.actions.transfer')}
+            icon={ICONS.transfer}
+            url={`${SITE_URL}/${TRANSFER_PATH}?from_account=${account.id}`}
           />
         </>
       )}
       {account?.type === AccountType.Checking && (
         <>
-          <AccountDetailChecking account={account as DepositAccount} />
-          <hr className="m-0" />
-          <ItemActions
-            primaryText={t('collapse.actions.transfer')}
-            primaryIcon={ICONS.transfer}
-            primaryAction={() => action('transfer')}
-            secondaryText={t('collapse.actions.payment')}
-            secondaryIcon={ICONS.pay}
-            secondaryAction={() => action('payments')}
-            tertiaryText={t('collapse.actions.applyCredit')}
-            tertiaryIcon={ICONS.applyCredit}
-            tertiaryAction={() => action('applyCredit')}
+          <AccountDetailChecking
+            className="d-none d-lg-block"
+            account={account as DepositAccount}
+          />
+          <ActionsSelectorSlider
+            text={t('collapse.actions.transfer')}
+            icon={ICONS.transfer}
+            url={`${SITE_URL}/${TRANSFER_PATH}?from_account=${account.id}`}
           />
         </>
       )}
       {account?.type === AccountType.CreditCard && (
         <>
-          <AccountDetailCreditCard account={account as LoanAccount} />
-          <hr className="m-0" />
-          <ItemActions
-            primaryText={t('collapse.actions.makePayment')}
-            primaryIcon={ICONS.pay}
-            primaryAction={() => action('pay')}
-            secondaryText={t('collapse.actions.advance')}
-            secondaryIcon={ICONS.advance}
-            secondaryAction={() => action('advance')}
-            tertiaryText={t('collapse.actions.statement')}
-            tertiaryIcon={ICONS.statement}
-            tertiaryAction={() => action('statement')}
+          <AccountDetailCreditCard
+            className="d-none d-lg-block"
+            account={account as LoanAccount}
+          />
+          <ActionsSelectorSlider
+            text={t('collapse.actions.makePayment')}
+            icon={ICONS.pay}
+            url={`${SITE_URL}/${PAY_DEBT_PATH}?account_id=${account.id}`}
           />
         </>
       )}
       {account?.type === AccountType.Loan && (
         <>
           <AccountDetailLoan account={account as LoanAccount} />
-          <hr className="m-0" />
-          <ItemActions
+          <ActionsSelectorPicker
             primaryText={t('collapse.actions.makePayment')}
             primaryIcon={ICONS.pay}
             primaryAction={() => action('pay')}

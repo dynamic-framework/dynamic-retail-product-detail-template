@@ -44,10 +44,10 @@ export function ActivityListFilter({ activities }: Prop) {
           onChange={inputSearchHandler}
         />
         <DButton
-          className="btn-filters"
           theme="secondary"
           variant="outline"
-          iconEnd="filter"
+          iconStart="filter"
+          className="rounded-1 px-4"
           onClick={() => openPortal('offcanvasAdvancedFilters', undefined)}
         />
       </div>

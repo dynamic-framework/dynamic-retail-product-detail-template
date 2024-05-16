@@ -38,10 +38,7 @@
   }
 
   .custom-details {
-    position: sticky;
-    top: var(--#{$prefix}ref-spacer-3);
     padding: var(--#{$prefix}ref-spacer-3);
-    background-color: var(--#{$prefix}gray-200);
   }
 
   .drop-account {
@@ -74,50 +71,30 @@
     }
   }
 
-  .account-slider {
-    padding-block: var(--#{$prefix}ref-spacer-4);
-  }
-
   .account-card {
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    row-gap: var(--#{$prefix}ref-spacer-1);
+    grid-template-rows: repeat(2, 1fr);
     width: 100%;
-    aspect-ratio: 16/10;
-    padding: var(--#{$prefix}ref-spacer-4);
+    padding: var(--#{$prefix}ref-spacer-6);
     color: var(--#{$prefix}white);
     background-color: var(--#{$prefix}gray);
     border-radius: var(--#{$prefix}ref-spacer-3);
 
-    @include media-breakpoint-between(sm, lg) {
-      aspect-ratio: 9/3;
+    &.desktop {
+      aspect-ratio: 16/9;
     }
 
-    >* {
-      display: flex;
-      align-items: center;
-    }
-    &:not(.credit-card){
-      grid-template-rows: repeat(2, 1fr);
-    }
-
-    .account-card-icons {
-      justify-content: space-between;
+    &.mobile {
+      width: 90px;
+      height: 140px;
     }
 
     .account-card-number {
-      font-family: Helvetica, sans-serif;
-      font-size: var(--#{$prefix}ref-fs-5);
+      font-family: monospace, sans-serif;
     }
+  }
 
-    .account-card-details .name {
-      font-size: var(--#{$prefix}ref-fs-6);
-      font-weight: var(--#{$prefix}ref-fw-bold);
-    }
-
-    .account-card-details .date {
-      font-size: var(--#{$prefix}ref-fs-6);
-    }
+  .badge-card {
+    --#{$prefix}badge-font-size: var(--#{$prefix}fs-small);
   }
 
   .d-carousel {
