@@ -1,5 +1,6 @@
 import type { GenericAbortSignal } from 'axios';
 
+import type { ApiAccount } from '../api-interface';
 import ApiClient from '../clients/apiClient';
 import {
   AccountBaseType,
@@ -8,8 +9,6 @@ import {
   ApiAccountTypeConfig,
 } from '../config';
 import accountMapper from '../mappers/accountMapper';
-
-import type { ApiAccount } from '../api-interface';
 
 export async function list(
   accountType: AccountType,

@@ -1,13 +1,13 @@
-import { useCallback, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import {
   DButton,
   DInputSearch,
   useDPortalContext,
 } from '@dynamic-framework/ui-react';
+import { useCallback, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { useAppSelector, useAppDispatch } from '../store/hooks';
 import type { Activity } from '../services/interface';
+import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { getFilterActivities } from '../store/selectors';
 import { setQueryFilterActivities } from '../store/slice';
 
@@ -44,10 +44,10 @@ export function ActivityListFilter({ activities }: Prop) {
           onChange={inputSearchHandler}
         />
         <DButton
-          className="btn-filters"
           theme="secondary"
           variant="outline"
-          iconEnd="filter"
+          iconStart="filter"
+          className="rounded-1 px-4"
           onClick={() => openPortal('offcanvasAdvancedFilters', undefined)}
         />
       </div>

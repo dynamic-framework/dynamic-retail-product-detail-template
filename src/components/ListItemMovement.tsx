@@ -1,10 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { useMemo } from 'react';
-import classNames from 'classnames';
-
-import type { ComponentProps } from 'react';
-
 import { DListItem, useFormatCurrency } from '@dynamic-framework/ui-react';
+import classNames from 'classnames';
+import { useMemo } from 'react';
+import type { ComponentProps } from 'react';
 
 type Props = Omit<ComponentProps<typeof DListItem>, 'children'> & {
   description: string;
@@ -41,7 +39,7 @@ export default function ListItemMovement(
     <DListItem {...props}>
       <div className="d-flex justify-content-between align-items-center py-1 gap-4">
         <div className="d-flex flex-column">
-          <span className="fs-6">
+          <span className="transaction-name fs-6">
             {description}
           </span>
           <span className="small text-gray-700">

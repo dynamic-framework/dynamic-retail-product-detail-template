@@ -1,24 +1,24 @@
+import { DContextProvider } from '@dynamic-framework/ui-react';
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { DContextProvider } from '@dynamic-framework/ui-react';
 
 import './config/liquidConfig';
 import './config/i18nConfig';
 
 import App from './App';
+import ModalActivityDetail from './components/modals/ModalActivityDetail';
+import ModalMoreActions from './components/modals/ModalMoreActions';
+import OffcanvasAdvancedFilters from './components/offcanvas/OffcanvasAdvancedFilters';
+import type { PortalAvailablePayload } from './interface';
 import reportWebVitals from './reportWebVitals';
 import store from './store/store';
-import ModalActivityDetail from './components/ModalActivityDetail';
-import OffcanvasAdvancedFilters from './components/OffcanvasAdvancedFilters';
 
 if (process.env.NODE_ENV === 'development') {
   // eslint-disable-next-line global-require
   require('@dynamic-framework/ui-react/dist/css/dynamic-ui.css');
 }
 require('./styles/base.scss');
-
-import type { PortalAvailablePayload } from './interface';
 
 const root = ReactDOM.createRoot(document.getElementById('accountDetails') as Element);
 root.render(
@@ -29,6 +29,7 @@ root.render(
         availablePortals={{
           modalActivityDetail: ModalActivityDetail,
           offcanvasAdvancedFilters: OffcanvasAdvancedFilters,
+          modalMoreActions: ModalMoreActions,
         }}
       >
         <App />

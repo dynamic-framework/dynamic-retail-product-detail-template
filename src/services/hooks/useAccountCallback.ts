@@ -1,15 +1,13 @@
 import { useCallback, useMemo } from 'react';
 
-import { AccountRepository } from '../repositories';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { getAccounts, getAccountSelected } from '../../store/selectors';
 import { setAccountSelected, setIsLoadingAccountDetail } from '../../store/slice';
 import errorHandler from '../../utils/errorHandler';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-
-import { getAccounts, getAccountSelected } from '../../store/selectors';
-import setAccountIdQueryString from '../utils/setAccountIdQueryString';
-import getAccountIdQueryString from '../utils/getAccountIdQueryString';
-
 import type { Account, BaseAccount } from '../interface';
+import { AccountRepository } from '../repositories';
+import getAccountIdQueryString from '../utils/getAccountIdQueryString';
+import setAccountIdQueryString from '../utils/setAccountIdQueryString';
 
 export default function useAccountCallback() {
   const dispatch = useAppDispatch();

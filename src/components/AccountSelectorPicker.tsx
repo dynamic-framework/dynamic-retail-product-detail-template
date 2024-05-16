@@ -1,13 +1,13 @@
-import { useCallback, useState } from 'react';
 import { DPopover, DQuickActionButton } from '@dynamic-framework/ui-react';
+import { useCallback, useState } from 'react';
 
-import AccountSelectorLoader from './loaders/AccountSelectorLoader';
-import useAccountCallback from '../services/hooks/useAccountCallback';
 import { AccountTypeConfig } from '../services/config';
+import useAccountCallback from '../services/hooks/useAccountCallback';
+import type { Account } from '../services/interface';
 import { useAppSelector } from '../store/hooks';
 import { getAccounts, getIsLoadingAccountList } from '../store/selectors';
 
-import type { Account } from '../services/interface';
+import AccountSelectorLoader from './loaders/AccountSelectorLoader';
 
 export default function AccountSelectorPicker() {
   const [toggle, setToggle] = useState(false);

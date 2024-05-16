@@ -1,4 +1,4 @@
-import { DButton } from '@dynamic-framework/ui-react';
+import ActionsSelectorButton from './ActionsSelectorButton';
 
 type Props = {
   primaryText: string;
@@ -25,26 +25,27 @@ export default function ItemActions({
 }: Props) {
   return (
     <div className="d-flex flex-column gap-4">
-      <DButton
-        text={primaryText}
-        iconEnd={primaryIcon}
-        className="m-auto"
-        onClick={primaryAction}
-      />
-      <div className="d-flex align-items-center justify-content-between">
-        <DButton
-          text={secondaryText}
-          iconStart={secondaryIcon}
-          variant="link"
-          theme="secondary"
-          onClick={secondaryAction}
+      <hr className="m-0" />
+      <div className="d-flex justify-content-between flex-wrap gap-4">
+        <ActionsSelectorButton
+          text={primaryText}
+          icon={primaryIcon}
+          action={primaryAction}
         />
-        <DButton
+        <ActionsSelectorButton
+          text={secondaryText}
+          icon={secondaryIcon}
+          action={secondaryAction}
+        />
+        <ActionsSelectorButton
           text={tertiaryText}
-          iconStart={tertiaryIcon}
-          variant="link"
-          theme="secondary"
-          onClick={tertiaryAction}
+          icon={tertiaryIcon}
+          action={tertiaryAction}
+        />
+        <ActionsSelectorButton
+          text="More actions"
+          icon="three-dots-vertical"
+          action={() => {}}
         />
       </div>
     </div>

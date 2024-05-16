@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
 
-import { AccountRepository } from '../repositories';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { getAccounts } from '../../store/selectors';
 import {
   setAccountSelected,
   setIsLoadingAccountDetail,
 } from '../../store/slice';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { getAccounts } from '../../store/selectors';
 import errorHandler from '../../utils/errorHandler';
-import setAccountIdQueryString from '../utils/setAccountIdQueryString';
+import { AccountRepository } from '../repositories';
 import getAccountIdQueryString from '../utils/getAccountIdQueryString';
+import setAccountIdQueryString from '../utils/setAccountIdQueryString';
 
 export default function useAccountEffect() {
   const dispatch = useAppDispatch();

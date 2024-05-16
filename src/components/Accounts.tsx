@@ -1,10 +1,11 @@
-import classNames from 'classnames';
 import { DCard } from '@dynamic-framework/ui-react';
+import classNames from 'classnames';
 
 import { API_ACCOUNT_LIST_FILTER, SLIDE_VIEWS } from '../config/widgetConfig';
-import AccountSelectorSlider from './AccountSelectorSlider';
-import AccountSelectorPicker from './AccountSelectorPicker';
+
 import AccountDetail from './AccountDetail';
+import AccountSelectorPicker from './AccountSelectorPicker';
+import AccountSelectorSlider from './AccountSelectorSlider';
 
 export default function Accounts() {
   return (

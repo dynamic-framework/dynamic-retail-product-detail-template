@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 
-import { AccountRepository } from '../repositories';
-import { useAppDispatch } from '../../store/hooks';
 import { API_ACCOUNT_LIST_FILTER } from '../../config/widgetConfig';
-import { AccountType } from '../config';
+import { useAppDispatch } from '../../store/hooks';
 import { setAccounts, setIsLoadingAccountList } from '../../store/slice';
 import errorHandler from '../../utils/errorHandler';
+import { AccountType } from '../config';
+import { AccountRepository } from '../repositories';
 
 export default function useAccountsEffect() {
   const dispatch = useAppDispatch();

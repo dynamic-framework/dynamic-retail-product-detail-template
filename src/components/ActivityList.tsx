@@ -1,24 +1,24 @@
-import classnames from 'classnames';
-import { useMemo } from 'react';
-import { DateTime } from 'luxon';
 import {
   DPaginator,
   DList,
   useDPortalContext,
 } from '@dynamic-framework/ui-react';
-
+import classnames from 'classnames';
+import { DateTime } from 'luxon';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import useActivitiesEffect from '../services/hooks/useActivitiesEffect';
-import AccountListLoader from './loaders/AccountListLoader';
-import { useAppSelector } from '../store/hooks';
-import { ActivityListFilter } from './ActivityListFilter';
-import { FORMAT_DATE_FULL } from '../config/widgetConfig';
-import { getFilterActivities, getAccountSelected } from '../store/selectors';
-import { Account, Activity } from '../services/interface';
-import usePaginator from '../hooks/usePaginator';
 
+import { FORMAT_DATE_FULL } from '../config/widgetConfig';
+import usePaginator from '../hooks/usePaginator';
 import type { PortalAvailablePayload } from '../interface';
+import useActivitiesEffect from '../services/hooks/useActivitiesEffect';
+import { Account, Activity } from '../services/interface';
+import { useAppSelector } from '../store/hooks';
+import { getFilterActivities, getAccountSelected } from '../store/selectors';
+
+import { ActivityListFilter } from './ActivityListFilter';
 import ListItemMovement from './ListItemMovement';
+import AccountListLoader from './loaders/AccountListLoader';
 
 export default function ActivityList() {
   const { t } = useTranslation();

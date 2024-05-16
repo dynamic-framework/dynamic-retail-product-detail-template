@@ -41,7 +41,11 @@
           "webpack.config.js"
         ]
       }
-    ]
+    ],
+    "jsx-a11y/label-has-associated-control": [ 2, {
+      "controlComponents": ["DInputSwitch"],
+      "depth": 3
+    }]
   },
   "overrides": [
     {
@@ -60,6 +64,30 @@
           "error",
           {
             "checksVoidReturn": false
+          }
+        ],
+        "import/no-extraneous-dependencies": [
+          "error",
+          {
+            "devDependencies": [
+              "src/setupTests.ts"
+            ]
+          }
+        ],
+        "import/order": [
+          "error",
+          {
+            "groups": [
+              ["builtin", "external", "internal" ],
+              "parent", 
+              "sibling", 
+              "index"
+            ],
+            "newlines-between": "always",
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": true
+            }
           }
         ]
       }

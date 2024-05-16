@@ -1,12 +1,13 @@
-import { useMemo, useState } from 'react';
 import { DTabContent, DTabs, DTabOption } from '@dynamic-framework/ui-react';
+import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+
+import { useAppSelector } from '../store/hooks';
+import { getIsNotReady } from '../store/selectors';
 
 import ActivityList from './ActivityList';
 import ActivityListScheduled from './ActivityListScheduled';
 import AccountListLoader from './loaders/AccountListLoader';
-import { useAppSelector } from '../store/hooks';
-import { getIsNotReady } from '../store/selectors';
 
 export default function ActivityContainer() {
   const { t } = useTranslation();

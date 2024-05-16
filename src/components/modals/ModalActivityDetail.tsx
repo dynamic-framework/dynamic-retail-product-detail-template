@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { DateTime } from 'luxon';
-import classNames from 'classnames';
 import {
   DButton,
   DModal,
@@ -10,11 +8,12 @@ import {
   useFormatCurrency,
   useDPortalContext,
 } from '@dynamic-framework/ui-react';
+import classNames from 'classnames';
+import { DateTime } from 'luxon';
 import { useTranslation } from 'react-i18next';
 
-import { FORMAT_DATE } from '../config/widgetConfig';
-
-import type { PortalAvailablePayload } from '../interface';
+import { FORMAT_DATE } from '../../config/widgetConfig';
+import type { PortalAvailablePayload } from '../../interface';
 
 export default function ModalActivityDetail(
   {

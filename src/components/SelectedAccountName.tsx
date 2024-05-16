@@ -1,6 +1,7 @@
-import SelectedAccountNameLoader from './loaders/SelectedAccountNameLoader';
 import { useAppSelector } from '../store/hooks';
 import { getAccountSelected, getIsLoadingAccountDetail } from '../store/selectors';
+
+import SelectedAccountNameLoader from './loaders/SelectedAccountNameLoader';
 
 export default function SelectedAccountName() {
   const isLoading = useAppSelector(getIsLoadingAccountDetail);

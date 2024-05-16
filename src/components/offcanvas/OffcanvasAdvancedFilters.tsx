@@ -45,12 +45,8 @@ export default function OffcanvasAdvancedFilters() {
       <DOffcanvasBody>
         <div className="d-flex flex-column gap-6 pt-4">
           <DDatePicker<never, true>
-            id="date"
-            placeholderText="DD/MM/YYYY >> DD/MM/YYYY"
-            iconInput="calendar"
             onChange={onChangeDate}
             selectsRange
-            withMonthSelector
             {...startDate && {
               selected: DateTime.fromISO(startDate).toJSDate(),
               startDate: DateTime.fromISO(startDate).toJSDate(),
