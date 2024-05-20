@@ -6,6 +6,7 @@ export type BaseAccount = {
   alias?: string;
   accountNumber: string;
   type: AccountType;
+  freeze: boolean;
 };
 
 export type BaseAccountDiscriminator<T extends AccountBaseType> = BaseAccount & {
@@ -18,6 +19,7 @@ export type DepositAccount = BaseAccountDiscriminator<AccountBaseType.Deposit> &
   balanceUnavailable?: number;
   interestRate?: number;
   overdraftAvailable?: number;
+  freeze?: boolean
 };
 
 export type LoanAccount = BaseAccountDiscriminator<AccountBaseType.Loan> & {
@@ -30,6 +32,7 @@ export type LoanAccount = BaseAccountDiscriminator<AccountBaseType.Loan> & {
   paymentLastPaidInstallmentNumber?: number;
   installments?: number;
   interestRate?: number;
+  freeze?: boolean
 };
 
 export type Account = DepositAccount | LoanAccount;

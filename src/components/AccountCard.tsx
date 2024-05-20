@@ -19,6 +19,7 @@ export default function AccountCard({ account }: Props) {
         className={classNames(
           'd-none d-lg-grid account-card desktop',
           API_ACCOUNT_LIST_FILTER,
+          account.freeze ? 'account-freeze' : '',
         )}
       >
         <div className="d-flex justify-content-between align-items-start">
@@ -32,6 +33,7 @@ export default function AccountCard({ account }: Props) {
             </small>
             <div className="account-card-number">
               {account.accountNumber}
+              <p>{account.freeze ? 'FREEZE' : 'NO FREEZE'}</p>
             </div>
           </div>
           <MastercardLogo height={32} width={44} />

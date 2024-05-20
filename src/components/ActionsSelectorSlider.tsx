@@ -1,5 +1,9 @@
 import { DIcon, DInputSwitch, useDPortalContext } from '@dynamic-framework/ui-react';
 
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { getAccountSelected } from '../store/selectors';
+import { setAccountSelected } from '../store/slice';
+
 import ActionsSelectorButton from './ActionsSelectorButton';
 
 type Props = {
@@ -14,6 +18,16 @@ export default function ItemActions({
   text,
 }: Props) {
   const { openPortal } = useDPortalContext();
+
+  const account = useAppSelector(getAccountSelected);
+  const dispatch = useAppDispatch();
+
+  const updateAccounts = (e: boolean) => {
+    if (account) {
+      dispatch(setAccountSelected({ ...account, freeze: e }));
+    }
+  };
+
   return (
     <div className="d-flex flex-column gap-4">
       <div className="d-flex gap-3">
@@ -25,8 +39,9 @@ export default function ItemActions({
           Freeze card
         </label>
         <DInputSwitch
+          onChange={(e) => updateAccounts(e)}
           id="freezeCard"
-          checked={false}
+          checked={account?.freeze}
         />
       </div>
       <hr className="m-0" />
