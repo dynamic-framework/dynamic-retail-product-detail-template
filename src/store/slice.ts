@@ -4,6 +4,7 @@ import type { Account, Activity } from '../services/interface';
 
 export type WidgetState = {
   accounts: Array<Account>,
+  accountsFreezed: Record<string, boolean>;
   accountSelected?: Account;
   isLoadingAccountList: boolean;
   isLoadingAccountDetail: boolean;
@@ -15,6 +16,7 @@ export type WidgetState = {
 
 const initialState: WidgetState = {
   accounts: [],
+  accountsFreezed: {},
   accountSelected: undefined,
   isLoadingAccountList: false,
   isLoadingAccountDetail: false,
@@ -31,16 +33,9 @@ const slice = createSlice({
     setAccounts(state, action: PayloadAction<Array<Account>>) {
       state.accounts = action.payload;
     },
-    // setFreezeAccount(state, action: PayloadAction<{ id: string, freeze: boolean }>) {
-    //   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    //   const tmpAccount = JSON.parse(JSON.stringify(state.accounts));
-    //   const indexAccount = tmpAccount.find((e: { id: string; }) => e.id === action.payload.id);
-    //   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    //   tmpAccount[indexAccount].freeze = action.payload.freeze;
-
-    //   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    //   state.accounts = tmpAccount;
-    // },
+    setAccountsFreezed(state, action: PayloadAction<Record<string, boolean>>) {
+      state.accountsFreezed = { ...state.accountsFreezed, ...action.payload };
+    },
     setAccountSelected(state, action: PayloadAction<Account | undefined>) {
       state.accountSelected = action.payload;
     },
@@ -66,6 +61,6 @@ export const {
   setIsLoadingAccountDetail,
   setActivities,
   setQueryFilterActivities,
-  setFreezeAccount,
+  setAccountsFreezed,
 } = slice.actions;
 export default slice.reducer;

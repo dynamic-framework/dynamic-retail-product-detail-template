@@ -33,7 +33,6 @@ export default function AccountCard({ account }: Props) {
             </small>
             <div className="account-card-number">
               {account.accountNumber}
-              <p>{account.freeze ? 'FREEZE' : 'NO FREEZE'}</p>
             </div>
           </div>
           <MastercardLogo height={32} width={44} />

@@ -11,6 +11,16 @@ export const getAccounts = createSelector(
   (widget) => widget.accounts,
 );
 
+export const getAccountsWithFreeze = createSelector(
+  getState,
+  (widget) => widget.accounts.map((e) => ({ ...e, freeze: widget.accountsFreezed[e.id] })),
+);
+
+export const getAccountsFreezed = createSelector(
+  getState,
+  (widget) => widget.accountsFreezed,
+);
+
 export const getAccountSelected = createSelector(
   getState,
   (widget) => widget.accountSelected,
