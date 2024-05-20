@@ -7,6 +7,7 @@ import './config/liquidConfig';
 import './config/i18nConfig';
 
 import App from './App';
+import ModalOTP from './components/ModalOTP';
 import ModalActivityDetail from './components/modals/ModalActivityDetail';
 import ModalMoreActions from './components/modals/ModalMoreActions';
 import OffcanvasAdvancedFilters from './components/offcanvas/OffcanvasAdvancedFilters';
@@ -24,6 +25,7 @@ root.render(
       <DContextProvider<PortalAvailablePayload>
         portalName="portal"
         availablePortals={{
+          modalOTP: ModalOTP,
           modalActivityDetail: ModalActivityDetail,
           offcanvasAdvancedFilters: OffcanvasAdvancedFilters,
           modalMoreActions: ModalMoreActions,

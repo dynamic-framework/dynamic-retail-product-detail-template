@@ -14,6 +14,7 @@ export default function ItemActions({
   text,
 }: Props) {
   const { openPortal } = useDPortalContext();
+
   return (
     <div className="d-flex flex-column gap-4">
       <div className="d-flex gap-3">
@@ -39,7 +40,7 @@ export default function ItemActions({
         <ActionsSelectorButton
           text="View card info"
           icon="eye"
-          action={() => {}}
+          action={() => openPortal('modalOTP', {})}
         />
         <ActionsSelectorButton
           text="Block"

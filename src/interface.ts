@@ -4,6 +4,9 @@ export type PortalAvailablePayload = {
   modalActivityDetail: {
     activity: Activity;
   };
+  modalOTP: {
+    callback: () => void;
+  };
   offcanvasAdvancedFilters: undefined;
   modalMoreActions: undefined;
 };
