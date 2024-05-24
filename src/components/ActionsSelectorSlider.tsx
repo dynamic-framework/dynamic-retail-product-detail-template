@@ -1,4 +1,5 @@
 import { DIcon, DInputSwitch, useDPortalContext } from '@dynamic-framework/ui-react';
+import { useCallback } from 'react';
 
 import ActionsSelectorButton from './ActionsSelectorButton';
 
@@ -14,6 +15,10 @@ export default function ItemActions({
   text,
 }: Props) {
   const { openPortal } = useDPortalContext();
+
+  const handlerInfoCard = useCallback(() => {
+    openPortal('modalCardInformation', undefined);
+  }, [openPortal]);
 
   return (
     <div className="d-flex flex-column gap-4">
@@ -40,7 +45,7 @@ export default function ItemActions({
         <ActionsSelectorButton
           text="View card info"
           icon="eye"
-          action={() => openPortal('modalOTP', {})}
+          action={() => openPortal('modalOTP', { callback: handlerInfoCard })}
         />
         <ActionsSelectorButton
           text="Block"

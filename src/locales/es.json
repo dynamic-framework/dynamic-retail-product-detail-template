@@ -1,63 +1,68 @@
 {
+  "cancel": "Cancel",
   "collapse": {
     "actions": {
-      "transfer": "Transferir",
-      "payment": "Pagar",
-      "makePayment": "Pagar",
-      "applyCredit": "Solicitar crédito",
-      "advance": "Avance",
-      "statement": "Extracto",
-      "paymentPlan": "Plan de pagos"
+      "transfer": "Transfer",
+      "payment": "Payments",
+      "makePayment": "Pay",
+      "applyCredit": "Apply for a loan",
+      "advance": "Advances",
+      "statement": "Statements",
+      "paymentPlan": "Payment schedule"
+    },
+    "cardInfo": {
+      "cvc": "CVC",
+      "cvcWillChange": "CVC will change in {{cvc}} seconds"
     },
     "details": {
-      "availableAmount": "Saldo disponible",
-      "fundsOnHold": "Saldo en canje",
-      "totalBalance": "Saldo total",
-      "interestRate": "Tasa de interés",
-      "overdraftAmount": "Cupo de sobregiro",
-      "daysInOverdraft": "Días en sobregiro",
-      "minimumPayment": "Pago mínimo",
-      "paymentDate": "Fecha de pago",
-      "totalPayment": "Pago total",
-      "availableCredit": "Cupo disponible",
-      "cashAdvanceLimit": "Cupo avances",
-      "balance": "Cupo total",
-      "nextPayment": "Valor cuota",
-      "nextPaymentDate": "Fecha de pago",
-      "paymentNumber": "Numero de cuota",
-      "annualInterestRate": "Tasa de interés",
-      "loanRepaymentDate": "Fecha de fin de crédito",
-      "outstandingBalance": "Total deuda"
+      "availableAmount": "Total available funds",
+      "fundsOnHold": "Funds on hold",
+      "totalBalance": "Balance owed",
+      "interestRate": "Interest rate",
+      "overdraftAmount": "Overdraft amount",
+      "daysInOverdraft": "Days in overdraft",
+      "minimumPayment": "Minimum payment",
+      "paymentDate": "Payment date",
+      "totalPayment": "Total payment",
+      "availableCredit": "Available credit",
+      "cashAdvanceLimit": "Cash advance limit",
+      "balance": "Balance",
+      "nextPayment": "Next payment",
+      "nextPaymentDate": "Next payment date",
+      "paymentNumber": "Payment number",
+      "annualInterestRate": "Annual interest rate",
+      "loanRepaymentDate": "Loan repayment date",
+      "outstandingBalance": "Outstanding balance"
     }
   },
   "tabs": {
-    "transactions": "Transacciones",
-    "upcoming": "Programado"
+    "transactions": "Transactions",
+    "upcoming": "Upcoming"
   },
   "filters": {
-    "search": "Buscar",
-    "dateRange": "Rango de fecha",
-    "amount": "Monto",
-    "type": "Tipo",
-    "download": "Descargar",
-    "filter": "Filtrar",
-    "filterBy": "Filtrar por",
-    "cancel": "Cancelar"
+    "search": "Search",
+    "dateRange": "Date range",
+    "amount": "Amount",
+    "type": "Type",
+    "download": "Download",
+    "filter": "Filter",
+    "filterBy": "Filter by",
+    "cancel": "Cancel"
   },
   "modal": {
     "details": {
-      "paymentDate": "Fecha de pago",
-      "status": "Estado",
-      "value": "Valor"
+      "paymentDate": "Payment date",
+      "status": "Status",
+      "value": "Amount"
     },
     "actions": {
-      "accept": "Aceptar"
+      "accept": "Accept"
     },
     "status": {
-      "completed": "Completado",
-      "rejected": "Rechazado",
-      "failed": "Fallido",
-      "in_progress": "En progreso"
+      "completed": "Completed",
+      "rejected": "Rejected",
+      "failed": "Failed",
+      "in_progress": "In progress"
     },
     "moreActions": {
       "title": "Other actions",
@@ -68,25 +73,25 @@
     }
   },
   "noData": {
-    "noPayments": "No tienes ningún pago",
-    "noUpcomingPayments": "No tienes pagos programados",
-    "schedulePayment": "Programa tú primer pago aquí",
-    "noQueryPayments": "No se han encontrado transacciones con la búsqueda \"{search}\""
+    "noPayments": "You don't have any payment",
+    "noUpcomingPayments": "You don't have any upcoming payments",
+    "schedulePayment": "Schedule your first payment here",
+    "noQueryPayments": "No transactions found with the search \"{search}\""
   },
   "filter": {
-    "title": "Filtros avanzados",
-    "amountFrom": "Desde",
-    "amountTo": "Hasta",
-    "typeCredit": "Crédito",
-    "typeDebit": "Débito"
+    "title": "More filters",
+    "amountFrom": "From",
+    "amountTo": "To",
+    "typeCredit": "Credit",
+    "typeDebit": "Debit"
   },
   "button": {
-    "accept": "Aceptar",
-    "clear": "Limpiar",
-    "close": "Cerrar"
+    "accept": "Accept",
+    "clear": "Clear",
+    "close": "Close"
   },
   "card": {
-    "name": "Nombre del titular",
-    "date": "Fecha de expiración"
+    "name": "Cardholder name",
+    "date": "Expiry date"
   }
 }

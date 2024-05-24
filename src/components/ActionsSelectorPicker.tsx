@@ -1,4 +1,4 @@
-import ActionsSelectorButton from "./ActionsSelectorButton";
+import ActionsSelectorButton from './ActionsSelectorButton';
 
 type Props = {
   primaryText: string;

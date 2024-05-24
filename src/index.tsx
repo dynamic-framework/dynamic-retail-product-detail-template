@@ -7,9 +7,10 @@ import './config/liquidConfig';
 import './config/i18nConfig';
 
 import App from './App';
-import ModalOTP from './components/ModalOTP';
 import ModalActivityDetail from './components/modals/ModalActivityDetail';
+import ModalCardInformation from './components/modals/ModalCardInformation';
 import ModalMoreActions from './components/modals/ModalMoreActions';
+import ModalOTP from './components/modals/ModalOTP';
 import OffcanvasAdvancedFilters from './components/offcanvas/OffcanvasAdvancedFilters';
 import type { PortalAvailablePayload } from './interface';
 import reportWebVitals from './reportWebVitals';
@@ -26,6 +27,7 @@ root.render(
         portalName="portal"
         availablePortals={{
           modalOTP: ModalOTP,
+          modalCardInformation: ModalCardInformation,
           modalActivityDetail: ModalActivityDetail,
           offcanvasAdvancedFilters: OffcanvasAdvancedFilters,
           modalMoreActions: ModalMoreActions,
