@@ -2,9 +2,8 @@
   position: relative;
   width: calc(var(--size) * 1px);
   height: calc(var(--size) * 1px);
-  background: linear-gradient(left, var(--#{$prefix}primary) 50%, var(--#{$prefix}gray-100) 50%);
+  background: linear-gradient(to right, var(--#{$prefix}primary) 50%, var(--#{$prefix}gray-100) 50%);
   border-radius: 100%;
-  mask: radial-gradient(transparent 50%, #000 50%);
   mask: radial-gradient(transparent 50%, #000 50%);
   animation: time calc(var(--duration) * 1s) steps(1000, start) infinite;
 }
