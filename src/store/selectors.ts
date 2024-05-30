@@ -13,7 +13,9 @@ export const getAccounts = createSelector(
 
 export const getAccountsWithFreeze = createSelector(
   getState,
-  (widget) => widget.accounts.map((e) => ({ ...e, freeze: widget.accountsFreezed[e.id] })),
+  (widget) => widget.accounts.map((account) => ({
+    ...account, freeze: widget.accountsFreezed[account.id],
+  })),
 );
 
 export const getAccountsFreezed = createSelector(

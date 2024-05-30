@@ -73,6 +73,7 @@
     "schedulePayment": "Schedule your first payment here",
     "noQueryPayments": "No transactions found with the search \"{search}\""
   },
+  "freezeCard": "Freeze card",
   "filter": {
     "title": "More filters",
     "amountFrom": "From",

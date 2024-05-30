@@ -23,9 +23,9 @@ export default function useAccountsEffect() {
         );
         dispatch(setAccounts(data));
         const dataFreezed = data.reduce<Record<string, boolean>>(
-          (acc, e: { id: string, freeze: boolean }) => ({
-            ...acc,
-            [e.id]: e.freeze,
+          (accounts, account: { id: string, freeze: boolean }) => ({
+            ...accounts,
+            [account.id]: account.freeze,
           }),
           {},
         );
