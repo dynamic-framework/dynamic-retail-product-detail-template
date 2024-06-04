@@ -2,15 +2,17 @@ import { DButton } from '@dynamic-framework/ui-react';
 
 import useCountdown from '../hooks/useCountDown';
 
-interface CountDownStateProps {
+type Props = {
   value: number;
   text: string;
-}
+};
 
-export default function CountDownState({
-  value,
-  text = '',
-}: CountDownStateProps) {
+export default function CountDownState(
+  {
+    value,
+    text = '',
+  }: Props,
+) {
   const { secondsLeft, restartCountdown } = useCountdown(value);
 
   if (secondsLeft === 0) {

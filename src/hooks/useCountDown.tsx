@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 
-const useCountdown = (value: number) => {
+export default function useCountdown(value: number) {
   const [secondsLeft, setSecondsLeft] = useState(value);
   const [isActive, setIsActive] = useState(true);
 
@@ -35,6 +35,4 @@ const useCountdown = (value: number) => {
   }, [isActive]);
 
   return { secondsLeft, restartCountdown };
-};
-
-export default useCountdown;
+}

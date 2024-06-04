@@ -1,5 +1,4 @@
 import {
-  DButton,
   DIcon,
   DModal,
   useDPortalContext,
@@ -13,6 +12,7 @@ import { getAccountSelected } from '../../store/selectors';
 import CardItem from '../CardItem';
 import ItemCardInfo from '../ItemCardInfo';
 import CircularLoaderWidthTimer from '../loaders/CircularLoaderWithTimer';
+import NumberCardInfo from '../NumberCardInfo';
 
 const DURATION = 20;
 
@@ -21,20 +21,6 @@ export default function ModalCardInformation() {
   const { closePortal } = useDPortalContext();
   const account = useAppSelector(getAccountSelected) as Account;
   const cvc = useCVC(DURATION);
-
-  const numberInfo = (cardNumber: string) => (
-    <div className="d-flex w-100 align-items-center">
-      <span className="flex-1">{cardNumber}</span>
-      <DButton
-        onClick={() => navigator.clipboard.writeText(account.accountNumber)}
-        className="ml-auto"
-        text="Copy"
-        theme="secondary"
-        iconStart="copy"
-        variant="link"
-      />
-    </div>
-  );
 
   return (
     <DModal name="modalOTP" centered staticBackdrop size="lg">
@@ -59,7 +45,7 @@ export default function ModalCardInformation() {
             />
             <ItemCardInfo
               name={t('cardInfo.cardNumber')}
-              value={numberInfo(account.accountNumber)}
+              value={<NumberCardInfo cardNumber={account.accountNumber} />}
             />
             <ItemCardInfo
               name={t('cardInfo.validUntil')}

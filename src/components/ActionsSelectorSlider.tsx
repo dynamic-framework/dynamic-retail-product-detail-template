@@ -9,11 +9,13 @@ type Props = {
   icon: string;
 };
 
-export default function ItemActions({
-  icon,
-  url,
-  text,
-}: Props) {
+export default function ItemActions(
+  {
+    icon,
+    url,
+    text,
+  }: Props,
+) {
   const { openPortal } = useDPortalContext();
 
   const handlerInfoCard = useCallback(() => {

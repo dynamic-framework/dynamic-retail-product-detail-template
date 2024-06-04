@@ -7,6 +7,7 @@
   mask: radial-gradient(transparent 50%, #000 50%);
   animation: time calc(var(--duration) * 1s) steps(1000, start) infinite;
 }
+
 .mask {
   position: absolute;
   top: 0;
@@ -17,24 +18,29 @@
   transform-origin: 100% 50%;
   animation: mask calc(var(--duration) * 1s) steps(500, start) infinite;
 }
+
 @keyframes time {
   100% {
     transform: rotate(360deg);
   }
 }
+
 @keyframes mask {
   0% {
     background: var(--#{$prefix}gray-100);
     transform: rotate(0deg);
   }
+
   50% {
     background: var(--#{$prefix}gray-100);
     transform: rotate(-180deg);
   }
+
   50.01% {
     background: var(--#{$prefix}primary);
     transform: rotate(0deg);
   }
+
   100% {
     background: var(--#{$prefix}primary);
     transform: rotate(-180deg);

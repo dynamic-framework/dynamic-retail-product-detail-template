@@ -3,9 +3,12 @@ type Props = {
   size?: number;
 };
 
-export default function CountdownCircleTimer(props: Props) {
-  const { duration = 10, size = 20 } = props;
-
+export default function CountdownCircleTimer(
+  {
+    duration = 10,
+    size = 20,
+  }: Props,
+) {
   return (
     <div className="timer" style={{ '--duration': duration, '--size': size } as React.CSSProperties}>
       <div className="mask" />
