@@ -1,4 +1,9 @@
 import { DIcon, DInputSwitch, useDPortalContext } from '@dynamic-framework/ui-react';
+import { useTranslation } from 'react-i18next';
+
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { getAccountSelected, getAccountsFreezed } from '../store/selectors';
+import { setAccountsFreezed } from '../store/slice';
 
 import ActionsSelectorButton from './ActionsSelectorButton';
 
@@ -14,6 +19,18 @@ export default function ItemActions({
   text,
 }: Props) {
   const { openPortal } = useDPortalContext();
+
+  const account = useAppSelector(getAccountSelected)!;
+  const accountsFreezed = useAppSelector(getAccountsFreezed);
+  const dispatch = useAppDispatch();
+  const { t } = useTranslation();
+
+  const updateAccounts = (isFreezed: boolean) => {
+    if (account) {
+      dispatch(setAccountsFreezed({ [account.id]: isFreezed }));
+    }
+  };
+
   return (
     <div className="d-flex flex-column gap-4">
       <div className="d-flex gap-3">
@@ -22,11 +39,12 @@ export default function ItemActions({
           className="d-inline-flex align-items-center gap-3 flex-grow-1 fs-6"
         >
           <DIcon icon="snow" />
-          Freeze card
+          {t('freezeCard')}
         </label>
         <DInputSwitch
+          onChange={(isFreezed) => updateAccounts(isFreezed)}
           id="freezeCard"
-          checked={false}
+          checked={accountsFreezed[account.id]}
         />
       </div>
       <hr className="m-0" />

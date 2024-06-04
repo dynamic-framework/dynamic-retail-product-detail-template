@@ -13,6 +13,7 @@ export default function accountMapper(apiAccount: ApiAccount): Account {
     name: apiAccount.nickName,
     alias: apiAccount.nickName,
     accountNumber: apiAccount.accountNumber,
+    freeze: apiAccount.freeze,
     type: ApiAccountTypeConfig[apiAccount.accountType],
   };
 

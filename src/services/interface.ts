@@ -6,6 +6,7 @@ export type BaseAccount = {
   alias?: string;
   accountNumber: string;
   type: AccountType;
+  freeze: boolean;
 };
 
 export type BaseAccountDiscriminator<T extends AccountBaseType> = BaseAccount & {

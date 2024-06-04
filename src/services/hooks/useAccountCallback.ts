@@ -28,7 +28,6 @@ export default function useAccountCallback() {
   const select = useCallback(async (accountBaseType: Account['baseType'], accountId: Account['id']) => {
     try {
       dispatch(setIsLoadingAccountDetail(true));
-
       const data = await AccountRepository.get(accountBaseType, accountId);
       dispatch(setAccountSelected(data));
       dispatch(setIsLoadingAccountDetail(false));
