@@ -1,0 +1,48 @@
+.timer {
+  position: relative;
+  width: calc(var(--size) * 1px);
+  height: calc(var(--size) * 1px);
+  background: linear-gradient(to right, var(--#{$prefix}primary) 50%, var(--#{$prefix}gray-100) 50%);
+  border-radius: 100%;
+  mask: radial-gradient(transparent 50%, #000 50%);
+  animation: time calc(var(--duration) * 1s) steps(1000, start) infinite;
+}
+
+.mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  border-radius: 100% 0 0 100% / 50% 0 0 50%;
+  transform-origin: 100% 50%;
+  animation: mask calc(var(--duration) * 1s) steps(500, start) infinite;
+}
+
+@keyframes time {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes mask {
+  0% {
+    background: var(--#{$prefix}gray-100);
+    transform: rotate(0deg);
+  }
+
+  50% {
+    background: var(--#{$prefix}gray-100);
+    transform: rotate(-180deg);
+  }
+
+  50.01% {
+    background: var(--#{$prefix}primary);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    background: var(--#{$prefix}primary);
+    transform: rotate(-180deg);
+  }
+}

@@ -1,4 +1,9 @@
-import { DIcon, DInputSwitch, useDPortalContext } from '@dynamic-framework/ui-react';
+import {
+  DIcon,
+  DInputSwitch,
+  useDPortalContext,
+} from '@dynamic-framework/ui-react';
+import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useAppDispatch, useAppSelector } from '../store/hooks';
@@ -13,12 +18,18 @@ type Props = {
   icon: string;
 };
 
-export default function ItemActions({
-  icon,
-  url,
-  text,
-}: Props) {
+export default function ItemActions(
+  {
+    icon,
+    url,
+    text,
+  }: Props,
+) {
   const { openPortal } = useDPortalContext();
+
+  const handlerInfoCard = useCallback(() => {
+    openPortal('modalCardInformation', undefined);
+  }, [openPortal]);
 
   const account = useAppSelector(getAccountSelected)!;
   const accountsFreezed = useAppSelector(getAccountsFreezed);
@@ -57,7 +68,7 @@ export default function ItemActions({
         <ActionsSelectorButton
           text="View card info"
           icon="eye"
-          action={() => {}}
+          action={() => openPortal('modalOTP', { callback: handlerInfoCard })}
         />
         <ActionsSelectorButton
           text="Block"
