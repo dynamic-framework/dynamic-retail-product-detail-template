@@ -7,6 +7,7 @@ export type BaseAccount = {
   accountNumber: string;
   type: AccountType;
   freeze: boolean;
+  expiryDate?: string;
 };
 
 export type BaseAccountDiscriminator<T extends AccountBaseType> = BaseAccount & {
