@@ -85,6 +85,9 @@
     }
 
     &.mobile {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      align-items: start;
       width: 90px;
       height: 140px;
     }
