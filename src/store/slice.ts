@@ -4,6 +4,7 @@ import type { Account, Activity } from '../services/interface';
 
 export type WidgetState = {
   accounts: Array<Account>,
+  accountsFreezed: Record<string, boolean>;
   accountSelected?: Account;
   isLoadingAccountList: boolean;
   isLoadingAccountDetail: boolean;
@@ -15,6 +16,7 @@ export type WidgetState = {
 
 const initialState: WidgetState = {
   accounts: [],
+  accountsFreezed: {},
   accountSelected: undefined,
   isLoadingAccountList: false,
   isLoadingAccountDetail: false,
@@ -30,6 +32,9 @@ const slice = createSlice({
   reducers: {
     setAccounts(state, action: PayloadAction<Array<Account>>) {
       state.accounts = action.payload;
+    },
+    setAccountsFreezed(state, action: PayloadAction<Record<string, boolean>>) {
+      state.accountsFreezed = { ...state.accountsFreezed, ...action.payload };
     },
     setAccountSelected(state, action: PayloadAction<Account | undefined>) {
       state.accountSelected = action.payload;
@@ -56,5 +61,6 @@ export const {
   setIsLoadingAccountDetail,
   setActivities,
   setQueryFilterActivities,
+  setAccountsFreezed,
 } = slice.actions;
 export default slice.reducer;

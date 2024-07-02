@@ -22,6 +22,7 @@ export default function AccountDetailCreditCard({ account, className }: Props) {
       <ItemTitle
         text={t('collapse.details.availableCredit')}
         value={account.balanceRemaining ? format(account.balanceRemaining) : DETAIL_NO_VALUE}
+        freeze={account.freeze}
       />
       <div className="d-flex flex-column">
         <ItemDetail

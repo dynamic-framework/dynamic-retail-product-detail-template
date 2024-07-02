@@ -19,6 +19,7 @@ export default function AccountCard({ account }: Props) {
         className={classNames(
           'd-none d-lg-grid account-card desktop',
           API_ACCOUNT_LIST_FILTER,
+          account.freeze ? 'account-freeze' : '',
         )}
       >
         <div className="d-flex justify-content-between align-items-start">

@@ -10,14 +10,14 @@ import {
 import useAccountCallback from '../services/hooks/useAccountCallback';
 import type { Account } from '../services/interface';
 import { useAppSelector } from '../store/hooks';
-import { getAccounts, getIsLoadingAccountList } from '../store/selectors';
+import { getAccountsWithFreeze, getIsLoadingAccountList } from '../store/selectors';
 
 import AccountCard from './AccountCard';
 import AccountSelectorLoader from './loaders/AccountSelectorLoader';
 
 export default function AccountSelectorSlider() {
   const loading = useAppSelector(getIsLoadingAccountList);
-  const accounts = useAppSelector(getAccounts);
+  const accounts = useAppSelector(getAccountsWithFreeze);
   const {
     callback,
     selected,
@@ -39,7 +39,6 @@ export default function AccountSelectorSlider() {
     return (
       <div className="px-4 pt-4">
         <AccountSelectorLoader />
-        <br />
       </div>
     );
   }

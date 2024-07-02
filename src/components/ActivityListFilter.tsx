@@ -33,9 +33,6 @@ export function ActivityListFilter({ activities }: Prop) {
         <p className="text-gray-600 mb-0">{t('filters.filterBy')}</p>
       </div>
       <div className="d-flex align-items-stretch gap-6">
-        <div className="d-none d-lg-flex align-items-center">
-          <p className="text-gray-600 mb-0">{t('filters.filterBy')}</p>
-        </div>
         <DInputSearch
           id="inputSearch"
           value={inputQuery}

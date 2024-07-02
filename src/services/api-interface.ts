@@ -27,6 +27,7 @@ export type ApiAccount = {
   id: string;
   nickName: string;
   accountNumber: string;
+  freeze: boolean;
   type: ApiAccountType;
   accountType: ApiAccountAccountType;
   accountingBalance: number;

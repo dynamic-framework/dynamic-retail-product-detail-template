@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { API_ACCOUNT_LIST_FILTER } from '../../config/widgetConfig';
 import { useAppDispatch } from '../../store/hooks';
-import { setAccounts, setIsLoadingAccountList } from '../../store/slice';
+import { setAccounts, setAccountsFreezed, setIsLoadingAccountList } from '../../store/slice';
 import errorHandler from '../../utils/errorHandler';
 import { AccountType } from '../config';
 import { AccountRepository } from '../repositories';
@@ -22,6 +22,16 @@ export default function useAccountsEffect() {
           { abortSignal: abortController.signal },
         );
         dispatch(setAccounts(data));
+        const dataFreezed = data.reduce<Record<string, boolean>>(
+          (accounts, account: { id: string, freeze: boolean }) => ({
+            ...accounts,
+            [account.id]: account.freeze,
+          }),
+          {},
+        );
+
+        dispatch(setAccountsFreezed(dataFreezed));
+
         dispatch(setIsLoadingAccountList(false));
       } catch (error) {
         errorHandler(error);

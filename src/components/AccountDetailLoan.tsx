@@ -21,6 +21,7 @@ export default function AccountDetailLoan({ account }: Props) {
       <ItemTitle
         text={t('collapse.details.outstandingBalance')}
         value={account.balanceOwed ? format(account.balanceOwed) : DETAIL_NO_VALUE}
+        freeze={account.freeze}
       />
       <hr className="m-0" />
       <div className="d-flex flex-column">

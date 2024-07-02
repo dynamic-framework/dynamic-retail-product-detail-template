@@ -1,6 +1,9 @@
 import { DBadge } from '@dynamic-framework/ui-react';
 import classNames from 'classnames';
 
+import { ReactComponent as Chip } from '../assets/Chip.svg';
+import { ReactComponent as DynamicLogo } from '../assets/Dynamic.svg';
+import { ReactComponent as MastercardLogo } from '../assets/Mastercard.svg';
 import { API_ACCOUNT_LIST_FILTER } from '../config/widgetConfig';
 import { AccountType } from '../services/config';
 import { Account, DepositAccount, LoanAccount } from '../services/interface';
@@ -36,10 +39,32 @@ export default function AccountCardMobile({ account }: Props) {
       <div className="d-flex flex-column gap-2">
         <div
           className={classNames(
-            'account-card mobile',
+            'account-card mobile py-4 px-2',
+            account.freeze && 'account-freeze',
             API_ACCOUNT_LIST_FILTER,
           )}
-        />
+        >
+          <div className="d-flex gap-2">
+            <DynamicLogo style={{
+              width: '40px',
+            }}
+            />
+            <Chip
+              className="ms-auto"
+              style={{
+                width: '18px',
+                rotate: '90deg',
+                left: '100%',
+              }}
+            />
+          </div>
+          <MastercardLogo
+            className="align-self-end ms-auto"
+            style={{
+              width: '30px',
+            }}
+          />
+        </div>
         <DBadge
           text="Master 1234"
           soft
