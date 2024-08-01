@@ -25,7 +25,7 @@ export default function ItemActions({
 }: Props) {
   return (
     <div className="d-flex flex-column gap-4">
-      <hr className="m-0" />
+      <hr className="m-0 border-light" />
       <div className="d-flex justify-content-between flex-wrap gap-4">
         <ActionsSelectorButton
           text={primaryText}

@@ -23,7 +23,7 @@ export default function AccountDetailLoan({ account }: Props) {
         value={account.balanceOwed ? format(account.balanceOwed) : DETAIL_NO_VALUE}
         freeze={account.freeze}
       />
-      <hr className="m-0" />
+      <hr className="m-0 border-light" />
       <div className="d-flex flex-column">
         <ItemDetail
           text={t('collapse.details.nextPayment')}
