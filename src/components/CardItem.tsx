@@ -14,7 +14,7 @@ export default function AccountCard({ account }: Props) {
   return (
     <div
       className={classNames(
-        'd-grid account-card desktop',
+        'd-grid account-card desktop rounded',
         API_ACCOUNT_LIST_FILTER,
       )}
     >
