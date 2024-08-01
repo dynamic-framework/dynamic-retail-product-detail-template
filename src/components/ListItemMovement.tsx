@@ -15,7 +15,6 @@ export default function ListItemMovement(
     description,
     date,
     amount,
-    className,
     style,
     ...props
   }: Props,

@@ -85,6 +85,7 @@ export default function ActivityList() {
                 amount={activity.amount}
                 date={DateTime.fromISO(activity.date).toFormat(FORMAT_DATE_FULL)}
                 description={activity.name}
+                className="border-light"
               />
             ))}
           </DList>

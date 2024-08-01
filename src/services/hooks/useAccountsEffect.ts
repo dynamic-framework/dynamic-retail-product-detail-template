@@ -6,6 +6,7 @@ import { setAccounts, setAccountsFreezed, setIsLoadingAccountList } from '../../
 import errorHandler from '../../utils/errorHandler';
 import { AccountType } from '../config';
 import { AccountRepository } from '../repositories';
+import ApiError from '../utils/ApiError';
 
 export default function useAccountsEffect() {
   const dispatch = useAppDispatch();
@@ -34,6 +35,8 @@ export default function useAccountsEffect() {
 
         dispatch(setIsLoadingAccountList(false));
       } catch (error) {
+        if ((error as ApiError).name === 'CanceledError') return;
+
         errorHandler(error);
       }
     })();
