@@ -58,7 +58,7 @@ export default function ItemActions(
           checked={accountsFreezed[account.id]}
         />
       </div>
-      <hr className="m-0" />
+      <hr className="m-0 border-light" />
       <div className="d-flex justify-content-between flex-wrap gap-4">
         <ActionsSelectorButton
           text={text}
