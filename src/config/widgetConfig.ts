@@ -23,6 +23,9 @@ export const TRANSFER_PATH = liquidParser.parse('{{vars.transfers-path}}');
 export const PAY_DEBT_PATH = liquidParser.parse('{{vars.pay-debt-path}}');
 export const PAYMENTS_PATH = liquidParser.parse('{{vars.payments-path}}');
 export const LOAN_APPLICATION_PATH = liquidParser.parse('{{vars.loan-application-path}}');
+export const CASH_ADVANCE_PATH = liquidParser.parse('{{vars.cash-advance-path}}');
+export const PRODUCT_BLOCK_PATH = liquidParser.parse('{{vars.product-block-path}}');
+export const BANK_STATEMENTS_PATH = liquidParser.parse('{{vars.bank-statements-path}}');
 
 export const API_ACCOUNT_LIST_FILTER = liquidParser.parse('{{vars.account-list-filter}}');
 

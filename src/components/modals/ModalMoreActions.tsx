@@ -6,15 +6,17 @@ import {
 } from '@dynamic-framework/ui-react';
 import { useTranslation } from 'react-i18next';
 
+import { BANK_STATEMENTS_PATH, CASH_ADVANCE_PATH, SITE_URL } from '../../config/widgetConfig';
+
 const MORE_ACTIONS = [
   {
     text: 'modal.moreActions.bankStatements',
-    link: '#',
+    link: BANK_STATEMENTS_PATH,
     icon: 'file-text',
   },
   {
     text: 'modal.moreActions.cashAdvance',
-    link: '#',
+    link: CASH_ADVANCE_PATH,
     icon: 'cash-coin',
   },
   {
@@ -50,7 +52,7 @@ export default function ModalMoreActions() {
             <a
               key={action.text}
               className="link link-primary d-inline-flex gap-2 text-decoration-none py-2"
-              href={action.link}
+              href={`${SITE_URL}/${action.link}`}
             >
               <DIcon icon={action.icon} />
               <span className="flex-grow-1 text-gray-900">
