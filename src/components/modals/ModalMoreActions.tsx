@@ -6,7 +6,12 @@ import {
 } from '@dynamic-framework/ui-react';
 import { useTranslation } from 'react-i18next';
 
-import { BANK_STATEMENTS_PATH, CASH_ADVANCE_PATH, SITE_URL } from '../../config/widgetConfig';
+import {
+  BANK_STATEMENTS_PATH,
+  CASH_ADVANCE_PATH,
+  CONFIGURE_RESTRICTIONS_PATH,
+  SITE_URL,
+} from '../../config/widgetConfig';
 
 const MORE_ACTIONS = [
   {
@@ -18,6 +23,11 @@ const MORE_ACTIONS = [
     text: 'modal.moreActions.cashAdvance',
     link: CASH_ADVANCE_PATH,
     icon: 'cash-coin',
+  },
+  {
+    text: 'modal.moreActions.configureRestrictions',
+    link: CONFIGURE_RESTRICTIONS_PATH,
+    icon: 'toggles',
   },
   {
     text: 'modal.moreActions.managePayments',
