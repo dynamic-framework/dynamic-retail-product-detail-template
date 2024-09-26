@@ -74,7 +74,8 @@
       "bankStatements": "Bank statements",
       "cashAdvance": "Cash advance",
       "managePayments": "Manage automatic payments",
-      "changeDate": "Change your due date"
+      "changeDate": "Change your due date",
+      "configureRestrictions": "Configure restrictions"
     }
   },
   "modalOtp": {

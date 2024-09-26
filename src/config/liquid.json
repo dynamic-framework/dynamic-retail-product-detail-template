@@ -2,7 +2,7 @@
   "site": {
     "name": "My Site",
     "language": "en",
-    "url": "#"
+    "url": "http://localhost:8080/retail"
   },
   "account": {
     "url": "https://un.modyo.cloud"
@@ -19,7 +19,11 @@
     "transfers-path": "transfers",
     "pay-debt-path": "pay-debt",
     "loan-application-path": "loan-application",
+    "cash-advance-path": "cash-advance",
+    "product-block-path": "product-block",
+    "bank-statements-path": "bank-statements",
     "payments-path": "payments",
+    "configure-restrictions-path": "configure-restrictions",
 
     "api-path": "https://stoplight.io/mocks/modyo/dynamic/204091081",
 
