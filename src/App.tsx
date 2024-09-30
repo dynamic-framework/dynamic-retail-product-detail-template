@@ -18,12 +18,14 @@ export default function App() {
   useAccountEffect();
 
   return (
-    <div className="row">
-      <div className="col-12 col-lg-5 col-xl-4 order-1 mb-4 mb-lg-0">
-        <Accounts />
-      </div>
-      <div className="col-12 col-lg-7 col-xl-8 h-100 order-2">
-        <ActivityContainer />
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col-12 col-lg-5 col-xl-4 mb-4 mb-lg-0">
+          <Accounts />
+        </div>
+        <div className="col-12 col-lg-7 col-xl-8 h-100">
+          <ActivityContainer />
+        </div>
       </div>
     </div>
   );

@@ -55,18 +55,18 @@ export default function AccountSelectorSlider() {
     <div className="account-slider py-4">
       <DCarousel
         options={{
-          arrows: true,
-          padding: 16,
+          perPage: 1,
           gap: 8,
           start: currentAccountIndex,
           updateOnMove: true,
           rewind: true,
-          mediaQuery: 'max',
+          padding: '16px',
           breakpoints: {
-            992: {
+            1200: {
+              arrows: true,
+            },
+            640: {
               arrows: false,
-              padding: 0,
-              gap: 16,
             },
           },
         }}

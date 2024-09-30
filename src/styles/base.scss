@@ -75,22 +75,11 @@
   .account-card {
     grid-template-rows: repeat(2, 1fr);
     width: 100%;
+    aspect-ratio: 16/9;
     padding: var(--#{$prefix}ref-spacer-6);
     color: var(--#{$prefix}white);
     background-color: var(--#{$prefix}gray);
     border-radius: var(--#{$prefix}ref-spacer-3);
-
-    &.desktop {
-      aspect-ratio: 16/9;
-    }
-
-    &.mobile {
-      display: grid;
-      grid-template-rows: 1fr 1fr;
-      align-items: start;
-      width: 90px;
-      height: 140px;
-    }
 
     .account-card-number {
       font-family: monospace, sans-serif;
