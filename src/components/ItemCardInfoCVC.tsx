@@ -26,9 +26,11 @@ export default function ItemCardInfoCVC({ expiryDate }: Props) {
       <div className="d-flex gap-2">
         <CircularLoaderWidthTimer size={20} duration={DURATION} />
         <p className="text-gray-500">
-          {`${t('cardInfo.cvcWillChange')} ${cvc.secondsLeft} ${t(
-            'cardInfo.seconds',
-          )}`}
+         {t('cardInfo.cvcWillChange')}
+         {' '}
+         {${cvc.secondsLeft}}
+         {' '} 
+         {t('cardInfo.seconds')}
         </p>
       </div>
     </>
