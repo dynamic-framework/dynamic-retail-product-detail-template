@@ -81,7 +81,7 @@ export default function ActivityList() {
             {data.map((activity) => (
               <ListItemMovement
                 key={`activity-${activity.id}`}
-                onClick={() => openActivityDetail(activity)}
+                openModal={() => openActivityDetail(activity)}
                 amount={activity.amount}
                 date={DateTime.fromISO(activity.date).toFormat(FORMAT_DATE_FULL)}
                 description={activity.name}
