@@ -29,6 +29,7 @@ export default function accountMapper(apiAccount: ApiAccount): Account {
       installments: apiAccount.loanDetails?.installments,
       interestRate: apiAccount.loanDetails?.interest.settings.rate,
       paymentNextDueDate: apiAccount.paymentDetails?.nextDueDate,
+      expiryDate: apiAccount.expiryDate,
     };
   }
 
