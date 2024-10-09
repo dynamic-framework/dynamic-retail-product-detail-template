@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { DListItem, useFormatCurrency } from '@dynamic-framework/ui-react';
+import { DButtonIcon, DListItem, useFormatCurrency } from '@dynamic-framework/ui-react';
 import classNames from 'classnames';
 import { useMemo } from 'react';
 import type { ComponentProps } from 'react';
@@ -8,6 +8,7 @@ type Props = Omit<ComponentProps<typeof DListItem>, 'children'> & {
   description: string;
   date: string;
   amount: number;
+  openModal?: () => void;
 };
 
 export default function ListItemMovement(
@@ -16,6 +17,7 @@ export default function ListItemMovement(
     date,
     amount,
     style,
+    openModal,
     ...props
   }: Props,
 ) {
@@ -29,14 +31,14 @@ export default function ListItemMovement(
       };
     }
     return {
-      theme: 'text-danger',
+      theme: 'text-gray-500',
       valueFormatted,
     };
   }, [format, amount]);
 
   return (
     <DListItem {...props}>
-      <div className="d-flex justify-content-between align-items-center py-1 gap-4">
+      <div className="d-flex align-items-center py-1 gap-4">
         <div className="d-flex flex-column">
           <span className="transaction-name fs-6">
             {description}
@@ -45,9 +47,14 @@ export default function ListItemMovement(
             {date}
           </span>
         </div>
-        <span className={classNames('fs-6', value.theme)}>
+        <span className={classNames('fs-6 ms-auto', value.theme)}>
           {value.valueFormatted}
         </span>
+        <DButtonIcon
+          onClick={openModal}
+          icon="eye"
+          variant="link"
+        />
       </div>
     </DListItem>
   );
