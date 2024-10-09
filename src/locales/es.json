@@ -37,7 +37,9 @@
   },
   "tabs": {
     "transactions": "Transactions",
-    "upcoming": "Upcoming"
+    "upcoming": "Upcoming",
+    "complains": "Complains",
+    "newTab": "New tab"
   },
   "filters": {
     "search": "Search",
