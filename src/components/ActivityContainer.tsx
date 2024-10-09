@@ -13,9 +13,7 @@ import { getIsNotReady } from '../store/selectors';
 
 import ActivityList from './ActivityList';
 import ActivityListScheduled from './ActivityListScheduled';
-import Complains from './Complains';
 import AccountListLoader from './loaders/AccountListLoader';
-import Other from './Other';
 
 const isCreditCard = API_ACCOUNT_LIST_FILTER === 'credit-card';
 
@@ -68,10 +66,10 @@ export default function ActivityContainer() {
             <ActivityListScheduled />
           </DTabContent>
           <DTabContent tab={options[2].tab}>
-            <Complains />
+            <p>Complains</p>
           </DTabContent>
           <DTabContent tab={options[3].tab}>
-            <Other />
+            <p>New tab</p>
           </DTabContent>
         </DTabs>
       </DCard.Body>
