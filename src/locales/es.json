@@ -1,5 +1,14 @@
 {
   "cancel": "Cancel",
+  "cardInfo": {
+    "cvc": "CVC",
+    "cvcWillChange": "CVC will change in",
+    "seconds": "seconds",
+    "cardHolderName": "Cardholder name",
+    "cardNumber": "Card number",
+    "validUntil": "Valid until",
+    "title": "Card Information"
+  },
   "collapse": {
     "actions": {
       "transfer": "Transfer",
@@ -9,10 +18,6 @@
       "advance": "Advances",
       "statement": "Statements",
       "paymentPlan": "Payment schedule"
-    },
-    "cardInfo": {
-      "cvc": "CVC",
-      "cvcWillChange": "CVC will change in {{cvc}} seconds"
     },
     "details": {
       "availableAmount": "Total available funds",
@@ -73,7 +78,25 @@
       "managePayments": "Manage automatic payments",
       "changeDate": "Change your due date",
       "configureRestrictions": "Configure restrictions"
+    },
+    "complain": {
+      "title": "Complain: {value}",
+      "date": "<bld>Date of complain:</bld> {value}",
+      "amount": "<bld>Amount:</bld> {value}",
+      "trxNumber": "<bld>Number of transaction:</bld> {value}",
+      "situation": "<bld>Situation:</bld> Unrecognized",
+      "description": "<bld>Description:</bld> I don't recognize this transaction",
+      "state": "<bld>State:</bld> <cmp text='Active'></cmp>"
     }
+  },
+  "complainStatus": "Active",
+  "modalOtp": {
+    "getCode": "Didn't you get any code?",
+    "resend": "Resend in",
+    "title": "We want to validate that it's you",
+    "sendCode": "We will send you a 6-digit code to your cell phone so you can continue with your request.",
+    "hint": "Enter the code that was sent to your associated phone number.",
+    "validate": "Validate"
   },
   "noData": {
     "noPayments": "You don't have any payment",
@@ -81,8 +104,9 @@
     "schedulePayment": "Schedule your first payment here",
     "noQueryPayments": "No transactions found with the search \"{search}\""
   },
+  "freezeCard": "Freeze card",
   "filter": {
-    "title": "More filters",
+    "title": "Filters",
     "amountFrom": "From",
     "amountTo": "To",
     "typeCredit": "Credit",
@@ -91,7 +115,8 @@
   "button": {
     "accept": "Accept",
     "clear": "Clear",
-    "close": "Close"
+    "close": "Close",
+    "newComplain": "New complain"
   },
   "card": {
     "name": "Cardholder name",
