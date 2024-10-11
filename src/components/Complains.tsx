@@ -60,19 +60,19 @@ export default function Complains() {
         <NewComplainLink account={account} />
       </div>
       {(activities.length < 1) && (
-      <div
-        className={classnames(
-          'd-flex flex-column justify-content-center align-items-center',
-          'w-100 my-6 gap-6 text-gray-500',
-        )}
-      >
-        <span>{emptyTransactionsText}</span>
-        <img
-          className="no-transactions"
-          src="https://cloud.modyocdn.com/uploads/c49dfe12-4532-42a3-9dd7-2a07ce0bd82b/original/newCalendar.png"
-          alt="Empty transactions"
-        />
-      </div>
+        <div
+          className={classnames(
+            'd-flex flex-column justify-content-center align-items-center',
+            'w-100 my-6 gap-6 text-gray-500',
+          )}
+        >
+          <span>{emptyTransactionsText}</span>
+          <img
+            className="no-transactions"
+            src="https://cloud.modyocdn.com/uploads/c49dfe12-4532-42a3-9dd7-2a07ce0bd82b/original/newCalendar.png"
+            alt="Empty transactions"
+          />
+        </div>
       )}
       <div>
         <DList flush>
