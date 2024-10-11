@@ -1,5 +1,4 @@
 import {
-  DIcon,
   DList,
   DPaginator,
 } from '@dynamic-framework/ui-react';
@@ -7,7 +6,6 @@ import classnames from 'classnames';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { NEW_COMPLAIN_PATH, SITE_URL } from '../config/widgetConfig';
 import usePaginator from '../hooks/usePaginator';
 import useActivitiesEffect from '../services/hooks/useActivitiesEffect';
 import { Account } from '../services/interface';
@@ -17,6 +15,7 @@ import { getAccountSelected, getFilterActivities } from '../store/selectors';
 import { ActivityListFilter } from './ActivityListFilter';
 import ListItemComplain from './ListItemComplain';
 import AccountListLoader from './loaders/AccountListLoader';
+import NewComplainLink from './NewComplainLink';
 
 export default function Complains() {
   const { t } = useTranslation();
@@ -43,16 +42,6 @@ export default function Complains() {
     return t('noData.noPayments');
   }, [t, query]);
 
-  const newComplain = useMemo(() => (
-    <a
-      href={`${SITE_URL}/${NEW_COMPLAIN_PATH}?account_id=${account.id}`}
-      className="ms-lg-auto btn btn-primary text-nowrap col"
-    >
-      <DIcon icon="plus" />
-      {t('button.newComplain')}
-    </a>
-  ), [account.id, t]);
-
   if (loading) {
     return <AccountListLoader />;
   }
@@ -63,18 +52,19 @@ export default function Complains() {
         activities={activities}
         otherOptions={(
           <div className="ms-auto d-none d-lg-flex">
-            {newComplain}
+            <NewComplainLink account={account} />
           </div>
         )}
       />
       <div className="d-flex d-lg-none justify-content-center">
-        {newComplain}
+        <NewComplainLink account={account} />
       </div>
       {(activities.length < 1) && (
-      <div className={classnames(
-        'd-flex flex-column justify-content-center align-items-center',
-        'w-100 my-6 gap-6 text-gray-500',
-      )}
+      <div
+        className={classnames(
+          'd-flex flex-column justify-content-center align-items-center',
+          'w-100 my-6 gap-6 text-gray-500',
+        )}
       >
         <span>{emptyTransactionsText}</span>
         <img

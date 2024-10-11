@@ -147,6 +147,7 @@
   .account-freeze {
     position: relative;
     overflow: hidden;
+
     &::before {
       position: absolute;
       inset: -1.5rem;
@@ -157,6 +158,7 @@
       background-size: cover;
       opacity: .4;
     }
+
     > * {
       position: relative;
       z-index: 2;
