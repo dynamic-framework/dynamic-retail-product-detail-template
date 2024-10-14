@@ -18,7 +18,7 @@ export default function App() {
   useAccountEffect();
 
   return (
-    <div className="container-fluid">
+    <div className="container">
       <div className="row">
         <div className="col-12 col-lg-5 col-xl-4 mb-4 mb-lg-0">
           <Accounts />

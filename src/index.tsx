@@ -9,6 +9,7 @@ import './config/i18nConfig';
 import App from './App';
 import ModalActivityDetail from './components/modals/ModalActivityDetail';
 import ModalCardInformation from './components/modals/ModalCardInformation';
+import ModalComplainDetail from './components/modals/ModalComplainDetail';
 import ModalMoreActions from './components/modals/ModalMoreActions';
 import ModalOTP from './components/modals/ModalOTP';
 import OffcanvasAdvancedFilters from './components/offcanvas/OffcanvasAdvancedFilters';
@@ -28,6 +29,7 @@ root.render(
         availablePortals={{
           modalOTP: ModalOTP,
           modalCardInformation: ModalCardInformation,
+          modalComplainDetail: ModalComplainDetail,
           modalActivityDetail: ModalActivityDetail,
           offcanvasAdvancedFilters: OffcanvasAdvancedFilters,
           modalMoreActions: ModalMoreActions,

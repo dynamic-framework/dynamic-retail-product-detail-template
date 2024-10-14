@@ -13,9 +13,10 @@ import { getIsNotReady } from '../store/selectors';
 
 import ActivityList from './ActivityList';
 import ActivityListScheduled from './ActivityListScheduled';
+import Complains from './Complains';
 import AccountListLoader from './loaders/AccountListLoader';
 
-const isCreditCard = API_ACCOUNT_LIST_FILTER === 'credit-card';
+const isLoan = API_ACCOUNT_LIST_FILTER === 'loan';
 
 export default function ActivityContainer() {
   const { t } = useTranslation();
@@ -29,13 +30,13 @@ export default function ActivityContainer() {
   ], [t]);
 
   const filteredOptions = useMemo(() => {
-    if (!isCreditCard) {
+    if (isLoan) {
       return options.filter(({ tab }) => tab !== 'complains');
     }
     return options;
   }, [options]);
 
-  const [container, setContainer] = useState(options[0]);
+  const [container, setContainer] = useState(filteredOptions[0]);
 
   const handlerSelected = (option: DTabOption) => {
     setContainer(option);
@@ -43,10 +44,11 @@ export default function ActivityContainer() {
 
   if (isNotReady) {
     return (
-      <div className="bg-white rounded p-4 pt-8">
-        <br />
-        <AccountListLoader />
-      </div>
+      <DCard>
+        <DCard.Body>
+          <AccountListLoader />
+        </DCard.Body>
+      </DCard>
     );
   }
 
@@ -66,7 +68,7 @@ export default function ActivityContainer() {
             <ActivityListScheduled />
           </DTabContent>
           <DTabContent tab={options[2].tab}>
-            <p>Complains</p>
+            <Complains />
           </DTabContent>
           <DTabContent tab={options[3].tab}>
             <p>New tab</p>
