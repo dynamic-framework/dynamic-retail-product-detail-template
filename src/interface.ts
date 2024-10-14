@@ -9,5 +9,6 @@ export type PortalAvailablePayload = {
     callback: () => void;
   }
   offcanvasAdvancedFilters: undefined;
+  offcanvasCheckbooksFilters: undefined;
   modalMoreActions: undefined;
 };

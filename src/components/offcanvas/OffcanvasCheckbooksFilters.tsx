@@ -11,25 +11,18 @@ import {
   DOffcanvasHeader,
   useDPortalContext,
 } from '@dynamic-framework/ui-react';
-import { DateTime } from 'luxon';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export default function OffcanvasCheckbooksFilters() {
   const { t } = useTranslation();
   const { closePortal } = useDPortalContext();
-  const [startDate, setStartDate] = useState<string | null>(null);
-  const [endDate, setEndDate] = useState<string | null>(null);
-
-  const onChangeDate = useCallback((value: Date | [Date | null, Date | null] | null) => {
-    const [newStartDate, newEndDate] = value as Array<Date>;
-    setStartDate(DateTime.fromJSDate(newStartDate).toISODate());
-    setEndDate(DateTime.fromJSDate(newEndDate).toISODate());
-  }, []);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(startDate);
 
   return (
     <DOffcanvas
-      name="checkbooksFilters"
+      name="advancedFilters"
       openFrom="end"
       staticBackdrop
     >
@@ -44,17 +37,20 @@ export default function OffcanvasCheckbooksFilters() {
       </DOffcanvasHeader>
       <DOffcanvasBody>
         <div className="d-flex flex-column gap-6 pt-4">
-          <DDatePicker<never, true>
-            onChange={onChangeDate}
-            selectsRange
-            {...startDate && {
-              selected: DateTime.fromISO(startDate).toJSDate(),
-              startDate: DateTime.fromISO(startDate).toJSDate(),
-            }}
-            {...endDate && {
-              endDate: DateTime.fromISO(endDate).toJSDate(),
-            }}
-          />
+          <div className="d-flex gap-4">
+            <DDatePicker
+              className="w-100"
+              inputLabel={t('filters.startDate')}
+              onChange={(e) => setStartDate(e!)}
+              date={startDate.toISOString()}
+            />
+
+            <DDatePicker
+              inputLabel={t('filters.endDate')}
+              onChange={(e) => setEndDate(e!)}
+              date={endDate.toISOString()}
+            />
+          </div>
           <hr className="my-0" />
           <p className="fw-bold small mb-0">
             {t('filters.amount')}

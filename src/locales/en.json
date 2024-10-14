@@ -1,5 +1,6 @@
 {
   "cancel": "Cancel",
+  "search": "Search",
   "cardInfo": {
     "cvc": "CVC",
     "cvcWillChange": "CVC will change in",
@@ -44,9 +45,10 @@
     "transactions": "Transactions",
     "upcoming": "Upcoming",
     "complains": "Complains",
-    "newTab": "New tab"
+    "checkbooks": "Checkbooks"
   },
   "filters": {
+    "title": "Filters",
     "search": "Search",
     "dateRange": "Date range",
     "amount": "Amount",
