@@ -47,7 +47,7 @@ export default function Complains() {
   }
 
   return (
-    <div>
+    <>
       <ActivityListFilter
         activities={activities}
         otherOptions={(
@@ -91,6 +91,6 @@ export default function Complains() {
           />
         </div>
       </div>
-    </div>
+    </>
   );
 }

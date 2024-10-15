@@ -10,7 +10,7 @@ export default function Checkbooks() {
   const { data: options, loading } = useCheckbooksCallback();
 
   return (
-    <div>
+    <>
       <CheckbookListFilter />
       {loading && <CheckbookLoader />}
       {!loading && (
@@ -25,6 +25,6 @@ export default function Checkbooks() {
           ))}
         </DList>
       )}
-    </div>
+    </>
   );
 }

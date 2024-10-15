@@ -73,7 +73,6 @@ export default function AccountDetail() {
       {account?.type === AccountType.Saving && (
         <>
           <AccountDetailSaving
-            className=""
             account={account as DepositAccount}
           />
           <ActionsSelectorSlider
