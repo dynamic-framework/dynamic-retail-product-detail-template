@@ -42,7 +42,7 @@ export default function ListItemComplain(
   }, [format, activity.amount]);
 
   return (
-    <DListItem {...props} className="border-light py-1">
+    <DListItem {...props} className="border-light py-2 px-lg-4">
       <div className="d-flex align-items-center py-1 gap-4">
         <div className="d-flex flex-column">
           <span className="fs-body-tiny">

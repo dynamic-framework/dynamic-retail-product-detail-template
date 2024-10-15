@@ -47,7 +47,7 @@ export default function Complains() {
   }
 
   return (
-    <div className="d-flex flex-column gap-6 mt-4">
+    <>
       <ActivityListFilter
         activities={activities}
         otherOptions={(
@@ -56,7 +56,7 @@ export default function Complains() {
           </div>
         )}
       />
-      <div className="d-flex d-lg-none justify-content-center">
+      <div className="d-flex d-lg-none justify-content-center mb-4 mb-lg-0">
         <NewComplainLink account={account} />
       </div>
       {(activities.length < 1) && (
@@ -91,6 +91,6 @@ export default function Complains() {
           />
         </div>
       </div>
-    </div>
+    </>
   );
 }

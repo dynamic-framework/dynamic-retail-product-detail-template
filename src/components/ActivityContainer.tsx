@@ -13,6 +13,7 @@ import { getIsNotReady } from '../store/selectors';
 
 import ActivityList from './ActivityList';
 import ActivityListScheduled from './ActivityListScheduled';
+import Checkbooks from './Checkbooks';
 import Complains from './Complains';
 import AccountListLoader from './loaders/AccountListLoader';
 
@@ -26,7 +27,7 @@ export default function ActivityContainer() {
     { label: t('tabs.transactions'), tab: 'transactions' },
     { label: t('tabs.upcoming'), tab: 'upcoming' },
     { label: t('tabs.complains'), tab: 'complains' },
-    { label: t('tabs.newTab'), tab: 'newTab' },
+    { label: t('tabs.checkbooks'), tab: 'checkbooks' },
   ], [t]);
 
   const filteredOptions = useMemo(() => {
@@ -59,7 +60,7 @@ export default function ActivityContainer() {
           options={filteredOptions}
           defaultSelected={container.tab}
           onChange={handlerSelected}
-          className="px-0 pt-0"
+          className="px-0 pt-0 mb-4"
         >
           <DTabContent tab={options[0].tab}>
             <ActivityList />
@@ -71,7 +72,7 @@ export default function ActivityContainer() {
             <Complains />
           </DTabContent>
           <DTabContent tab={options[3].tab}>
-            <p>New tab</p>
+            <Checkbooks />
           </DTabContent>
         </DTabs>
       </DCard.Body>

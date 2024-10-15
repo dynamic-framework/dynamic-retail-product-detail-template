@@ -42,3 +42,9 @@ export type Activity = {
   amount: number;
   status: ActivityStatus;
 };
+
+export type Checkbook = {
+  id: string;
+  date: string;
+  active: boolean
+};

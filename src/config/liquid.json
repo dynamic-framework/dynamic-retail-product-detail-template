@@ -25,6 +25,7 @@
     "payments-path": "payments",
     "configure-restrictions-path": "configure-restrictions",
     "new-complain-path": "new-complain",
+    "checkbook-item-path": "#",
 
     "api-path": "https://stoplight.io/mocks/modyo/dynamic/204091081",
 

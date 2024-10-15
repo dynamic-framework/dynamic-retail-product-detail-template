@@ -7,6 +7,16 @@
     --#{$prefix}quick-action-button-padding: var(--#{$prefix}ref-spacer-3) var(--#{$prefix}ref-spacer-4);
   }
 
+  .nav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+  }
+
+  .nav::-webkit-scrollbar {
+    display: none;
+  }
+
   .selected-account-name-loader {
     @include rfs($h4-font-size, --#{$prefix}account-name-loader-height);
 
