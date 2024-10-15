@@ -138,23 +138,30 @@
   .d-carousel .d-carousel-slide:nth-child(3n) .credit-card {
     background: linear-gradient(90deg, rgba(66, 133, 244, 1) 0%, rgba(52, 168, 83, 1) 100%);
   }
-}
 
-.account-freeze {
-  position: relative;
-  overflow: hidden;
-  &::before {
-    position: absolute;
-    inset: -1.5rem;
-    z-index: 1;
-    display: block;
-    content: "";
-    background: url("https://cdn.modyo.cloud/uploads/d561a086-e516-423d-9b58-e9cf3ea223bc/original/ice-rectangle_1_.png") no-repeat;
-    background-size: cover;
-    opacity: .4;
+  .list-group {
+    --#{$prefix}list-group-action-hover-bg: transparent;
+    --#{$prefix}list-group-action-active-bg: transparent;
   }
-  > * {
+
+  .account-freeze {
     position: relative;
-    z-index: 2;
+    overflow: hidden;
+
+    &::before {
+      position: absolute;
+      inset: -1.5rem;
+      z-index: 1;
+      display: block;
+      content: "";
+      background: url("https://cdn.modyo.cloud/uploads/d561a086-e516-423d-9b58-e9cf3ea223bc/original/ice-rectangle_1_.png") no-repeat;
+      background-size: cover;
+      opacity: .4;
+    }
+
+    > * {
+      position: relative;
+      z-index: 2;
+    }
   }
 }

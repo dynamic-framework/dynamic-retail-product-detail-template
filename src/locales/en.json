@@ -56,7 +56,9 @@
     "download": "Download",
     "filter": "Filter",
     "filterBy": "Filter by",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "startDate": "Start date",
+    "endDate": "End date"
   },
   "modal": {
     "details": {
@@ -80,8 +82,18 @@
       "managePayments": "Manage automatic payments",
       "changeDate": "Change your due date",
       "configureRestrictions": "Configure restrictions"
+    },
+    "complain": {
+      "title": "Complain: {value}",
+      "date": "<bld>Date of complain:</bld> {value}",
+      "amount": "<bld>Amount:</bld> {value}",
+      "trxNumber": "<bld>Number of transaction:</bld> {value}",
+      "situation": "<bld>Situation:</bld> Unrecognized",
+      "description": "<bld>Description:</bld> I don't recognize this transaction",
+      "state": "<bld>State:</bld> <cmp text='Active'></cmp>"
     }
   },
+  "complainStatus": "Active",
   "modalOtp": {
     "getCode": "Didn't you get any code?",
     "resend": "Resend in",
@@ -98,7 +110,7 @@
   },
   "freezeCard": "Freeze card",
   "filter": {
-    "title": "More filters",
+    "title": "Filters",
     "amountFrom": "From",
     "amountTo": "To",
     "typeCredit": "Credit",
@@ -107,7 +119,8 @@
   "button": {
     "accept": "Accept",
     "clear": "Clear",
-    "close": "Close"
+    "close": "Close",
+    "newComplain": "New complain"
   },
   "card": {
     "name": "Cardholder name",

@@ -72,3 +72,8 @@ export const getFilteredActivities = createSelector(
     ));
   },
 );
+
+export const getQueryFilterCheckbook = createSelector(
+  getState,
+  (widget) => widget.filterCheckbooks.query,
+);

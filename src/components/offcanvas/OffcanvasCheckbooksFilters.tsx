@@ -3,8 +3,6 @@ import {
   DButton,
   DDatePicker,
   DIcon,
-  DInputCheck,
-  DInputCurrency,
   DOffcanvas,
   DOffcanvasBody,
   DOffcanvasFooter,
@@ -50,40 +48,6 @@ export default function OffcanvasCheckbooksFilters() {
               onChange={(e) => setEndDate(e!)}
               date={endDate.toISOString()}
             />
-          </div>
-          <hr className="my-0" />
-          <p className="fw-bold small mb-0">
-            {t('filters.amount')}
-          </p>
-          <div className="d-flex gap-6">
-            <DInputCurrency
-              id="from"
-              label={t('filter.amountFrom')}
-              onChange={() => { }}
-            />
-            <DInputCurrency
-              id="to"
-              label={t('filter.amountTo')}
-              onChange={() => { }}
-            />
-          </div>
-          <hr className="my-0" />
-          <div>
-            <p className="fw-bold small mb-4">{t('filters.type')}</p>
-            <div className="d-flex gap-4">
-              <DInputCheck
-                id="out"
-                name="tipo"
-                type="radio"
-                label={t('filter.typeCredit')}
-              />
-              <DInputCheck
-                id="in"
-                name="tipo"
-                type="radio"
-                label={t('filter.typeDebit')}
-              />
-            </div>
           </div>
         </div>
       </DOffcanvasBody>

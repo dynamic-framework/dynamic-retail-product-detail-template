@@ -1,49 +1,32 @@
-import { DButton, DList, useDPortalContext } from '@dynamic-framework/ui-react';
-import { useTranslation } from 'react-i18next';
+import { DList } from '@dynamic-framework/ui-react';
+
+import useCheckbooksCallback from '../services/hooks/useCheckbooksCallback';
 
 import CheckbookItem from './CheckbookItem';
-import SearchBarCheckbooks from './SearchBarCheckbooks';
-
-const options = [{
-  id: '19846720124',
-  date: '12/12/2020',
-  active: false,
-},
-{
-  id: '19846720125',
-  date: '12/12/2021',
-  active: true,
-},
-{
-  id: '19846720126',
-  date: '12/12/2022',
-  active: false,
-}];
+import CheckbookListFilter from './CheckbookListFilter';
+import CheckbookLoader from './loaders/CheckbookLoader';
 
 export default function Checkbooks() {
-  const { t } = useTranslation();
-  const { openPortal } = useDPortalContext();
+  const { data: options, loading } = useCheckbooksCallback();
+
   return (
     <div>
       <div className="d-flex gap-2 mb-8">
-        <SearchBarCheckbooks />
-        <DButton
-          iconStart="funnel"
-          variant="outline"
-          text={t('filters.title')}
-          onClick={() => openPortal('offcanvasAdvancedFilters', undefined)}
-        />
+        <CheckbookListFilter />
       </div>
-      <DList flush>
-        {options.map((option) => (
-          <CheckbookItem
-            key={option.id}
-            id={option.id}
-            date={option.date}
-            active={option.active}
-          />
-        ))}
-      </DList>
+      {loading && <CheckbookLoader />}
+      {!loading && (
+        <DList flush>
+          {options?.map((option) => (
+            <CheckbookItem
+              key={option.id}
+              id={option.id}
+              date={option.date}
+              active={option.active}
+            />
+          ))}
+        </DList>
+      )}
     </div>
   );
 }

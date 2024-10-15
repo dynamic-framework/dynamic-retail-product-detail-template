@@ -1,4 +1,4 @@
-import { DChip, DIcon } from '@dynamic-framework/ui-react';
+import { DBadge, DIcon } from '@dynamic-framework/ui-react';
 import { DateTime } from 'luxon';
 
 import { FORMAT_DATE } from '../config/widgetConfig';
@@ -26,8 +26,9 @@ Props) {
           {DateTime.fromISO(date).toFormat(FORMAT_DATE)}
         </small>
       </div>
-      <DChip
-        theme={active ? 'success' : 'warning'}
+      <DBadge
+        soft
+        theme={active ? 'success' : 'danger'}
         text={active ? 'Active' : 'Inactive'}
       />
       <DIcon icon="chevron-right" />
