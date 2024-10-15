@@ -20,7 +20,7 @@ export default function OffcanvasCheckbooksFilters() {
 
   return (
     <DOffcanvas
-      name="advancedFilters"
+      name="checkbooksFilters"
       openFrom="end"
       staticBackdrop
     >

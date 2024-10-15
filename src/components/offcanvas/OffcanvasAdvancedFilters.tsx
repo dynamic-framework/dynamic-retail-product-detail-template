@@ -15,7 +15,7 @@ import { DateTime } from 'luxon';
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-export default function OffcanvasCheckbooksFilters() {
+export default function OffcanvasAdvancedFilters() {
   const { t } = useTranslation();
   const { closePortal } = useDPortalContext();
   const [startDate, setStartDate] = useState<string | null>(null);
@@ -29,7 +29,7 @@ export default function OffcanvasCheckbooksFilters() {
 
   return (
     <DOffcanvas
-      name="checkbooksFilters"
+      name="advancedFilters"
       openFrom="end"
       staticBackdrop
     >
