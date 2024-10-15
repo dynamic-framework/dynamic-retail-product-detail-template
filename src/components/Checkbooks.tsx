@@ -11,9 +11,7 @@ export default function Checkbooks() {
 
   return (
     <div>
-      <div className="d-flex gap-2 mb-8">
-        <CheckbookListFilter />
-      </div>
+      <CheckbookListFilter />
       {loading && <CheckbookLoader />}
       {!loading && (
         <DList flush>

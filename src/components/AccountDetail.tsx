@@ -73,7 +73,7 @@ export default function AccountDetail() {
       {account?.type === AccountType.Saving && (
         <>
           <AccountDetailSaving
-            className="d-none d-lg-block"
+            className=""
             account={account as DepositAccount}
           />
           <ActionsSelectorSlider
@@ -86,7 +86,6 @@ export default function AccountDetail() {
       {account?.type === AccountType.Checking && (
         <>
           <AccountDetailChecking
-            className="d-none d-lg-block"
             account={account as DepositAccount}
           />
           <ActionsSelectorSlider
@@ -99,7 +98,6 @@ export default function AccountDetail() {
       {account?.type === AccountType.CreditCard && (
         <>
           <AccountDetailCreditCard
-            className="d-none d-lg-block"
             account={account as LoanAccount}
           />
           <ActionsSelectorSlider
