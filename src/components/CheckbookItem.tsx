@@ -2,7 +2,7 @@ import { DBadge, DIcon } from '@dynamic-framework/ui-react';
 import classNames from 'classnames';
 import { DateTime } from 'luxon';
 
-import { FORMAT_DATE } from '../config/widgetConfig';
+import { CHECKBOOK_ITEM_PATH, FORMAT_DATE } from '../config/widgetConfig';
 
 type Props = {
   id: string
@@ -17,7 +17,7 @@ export default function CheckbookItem({
 Props) {
   return (
     <a
-      href={`/checkbook/${id}`}
+      href={`/${CHECKBOOK_ITEM_PATH}/${id}`}
       className={classNames(
         'list-group-item list-group-item-action',
         'd-flex py-2 px-lg-4 gap-4 align-items-center border-light',
