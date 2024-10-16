@@ -56,7 +56,7 @@ export default function ActivityList() {
   }
 
   return (
-    <div>
+    <>
       <ActivityListFilter activities={activities} />
       {(activities.length === 0 || activities.length === 0) && (
         <div className={classnames(
@@ -93,6 +93,6 @@ export default function ActivityList() {
           maxWidth={375}
         />
       </div>
-    </div>
+    </>
   );
 }
