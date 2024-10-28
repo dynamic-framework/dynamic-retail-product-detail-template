@@ -1,8 +1,12 @@
 import { DBadge, DIcon } from '@dynamic-framework/ui-react';
 import classNames from 'classnames';
 import { DateTime } from 'luxon';
+import { useTranslation } from 'react-i18next';
 
-import { CHECKBOOK_ITEM_PATH, FORMAT_DATE } from '../config/widgetConfig';
+import {
+  CHECKBOOK_ITEM_PATH,
+  FORMAT_DATE, SITE_URL,
+} from '../config/widgetConfig';
 
 type Props = {
   id: string
@@ -15,16 +19,18 @@ export default function CheckbookItem({
   date,
 }:
 Props) {
+  const { t } = useTranslation();
+
   return (
     <a
-      href={`/${CHECKBOOK_ITEM_PATH}/${id}`}
+      href={`${SITE_URL}/${CHECKBOOK_ITEM_PATH}/${id}`}
       className={classNames(
         'list-group-item list-group-item-action',
         'd-flex py-2 px-lg-4 gap-4 align-items-center border-light',
       )}
     >
       <div className="flex-1">
-        Checkkbok:
+        {t('checkbooks.title')}
         {' '}
         {id}
         <small className="d-block text-gray-500">

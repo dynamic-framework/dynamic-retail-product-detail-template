@@ -47,6 +47,9 @@
     "complains": "Complains",
     "checkbooks": "Checkbooks"
   },
+  "checkbooks": {
+    "title": "Checkbook"
+  },
   "filters": {
     "title": "Filters",
     "search": "Search",
