@@ -7,7 +7,7 @@ import { Checkbook } from '../interface';
 import { CheckbookRepository } from '../repositories';
 import ApiError from '../utils/ApiError';
 
-export default function useCheckbooksCallback() {
+export default function useCheckbooksEffect() {
   const [loading, setLoading] = useState(false);
   const [dataCheckbooks, setDataCheckbooks] = useState<Checkbook[] | null>(null);
   const query = useAppSelector(getQueryFilterCheckbook);

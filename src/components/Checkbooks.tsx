@@ -1,13 +1,13 @@
 import { DList } from '@dynamic-framework/ui-react';
 
-import useCheckbooksCallback from '../services/hooks/useCheckbooksCallback';
+import useCheckbooksEffect from '../services/hooks/useCheckbooksEffect';
 
 import CheckbookItem from './CheckbookItem';
 import CheckbookListFilter from './CheckbookListFilter';
 import CheckbookLoader from './loaders/CheckbookLoader';
 
 export default function Checkbooks() {
-  const { data: options, loading } = useCheckbooksCallback();
+  const { data: options, loading } = useCheckbooksEffect();
 
   return (
     <>
