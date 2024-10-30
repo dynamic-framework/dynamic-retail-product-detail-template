@@ -32,7 +32,7 @@ export default function ActivityContainer() {
 
   const filteredOptions = useMemo(() => {
     if (isLoan) {
-      return options.filter(({ tab }) => tab !== 'complains');
+      return options.filter(({ tab }) => tab !== 'complains' && tab !== 'checkbooks');
     }
     return options;
   }, [options]);
