@@ -13,7 +13,9 @@ import {
   TRANSFER_PATH,
 } from '../config/widgetConfig';
 import { AccountType } from '../services/config';
-import type { Account, DepositAccount, LoanAccount } from '../services/interface';
+import type {
+  Account, DepositAccount, LoanAccount,
+} from '../services/interface';
 import { useAppSelector } from '../store/hooks';
 import { getAccountSelected, getIsLoadingAccountDetail } from '../store/selectors';
 

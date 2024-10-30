@@ -23,8 +23,16 @@ export default function ModalCardInformation() {
   const cvc = useCVC(DURATION);
 
   return (
-    <DModal name="modalOTP" centered staticBackdrop size="lg">
-      <DModal.Header onClose={closePortal} showCloseButton>
+    <DModal
+      name="modalOTP"
+      centered
+      staticBackdrop
+      size="lg"
+    >
+      <DModal.Header
+        onClose={closePortal}
+        showCloseButton
+      >
         <h5 className="fw-bold">{t('cardInfo.title')}</h5>
       </DModal.Header>
       <DModal.Body className="p-8">
@@ -33,7 +41,11 @@ export default function ModalCardInformation() {
             <CardItem account={account} />
             <div className="text-center mt-2">
               <small className="d-inline-flex gap-2 align-items-center">
-                <DIcon icon="circle-fill" theme="success" size="8px" />
+                <DIcon
+                  icon="circle-fill"
+                  theme="success"
+                  size="8px"
+                />
                 <span>Active</span>
               </small>
             </div>
@@ -51,9 +63,15 @@ export default function ModalCardInformation() {
               name={t('cardInfo.validUntil')}
               value={account?.accountNumber}
             />
-            <ItemCardInfo name={t('cardInfo.cvc')} value={cvc.cvc} />
+            <ItemCardInfo
+              name={t('cardInfo.cvc')}
+              value={cvc.cvc}
+            />
             <div className="d-flex gap-2">
-              <CircularLoaderWidthTimer size={20} duration={DURATION} />
+              <CircularLoaderWidthTimer
+                size={20}
+                duration={DURATION}
+              />
               <p className="text-gray-500">
                 {`${t('cardInfo.cvcWillChange')} ${cvc.secondsLeft} ${t(
                   'cardInfo.seconds',

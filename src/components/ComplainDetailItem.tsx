@@ -19,7 +19,10 @@ export default function ComplainDetailItem(
         values={{ value }}
         components={{
           bld: <strong />,
-          cmp: <DBadge soft theme="success" />,
+          cmp: <DBadge
+            soft
+            theme="success"
+          />,
         }}
       />
     </div>

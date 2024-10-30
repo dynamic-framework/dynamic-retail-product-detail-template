@@ -19,15 +19,24 @@ export default function AccountCard({ account }: Props) {
       )}
     >
       <div className="d-flex justify-content-between align-items-start">
-        <DynamicLogo height={18} width={80} />
-        <Chip height={22} width={32} />
+        <DynamicLogo
+          height={18}
+          width={80}
+        />
+        <Chip
+          height={22}
+          width={32}
+        />
       </div>
       <div className="d-flex justify-content-between align-items-end">
         <div className="d-flex flex-column flex-grow-1">
           <small className="name">{account.name}</small>
           <div className="account-card-number">{account.accountNumber}</div>
         </div>
-        <MastercardLogo height={32} width={44} />
+        <MastercardLogo
+          height={32}
+          width={44}
+        />
       </div>
     </div>
   );

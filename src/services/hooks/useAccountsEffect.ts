@@ -2,7 +2,9 @@ import { useEffect } from 'react';
 
 import { API_ACCOUNT_LIST_FILTER } from '../../config/widgetConfig';
 import { useAppDispatch } from '../../store/hooks';
-import { setAccounts, setAccountsFreezed, setIsLoadingAccountList } from '../../store/slice';
+import {
+  setAccounts, setAccountsFreezed, setIsLoadingAccountList,
+} from '../../store/slice';
 import errorHandler from '../../utils/errorHandler';
 import { AccountType } from '../config';
 import { AccountRepository } from '../repositories';

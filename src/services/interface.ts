@@ -1,4 +1,6 @@
-import { AccountBaseType, AccountType, ActivityStatus } from './config';
+import {
+  AccountBaseType, AccountType, ActivityStatus,
+} from './config';
 
 export type BaseAccount = {
   id: string;
