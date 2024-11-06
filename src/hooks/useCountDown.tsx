@@ -1,5 +1,7 @@
 import {
-  useState, useEffect, useCallback,
+  useState,
+  useEffect,
+  useCallback,
 } from 'react';
 
 export default function useCountdown(value: number) {

@@ -14,7 +14,9 @@ import {
 } from '../config/widgetConfig';
 import { AccountType } from '../services/config';
 import type {
-  Account, DepositAccount, LoanAccount,
+  Account,
+  DepositAccount,
+  LoanAccount,
 } from '../services/interface';
 import { useAppSelector } from '../store/hooks';
 import { getAccountSelected, getIsLoadingAccountDetail } from '../store/selectors';

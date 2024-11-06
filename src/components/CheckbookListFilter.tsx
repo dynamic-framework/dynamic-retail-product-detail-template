@@ -1,5 +1,7 @@
 import {
-  DButton, DInputSearch, useDPortalContext,
+  DButton,
+  DInputSearch,
+  useDPortalContext,
 } from '@dynamic-framework/ui-react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';

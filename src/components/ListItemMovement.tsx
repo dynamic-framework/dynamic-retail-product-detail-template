@@ -1,6 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import {
-  DButtonIcon, DListItem, useFormatCurrency,
+  DButtonIcon,
+  DListItem,
+  useFormatCurrency,
 } from '@dynamic-framework/ui-react';
 import classNames from 'classnames';
 import { useMemo } from 'react';

@@ -4,7 +4,9 @@ import {
   useDPortalContext,
 } from '@dynamic-framework/ui-react';
 import {
-  ReactNode, useCallback, useState,
+  ReactNode,
+  useCallback,
+  useState,
 } from 'react';
 import { useTranslation } from 'react-i18next';
 

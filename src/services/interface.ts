@@ -1,5 +1,7 @@
 import {
-  AccountBaseType, AccountType, ActivityStatus,
+  AccountBaseType,
+  AccountType,
+  ActivityStatus,
 } from './config';
 
 export type BaseAccount = {

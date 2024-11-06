@@ -5,7 +5,8 @@ import { useTranslation } from 'react-i18next';
 
 import {
   CHECKBOOK_ITEM_PATH,
-  FORMAT_DATE, SITE_URL,
+  FORMAT_DATE,
+  SITE_URL,
 } from '../config/widgetConfig';
 
 type Props = {
