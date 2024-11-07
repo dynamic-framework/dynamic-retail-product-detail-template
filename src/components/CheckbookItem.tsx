@@ -24,7 +24,7 @@ Props) {
 
   return (
     <a
-      href={`${SITE_URL}/${CHECKBOOK_ITEM_PATH}${id}`}
+      href={`${SITE_URL}/${CHECKBOOK_ITEM_PATH}?id=${id}`}
       className={classNames(
         'list-group-item list-group-item-action',
         'd-flex py-2 px-lg-4 gap-4 align-items-center border-light',
