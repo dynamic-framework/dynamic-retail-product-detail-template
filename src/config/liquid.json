@@ -24,6 +24,7 @@
     "bank-statements-path": "bank-statements",
     "payments-path": "payments",
     "configure-restrictions-path": "configure-restrictions",
+    "additional-cards-path": "additional-cards",
     "new-complain-path": "new-complain",
 
     "api-path": "https://stoplight.io/mocks/modyo/dynamic/204091081",

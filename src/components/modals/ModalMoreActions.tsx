@@ -10,40 +10,48 @@ import {
   BANK_STATEMENTS_PATH,
   CASH_ADVANCE_PATH,
   CONFIGURE_RESTRICTIONS_PATH,
+  ADDITIONAL_CARDS_PATH,
   SITE_URL,
 } from '../../config/widgetConfig';
-
-const MORE_ACTIONS = [
-  {
-    text: 'modal.moreActions.bankStatements',
-    link: BANK_STATEMENTS_PATH,
-    icon: 'file-text',
-  },
-  {
-    text: 'modal.moreActions.cashAdvance',
-    link: CASH_ADVANCE_PATH,
-    icon: 'cash-coin',
-  },
-  {
-    text: 'modal.moreActions.configureRestrictions',
-    link: CONFIGURE_RESTRICTIONS_PATH,
-    icon: 'toggles',
-  },
-  {
-    text: 'modal.moreActions.managePayments',
-    link: '#',
-    icon: 'receipt',
-  },
-  {
-    text: 'modal.moreActions.changeDate',
-    link: '#',
-    icon: 'calendar-date',
-  },
-];
+import { useAppSelector } from '../../store/hooks';
+import { getAccountSelected } from '../../store/selectors';
 
 export default function ModalMoreActions() {
   const { closePortal } = useDPortalContext();
   const { t } = useTranslation();
+  const account = useAppSelector(getAccountSelected)!;
+  const MORE_ACTIONS = [
+    {
+      text: 'modal.moreActions.bankStatements',
+      link: BANK_STATEMENTS_PATH,
+      icon: 'file-text',
+    },
+    {
+      text: 'modal.moreActions.cashAdvance',
+      link: CASH_ADVANCE_PATH,
+      icon: 'cash-coin',
+    },
+    {
+      text: 'modal.moreActions.additionalCards',
+      link: `${ADDITIONAL_CARDS_PATH}?card_id=${account.id}`,
+      icon: 'credit-card-2-back',
+    },
+    {
+      text: 'modal.moreActions.configureRestrictions',
+      link: CONFIGURE_RESTRICTIONS_PATH,
+      icon: 'toggles',
+    },
+    {
+      text: 'modal.moreActions.managePayments',
+      link: '#',
+      icon: 'receipt',
+    },
+    {
+      text: 'modal.moreActions.changeDate',
+      link: '#',
+      icon: 'calendar-date',
+    },
+  ];
 
   return (
     <DModal
