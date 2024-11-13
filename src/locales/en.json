@@ -75,7 +75,8 @@
       "title": "Other actions",
       "bankStatements": "Bank statements",
       "cashAdvance": "Cash advance",
-      "additionalCards": "Additional cards",
+      "additionalCardsList": "List of additional",
+      "newAdditionalCard": "New Additional card",
       "managePayments": "Manage automatic payments",
       "changeDate": "Change your due date",
       "configureRestrictions": "Configure restrictions"

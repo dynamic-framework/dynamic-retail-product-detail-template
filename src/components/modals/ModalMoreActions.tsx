@@ -11,6 +11,7 @@ import {
   CASH_ADVANCE_PATH,
   CONFIGURE_RESTRICTIONS_PATH,
   ADDITIONAL_CARDS_PATH,
+  NEW_ADDITIONAL_CARDS_PATH,
   SITE_URL,
 } from '../../config/widgetConfig';
 import { useAppSelector } from '../../store/hooks';
@@ -32,9 +33,14 @@ export default function ModalMoreActions() {
       icon: 'cash-coin',
     },
     {
-      text: 'modal.moreActions.additionalCards',
+      text: 'modal.moreActions.additionalCardsList',
       link: `${ADDITIONAL_CARDS_PATH}?card_id=${account.id}`,
       icon: 'credit-card-2-back',
+    },
+    {
+      text: 'modal.moreActions.newAdditionalCard',
+      link: `${NEW_ADDITIONAL_CARDS_PATH}?card_id=${account.id}`,
+      icon: 'plus-circle',
     },
     {
       text: 'modal.moreActions.configureRestrictions',
