@@ -29,6 +29,7 @@ export const BANK_STATEMENTS_PATH = liquidParser.parse('{{vars.bank-statements-p
 export const CONFIGURE_RESTRICTIONS_PATH = liquidParser.parse('{{vars.configure-restrictions-path}}');
 export const ADDITIONAL_CARDS_PATH = liquidParser.parse('{{vars.additional-cards-path}}');
 export const NEW_ADDITIONAL_CARDS_PATH = liquidParser.parse('{{vars.new-additional-cards-path}}');
+export const NEW_VIRTUAL_CARDS_PATH = liquidParser.parse('{{vars.new-virtual-cards-path}}');
 
 export const NEW_COMPLAIN_PATH = liquidParser.parse('{{vars.new-complain-path}}');
 

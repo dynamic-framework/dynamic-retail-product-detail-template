@@ -26,6 +26,7 @@
     "configure-restrictions-path": "configure-restrictions",
     "additional-cards-path": "additional-cards",
     "new-additional-cards-path": "new-additional-cards",
+    "new-virtual-card-path": "new-virtual-card-path",
     "new-complain-path": "new-complain",
 
     "api-path": "https://stoplight.io/mocks/modyo/dynamic/204091081",

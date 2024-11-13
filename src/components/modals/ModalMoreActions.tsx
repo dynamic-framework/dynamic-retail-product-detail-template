@@ -12,6 +12,7 @@ import {
   CONFIGURE_RESTRICTIONS_PATH,
   ADDITIONAL_CARDS_PATH,
   NEW_ADDITIONAL_CARDS_PATH,
+  NEW_VIRTUAL_CARD_PATH,
   SITE_URL,
 } from '../../config/widgetConfig';
 import { useAppSelector } from '../../store/hooks';
@@ -40,6 +41,11 @@ export default function ModalMoreActions() {
     {
       text: 'modal.moreActions.newAdditionalCard',
       link: `${NEW_ADDITIONAL_CARDS_PATH}?card_id=${account.id}`,
+      icon: 'plus-circle',
+    },
+    {
+      text: 'modal.moreActions.newVirtualCard',
+      link: `${NEW_VIRTUAL_CARD_PATH}?card_id=${account.id}`,
       icon: 'plus-circle',
     },
     {
