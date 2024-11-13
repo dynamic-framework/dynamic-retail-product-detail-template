@@ -77,6 +77,7 @@
       "cashAdvance": "Cash advance",
       "additionalCardsList": "List of additional",
       "newAdditionalCard": "New Additional card",
+      "newVirtualCard": "Request Virtual Card",
       "managePayments": "Manage automatic payments",
       "changeDate": "Change your due date",
       "configureRestrictions": "Configure restrictions"

@@ -46,7 +46,7 @@ export default function ModalMoreActions() {
     {
       text: 'modal.moreActions.newVirtualCard',
       link: `${NEW_VIRTUAL_CARD_PATH}?card_id=${account.id}`,
-      icon: 'plus-circle',
+      icon: 'phone',
     },
     {
       text: 'modal.moreActions.configureRestrictions',
