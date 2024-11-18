@@ -78,9 +78,9 @@
       "additionalCardsList": "Listado de adicionales",
       "newAdditionalCard": "Solicitar adicional",
       "newVirtualCard": "Solicitar tarjeta virtual",
-      "managePayments": "Manage automatic payments",
-      "changeDate": "Change your due date",
-      "configureRestrictions": "Configure restrictions"
+      "managePayments": "Gestionar pagos automáticos",
+      "changeDate": "Cambia tu fecha de vencimiento",
+      "configureRestrictions": "Configurar restricciones"
     },
     "complain": {
       "title": "Complain: {value}",
