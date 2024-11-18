@@ -1,128 +1,128 @@
 {
-  "cancel": "Cancel",
+  "cancel": "Cancelar",
   "cardInfo": {
     "cvc": "CVC",
-    "cvcWillChange": "CVC will change in",
-    "seconds": "seconds",
-    "cardHolderName": "Cardholder name",
-    "cardNumber": "Card number",
-    "validUntil": "Valid until",
-    "title": "Card Information"
+    "cvcWillChange": "El CVC cambiará en",
+    "seconds": "segundos",
+    "cardHolderName": "Nombre del titular",
+    "cardNumber": "Número de tarjeta",
+    "validUntil": "Válida hasta",
+    "title": "Información de la tarjeta"
   },
   "collapse": {
     "actions": {
-      "transfer": "Transfer",
-      "payment": "Payments",
-      "makePayment": "Pay",
-      "applyCredit": "Apply for a loan",
-      "advance": "Advances",
-      "statement": "Statements",
-      "paymentPlan": "Payment schedule"
+      "transfer": "Transferencia",
+      "payment": "Pagos",
+      "makePayment": "Pagar",
+      "applyCredit": "Solicitar un préstamo",
+      "advance": "Avances",
+      "statement": "Estados de cuenta",
+      "paymentPlan": "Calendario de pagos"
     },
     "details": {
-      "availableAmount": "Total available funds",
-      "fundsOnHold": "Funds on hold",
-      "totalBalance": "Balance owed",
-      "interestRate": "Interest rate",
-      "overdraftAmount": "Overdraft amount",
-      "daysInOverdraft": "Days in overdraft",
-      "minimumPayment": "Minimum payment",
-      "paymentDate": "Payment date",
-      "totalPayment": "Total payment",
-      "availableCredit": "Available credit",
-      "cashAdvanceLimit": "Cash advance limit",
-      "balance": "Balance",
-      "nextPayment": "Next payment",
-      "nextPaymentDate": "Next payment date",
-      "paymentNumber": "Payment number",
-      "annualInterestRate": "Annual interest rate",
-      "loanRepaymentDate": "Loan repayment date",
-      "outstandingBalance": "Outstanding balance"
+      "availableAmount": "Fondos totales disponibles",
+      "fundsOnHold": "Fondos retenidos",
+      "totalBalance": "Saldo pendiente",
+      "interestRate": "Tasa de interés",
+      "overdraftAmount": "Monto de sobregiro",
+      "daysInOverdraft": "Días en sobregiro",
+      "minimumPayment": "Pago mínimo",
+      "paymentDate": "Fecha de pago",
+      "totalPayment": "Pago total",
+      "availableCredit": "Crédito disponible",
+      "cashAdvanceLimit": "Límite de avance de efectivo",
+      "balance": "Saldo",
+      "nextPayment": "Próximo pago",
+      "nextPaymentDate": "Fecha del próximo pago",
+      "paymentNumber": "Número de pago",
+      "annualInterestRate": "Tasa de interés anual",
+      "loanRepaymentDate": "Fecha de pago del préstamo",
+      "outstandingBalance": "Saldo pendiente"
     }
   },
   "tabs": {
-    "transactions": "Transactions",
-    "upcoming": "Upcoming",
-    "complains": "Complains",
-    "newTab": "New tab"
+    "transactions": "Transacciones",
+    "upcoming": "Próximos",
+    "complains": "Reclamos",
+    "newTab": "Nueva pestaña"
   },
   "filters": {
-    "search": "Search",
-    "dateRange": "Date range",
-    "amount": "Amount",
-    "type": "Type",
-    "download": "Download",
-    "filter": "Filter",
-    "filterBy": "Filter by",
-    "cancel": "Cancel"
+    "search": "Buscar",
+    "dateRange": "Rango de fechas",
+    "amount": "Monto",
+    "type": "Tipo",
+    "download": "Descargar",
+    "filter": "Filtrar",
+    "filterBy": "Filtrar por",
+    "cancel": "Cancelar"
   },
   "modal": {
     "details": {
-      "paymentDate": "Payment date",
-      "status": "Status",
-      "value": "Amount"
+      "paymentDate": "Fecha de pago",
+      "status": "Estado",
+      "value": "Monto"
     },
     "actions": {
-      "accept": "Accept"
+      "accept": "Aceptar"
     },
     "status": {
-      "completed": "Completed",
-      "rejected": "Rejected",
-      "failed": "Failed",
-      "in_progress": "In progress"
+      "completed": "Completado",
+      "rejected": "Rechazado",
+      "failed": "Fallido",
+      "in_progress": "En progreso"
     },
     "moreActions": {
-      "title": "Other actions",
-      "bankStatements": "Bank statements",
-      "cashAdvance": "Cash advance",
+      "title": "Otras acciones",
+      "bankStatements": "Estados de cuenta",
+      "cashAdvance": "Avance de efectivo",
       "additionalCardsList": "Listado de adicionales",
       "newAdditionalCard": "Solicitar adicional",
       "newVirtualCard": "Solicitar tarjeta virtual",
       "managePayments": "Gestionar pagos automáticos",
-      "changeDate": "Cambia tu fecha de vencimiento",
+      "changeDate": "Cambiar tu fecha de vencimiento",
       "configureRestrictions": "Configurar restricciones"
     },
     "complain": {
-      "title": "Complain: {value}",
-      "date": "<bld>Date of complain:</bld> {value}",
-      "amount": "<bld>Amount:</bld> {value}",
-      "trxNumber": "<bld>Number of transaction:</bld> {value}",
-      "situation": "<bld>Situation:</bld> Unrecognized",
-      "description": "<bld>Description:</bld> I don't recognize this transaction",
-      "state": "<bld>State:</bld> <cmp text='Active'></cmp>"
+      "title": "Reclamo: {value}",
+      "date": "<bld>Fecha del reclamo:</bld> {value}",
+      "amount": "<bld>Monto:</bld> {value}",
+      "trxNumber": "<bld>Número de transacción:</bld> {value}",
+      "situation": "<bld>Situación:</bld> No reconocida",
+      "description": "<bld>Descripción:</bld> No reconozco esta transacción",
+      "state": "<bld>Estado:</bld> <cmp text='Activo'></cmp>"
     }
   },
-  "complainStatus": "Active",
+  "complainStatus": "Activo",
   "modalOtp": {
-    "getCode": "Didn't you get any code?",
-    "resend": "Resend in",
-    "title": "We want to validate that it's you",
-    "sendCode": "We will send you a 6-digit code to your cell phone so you can continue with your request.",
-    "hint": "Enter the code that was sent to your associated phone number.",
-    "validate": "Validate"
+    "getCode": "¿No recibiste el código?",
+    "resend": "Reenviar en",
+    "title": "Queremos validar que eres tú",
+    "sendCode": "Te enviaremos un código de 6 dígitos a tu celular para que puedas continuar con tu solicitud.",
+    "hint": "Introduce el código enviado a tu número asociado.",
+    "validate": "Validar"
   },
   "noData": {
-    "noPayments": "You don't have any payment",
-    "noUpcomingPayments": "You don't have any upcoming payments",
-    "schedulePayment": "Schedule your first payment here",
-    "noQueryPayments": "No transactions found with the search \"{search}\""
+    "noPayments": "No tienes ningún pago",
+    "noUpcomingPayments": "No tienes próximos pagos",
+    "schedulePayment": "Programa tu primer pago aquí",
+    "noQueryPayments": "No se encontraron transacciones con la búsqueda \"{search}\""
   },
-  "freezeCard": "Freeze card",
+  "freezeCard": "Congelar tarjeta",
   "filter": {
-    "title": "Filters",
-    "amountFrom": "From",
-    "amountTo": "To",
-    "typeCredit": "Credit",
-    "typeDebit": "Debit"
+    "title": "Filtros",
+    "amountFrom": "Desde",
+    "amountTo": "Hasta",
+    "typeCredit": "Crédito",
+    "typeDebit": "Débito"
   },
   "button": {
-    "accept": "Accept",
-    "clear": "Clear",
-    "close": "Close",
-    "newComplain": "New complain"
+    "accept": "Aceptar",
+    "clear": "Limpiar",
+    "close": "Cerrar",
+    "newComplain": "Nuevo reclamo"
   },
   "card": {
-    "name": "Cardholder name",
-    "date": "Expiry date"
+    "name": "Nombre del titular",
+    "date": "Fecha de expiración"
   }
 }
