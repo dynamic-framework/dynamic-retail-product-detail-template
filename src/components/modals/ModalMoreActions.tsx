@@ -1,4 +1,8 @@
-import { DModal, useDPortalContext, DIcon } from '@dynamic-framework/ui-react';
+import {
+  DModal,
+  useDPortalContext,
+  DIcon,
+} from '@dynamic-framework/ui-react';
 import { useTranslation } from 'react-i18next';
 
 import { SITE_URL } from '../../config/widgetConfig';
