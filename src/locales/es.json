@@ -1,8 +1,5 @@
 {
   "cancel": "Cancel",
-  "search": "Search",
-  "active": "Active",
-  "inactive": "Inactive",
   "cardInfo": {
     "cvc": "CVC",
     "cvcWillChange": "CVC will change in",
@@ -47,13 +44,9 @@
     "transactions": "Transactions",
     "upcoming": "Upcoming",
     "complains": "Complains",
-    "checkbooks": "Checkbooks"
-  },
-  "checkbooks": {
-    "title": "Checkbook {id}"
+    "newTab": "New tab"
   },
   "filters": {
-    "title": "Filters",
     "search": "Search",
     "dateRange": "Date range",
     "amount": "Amount",
@@ -61,9 +54,7 @@
     "download": "Download",
     "filter": "Filter",
     "filterBy": "Filter by",
-    "cancel": "Cancel",
-    "startDate": "Start date",
-    "endDate": "End date"
+    "cancel": "Cancel"
   },
   "modal": {
     "details": {
@@ -84,6 +75,9 @@
       "title": "Other actions",
       "bankStatements": "Bank statements",
       "cashAdvance": "Cash advance",
+      "additionalCardsList": "List of additional",
+      "newAdditionalCard": "New Additional card",
+      "newVirtualCard": "Request Virtual Card",
       "managePayments": "Manage automatic payments",
       "changeDate": "Change your due date",
       "configureRestrictions": "Configure restrictions"

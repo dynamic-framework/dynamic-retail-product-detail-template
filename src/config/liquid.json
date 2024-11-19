@@ -24,6 +24,9 @@
     "bank-statements-path": "bank-statements",
     "payments-path": "payments",
     "configure-restrictions-path": "configure-restrictions",
+    "additional-cards-path": "additional-cards",
+    "new-additional-cards-path": "new-additional-cards",
+    "new-virtual-card-path": "new-virtual-card-path",
     "new-complain-path": "new-complain",
     "checkbook-item-path": "#",
 

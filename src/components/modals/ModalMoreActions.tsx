@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import {
   DModal,
   useDPortalContext,
@@ -6,44 +5,18 @@ import {
 } from '@dynamic-framework/ui-react';
 import { useTranslation } from 'react-i18next';
 
-import {
-  BANK_STATEMENTS_PATH,
-  CASH_ADVANCE_PATH,
-  CONFIGURE_RESTRICTIONS_PATH,
-  SITE_URL,
-} from '../../config/widgetConfig';
-
-const MORE_ACTIONS = [
-  {
-    text: 'modal.moreActions.bankStatements',
-    link: BANK_STATEMENTS_PATH,
-    icon: 'file-text',
-  },
-  {
-    text: 'modal.moreActions.cashAdvance',
-    link: CASH_ADVANCE_PATH,
-    icon: 'cash-coin',
-  },
-  {
-    text: 'modal.moreActions.configureRestrictions',
-    link: CONFIGURE_RESTRICTIONS_PATH,
-    icon: 'toggles',
-  },
-  {
-    text: 'modal.moreActions.managePayments',
-    link: '#',
-    icon: 'receipt',
-  },
-  {
-    text: 'modal.moreActions.changeDate',
-    link: '#',
-    icon: 'calendar-date',
-  },
-];
+import { SITE_URL } from '../../config/widgetConfig';
+import { useMoreActions } from '../../hooks/useMoreActions';
+import { useAppSelector } from '../../store/hooks';
+import { getAccountSelected } from '../../store/selectors';
 
 export default function ModalMoreActions() {
   const { closePortal } = useDPortalContext();
   const { t } = useTranslation();
+  const account = useAppSelector(getAccountSelected)!;
+
+  const getMoreActions = useMoreActions();
+  const moreActions = getMoreActions(account.id);
 
   return (
     <DModal
@@ -58,7 +31,7 @@ export default function ModalMoreActions() {
       </DModal.Header>
       <DModal.Body>
         <div className="d-flex flex-column gap-4">
-          {MORE_ACTIONS.map((action) => (
+          {moreActions.map((action) => (
             <a
               key={action.text}
               className="link link-primary d-inline-flex gap-2 text-decoration-none py-2"
