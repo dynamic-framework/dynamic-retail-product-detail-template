@@ -58,7 +58,7 @@ export default function ActivityList() {
   return (
     <>
       <ActivityListFilter activities={activities} />
-      {(activities.length === 0 || activities.length === 0) && (
+      {activities.length === 0 && (
         <div className={classnames(
           'd-flex flex-column justify-content-center align-items-center',
           'w-100 my-6 gap-6 text-gray-500',

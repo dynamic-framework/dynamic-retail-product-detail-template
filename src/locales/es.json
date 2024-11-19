@@ -1,6 +1,8 @@
 {
   "cancel": "Cancel",
   "search": "Search",
+  "active": "Active",
+  "inactive": "Inactive",
   "cardInfo": {
     "cvc": "CVC",
     "cvcWillChange": "CVC will change in",
@@ -48,7 +50,7 @@
     "checkbooks": "Checkbooks"
   },
   "checkbooks": {
-    "title": "Checkbook"
+    "title": "Checkbook {id}"
   },
   "filters": {
     "title": "Filters",

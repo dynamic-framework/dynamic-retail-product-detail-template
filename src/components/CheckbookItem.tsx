@@ -31,9 +31,7 @@ Props) {
       )}
     >
       <div className="flex-1">
-        {t('checkbooks.title')}
-        {' '}
-        {id}
+        {t('checkbooks.title', { id })}
         <small className="d-block text-gray-500">
           {DateTime.fromISO(date).toFormat(FORMAT_DATE)}
         </small>
@@ -41,7 +39,7 @@ Props) {
       <DBadge
         soft
         theme={active ? 'success' : 'danger'}
-        text={active ? 'Active' : 'Inactive'}
+        text={t(active ? 'active' : 'inactive')}
       />
       <DIcon
         icon="chevron-right"
