@@ -1,5 +1,4 @@
 import {
-  DTabContent,
   DTabs,
   DTabOption,
   DCard,
@@ -62,18 +61,18 @@ export default function ActivityContainer() {
           onChange={handlerSelected}
           className="px-0 pt-0 mb-4"
         >
-          <DTabContent tab={options[0].tab}>
+          <DTabs.Tab tab={options[0].tab}>
             <ActivityList />
-          </DTabContent>
-          <DTabContent tab={options[1].tab}>
+          </DTabs.Tab>
+          <DTabs.Tab tab={options[1].tab}>
             <ActivityListScheduled />
-          </DTabContent>
-          <DTabContent tab={options[2].tab}>
+          </DTabs.Tab>
+          <DTabs.Tab tab={options[2].tab}>
             <Complains />
-          </DTabContent>
-          <DTabContent tab={options[3].tab}>
+          </DTabs.Tab>
+          <DTabs.Tab tab={options[3].tab}>
             <Checkbooks />
-          </DTabContent>
+          </DTabs.Tab>
         </DTabs>
       </DCard.Body>
     </DCard>

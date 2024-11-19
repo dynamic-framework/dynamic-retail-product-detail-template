@@ -1,6 +1,6 @@
 import {
   DPaginator,
-  DList,
+  DListGroup,
   useDPortalContext,
 } from '@dynamic-framework/ui-react';
 import classnames from 'classnames';
@@ -73,7 +73,7 @@ export default function ActivityList() {
         </div>
 
       )}
-      <DList flush>
+      <DListGroup flush>
         {data.map((activity) => (
           <ListItemMovement
             key={`activity-${activity.id}`}
@@ -84,7 +84,7 @@ export default function ActivityList() {
             className="border-light"
           />
         ))}
-      </DList>
+      </DListGroup>
       <div className="d-flex flex-grow-1 justify-content-center py-4">
         <DPaginator
           page={currentPage}
