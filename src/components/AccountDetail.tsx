@@ -27,7 +27,7 @@ import AccountDetailLoan from './AccountDetailLoan';
 import AccountDetailSaving from './AccountDetailSaving';
 import ActionsSelectorPicker from './ActionsSelectorPicker';
 import ActionsSelectorSlider from './ActionsSelectorSlider';
-import AccountDetailLoader from './loaders/AccountDetailsLoader';
+import AccountDetailsLoader from './loaders/AccountDetailsLoader';
 
 const ACTIONS: Record<string, (accountId: Account['id']) => void> = {
   transfer: (accountId) => {
@@ -63,7 +63,7 @@ export default function AccountDetail() {
   if (loading) {
     return (
       <div className={classNames(SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) && 'px-4 pb-4 pt-8')}>
-        <AccountDetailLoader />
+        <AccountDetailsLoader />
       </div>
     );
   }
