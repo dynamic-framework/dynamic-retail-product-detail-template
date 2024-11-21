@@ -1,10 +1,11 @@
 import { DateTime } from 'luxon';
 import { useTranslation } from 'react-i18next';
 
+import { FORMAT_DATE } from '../config/widgetConfig';
 import useCVC from '../hooks/useCVC';
 
 import ItemCardInfo from './ItemCardInfo';
-import CircularLoaderWidthTimer from './loaders/CircularLoaderWithTimer';
+import CircularLoaderWithTimer from './loaders/CircularLoaderWitTimer';
 
 const DURATION = 20;
 
@@ -20,17 +21,19 @@ export default function ItemCardInfoCVC({ expiryDate }: Props) {
     <>
       <ItemCardInfo
         name={t('cardInfo.validUntil')}
-        value={expiryDate ? DateTime.fromISO(expiryDate).toFormat('MM/yy') : '-'}
+        value={expiryDate ? DateTime.fromISO(expiryDate).toFormat(FORMAT_DATE) : '-'}
       />
-      <ItemCardInfo name={t('cardInfo.cvc')} value={cvc.cvc} />
+      <ItemCardInfo
+        name={t('cardInfo.cvc')}
+        value={cvc.cvc}
+      />
       <div className="d-flex gap-2">
-        <CircularLoaderWidthTimer size={20} duration={DURATION} />
+        <CircularLoaderWithTimer
+          size={20}
+          duration={DURATION}
+        />
         <p className="text-gray-500">
-          {t('cardInfo.cvcWillChange')}
-          {' '}
-          {cvc.secondsLeft}
-          {' '}
-          {t('cardInfo.seconds')}
+          {`${t('cardInfo.cvcWillChange')} ${cvc.secondsLeft} ${t('cardInfo.seconds')}`}
         </p>
       </div>
     </>
