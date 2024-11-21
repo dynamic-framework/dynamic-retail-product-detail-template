@@ -10,7 +10,10 @@ export default function CircularLoaderWidthTimer(
   }: Props,
 ) {
   return (
-    <div className="timer" style={{ '--duration': duration, '--size': size } as React.CSSProperties}>
+    <div
+      className="timer"
+      style={{ '--duration': duration, '--size': size } as React.CSSProperties}
+    >
       <div className="mask" />
     </div>
   );

@@ -127,4 +127,20 @@ export type ApiLoanActivity = {
   valueDate: string;
 };
 
+export type ApiCheckbook = {
+  id: string;
+  date: string;
+  active: boolean
+};
+
+export type ApiResponsePaginatedWrapped<T> = {
+  metadata: {
+    page: number;
+    rows: number;
+    total_pages: number;
+    total_rows: number;
+  },
+  content: T[];
+};
+
 export type ApiActivity = ApiDepositActivity | ApiLoanActivity;

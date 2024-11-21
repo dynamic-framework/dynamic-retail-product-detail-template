@@ -1,13 +1,22 @@
-import { DTabContent, DTabs, DTabOption } from '@dynamic-framework/ui-react';
+import {
+  DTabs,
+  DTabOption,
+  DCard,
+} from '@dynamic-framework/ui-react';
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { API_ACCOUNT_LIST_FILTER } from '../config/widgetConfig';
 import { useAppSelector } from '../store/hooks';
 import { getIsNotReady } from '../store/selectors';
 
 import ActivityList from './ActivityList';
 import ActivityListScheduled from './ActivityListScheduled';
+import Checkbooks from './Checkbooks';
+import Complains from './Complains';
 import AccountListLoader from './loaders/AccountListLoader';
+
+const isLoan = API_ACCOUNT_LIST_FILTER === 'loan';
 
 export default function ActivityContainer() {
   const { t } = useTranslation();
@@ -16,9 +25,18 @@ export default function ActivityContainer() {
   const options: DTabOption[] = useMemo(() => [
     { label: t('tabs.transactions'), tab: 'transactions' },
     { label: t('tabs.upcoming'), tab: 'upcoming' },
+    { label: t('tabs.complains'), tab: 'complains' },
+    { label: t('tabs.checkbooks'), tab: 'checkbooks' },
   ], [t]);
 
-  const [container, setContainer] = useState(options[0]);
+  const filteredOptions = useMemo(() => {
+    if (isLoan) {
+      return options.filter(({ tab }) => tab !== 'complains' && tab !== 'checkbooks');
+    }
+    return options;
+  }, [options]);
+
+  const [container, setContainer] = useState(filteredOptions[0]);
 
   const handlerSelected = (option: DTabOption) => {
     setContainer(option);
@@ -26,27 +44,37 @@ export default function ActivityContainer() {
 
   if (isNotReady) {
     return (
-      <div className="bg-white rounded p-4 pt-8">
-        <br />
-        <AccountListLoader />
-      </div>
+      <DCard>
+        <DCard.Body>
+          <AccountListLoader />
+        </DCard.Body>
+      </DCard>
     );
   }
 
   return (
-    <div className="d-block py-0 px-4 w-100 bg-white rounded">
-      <DTabs
-        options={options}
-        defaultSelected={container.tab}
-        onChange={handlerSelected}
-      >
-        <DTabContent tab={options[0].tab}>
-          <ActivityList />
-        </DTabContent>
-        <DTabContent tab={options[1].tab}>
-          <ActivityListScheduled />
-        </DTabContent>
-      </DTabs>
-    </div>
+    <DCard>
+      <DCard.Body>
+        <DTabs
+          options={filteredOptions}
+          defaultSelected={container.tab}
+          onChange={handlerSelected}
+          className="px-0 pt-0 mb-4"
+        >
+          <DTabs.Tab tab={options[0].tab}>
+            <ActivityList />
+          </DTabs.Tab>
+          <DTabs.Tab tab={options[1].tab}>
+            <ActivityListScheduled />
+          </DTabs.Tab>
+          <DTabs.Tab tab={options[2].tab}>
+            <Complains />
+          </DTabs.Tab>
+          <DTabs.Tab tab={options[3].tab}>
+            <Checkbooks />
+          </DTabs.Tab>
+        </DTabs>
+      </DCard.Body>
+    </DCard>
   );
 }

@@ -38,7 +38,11 @@ export default function OffcanvasAdvancedFilters() {
         showCloseButton
       >
         <div className="d-flex align-items-center gap-2">
-          <DIcon icon="filter" size="24px" className="p-2" />
+          <DIcon
+            icon="filter"
+            size="24px"
+            className="p-2"
+          />
           <h5 className="fw-bold">{t('filter.title')}</h5>
         </div>
       </DOffcanvasHeader>

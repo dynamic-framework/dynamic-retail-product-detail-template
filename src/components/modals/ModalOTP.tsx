@@ -47,7 +47,10 @@ export default function ModalOTP(
         <div className="text-center text-gray-500 d-block">
           {t('modalOtp.getCode')}
           {' '}
-          <CountDownState text={t('modalOtp.resend')} value={20} />
+          <CountDownState
+            text={t('modalOtp.resend')}
+            value={20}
+          />
         </div>
       </DModal.Body>
       <DModal.Footer>

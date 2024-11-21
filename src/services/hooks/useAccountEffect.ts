@@ -8,6 +8,7 @@ import {
 } from '../../store/slice';
 import errorHandler from '../../utils/errorHandler';
 import { AccountRepository } from '../repositories';
+import ApiError from '../utils/ApiError';
 import getAccountIdQueryString from '../utils/getAccountIdQueryString';
 import setAccountIdQueryString from '../utils/setAccountIdQueryString';
 
@@ -38,6 +39,8 @@ export default function useAccountEffect() {
           dispatch(setAccountSelected(completeAccount));
           dispatch(setIsLoadingAccountDetail(false));
         } catch (error) {
+          if ((error as ApiError).name === 'CanceledError') return;
+
           errorHandler(error);
         }
       })();

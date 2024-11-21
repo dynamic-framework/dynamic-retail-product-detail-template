@@ -20,17 +20,29 @@ export default function ModalCardInformation() {
   const account = useAppSelector(getAccountSelected) as Account;
 
   return (
-    <DModal name="modalCardInformation" centered staticBackdrop size="lg">
-      <DModal.Header onClose={closePortal} showCloseButton>
+    <DModal
+      name="modalCardInformation"
+      centered
+      staticBackdrop
+      size="lg"
+    >
+      <DModal.Header
+        onClose={closePortal}
+        showCloseButton
+      >
         <h5 className="fw-bold">{t('cardInfo.title')}</h5>
       </DModal.Header>
       <DModal.Body className="p-8">
         <div className="d-block d-lg-flex gap-4 align-items-start">
-          <div className="mb-8 rounded bg-gray-100 p-10 order-1">
+          <div className="mb-8 rounded bg-secondary-25 p-4 col order-1">
             <CardItem account={account} />
             <div className="text-center mt-2">
               <small className="d-inline-flex gap-2 align-items-center">
-                <DIcon icon="circle-fill" theme="success" size="8px" />
+                <DIcon
+                  icon="circle-fill"
+                  theme="success"
+                  size="8px"
+                />
                 <span>Active</span>
               </small>
             </div>

@@ -1,4 +1,8 @@
-import { useState, useEffect, useCallback } from 'react';
+import {
+  useState,
+  useEffect,
+  useCallback,
+} from 'react';
 
 export default function useCountdown(value: number) {
   const [secondsLeft, setSecondsLeft] = useState(value);

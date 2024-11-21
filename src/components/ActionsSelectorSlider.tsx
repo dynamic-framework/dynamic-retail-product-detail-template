@@ -6,6 +6,7 @@ import {
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { PRODUCT_BLOCK_PATH, SITE_URL } from '../config/widgetConfig';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { getAccountSelected, getAccountsFreezed } from '../store/selectors';
 import { setAccountsFreezed } from '../store/slice';
@@ -58,7 +59,7 @@ export default function ItemActions(
           checked={accountsFreezed[account.id]}
         />
       </div>
-      <hr className="m-0" />
+      <hr className="m-0 border-light" />
       <div className="d-flex justify-content-between flex-wrap gap-4">
         <ActionsSelectorButton
           text={text}
@@ -73,7 +74,7 @@ export default function ItemActions(
         <ActionsSelectorButton
           text="Block"
           icon="ban"
-          action={() => {}}
+          url={`${SITE_URL}/${PRODUCT_BLOCK_PATH}`}
         />
         <ActionsSelectorButton
           text="More actions"

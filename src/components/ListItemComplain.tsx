@@ -2,33 +2,34 @@
 import {
   DButtonIcon,
   DListItem,
+  useDPortalContext,
   useFormatCurrency,
 } from '@dynamic-framework/ui-react';
 import classNames from 'classnames';
+import { DateTime } from 'luxon';
 import { useMemo } from 'react';
 import type { ComponentProps } from 'react';
 
+import { FORMAT_DATE_FULL } from '../config/widgetConfig';
+import { Activity } from '../services/interface';
+
 type Props = Omit<ComponentProps<typeof DListItem>, 'children'> & {
-  description: string;
-  date: string;
-  amount: number;
-  openModal?: () => void;
+  activity: Activity;
 };
 
-export default function ListItemMovement(
+export default function ListItemComplain(
   {
-    description,
-    date,
-    amount,
+    activity,
     style,
-    openModal,
+    className,
     ...props
   }: Props,
 ) {
   const { format } = useFormatCurrency();
+  const { openPortal } = useDPortalContext();
   const value = useMemo(() => {
-    const valueFormatted = format(amount);
-    if (amount > 0) {
+    const valueFormatted = format(activity.amount);
+    if (activity.amount > 0) {
       return {
         theme: 'text-success',
         valueFormatted,
@@ -38,24 +39,30 @@ export default function ListItemMovement(
       theme: 'text-gray-500',
       valueFormatted,
     };
-  }, [format, amount]);
+  }, [format, activity.amount]);
 
   return (
-    <DListItem {...props}>
+    <DListItem
+      {...props}
+      className="border-light py-2 px-lg-4"
+    >
       <div className="d-flex align-items-center py-1 gap-4">
         <div className="d-flex flex-column">
-          <span className="transaction-name fs-6">
-            {description}
+          <span className="fs-body-tiny">
+            {activity.id}
           </span>
-          <span className="small text-gray-700">
-            {date}
+          <span className="d-block text-capitalize">
+            {activity.name}
           </span>
+          <small>
+            {DateTime.fromISO(activity.date).toFormat(FORMAT_DATE_FULL)}
+          </small>
         </div>
         <span className={classNames('fs-6 ms-auto', value.theme)}>
           {value.valueFormatted}
         </span>
         <DButtonIcon
-          onClick={openModal}
+          onClick={() => openPortal('modalComplainDetail', { activity })}
           icon="eye"
           variant="link"
         />

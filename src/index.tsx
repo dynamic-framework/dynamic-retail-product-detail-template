@@ -9,9 +9,11 @@ import './config/i18nConfig';
 import App from './App';
 import ModalActivityDetail from './components/modals/ModalActivityDetail';
 import ModalCardInformation from './components/modals/ModalCardInformation';
+import ModalComplainDetail from './components/modals/ModalComplainDetail';
 import ModalMoreActions from './components/modals/ModalMoreActions';
 import ModalOTP from './components/modals/ModalOTP';
 import OffcanvasAdvancedFilters from './components/offcanvas/OffcanvasAdvancedFilters';
+import OffcanvasCheckbooksFilters from './components/offcanvas/OffcanvasCheckbooksFilters';
 import type { PortalAvailablePayload } from './interface';
 import reportWebVitals from './reportWebVitals';
 import store from './store/store';
@@ -28,8 +30,10 @@ root.render(
         availablePortals={{
           modalOTP: ModalOTP,
           modalCardInformation: ModalCardInformation,
+          modalComplainDetail: ModalComplainDetail,
           modalActivityDetail: ModalActivityDetail,
           offcanvasAdvancedFilters: OffcanvasAdvancedFilters,
+          offcanvasCheckbooksFilters: OffcanvasCheckbooksFilters,
           modalMoreActions: ModalMoreActions,
         }}
       >

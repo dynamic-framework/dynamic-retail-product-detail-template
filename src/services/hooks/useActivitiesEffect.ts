@@ -6,6 +6,7 @@ import { setActivities } from '../../store/slice';
 import errorHandler from '../../utils/errorHandler';
 import type { Account } from '../interface';
 import { ActivityRepository } from '../repositories';
+import ApiError from '../utils/ApiError';
 
 export default function useActivitiesEffect(accountBaseType: Account['baseType'], accountId: Account['id']) {
   const [loading, setLoading] = useState(false);
@@ -23,6 +24,8 @@ export default function useActivitiesEffect(accountBaseType: Account['baseType']
         dispatch(setActivities(data));
         setLoading(false);
       } catch (error) {
+        if ((error as ApiError).name === 'CanceledError') return;
+
         errorHandler(error);
       }
     })();
