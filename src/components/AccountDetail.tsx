@@ -13,7 +13,11 @@ import {
   TRANSFER_PATH,
 } from '../config/widgetConfig';
 import { AccountType } from '../services/config';
-import type { Account, DepositAccount, LoanAccount } from '../services/interface';
+import type {
+  Account,
+  DepositAccount,
+  LoanAccount,
+} from '../services/interface';
 import { useAppSelector } from '../store/hooks';
 import { getAccountSelected, getIsLoadingAccountDetail } from '../store/selectors';
 
@@ -23,7 +27,7 @@ import AccountDetailLoan from './AccountDetailLoan';
 import AccountDetailSaving from './AccountDetailSaving';
 import ActionsSelectorPicker from './ActionsSelectorPicker';
 import ActionsSelectorSlider from './ActionsSelectorSlider';
-import AccountDetailLoader from './loaders/AccountDetailsLoader';
+import AccountDetailsLoader from './loaders/AccountDetailsLoader';
 
 const ACTIONS: Record<string, (accountId: Account['id']) => void> = {
   transfer: (accountId) => {
@@ -59,7 +63,7 @@ export default function AccountDetail() {
   if (loading) {
     return (
       <div className={classNames(SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) && 'px-4 pb-4 pt-8')}>
-        <AccountDetailLoader />
+        <AccountDetailsLoader />
       </div>
     );
   }
@@ -73,7 +77,6 @@ export default function AccountDetail() {
       {account?.type === AccountType.Saving && (
         <>
           <AccountDetailSaving
-            className="d-none d-lg-block"
             account={account as DepositAccount}
           />
           <ActionsSelectorSlider
@@ -86,7 +89,6 @@ export default function AccountDetail() {
       {account?.type === AccountType.Checking && (
         <>
           <AccountDetailChecking
-            className="d-none d-lg-block"
             account={account as DepositAccount}
           />
           <ActionsSelectorSlider
@@ -99,7 +101,6 @@ export default function AccountDetail() {
       {account?.type === AccountType.CreditCard && (
         <>
           <AccountDetailCreditCard
-            className="d-none d-lg-block"
             account={account as LoanAccount}
           />
           <ActionsSelectorSlider

@@ -11,6 +11,9 @@ export type WidgetState = {
   activities: Array<Activity>;
   filterActivities: {
     query: string;
+  },
+  filterCheckbooks: {
+    query: string;
   }
 };
 
@@ -22,6 +25,9 @@ const initialState: WidgetState = {
   isLoadingAccountDetail: false,
   activities: [],
   filterActivities: {
+    query: '',
+  },
+  filterCheckbooks: {
     query: '',
   },
 } as WidgetState;
@@ -51,6 +57,9 @@ const slice = createSlice({
     setQueryFilterActivities(state, action: PayloadAction<string>) {
       state.filterActivities.query = action.payload;
     },
+    setQueryFilterCheckbook(state, action: PayloadAction<string>) {
+      state.filterCheckbooks.query = action.payload;
+    },
   },
 });
 
@@ -62,5 +71,6 @@ export const {
   setActivities,
   setQueryFilterActivities,
   setAccountsFreezed,
+  setQueryFilterCheckbook,
 } = slice.actions;
 export default slice.reducer;

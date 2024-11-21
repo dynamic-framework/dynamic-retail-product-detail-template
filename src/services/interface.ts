@@ -1,4 +1,8 @@
-import { AccountBaseType, AccountType, ActivityStatus } from './config';
+import {
+  AccountBaseType,
+  AccountType,
+  ActivityStatus,
+} from './config';
 
 export type BaseAccount = {
   id: string;
@@ -41,4 +45,10 @@ export type Activity = {
   date: string;
   amount: number;
   status: ActivityStatus;
+};
+
+export type Checkbook = {
+  id: string;
+  date: string;
+  active: boolean
 };

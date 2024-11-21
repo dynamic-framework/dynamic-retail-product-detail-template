@@ -3,7 +3,11 @@ import {
   DInputSearch,
   useDPortalContext,
 } from '@dynamic-framework/ui-react';
-import { ReactNode, useCallback, useState } from 'react';
+import {
+  ReactNode,
+  useCallback,
+  useState,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 
 import type { Activity } from '../services/interface';
@@ -38,7 +42,7 @@ export function ActivityListFilter(
       <div className="d-flex d-lg-none align-items-center pb-2 ps-1">
         <p className="text-gray-600 mb-0">{t('filters.filterBy')}</p>
       </div>
-      <div className="d-flex align-items-center gap-4">
+      <div className="d-flex align-items-stretch gap-6 mb-4">
         <DInputSearch
           id="inputSearch"
           value={inputQuery}

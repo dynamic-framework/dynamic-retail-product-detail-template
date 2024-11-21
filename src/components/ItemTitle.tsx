@@ -8,7 +8,7 @@ type Props = {
 
 export default function ItemTitle({ text, value, freeze }: Props) {
   return (
-    <div className="d-flex flex-column align-items-lg-center mb-3 my-lg-4">
+    <div className="d-flex flex-column align-items-center mb-3 my-lg-4">
       <small className="d-inline-flex gap-2 align-items-center">
         <DIcon
           icon="circle-fill"

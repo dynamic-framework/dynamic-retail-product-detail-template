@@ -1,5 +1,4 @@
 import {
-  DTabContent,
   DTabs,
   DTabOption,
   DCard,
@@ -13,6 +12,7 @@ import { getIsNotReady } from '../store/selectors';
 
 import ActivityList from './ActivityList';
 import ActivityListScheduled from './ActivityListScheduled';
+import Checkbooks from './Checkbooks';
 import Complains from './Complains';
 import AccountListLoader from './loaders/AccountListLoader';
 
@@ -26,12 +26,12 @@ export default function ActivityContainer() {
     { label: t('tabs.transactions'), tab: 'transactions' },
     { label: t('tabs.upcoming'), tab: 'upcoming' },
     { label: t('tabs.complains'), tab: 'complains' },
-    { label: t('tabs.newTab'), tab: 'newTab' },
+    { label: t('tabs.checkbooks'), tab: 'checkbooks' },
   ], [t]);
 
   const filteredOptions = useMemo(() => {
     if (isLoan) {
-      return options.filter(({ tab }) => tab !== 'complains');
+      return options.filter(({ tab }) => tab !== 'complains' && tab !== 'checkbooks');
     }
     return options;
   }, [options]);
@@ -59,20 +59,20 @@ export default function ActivityContainer() {
           options={filteredOptions}
           defaultSelected={container.tab}
           onChange={handlerSelected}
-          className="px-0 pt-0"
+          className="px-0 pt-0 mb-4"
         >
-          <DTabContent tab={options[0].tab}>
+          <DTabs.Tab tab={options[0].tab}>
             <ActivityList />
-          </DTabContent>
-          <DTabContent tab={options[1].tab}>
+          </DTabs.Tab>
+          <DTabs.Tab tab={options[1].tab}>
             <ActivityListScheduled />
-          </DTabContent>
-          <DTabContent tab={options[2].tab}>
+          </DTabs.Tab>
+          <DTabs.Tab tab={options[2].tab}>
             <Complains />
-          </DTabContent>
-          <DTabContent tab={options[3].tab}>
-            <p>New tab</p>
-          </DTabContent>
+          </DTabs.Tab>
+          <DTabs.Tab tab={options[3].tab}>
+            <Checkbooks />
+          </DTabs.Tab>
         </DTabs>
       </DCard.Body>
     </DCard>

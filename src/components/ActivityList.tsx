@@ -1,6 +1,6 @@
 import {
   DPaginator,
-  DList,
+  DListGroup,
   useDPortalContext,
 } from '@dynamic-framework/ui-react';
 import classnames from 'classnames';
@@ -56,49 +56,43 @@ export default function ActivityList() {
   }
 
   return (
-    <div className="row overflow-hidden">
-      <div className="col-12 my-4">
-        <ActivityListFilter activities={activities} />
-      </div>
-      <div className="col-12 p-0">
-        {(activities.length === 0 || activities.length === 0) && (
-          <div className={classnames(
-            'd-flex flex-column justify-content-center align-items-center',
-            'w-100 my-6 gap-6 text-gray-500',
-          )}
-          >
-            <span>{emptyTransactionsText}</span>
-            <img
-              className="no-transactions"
-              src="https://cloud.modyocdn.com/uploads/c49dfe12-4532-42a3-9dd7-2a07ce0bd82b/original/newCalendar.png"
-              alt="Empty transactions"
-            />
-          </div>
-
+    <>
+      <ActivityListFilter activities={activities} />
+      {activities.length === 0 && (
+        <div className={classnames(
+          'd-flex flex-column justify-content-center align-items-center',
+          'w-100 my-6 gap-6 text-gray-500',
         )}
-        <div className="px-4">
-          <DList flush>
-            {data.map((activity) => (
-              <ListItemMovement
-                key={`activity-${activity.id}`}
-                openModal={() => openActivityDetail(activity)}
-                amount={activity.amount}
-                date={DateTime.fromISO(activity.date).toFormat(FORMAT_DATE_FULL)}
-                description={activity.name}
-                className="border-light"
-              />
-            ))}
-          </DList>
-          <div className="d-flex flex-grow-1 justify-content-center py-4">
-            <DPaginator
-              page={currentPage}
-              total={totalPages}
-              onPageChange={(page: number) => callback(page)}
-              maxWidth={375}
-            />
-          </div>
+        >
+          <span>{emptyTransactionsText}</span>
+          <img
+            className="no-transactions"
+            src="https://cloud.modyocdn.com/uploads/c49dfe12-4532-42a3-9dd7-2a07ce0bd82b/original/newCalendar.png"
+            alt="Empty transactions"
+          />
         </div>
+
+      )}
+      <DListGroup flush>
+        {data.map((activity) => (
+          <ListItemMovement
+            key={`activity-${activity.id}`}
+            openModal={() => openActivityDetail(activity)}
+            amount={activity.amount}
+            date={DateTime.fromISO(activity.date).toFormat(FORMAT_DATE_FULL)}
+            description={activity.name}
+            className="border-light"
+          />
+        ))}
+      </DListGroup>
+      <div className="d-flex flex-grow-1 justify-content-center py-4">
+        <DPaginator
+          page={currentPage}
+          total={totalPages}
+          onPageChange={(page: number) => callback(page)}
+          maxWidth={375}
+        />
       </div>
-    </div>
+    </>
   );
 }

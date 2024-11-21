@@ -1,5 +1,8 @@
 {
   "cancel": "Cancel",
+  "search": "Search",
+  "active": "Active",
+  "inactive": "Inactive",
   "cardInfo": {
     "cvc": "CVC",
     "cvcWillChange": "CVC will change in",
@@ -44,9 +47,13 @@
     "transactions": "Transactions",
     "upcoming": "Upcoming",
     "complains": "Complains",
-    "newTab": "New tab"
+    "checkbooks": "Checkbooks"
+  },
+  "checkbooks": {
+    "title": "Checkbook {id}"
   },
   "filters": {
+    "title": "Filters",
     "search": "Search",
     "dateRange": "Date range",
     "amount": "Amount",
@@ -54,7 +61,9 @@
     "download": "Download",
     "filter": "Filter",
     "filterBy": "Filter by",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "startDate": "Start date",
+    "endDate": "End date"
   },
   "modal": {
     "details": {
