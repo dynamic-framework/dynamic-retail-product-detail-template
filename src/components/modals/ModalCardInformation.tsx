@@ -5,26 +5,23 @@ import {
 } from '@dynamic-framework/ui-react';
 import { useTranslation } from 'react-i18next';
 
-import useCVC from '../../hooks/useCVC';
+import { API_ACCOUNT_LIST_FILTER } from '../../config/widgetConfig';
 import { Account } from '../../services/interface';
 import { useAppSelector } from '../../store/hooks';
 import { getAccountSelected } from '../../store/selectors';
 import CardItem from '../CardItem';
 import ItemCardInfo from '../ItemCardInfo';
-import CircularLoaderWidthTimer from '../loaders/CircularLoaderWithTimer';
+import ItemCardInfoCVC from '../ItemCardInfoCVC';
 import NumberCardInfo from '../NumberCardInfo';
-
-const DURATION = 20;
 
 export default function ModalCardInformation() {
   const { t } = useTranslation();
   const { closePortal } = useDPortalContext();
   const account = useAppSelector(getAccountSelected) as Account;
-  const cvc = useCVC(DURATION);
 
   return (
     <DModal
-      name="modalOTP"
+      name="modalCardInformation"
       centered
       staticBackdrop
       size="lg"
@@ -59,25 +56,7 @@ export default function ModalCardInformation() {
               name={t('cardInfo.cardNumber')}
               value={<NumberCardInfo cardNumber={account.accountNumber} />}
             />
-            <ItemCardInfo
-              name={t('cardInfo.validUntil')}
-              value={account?.accountNumber}
-            />
-            <ItemCardInfo
-              name={t('cardInfo.cvc')}
-              value={cvc.cvc}
-            />
-            <div className="d-flex gap-2">
-              <CircularLoaderWidthTimer
-                size={20}
-                duration={DURATION}
-              />
-              <p className="text-gray-500">
-                {`${t('cardInfo.cvcWillChange')} ${cvc.secondsLeft} ${t(
-                  'cardInfo.seconds',
-                )}`}
-              </p>
-            </div>
+            {API_ACCOUNT_LIST_FILTER === 'credit-card' && <ItemCardInfoCVC expiryDate={account.expiryDate} />}
           </div>
         </div>
       </DModal.Body>

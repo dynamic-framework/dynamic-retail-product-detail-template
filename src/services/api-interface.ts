@@ -29,6 +29,7 @@ export type ApiAccount = {
   accountNumber: string;
   freeze: boolean;
   type: ApiAccountType;
+  expiryDate: string;
   accountType: ApiAccountAccountType;
   accountingBalance: number;
   availableBalance: number;

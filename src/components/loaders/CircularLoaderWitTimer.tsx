@@ -3,7 +3,7 @@ type Props = {
   size?: number;
 };
 
-export default function CountdownCircleTimer(
+export default function CircularLoaderWithTimer(
   {
     duration = 10,
     size = 20,
