@@ -14,7 +14,7 @@ type Props = {
 };
 
 export default function ItemCardInfoCVC({ expiryDate }: Props) {
-  const cvc = useCVC(DURATION);
+  const { cvc, secondsLeft } = useCVC(DURATION);
   const { t } = useTranslation();
 
   return (
@@ -25,7 +25,7 @@ export default function ItemCardInfoCVC({ expiryDate }: Props) {
       />
       <ItemCardInfo
         name={t('cardInfo.cvc')}
-        value={cvc.cvc}
+        value={cvc}
       />
       <div className="d-flex gap-2">
         <CircularLoaderWithTimer
@@ -33,7 +33,7 @@ export default function ItemCardInfoCVC({ expiryDate }: Props) {
           duration={DURATION}
         />
         <p className="text-gray-500">
-          {`${t('cardInfo.cvcWillChange')} ${cvc.secondsLeft} ${t('cardInfo.seconds')}`}
+          {t('cardInfo.cvcWillChange', { value: secondsLeft })}
         </p>
       </div>
     </>

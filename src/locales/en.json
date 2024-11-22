@@ -5,8 +5,7 @@
   "inactive": "Inactive",
   "cardInfo": {
     "cvc": "CVC",
-    "cvcWillChange": "CVC will change in",
-    "seconds": "seconds",
+    "cvcWillChange": "CVC will change in {value} seconds",
     "cardHolderName": "Cardholder name",
     "cardNumber": "Card number",
     "validUntil": "Valid until",
