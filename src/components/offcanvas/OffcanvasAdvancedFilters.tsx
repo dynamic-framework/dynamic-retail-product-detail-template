@@ -20,6 +20,8 @@ export default function OffcanvasAdvancedFilters() {
   const { closePortal } = useDPortalContext();
   const [startDate, setStartDate] = useState<string | null>(null);
   const [endDate, setEndDate] = useState<string | null>(null);
+  const [fromAmount, setFromAmount] = useState<number | undefined>(0);
+  const [toAmount, setToAmount] = useState<number | undefined>(0);
 
   const onChangeDate = useCallback((value: Date | [Date | null, Date | null] | null) => {
     const [newStartDate, newEndDate] = value as Array<Date>;
@@ -50,6 +52,7 @@ export default function OffcanvasAdvancedFilters() {
         <div className="d-flex flex-column gap-6 pt-4">
           <DDatePicker<never, true>
             onChange={onChangeDate}
+            placeholder={t('filters.dateRange')}
             selectsRange
             {...startDate && {
               selected: DateTime.fromISO(startDate).toJSDate(),
@@ -66,13 +69,15 @@ export default function OffcanvasAdvancedFilters() {
           <div className="d-flex gap-6">
             <DInputCurrency
               id="from"
+              value={fromAmount}
               label={t('filter.amountFrom')}
-              onChange={() => { }}
+              onChange={(newAmount) => setFromAmount(newAmount)}
             />
             <DInputCurrency
               id="to"
+              value={toAmount}
               label={t('filter.amountTo')}
-              onChange={() => { }}
+              onChange={(newAmount) => setToAmount(newAmount)}
             />
           </div>
           <hr className="my-0" />
