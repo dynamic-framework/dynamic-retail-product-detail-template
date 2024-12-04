@@ -16,7 +16,8 @@ import Checkbooks from './Checkbooks';
 import Complains from './Complains';
 import AccountListLoader from './loaders/AccountListLoader';
 
-const isLoan = API_ACCOUNT_LIST_FILTER === 'loan';
+const IS_LOAN = API_ACCOUNT_LIST_FILTER === 'loan';
+const IS_CHECKING = API_ACCOUNT_LIST_FILTER === 'checking';
 
 export default function ActivityContainer() {
   const { t } = useTranslation();
@@ -30,8 +31,11 @@ export default function ActivityContainer() {
   ], [t]);
 
   const filteredOptions = useMemo(() => {
-    if (isLoan) {
+    if (IS_LOAN) {
       return options.filter(({ tab }) => tab !== 'complains' && tab !== 'checkbooks');
+    }
+    if (!IS_CHECKING) {
+      return options.filter(({ tab }) => tab !== 'checkbooks');
     }
     return options;
   }, [options]);
