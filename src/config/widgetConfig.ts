@@ -4,9 +4,8 @@ export const ICONS = {
   pay: 'credit-card',
   transfer: 'send',
   paymentHistory: 'file-text',
-  applyCredit: 'currency-dollar',
   advance: 'wallet2',
-  simulate: 'file-earmark-bar-graph',
+  simulate: 'currency-dollar',
 };
 
 export const SITE_LANG = liquidParser.parse('{{site.language}}');

@@ -39,9 +39,6 @@ const ACTIONS: Record<string, (accountId: Account['id']) => void> = {
   payments: () => {
     window.location.href = `${SITE_URL}/${PAYMENTS_PATH}`;
   },
-  applyCredit: () => {
-    window.location.href = `${SITE_URL}/${LOAN_APPLICATION_PATH}`;
-  },
   simulate: () => {
     window.location.href = `${SITE_URL}/${LOAN_APPLICATION_PATH}`;
   },
