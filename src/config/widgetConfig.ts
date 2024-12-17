@@ -3,10 +3,10 @@ import liquidParser from '../utils/liquidParser';
 export const ICONS = {
   pay: 'credit-card',
   transfer: 'send',
-  statement: 'file-text',
+  paymentHistory: 'file-text',
   applyCredit: 'currency-dollar',
   advance: 'wallet2',
-  paymentPlan: 'file-earmark-bar-graph',
+  simulate: 'file-earmark-bar-graph',
 };
 
 export const SITE_LANG = liquidParser.parse('{{site.language}}');

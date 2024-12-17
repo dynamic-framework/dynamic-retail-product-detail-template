@@ -18,8 +18,8 @@
       "makePayment": "Pay",
       "applyCredit": "Apply for a loan",
       "advance": "Advances",
-      "statement": "Statements",
-      "paymentPlan": "Payment schedule"
+      "paymentHistory": "Payment history",
+      "simulate": "Simulate new credit"
     },
     "details": {
       "availableAmount": "Total available funds",

@@ -42,8 +42,10 @@ const ACTIONS: Record<string, (accountId: Account['id']) => void> = {
   applyCredit: () => {
     window.location.href = `${SITE_URL}/${LOAN_APPLICATION_PATH}`;
   },
-  paymentPlan: () => { },
-  statement: () => { },
+  simulate: () => {
+    window.location.href = `${SITE_URL}/${LOAN_APPLICATION_PATH}`;
+  },
+  paymentHistory: () => { },
   advance: () => { },
 };
 
@@ -117,12 +119,12 @@ export default function AccountDetail() {
             primaryText={t('collapse.actions.makePayment')}
             primaryIcon={ICONS.pay}
             primaryAction={() => action('pay')}
-            secondaryText={t('collapse.actions.statement')}
-            secondaryIcon={ICONS.statement}
-            secondaryAction={() => action('statement')}
-            tertiaryText={t('collapse.actions.paymentPlan')}
-            tertiaryIcon={ICONS.paymentPlan}
-            tertiaryAction={() => action('paymentPlan')}
+            secondaryText={t('collapse.actions.paymentHistory')}
+            secondaryIcon={ICONS.paymentHistory}
+            secondaryAction={() => action('paymentHistory')}
+            tertiaryText={t('collapse.actions.simulate')}
+            tertiaryIcon={ICONS.simulate}
+            tertiaryAction={() => action('simulate')}
           />
         </>
       )}
