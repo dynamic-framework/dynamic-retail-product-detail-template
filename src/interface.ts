@@ -4,7 +4,7 @@ export type PortalAvailablePayload = {
   modalActivityDetail: {
     activity: Activity;
   };
-  modalComplainDetail: {
+  modalDisputeDetail: {
     activity: Activity;
   };
   modalCardInformation: undefined

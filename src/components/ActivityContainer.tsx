@@ -13,7 +13,7 @@ import { getIsNotReady } from '../store/selectors';
 import ActivityList from './ActivityList';
 import ActivityListScheduled from './ActivityListScheduled';
 import Checkbooks from './Checkbooks';
-import Complains from './Complains';
+import Disputes from './Disputes';
 import AccountListLoader from './loaders/AccountListLoader';
 
 const IS_LOAN = API_ACCOUNT_LIST_FILTER === 'loan';
@@ -26,13 +26,13 @@ export default function ActivityContainer() {
   const options: DTabOption[] = useMemo(() => [
     { label: t('tabs.transactions'), tab: 'transactions' },
     { label: t('tabs.upcoming'), tab: 'upcoming' },
-    { label: t('tabs.complains'), tab: 'complains' },
+    { label: t('tabs.disputes'), tab: 'cisputes' },
     { label: t('tabs.checkbooks'), tab: 'checkbooks' },
   ], [t]);
 
   const filteredOptions = useMemo(() => {
     if (IS_LOAN) {
-      return options.filter(({ tab }) => tab !== 'complains' && tab !== 'checkbooks');
+      return options.filter(({ tab }) => tab !== 'cisputes' && tab !== 'checkbooks');
     }
     if (!IS_CHECKING) {
       return options.filter(({ tab }) => tab !== 'checkbooks');
@@ -72,7 +72,7 @@ export default function ActivityContainer() {
             <ActivityListScheduled />
           </DTabs.Tab>
           <DTabs.Tab tab={options[2].tab}>
-            <Complains />
+            <Disputes />
           </DTabs.Tab>
           <DTabs.Tab tab={options[3].tab}>
             <Checkbooks />

@@ -23,7 +23,7 @@
     "details": {
       "availableAmount": "Total available funds",
       "fundsOnHold": "Funds on hold",
-      "totalBalance": "Balance owed",
+      "totalBalance": "Total available funds",
       "interestRate": "Interest rate",
       "overdraftAmount": "Overdraft amount",
       "daysInOverdraft": "Days in overdraft",
@@ -44,7 +44,7 @@
   "tabs": {
     "transactions": "Transactions",
     "upcoming": "Upcoming",
-    "complains": "Complains",
+    "disputes": "Disputes",
     "checkbooks": "Checkbooks"
   },
   "checkbooks": {
@@ -82,30 +82,30 @@
       "title": "Other actions",
       "bankStatements": "Bank statements",
       "cashAdvance": "Cash advance",
-      "additionalCardsList": "List of additional",
+      "additionalCardsList": "Additional Cards",
       "newAdditionalCard": "New Additional card",
       "newVirtualCard": "Request Virtual Card",
       "managePayments": "Manage automatic payments",
-      "changeDate": "Change your due date",
+      "changeDate": "Change payment schedule",
       "configureRestrictions": "Configure restrictions"
     },
-    "complain": {
-      "title": "Complain: {value}",
-      "date": "<bld>Date of complain:</bld> {value}",
+    "dispute": {
+      "title": "Dispute: {value}",
+      "date": "<bld>Date of dispute:</bld> {value}",
       "amount": "<bld>Amount:</bld> {value}",
-      "trxNumber": "<bld>Number of transaction:</bld> {value}",
+      "trxNumber": "<bld>Transaction number:</bld> {value}",
       "situation": "<bld>Situation:</bld> Unrecognized",
       "description": "<bld>Description:</bld> I don't recognize this transaction",
       "state": "<bld>State:</bld> <cmp text='Active'></cmp>"
     }
   },
-  "complainStatus": "Active",
+  "disputesStatus": "Active",
   "modalOtp": {
-    "getCode": "Didn't you get any code?",
+    "getCode": "Didn’t receive a code?",
     "resend": "Resend in",
     "title": "We want to validate that it's you",
-    "sendCode": "We will send you a 6-digit code to your cell phone so you can continue with your request.",
-    "hint": "Enter the code that was sent to your associated phone number.",
+    "sendCode": "For authorization, please enter the 6-digit code we’ve sent to your associated phone number.",
+    "hint": "Enter the code sent to your associated phone number.",
     "validate": "Validate"
   },
   "noData": {
@@ -126,7 +126,7 @@
     "accept": "Accept",
     "clear": "Clear",
     "close": "Close",
-    "newComplain": "New complain"
+    "newDispute": "New dispute"
   },
   "card": {
     "name": "Cardholder name",

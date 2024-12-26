@@ -13,11 +13,11 @@ import { useAppSelector } from '../store/hooks';
 import { getAccountSelected, getFilterActivities } from '../store/selectors';
 
 import { ActivityListFilter } from './ActivityListFilter';
-import ListItemComplain from './ListItemComplain';
+import ListItemDispute from './ListItemDispute';
 import AccountListLoader from './loaders/AccountListLoader';
-import NewComplainLink from './NewComplainLink';
+import NewDisputeLink from './NewDisputeLink';
 
-export default function Complains() {
+export default function Disputes() {
   const { t } = useTranslation();
   const account = useAppSelector(getAccountSelected) as Account;
   const { query } = useAppSelector(getFilterActivities);
@@ -52,12 +52,12 @@ export default function Complains() {
         activities={activities}
         otherOptions={(
           <div className="ms-auto d-none d-lg-flex">
-            <NewComplainLink account={account} />
+            <NewDisputeLink account={account} />
           </div>
         )}
       />
       <div className="d-flex d-lg-none justify-content-center mb-4 mb-lg-0">
-        <NewComplainLink account={account} />
+        <NewDisputeLink account={account} />
       </div>
       {(activities.length < 1) && (
         <div
@@ -77,7 +77,7 @@ export default function Complains() {
       <div>
         <DList flush>
           {data.map((activity) => (
-            <ListItemComplain
+            <ListItemDispute
               key={`activity-${activity.id}`}
               activity={activity}
             />

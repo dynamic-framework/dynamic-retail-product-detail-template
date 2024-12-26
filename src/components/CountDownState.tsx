@@ -25,5 +25,5 @@ export default function CountDownState(
       />
     );
   }
-  return (`${text} ${secondsLeft} seg`);
+  return (`${text} ${secondsLeft} sec`);
 }
