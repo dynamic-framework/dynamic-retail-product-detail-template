@@ -30,7 +30,7 @@ export const ADDITIONAL_CARDS_PATH = liquidParser.parse('{{vars.additional-cards
 export const NEW_ADDITIONAL_CARDS_PATH = liquidParser.parse('{{vars.new-additional-cards-path}}');
 export const NEW_VIRTUAL_CARD_PATH = liquidParser.parse('{{vars.new-virtual-card-path}}');
 
-export const NEW_COMPLAIN_PATH = liquidParser.parse('{{vars.new-complain-path}}');
+export const NEW_DISPUTE_PATH = liquidParser.parse('{{vars.new-dispute-path}}');
 export const CHECKBOOK_ITEM_PATH = liquidParser.parse('{{vars.checkbook-item-path}}');
 
 export const API_ACCOUNT_LIST_FILTER = liquidParser.parse('{{vars.account-list-filter}}');

@@ -17,7 +17,7 @@ type Props = Omit<ComponentProps<typeof DListItem>, 'children'> & {
   activity: Activity;
 };
 
-export default function ListItemComplain(
+export default function ListItemDispute(
   {
     activity,
     style,
@@ -62,7 +62,7 @@ export default function ListItemComplain(
           {value.valueFormatted}
         </span>
         <DButtonIcon
-          onClick={() => openPortal('modalComplainDetail', { activity })}
+          onClick={() => openPortal('modalDisputeDetail', { activity })}
           icon="eye"
           variant="link"
         />

@@ -27,12 +27,12 @@
     "additional-cards-path": "additional-cards",
     "new-additional-cards-path": "new-additional-cards",
     "new-virtual-card-path": "new-virtual-card-path",
-    "new-complain-path": "new-complain",
+    "new-dispute-path": "new-dispute",
     "checkbook-item-path": "#",
 
     "api-path": "https://stoplight.io/mocks/modyo/dynamic/204091081",
 
-    "format-date": "dd/MM/yyyy",
-    "format-date-full": "dd/MM/yyyy hh:mm a"
+    "format-date": "MM/dd/yyyy",
+    "format-date-full": "MM/dd/yyyy hh:mm a"
   }
 }

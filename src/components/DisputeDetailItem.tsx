@@ -6,7 +6,7 @@ type Props = {
   value?: string,
 };
 
-export default function ComplainDetailItem(
+export default function DisputeDetailItem(
   {
     i18nKey,
     value,
