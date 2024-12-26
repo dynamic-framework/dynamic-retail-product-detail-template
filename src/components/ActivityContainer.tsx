@@ -26,13 +26,13 @@ export default function ActivityContainer() {
   const options: DTabOption[] = useMemo(() => [
     { label: t('tabs.transactions'), tab: 'transactions' },
     { label: t('tabs.upcoming'), tab: 'upcoming' },
-    { label: t('tabs.disputes'), tab: 'cisputes' },
+    { label: t('tabs.disputes'), tab: 'disputes' },
     { label: t('tabs.checkbooks'), tab: 'checkbooks' },
   ], [t]);
 
   const filteredOptions = useMemo(() => {
     if (IS_LOAN) {
-      return options.filter(({ tab }) => tab !== 'cisputes' && tab !== 'checkbooks');
+      return options.filter(({ tab }) => tab !== 'disputes' && tab !== 'checkbooks');
     }
     if (!IS_CHECKING) {
       return options.filter(({ tab }) => tab !== 'checkbooks');
