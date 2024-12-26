@@ -9,7 +9,7 @@ import './config/i18nConfig';
 import App from './App';
 import ModalActivityDetail from './components/modals/ModalActivityDetail';
 import ModalCardInformation from './components/modals/ModalCardInformation';
-import ModalDisputeDetail from './components/modals/ModalDisputeDetail';
+import ModalDisputeDetail from './components/modals/modalDisputeDetail';
 import ModalMoreActions from './components/modals/ModalMoreActions';
 import ModalOTP from './components/modals/ModalOTP';
 import OffcanvasAdvancedFilters from './components/offcanvas/OffcanvasAdvancedFilters';
