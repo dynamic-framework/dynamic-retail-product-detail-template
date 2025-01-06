@@ -103,7 +103,7 @@
   "modalOtp": {
     "getCode": "Didn’t receive a code?",
     "resend": "Resend in",
-    "title": "For authorization, please enter the 6-digit code we’ve sent to your associated phone number",
+    "title": "Autorize",
     "sendCode": "For authorization, please enter the 6-digit code we’ve sent to your associated phone number.",
     "hint": "Enter the code sent to your associated phone number.",
     "validate": "Validate"
