@@ -99,11 +99,11 @@
       "state": "<bld>State:</bld> <cmp text='Active'></cmp>"
     }
   },
-  "disputesStatus": "Active",
+  "disputeStatus": "Active",
   "modalOtp": {
     "getCode": "Didn’t receive a code?",
     "resend": "Resend in",
-    "title": "We want to validate that it's you",
+    "title": "Authorize",
     "sendCode": "For authorization, please enter the 6-digit code we’ve sent to your associated phone number.",
     "hint": "Enter the code sent to your associated phone number.",
     "validate": "Validate"
