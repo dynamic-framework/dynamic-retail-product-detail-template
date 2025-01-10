@@ -32,9 +32,10 @@ export default function useAccountEffect() {
           }
 
           const completeAccount = await AccountRepository.get(
-            account.baseType,
-            account.id,
-            { abortSignal: abortController.signal },
+            {
+              account,
+              config: { abortSignal: abortController.signal },
+            },
           );
           dispatch(setAccountSelected(completeAccount));
           dispatch(setIsLoadingAccountDetail(false));

@@ -1,18 +1,17 @@
 import { useEffect, useState } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { getActivities, getFilteredActivities } from '../../store/selectors';
-import { setActivities } from '../../store/slice';
+import { getDisputes } from '../../store/selectors';
+import { setDisputes } from '../../store/slice';
 import errorHandler from '../../utils/errorHandler';
 import type { Account } from '../interface';
-import { ActivityRepository } from '../repositories';
+import { DisputeRepository } from '../repositories';
 import ApiError from '../utils/ApiError';
 
-export default function useActivitiesEffect(account: Account, scheduled?: boolean) {
+export default function useDisputesEffect(account: Account) {
   const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
-  const activities = useAppSelector(getActivities);
-  const filteredActivities = useAppSelector(getFilteredActivities);
+  const disputes = useAppSelector(getDisputes);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -20,16 +19,15 @@ export default function useActivitiesEffect(account: Account, scheduled?: boolea
     (async () => {
       setLoading(true);
       try {
-        const data = await ActivityRepository.list(
+        const data = await DisputeRepository.list(
           {
             account,
-            upcoming: scheduled,
             config: {
               abortSignal: abortController.signal,
             },
           },
         );
-        dispatch(setActivities(data));
+        dispatch(setDisputes(data));
         setLoading(false);
       } catch (error) {
         if ((error as ApiError).name === 'CanceledError') return;
@@ -40,11 +38,10 @@ export default function useActivitiesEffect(account: Account, scheduled?: boolea
     return () => {
       abortController.abort();
     };
-  }, [account, dispatch, scheduled]);
+  }, [account, dispatch]);
 
   return {
     loading,
-    activities,
-    filteredActivities,
+    disputes,
   };
 }
