@@ -11,15 +11,15 @@ import { useMemo } from 'react';
 import type { ComponentProps } from 'react';
 
 import { FORMAT_DATE_FULL } from '../config/widgetConfig';
-import { Activity } from '../services/interface';
+import { Dispute } from '../services/interface';
 
 type Props = Omit<ComponentProps<typeof DListItem>, 'children'> & {
-  activity: Activity;
+  dispute: Dispute;
 };
 
 export default function ListItemDispute(
   {
-    activity,
+    dispute,
     style,
     className,
     ...props
@@ -28,8 +28,8 @@ export default function ListItemDispute(
   const { format } = useFormatCurrency();
   const { openPortal } = useDPortalContext();
   const value = useMemo(() => {
-    const valueFormatted = format(activity.amount);
-    if (activity.amount > 0) {
+    const valueFormatted = format(dispute.amount);
+    if (dispute.amount > 0) {
       return {
         theme: 'text-success',
         valueFormatted,
@@ -39,7 +39,7 @@ export default function ListItemDispute(
       theme: 'text-gray-500',
       valueFormatted,
     };
-  }, [format, activity.amount]);
+  }, [format, dispute.amount]);
 
   return (
     <DListItem
@@ -49,20 +49,20 @@ export default function ListItemDispute(
       <div className="d-flex align-items-center py-1 gap-4">
         <div className="d-flex flex-column">
           <span className="fs-body-tiny">
-            {activity.id}
+            {dispute.id}
           </span>
           <span className="d-block text-capitalize">
-            {activity.name}
+            {dispute.name}
           </span>
           <small>
-            {DateTime.fromISO(activity.date).toFormat(FORMAT_DATE_FULL)}
+            {DateTime.fromISO(dispute.date).toFormat(FORMAT_DATE_FULL)}
           </small>
         </div>
         <span className={classNames('fs-6 ms-auto', value.theme)}>
           {value.valueFormatted}
         </span>
         <DButtonIcon
-          onClick={() => openPortal('modalDisputeDetail', { activity })}
+          onClick={() => openPortal('modalDisputeDetail', { dispute })}
           icon="eye"
           variant="link"
         />

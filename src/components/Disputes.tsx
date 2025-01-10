@@ -7,7 +7,7 @@ import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import usePaginator from '../hooks/usePaginator';
-import useActivitiesEffect from '../services/hooks/useActivitiesEffect';
+import useDisputesEffect from '../services/hooks/useDisputesEffect';
 import { Account } from '../services/interface';
 import { useAppSelector } from '../store/hooks';
 import { getAccountSelected, getFilterActivities } from '../store/selectors';
@@ -24,16 +24,15 @@ export default function Disputes() {
 
   const {
     loading,
-    activities,
-    filteredActivities,
-  } = useActivitiesEffect(account.baseType, account.id);
+    disputes,
+  } = useDisputesEffect(account);
 
   const {
     callback,
     currentPage,
     data,
     totalPages,
-  } = usePaginator(filteredActivities, 7);
+  } = usePaginator(disputes, 7);
 
   const emptyTransactionsText = useMemo(() => {
     if (query !== '') {
@@ -49,7 +48,7 @@ export default function Disputes() {
   return (
     <>
       <ActivityListFilter
-        activities={activities}
+        activities={disputes}
         otherOptions={(
           <div className="ms-auto d-none d-lg-flex">
             <NewDisputeLink account={account} />
@@ -59,7 +58,7 @@ export default function Disputes() {
       <div className="d-flex d-lg-none justify-content-center mb-4 mb-lg-0">
         <NewDisputeLink account={account} />
       </div>
-      {(activities.length < 1) && (
+      {(disputes.length < 1) && (
         <div
           className={classnames(
             'd-flex flex-column justify-content-center align-items-center',
@@ -76,10 +75,10 @@ export default function Disputes() {
       )}
       <div>
         <DList flush>
-          {data.map((activity) => (
+          {data.map((dispute) => (
             <ListItemDispute
-              key={`activity-${activity.id}`}
-              activity={activity}
+              key={`activity-${dispute.id}`}
+              dispute={dispute}
             />
           ))}
         </DList>
