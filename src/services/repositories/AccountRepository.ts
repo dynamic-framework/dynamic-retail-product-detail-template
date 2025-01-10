@@ -1,52 +1,56 @@
-import type { GenericAbortSignal } from 'axios';
-
-import type { ApiAccount } from '../api-interface';
+import type { ApiAccount, ApiResponseWrapped } from '../api-interface';
 import ApiClient from '../clients/apiClient';
 import {
-  AccountBaseType,
-  AccountType,
   AccountTypeConfig,
+  ApiAccountType,
   ApiAccountTypeConfig,
 } from '../config';
+import { Account } from '../interface';
 import accountMapper from '../mappers/accountMapper';
 
-export async function list(
-  accountType: AccountType,
-  config: { abortSignal: GenericAbortSignal },
-) {
-  const { data } = await ApiClient.request<Array<ApiAccount>>({
-    url: 'accounts',
-    method: 'GET',
-    signal: config.abortSignal,
-    headers: {
-      Prefer: `code=200, example=${AccountTypeConfig[accountType].apiType}`,
-    },
-  });
+import { RepositoryParams } from './repository';
 
-  return data
+export async function list(
+  params: RepositoryParams<{
+    apiAccountType: ApiAccountType;
+  }>,
+) {
+  const { data } = await ApiClient.request<ApiResponseWrapped<ApiAccount[]>>(
+    {
+      url: 'accounts',
+      method: 'GET',
+      signal: params.config?.abortSignal,
+    },
+  );
+
+  return data.content
     // we make sure to only use accounts we can handle
     .filter((apiAccount: ApiAccount) => (
-      Object.keys(ApiAccountTypeConfig).includes(apiAccount.accountType)
+      Object.keys(ApiAccountTypeConfig).includes(apiAccount.group)
     ))
-    // and we transform the account into the type of account that the widge uses
-    .map((apiAccount: ApiAccount) => accountMapper(apiAccount));
+    .filter((apiAccount: ApiAccount) => (
+      apiAccount.group === params.apiAccountType
+    ))
+    // and we transform the account into the type of account that the widget uses
+    .map(accountMapper);
 }
 
 export async function get(
-  type: AccountBaseType,
-  accountId: string,
-  config?: { abortSignal: GenericAbortSignal },
+  params: RepositoryParams<{
+    account: Account,
+  }>,
 ) {
-  const { data } = await ApiClient.request<ApiAccount>({
-    url: `/${type}/account`,
-    method: 'GET',
-    headers: {
-      Prefer: `code=200, example=${accountId}`,
-    },
-    ...config?.abortSignal && {
-      signal: config.abortSignal,
-    },
-  });
+  const group = params.account.baseType.toUpperCase();
+  const type = AccountTypeConfig[params.account.type].apiType;
+  const hasDetails = type === ApiAccountType.Loan ? '/details' : '';
 
-  return accountMapper(data);
+  const { data } = await ApiClient.request<ApiResponseWrapped<ApiAccount>>(
+    {
+      url: `accounts/${group}/${type}/account${hasDetails}`,
+      method: 'GET',
+      signal: params.config?.abortSignal,
+    },
+  );
+
+  return accountMapper(data.content);
 }

@@ -10,36 +10,36 @@ export default function accountMapper(apiAccount: ApiAccount): Account {
 
   const commonProps = {
     id: apiAccount.id,
-    name: apiAccount.nickName,
-    alias: apiAccount.nickName,
-    accountNumber: apiAccount.accountNumber,
-    freeze: apiAccount.freeze,
-    type: ApiAccountTypeConfig[apiAccount.accountType],
+    name: apiAccount.account_holder_name,
+    alias: apiAccount.account_holder_name,
+    accountNumber: apiAccount.masked_number,
+    freeze: apiAccount.state === 'frozen',
+    type: ApiAccountTypeConfig[apiAccount.group],
   };
 
   if (baseType === AccountBaseType.Loan) {
     return {
       ...commonProps,
       baseType,
-      balanceOwed: apiAccount.loanDetails?.balances.owed,
-      balanceRemaining: apiAccount.loanDetails?.balances.remaining,
-      due: apiAccount.loanDetails?.due,
-      paymentDue: apiAccount.paymentDetails?.amounts.due,
-      paymentLastPaidInstallmentNumber: apiAccount.paymentDetails?.lastPaidInstallmentNumber,
-      installments: apiAccount.loanDetails?.installments,
-      interestRate: apiAccount.loanDetails?.interest.settings.rate,
-      paymentNextDueDate: apiAccount.paymentDetails?.nextDueDate,
-      expiryDate: apiAccount.expiryDate,
+      balanceOwed: apiAccount.loan?.details.balance.owed,
+      balanceRemaining: apiAccount.loan?.details.balance.remaining,
+      due: apiAccount.loan?.details.total,
+      paymentDue: apiAccount.loan?.details.amount_due,
+      paymentLastPaidInstallmentNumber: apiAccount.last_paid_installment_number,
+      installments: apiAccount.loan?.term.count,
+      interestRate: apiAccount.loan?.details.interest.rate_settings.yearly_rate,
+      paymentNextDueDate: apiAccount.loan?.dates.next_due,
+      expiryDate: apiAccount.loan?.dates.next_due,
     };
   }
 
   return {
     ...commonProps,
     baseType,
-    balanceAvailable: apiAccount.depositDetails?.balances.available,
-    balanceTotal: apiAccount.depositDetails?.balances.total,
-    balanceUnavailable: apiAccount.depositDetails?.balances.unavailable,
-    interestRate: apiAccount.depositDetails?.interest.settings?.rateSettings?.rate,
-    overdraftAvailable: apiAccount.depositDetails?.overdraft?.available,
+    balanceAvailable: apiAccount.deposit?.balance.available.total,
+    balanceTotal: apiAccount.deposit?.balance.total,
+    balanceUnavailable: apiAccount.deposit?.balance.not_available,
+    interestRate: apiAccount.deposit?.interest.rateSettings?.yearly_rate,
+    overdraftAvailable: apiAccount.deposit?.overdraft.details.balance.remaining,
   };
 }
