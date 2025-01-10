@@ -11,7 +11,6 @@ import { useAppSelector } from '../store/hooks';
 import { getIsNotReady } from '../store/selectors';
 
 import ActivityList from './ActivityList';
-import ActivityListScheduled from './ActivityListScheduled';
 import Checkbooks from './Checkbooks';
 import Disputes from './Disputes';
 import AccountListLoader from './loaders/AccountListLoader';
@@ -69,7 +68,7 @@ export default function ActivityContainer() {
             <ActivityList />
           </DTabs.Tab>
           <DTabs.Tab tab={options[1].tab}>
-            <ActivityListScheduled />
+            <ActivityList scheduled />
           </DTabs.Tab>
           <DTabs.Tab tab={options[2].tab}>
             <Disputes />

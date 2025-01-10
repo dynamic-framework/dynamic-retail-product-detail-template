@@ -10,13 +10,13 @@ import {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import type { Activity } from '../services/interface';
+import type { Activity, Dispute } from '../services/interface';
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { getFilterActivities } from '../store/selectors';
 import { setQueryFilterActivities } from '../store/slice';
 
 type Prop = {
-  activities: Array<Activity>,
+  activities: Array<Activity | Dispute>,
   otherOptions?: ReactNode;
 };
 

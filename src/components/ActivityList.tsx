@@ -20,7 +20,11 @@ import { ActivityListFilter } from './ActivityListFilter';
 import ListItemMovement from './ListItemMovement';
 import AccountListLoader from './loaders/AccountListLoader';
 
-export default function ActivityList() {
+type Props = {
+  scheduled?: boolean;
+};
+
+export default function ActivityList({ scheduled }: Props) {
   const { t } = useTranslation();
   const { openPortal } = useDPortalContext<PortalAvailablePayload>();
 
@@ -31,7 +35,7 @@ export default function ActivityList() {
     loading,
     activities,
     filteredActivities,
-  } = useActivitiesEffect(account.baseType, account.id);
+  } = useActivitiesEffect(account, scheduled);
 
   const openActivityDetail = (activity: Activity) => {
     openPortal('modalActivityDetail', { activity });
