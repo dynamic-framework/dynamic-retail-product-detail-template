@@ -11,8 +11,8 @@ export enum AccountType {
 }
 
 export enum ApiAccountType {
-  RegularSavings = 'REGULAR_SAVINGS',
-  CurrentAccount = 'CURRENT_ACCOUNT',
+  RegularSavings = 'SAVINGS',
+  CurrentAccount = 'CHECKING',
   Loan = 'LOAN',
   CreditCard = 'CREDIT_CARD',
 }
@@ -45,8 +45,8 @@ export const AccountTypeConfig = {
 };
 
 export const ApiAccountTypeConfig = {
-  REGULAR_SAVINGS: AccountType.Saving,
-  CURRENT_ACCOUNT: AccountType.Checking,
+  SAVINGS: AccountType.Saving,
+  CHECKING: AccountType.Checking,
   LOAN: AccountType.Loan,
   CREDIT_CARD: AccountType.CreditCard,
 };
