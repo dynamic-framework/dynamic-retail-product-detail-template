@@ -55,6 +55,8 @@
     "search": "Search",
     "dateRange": "Date range",
     "amount": "Amount",
+    "minAmount": "Min amount",
+    "maxAmount": "Max amount",
     "type": "Type",
     "download": "Download",
     "filter": "Filter",
@@ -126,7 +128,9 @@
     "accept": "Accept",
     "clear": "Clear",
     "close": "Close",
-    "newDispute": "New dispute"
+    "newDispute": "New dispute",
+    "apply": "Apply",
+    "cleanFilters": "Clean filters"
   },
   "card": {
     "name": "Cardholder name",
