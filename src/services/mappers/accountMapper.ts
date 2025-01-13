@@ -13,7 +13,7 @@ export default function accountMapper(apiAccount: ApiAccount): Account {
     name: apiAccount.account_holder_name,
     alias: apiAccount.account_holder_name,
     accountNumber: apiAccount.masked_number,
-    freeze: apiAccount.state === 'frozen',
+    freeze: apiAccount.card?.is_frozen ?? false,
     type: ApiAccountTypeConfig[apiAccount.group],
   };
 
