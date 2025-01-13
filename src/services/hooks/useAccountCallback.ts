@@ -33,10 +33,17 @@ export default function useAccountCallback() {
           account,
         },
       );
-      dispatch(setAccountSelected(data));
+
+      dispatch(setAccountSelected(
+        {
+          ...data,
+          id: account.id,
+        },
+      ));
+
       dispatch(setIsLoadingAccountDetail(false));
 
-      setAccountIdQueryString(data.id);
+      setAccountIdQueryString(account.id);
     } catch (error) {
       dispatch(setIsLoadingAccountDetail(false));
       errorHandler(error);
