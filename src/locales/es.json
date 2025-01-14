@@ -102,13 +102,15 @@
     }
   },
   "disputeStatus": "Active",
-  "modalOtp": {
-    "getCode": "Didn’t receive a code?",
-    "resend": "Resend in",
+  "otp": {
     "title": "Authorize",
-    "sendCode": "For authorization, please enter the 6-digit code we’ve sent to your associated phone number.",
-    "hint": "Enter the code sent to your associated phone number.",
-    "validate": "Validate"
+    "message": "For authorization, please enter the 6-digit code we've sent to your associated phone number.",
+    "problems": "<p>Problems with your digital token? <a>Contact us</a></p>",
+    "countdown": "<p>Didn't you get any code? Resend in {value} sec</p>",
+    "countdownResend": "<p>Didn't you get any code? <button></button></p>",
+    "helpLink": "https://dynamicframework.dev",
+    "resend": "Resend code",
+    "actionText": "Authorize and Continue"
   },
   "noData": {
     "noPayments": "You don't have any payment",
