@@ -47,24 +47,9 @@ export const getIsNotReady = createSelector(
   ),
 );
 
-export const getActivities = createSelector(
+export const getQueryFilter = createSelector(
   getState,
-  (widget) => widget.activities,
-);
-
-export const getFilterActivities = createSelector(
-  getState,
-  (widget) => widget.filterActivities,
-);
-
-export const getQueryFilterCheckbook = createSelector(
-  getState,
-  (widget) => widget.filterCheckbooks.query,
-);
-
-export const getDisputes = createSelector(
-  getState,
-  (widget) => widget.disputes,
+  (widget) => widget.filter.query,
 );
 
 export const getSelectedPage = createSelector(
