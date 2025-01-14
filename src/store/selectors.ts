@@ -1,7 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-import type { Activity } from '../services/interface';
-
 import type { RootState } from './store';
 
 const getState = (state: RootState) => state.widget;
@@ -59,20 +57,6 @@ export const getFilterActivities = createSelector(
   (widget) => widget.filterActivities,
 );
 
-export const getFilteredActivities = createSelector(
-  getActivities,
-  getFilterActivities,
-  (activities, filter) => {
-    if (filter.query === '') {
-      return activities;
-    }
-
-    return activities.filter(({ name }: Activity) => (
-      name.toLowerCase().includes(filter.query)
-    ));
-  },
-);
-
 export const getQueryFilterCheckbook = createSelector(
   getState,
   (widget) => widget.filterCheckbooks.query,
@@ -81,4 +65,14 @@ export const getQueryFilterCheckbook = createSelector(
 export const getDisputes = createSelector(
   getState,
   (widget) => widget.disputes,
+);
+
+export const getSelectedPage = createSelector(
+  getState,
+  (widget) => widget.selectedPage,
+);
+
+export const getMetadata = createSelector(
+  getState,
+  (widget) => widget.metadata,
 );

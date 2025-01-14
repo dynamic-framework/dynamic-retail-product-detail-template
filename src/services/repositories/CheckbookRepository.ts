@@ -1,10 +1,12 @@
 import { ApiCheckbook, ApiResponseWrapped } from '../api-interface';
 import ApiClient from '../clients/apiClient';
 import checkbookMapper from '../mappers/checkbookMapper';
+import metadataMapper from '../mappers/metadataMapper';
 
 import { RepositoryParams } from './repository';
 
 export async function list(params: RepositoryParams<{
+  page: string;
   query?: string,
 }>) {
   const { data } = await ApiClient.request<ApiResponseWrapped<ApiCheckbook[]>>(
@@ -12,16 +14,15 @@ export async function list(params: RepositoryParams<{
       url: 'accounts/account/checkbooks',
       method: 'GET',
       params: {
-        query: params.query,
+        query: params.query ? params.query : undefined,
+        page: params.page,
       },
       signal: params.config?.abortSignal,
     },
   );
 
-  const { content, metadata } = data;
-
   return {
-    content: content.map(checkbookMapper),
-    metadata,
+    data: data.content.map(checkbookMapper),
+    metadata: metadataMapper(data.metadata!),
   };
 }

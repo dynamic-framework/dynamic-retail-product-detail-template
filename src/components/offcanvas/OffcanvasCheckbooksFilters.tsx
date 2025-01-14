@@ -4,9 +4,6 @@ import {
   DDatePicker,
   DIcon,
   DOffcanvas,
-  DOffcanvasBody,
-  DOffcanvasFooter,
-  DOffcanvasHeader,
   useDPortalContext,
 } from '@dynamic-framework/ui-react';
 import { useState } from 'react';
@@ -24,7 +21,7 @@ export default function OffcanvasCheckbooksFilters() {
       openFrom="end"
       staticBackdrop
     >
-      <DOffcanvasHeader
+      <DOffcanvas.Header
         onClose={closePortal}
         showCloseButton
       >
@@ -36,8 +33,8 @@ export default function OffcanvasCheckbooksFilters() {
           />
           <h5 className="fw-bold">{t('filter.title')}</h5>
         </div>
-      </DOffcanvasHeader>
-      <DOffcanvasBody>
+      </DOffcanvas.Header>
+      <DOffcanvas.Body>
         <div className="d-flex flex-column gap-6 pt-4">
           <div className="d-flex gap-4">
             <DDatePicker
@@ -54,19 +51,21 @@ export default function OffcanvasCheckbooksFilters() {
             />
           </div>
         </div>
-      </DOffcanvasBody>
-      <DOffcanvasFooter>
+      </DOffcanvas.Body>
+      <DOffcanvas.Footer
+        actionPlacement="fill"
+        className="flex-column-reverse flex-sm-row"
+      >
         <DButton
           text={t('filters.cancel')}
           variant="outline"
-          theme="secondary"
           onClick={closePortal}
         />
         <DButton
           text={t('filters.filter')}
           onClick={closePortal}
         />
-      </DOffcanvasFooter>
+      </DOffcanvas.Footer>
     </DOffcanvas>
   );
 }

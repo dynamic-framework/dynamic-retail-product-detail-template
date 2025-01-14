@@ -1,13 +1,15 @@
+import { getQueryString } from '@dynamic-framework/ui-react';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import type {
   Account,
   Activity,
   Dispute,
+  Metadata,
 } from '../services/interface';
 
 export type WidgetState = {
-  accounts: Array<Account>,
+  accounts: Array<Account>;
   accountsFreezed: Record<string, boolean>;
   accountSelected?: Account;
   isLoadingAccountList: boolean;
@@ -19,7 +21,9 @@ export type WidgetState = {
   },
   filterCheckbooks: {
     query: string;
-  }
+  },
+  selectedPage: string;
+  metadata: Metadata;
 };
 
 const initialState: WidgetState = {
@@ -36,7 +40,12 @@ const initialState: WidgetState = {
   filterCheckbooks: {
     query: '',
   },
-} as WidgetState;
+  selectedPage: getQueryString('page') || '1',
+  metadata: {
+    page: 0,
+    totalPages: 0,
+  },
+};
 
 const slice = createSlice({
   name: 'widget',
@@ -69,6 +78,12 @@ const slice = createSlice({
     setDisputes(state, action: PayloadAction<Dispute[]>) {
       state.disputes = action.payload;
     },
+    setSelectedPage(state, action: PayloadAction<string>) {
+      state.selectedPage = action.payload;
+    },
+    setMetadata(state, action: PayloadAction<Metadata>) {
+      state.metadata = action.payload;
+    },
   },
 });
 
@@ -82,5 +97,7 @@ export const {
   setAccountsFreezed,
   setQueryFilterCheckbook,
   setDisputes,
+  setSelectedPage,
+  setMetadata,
 } = slice.actions;
 export default slice.reducer;

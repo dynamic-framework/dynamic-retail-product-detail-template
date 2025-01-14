@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import { useAppSelector } from '../../store/hooks';
-import { getQueryFilterCheckbook } from '../../store/selectors';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { getQueryFilterCheckbook, getSelectedPage } from '../../store/selectors';
+import { setMetadata } from '../../store/slice';
 import errorHandler from '../../utils/errorHandler';
 import { Checkbook } from '../interface';
 import { CheckbookRepository } from '../repositories';
@@ -11,6 +12,8 @@ export default function useCheckbooksEffect() {
   const [loading, setLoading] = useState(false);
   const [dataCheckbooks, setDataCheckbooks] = useState<Checkbook[] | null>(null);
   const query = useAppSelector(getQueryFilterCheckbook);
+  const selectedPage = useAppSelector(getSelectedPage);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -18,8 +21,12 @@ export default function useCheckbooksEffect() {
     (async () => {
       setLoading(true);
       try {
-        const { content } = await CheckbookRepository.list(query);
-        setDataCheckbooks(content);
+        const { data, metadata } = await CheckbookRepository.list({
+          page: selectedPage,
+          query,
+        });
+        setDataCheckbooks(data);
+        dispatch(setMetadata(metadata));
         setLoading(false);
       } catch (error) {
         if ((error as ApiError).name === 'CanceledError') return;
@@ -30,7 +37,7 @@ export default function useCheckbooksEffect() {
     return () => {
       abortController.abort();
     };
-  }, [query]);
+  }, [dispatch, query, selectedPage]);
 
   return {
     loading,

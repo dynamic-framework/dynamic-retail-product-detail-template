@@ -36,14 +36,6 @@
     text-transform: capitalize;
   }
 
-  .offcanvas {
-    --#{$prefix}offcanvas-width: 100%;
-
-    @include media-breakpoint-up(md) {
-      --#{$prefix}offcanvas-width: 45%;
-    }
-  }
-
   .btn-filters .btn {
     --#{$prefix}btn-padding-x: var(--#{$prefix}ref-fs-6);
   }
