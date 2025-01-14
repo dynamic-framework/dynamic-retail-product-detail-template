@@ -77,3 +77,8 @@ export const getQueryFilterCheckbook = createSelector(
   getState,
   (widget) => widget.filterCheckbooks.query,
 );
+
+export const getDisputes = createSelector(
+  getState,
+  (widget) => widget.disputes,
+);

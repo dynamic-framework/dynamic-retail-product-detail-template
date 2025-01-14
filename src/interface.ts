@@ -1,11 +1,11 @@
-import { Activity } from './services/interface';
+import { Activity, Dispute } from './services/interface';
 
 export type PortalAvailablePayload = {
   modalActivityDetail: {
     activity: Activity;
   };
   modalDisputeDetail: {
-    activity: Activity;
+    dispute: Dispute;
   };
   modalCardInformation: undefined
   modalOTP: {

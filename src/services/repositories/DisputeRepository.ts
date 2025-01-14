@@ -1,25 +1,24 @@
-import { ApiActivity, ApiResponseWrapped } from '../api-interface';
+import { ApiDispute, ApiResponseWrapped } from '../api-interface';
 import ApiClient from '../clients/apiClient';
 import { AccountTypeConfig } from '../config';
 import { Account } from '../interface';
-import activityMapper from '../mappers/activityMapper';
+import disputeMapper from '../mappers/disputeMapper';
 
 import { RepositoryParams } from './repository';
 
 export async function list(params: RepositoryParams<{
   account: Account;
-  upcoming?: boolean;
 }>) {
   const group = params.account.baseType.toUpperCase();
   const type = AccountTypeConfig[params.account.type].apiType;
 
-  const { data } = await ApiClient.request<ApiResponseWrapped<ApiActivity[]>>(
+  const { data } = await ApiClient.request<ApiResponseWrapped<ApiDispute[]>>(
     {
-      url: `accounts/${group}/${type}/account/activity${params.upcoming ? '/upcoming' : ''}`,
+      url: `accounts/${group}/${type}/account/disputes`,
       method: 'GET',
       signal: params.config?.abortSignal,
     },
   );
 
-  return data.content.map(activityMapper);
+  return data.content.map(disputeMapper);
 }

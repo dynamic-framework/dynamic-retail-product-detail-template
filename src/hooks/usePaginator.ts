@@ -5,9 +5,7 @@ import {
   useState,
 } from 'react';
 
-import { Activity } from '../services/interface';
-
-export default function usePaginator(array: Array<Activity>, peerPage: number) {
+export default function usePaginator<T>(array: T[], peerPage: number) {
   const getPagesCount = useCallback(() => {
     if (peerPage > array.length || peerPage <= 0) {
       return 1;

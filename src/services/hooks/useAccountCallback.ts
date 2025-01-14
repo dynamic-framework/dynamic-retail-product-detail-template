@@ -25,14 +25,25 @@ export default function useAccountCallback() {
     [accountSelected, accountFromList],
   );
 
-  const select = useCallback(async (accountBaseType: Account['baseType'], accountId: Account['id']) => {
+  const select = useCallback(async (account: Account) => {
     try {
       dispatch(setIsLoadingAccountDetail(true));
-      const data = await AccountRepository.get(accountBaseType, accountId);
-      dispatch(setAccountSelected(data));
+      const data = await AccountRepository.get(
+        {
+          account,
+        },
+      );
+
+      dispatch(setAccountSelected(
+        {
+          ...data,
+          id: account.id,
+        },
+      ));
+
       dispatch(setIsLoadingAccountDetail(false));
 
-      setAccountIdQueryString(data.id);
+      setAccountIdQueryString(account.id);
     } catch (error) {
       dispatch(setIsLoadingAccountDetail(false));
       errorHandler(error);
@@ -42,7 +53,7 @@ export default function useAccountCallback() {
 
   const callback = useCallback(async (account: Account) => {
     if (!accountSelected || accountSelected.id !== account.id) {
-      await select(account.baseType, account.id);
+      await select(account);
     }
   }, [select, accountSelected]);
 

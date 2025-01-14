@@ -53,3 +53,10 @@ export type Checkbook = {
   date: string;
   active: boolean
 };
+
+export type Dispute = {
+  id: string;
+  name: string;
+  date: string;
+  amount: number;
+};

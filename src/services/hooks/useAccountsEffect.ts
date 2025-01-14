@@ -8,23 +8,28 @@ import {
   setIsLoadingAccountList,
 } from '../../store/slice';
 import errorHandler from '../../utils/errorHandler';
-import { AccountType } from '../config';
+import { AccountTypeConfig } from '../config';
 import { AccountRepository } from '../repositories';
 import ApiError from '../utils/ApiError';
+
+type ApiAccountListFilter = keyof typeof AccountTypeConfig;
 
 export default function useAccountsEffect() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     const abortController = new AbortController();
+    const { apiType } = AccountTypeConfig[API_ACCOUNT_LIST_FILTER as ApiAccountListFilter];
 
     (async () => {
       dispatch(setIsLoadingAccountList(true));
 
       try {
         const data = await AccountRepository.list(
-          API_ACCOUNT_LIST_FILTER as AccountType,
-          { abortSignal: abortController.signal },
+          {
+            apiAccountType: apiType,
+            config: { abortSignal: abortController.signal },
+          },
         );
         dispatch(setAccounts(data));
         const dataFreezed = data.reduce<Record<string, boolean>>(

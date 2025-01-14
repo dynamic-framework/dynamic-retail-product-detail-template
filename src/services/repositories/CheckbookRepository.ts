@@ -1,23 +1,22 @@
-import type { GenericAbortSignal } from 'axios';
-
-import { ApiCheckbook, ApiResponsePaginatedWrapped } from '../api-interface';
+import { ApiCheckbook, ApiResponseWrapped } from '../api-interface';
 import ApiClient from '../clients/apiClient';
 import checkbookMapper from '../mappers/checkbookMapper';
 
-export async function list(
-  query: string,
-  config?: { abortSignal: GenericAbortSignal },
-) {
-  const { data } = await ApiClient.request<ApiResponsePaginatedWrapped<ApiCheckbook>>({
-    url: `checkbooks/${query}`,
-    method: 'GET',
-    headers: {
-      Prefer: 'code=200',
+import { RepositoryParams } from './repository';
+
+export async function list(params: RepositoryParams<{
+  query?: string,
+}>) {
+  const { data } = await ApiClient.request<ApiResponseWrapped<ApiCheckbook[]>>(
+    {
+      url: 'accounts/account/checkbooks',
+      method: 'GET',
+      params: {
+        query: params.query,
+      },
+      signal: params.config?.abortSignal,
     },
-    ...config?.abortSignal && {
-      signal: config.abortSignal,
-    },
-  });
+  );
 
   const { content, metadata } = data;
 

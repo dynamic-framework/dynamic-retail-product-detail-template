@@ -1,6 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import type { Account, Activity } from '../services/interface';
+import type {
+  Account,
+  Activity,
+  Dispute,
+} from '../services/interface';
 
 export type WidgetState = {
   accounts: Array<Account>,
@@ -9,6 +13,7 @@ export type WidgetState = {
   isLoadingAccountList: boolean;
   isLoadingAccountDetail: boolean;
   activities: Array<Activity>;
+  disputes: Dispute[];
   filterActivities: {
     query: string;
   },
@@ -24,6 +29,7 @@ const initialState: WidgetState = {
   isLoadingAccountList: false,
   isLoadingAccountDetail: false,
   activities: [],
+  disputes: [],
   filterActivities: {
     query: '',
   },
@@ -60,6 +66,9 @@ const slice = createSlice({
     setQueryFilterCheckbook(state, action: PayloadAction<string>) {
       state.filterCheckbooks.query = action.payload;
     },
+    setDisputes(state, action: PayloadAction<Dispute[]>) {
+      state.disputes = action.payload;
+    },
   },
 });
 
@@ -72,5 +81,6 @@ export const {
   setQueryFilterActivities,
   setAccountsFreezed,
   setQueryFilterCheckbook,
+  setDisputes,
 } = slice.actions;
 export default slice.reducer;

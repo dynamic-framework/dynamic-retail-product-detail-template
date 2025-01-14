@@ -2,10 +2,7 @@ import { useEffect } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { getAccounts } from '../../store/selectors';
-import {
-  setAccountSelected,
-  setIsLoadingAccountDetail,
-} from '../../store/slice';
+import { setAccountSelected, setIsLoadingAccountDetail } from '../../store/slice';
 import errorHandler from '../../utils/errorHandler';
 import { AccountRepository } from '../repositories';
 import ApiError from '../utils/ApiError';
@@ -32,11 +29,19 @@ export default function useAccountEffect() {
           }
 
           const completeAccount = await AccountRepository.get(
-            account.baseType,
-            account.id,
-            { abortSignal: abortController.signal },
+            {
+              account,
+              config: { abortSignal: abortController.signal },
+            },
           );
-          dispatch(setAccountSelected(completeAccount));
+
+          dispatch(setAccountSelected(
+            {
+              ...completeAccount,
+              id: account.id,
+            },
+          ));
+
           dispatch(setIsLoadingAccountDetail(false));
         } catch (error) {
           if ((error as ApiError).name === 'CanceledError') return;

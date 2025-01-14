@@ -14,7 +14,7 @@ import DisputeDetailItem from '../DisputeDetailItem';
 export default function ModalDisputeDetail(
   {
     payload:
-    { activity },
+    { dispute },
   }: PortalProps<PortalAvailablePayload['modalDisputeDetail']>,
 ) {
   const { closePortal } = useDPortalContext();
@@ -31,21 +31,21 @@ export default function ModalDisputeDetail(
         onClose={closePortal}
       >
         <h4 className="text-capitalize">
-          {t('modal.dispute.title', { value: activity.name })}
+          {t('modal.dispute.title', { value: dispute.name })}
         </h4>
       </DModal.Header>
       <DModal.Body className="d-flex flex-column">
         <DisputeDetailItem
           i18nKey="modal.dispute.date"
-          value={DateTime.fromISO(activity.date).toFormat(FORMAT_DATE_FULL)}
+          value={DateTime.fromISO(dispute.date).toFormat(FORMAT_DATE_FULL)}
         />
         <DisputeDetailItem
           i18nKey="modal.dispute.amount"
-          value={format(activity.amount)}
+          value={format(dispute.amount)}
         />
         <DisputeDetailItem
           i18nKey="modal.dispute.trxNumber"
-          value={activity.id}
+          value={dispute.id}
         />
         <DisputeDetailItem
           i18nKey="modal.dispute.situation"

@@ -15,7 +15,7 @@
     "currency-precision": 2,
     "currency-separator": ".",
     "currency-decimal": ",",
-    "account-list-filter": "credit-card",
+    "account-list-filter": "checking",
     "transfers-path": "transfers",
     "pay-debt-path": "pay-debt",
     "loan-application-path": "loan-application",
@@ -30,7 +30,7 @@
     "new-dispute-path": "new-dispute",
     "checkbook-item-path": "#",
 
-    "api-path": "https://stoplight.io/mocks/modyo/dynamic/204091081",
+    "api-path": "https://dynamic-integration.modyo.be/mocks/online-banking",
 
     "format-date": "MM/dd/yyyy",
     "format-date-full": "MM/dd/yyyy hh:mm a"

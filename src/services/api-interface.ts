@@ -2,145 +2,206 @@ export type ApiErrorItem = {
   status: string;
   code: string;
   title: string;
-  messageCode: string;
+  message_code: string;
   detail: string;
 };
 
-export type ApiAccountAccountType = 'REGULAR_SAVINGS' | 'CURRENT_ACCOUNT' | 'LOAN' | 'CREDIT_CARD';
+export type ApiAccountGroupType = 'SAVINGS' | 'CHECKING' | 'LOAN' | 'CREDIT_CARD';
 
 export type ApiAccountType = 'DEPOSIT' | 'LOAN';
 
-export type ApiPayments = {
-  currency: string;
-  lastPaidDate: string;
-  dueSinceDate: string;
-  nextDueDate: string;
-  lastPaidInstallmentNumber: number;
-  amounts: {
-    due: number;
-    expected: number;
-    paid: number;
-  };
-};
-
 export type ApiAccount = {
   id: string;
-  nickName: string;
-  accountNumber: string;
-  freeze: boolean;
+  number: string;
+  masked_number: string;
   type: ApiAccountType;
-  expiryDate: string;
-  accountType: ApiAccountAccountType;
-  accountingBalance: number;
-  availableBalance: number;
+  group: ApiAccountGroupType;
+  state: string;
+  account_holder_name: string;
   currency: string;
-  totalCharges: number;
-  totalIncomes: number;
-  closedAt: string;
-  created: string;
-  modified: string;
-  status: string;
-  depositDetails?: ApiDepositDetails;
-  loanDetails?: ApiLoanDetails;
-  paymentDetails?: ApiPayments;
+  deposit?: ApiDepositDetails;
+  loan?: ApiLoanDetails;
+  last_paid_installment_number?: number;
+  card: {
+    is_frozen: boolean;
+  }
 };
 
 export type ApiDepositDetails = {
-  balances: {
+  balance: {
+    available: {
+      total: number;
+      deposit: number;
+      credit_line: number;
+      overdraft: number;
+    },
+    not_available: number;
     total: number;
-    available: number;
-    unavailable: number;
-  }
-  overdraft?: {
-    limit: number;
-    total: number;
-    available: number;
-    expiryDate: string; // ISO8601
-  };
-  maturityDate?: string; // ISO8601
+  },
   interest: {
-    accrued: number;
-    accruedNegative: number;
-    settings?: {
-      rateSettings?: {
-        rate?: number;
-        tiers?: number;
-        terms?: string;
-        source?: string;
+    rateSettings?: {
+      monthly_rate?: number;
+      yearly_rate?: number;
+      calculation_method?: string;
+    },
+    accrued_amount: {
+      total: number;
+      positive: number;
+      negative:number;
+    }
+  },
+  settings: {
+    maturity_date: string;
+    term: {
+      count: number;
+      term_description: string;
+      period: {
+        id: string;
+        name: string;
+        code: string;
+      }
+    }
+  },
+  overdraft: {
+    expiration_date: string;
+    details: {
+      amount: number;
+      total: number;
+      amount_due: number;
+      balance: {
+        owed: number;
+        remaining: number;
       },
-      paymentPoint: string;
-      paymentDates: Array<Record<string, unknown>>;
-    };
-  };
+      interest: {
+        rate_settings: {
+          monthly_rate: number;
+          yearly_rate: number;
+          calculation_method: string;
+        },
+        interest_accrued: {
+          due: number;
+          amount: {
+            total: number;
+            positive: number;
+            negative: number;
+          },
+          in_cycle: number;
+          in_arrears: number;
+        }
+      }
+    }
+  },
+  credit_line: {
+    amount: number;
+    total: number;
+    amount_due: number;
+    balance: {
+      owed: number;
+      remaining: number;
+    },
+    interest: {
+      rate_settings: {
+        monthly_rate: number;
+        yearly_rate: number;
+        calculation_method: string;
+      },
+      interest_accrued: {
+        due: number;
+        amount: {
+          total: number;
+          positive: number;
+          negative: number;
+        },
+        in_cycle: number;
+        in_arrears: number;
+      }
+    }
+  }
 };
 
 export type ApiLoanDetails = {
-  amount: number;
-  balances: {
-    owed: number;
-    remaining: number;
-  };
-  due: number;
-  daysInArrears: number;
-  daysLate: number;
-  installments: number;
-  interest: {
-    accrued: number;
-    accruedInBillingCycle: number;
-    accruedFromArrears: number;
-    settings: {
-      rate: number;
-      rates: null;
-      type: string;
-      source: string;
-    };
-  };
+  details: {
+    amount: number;
+    total: number;
+    amount_due: number;
+    balance: {
+      owed: number;
+      remaining: number;
+    },
+    interest: {
+      rate_settings: {
+        monthly_rate: number;
+        yearly_rate: number;
+        calculation_method: string;
+      },
+      interest_accrued: {
+        due: number;
+        amount: {
+          total: number;
+          positive: number;
+          negative: number;
+        },
+        in_cycle: number;
+        in_arrears: number;
+      }
+    }
+  },
+  term: {
+    count: number;
+    term_description: string;
+    period: {
+      id: string;
+      name: string;
+      code: string;
+    }
+  },
+  days_in_arrears: number;
+  days_late: number;
+  dates: {
+    last_paid: string;
+    due_since: string;
+    next_due: string;
+  }
 };
 
-export type ApiDepositActivity = {
-  id: string;
-  type: string;
-  description: string;
-  amount: number;
-  bookingDate: string;
-  effectiveDate: string;
-  totalBalance: number;
-  creationDate: string;
-  currencyCode: string;
+export type ApiMetadata = {
+  page: number;
+  rows: number;
+  total_pages: number;
+  total_rows: number;
 };
 
-export type ApiLoanActivity = {
-  id: string;
-  type: string;
-  description: string;
-  amount: number;
-  bookingDate: string;
-  effectiveDate: string;
-  accountId: number;
-  subject: string;
-  transactionTypeId: string;
-  balance: number;
-  clientId: string;
-  payeeId: string;
-  created: string;
-  modified: string;
-  valueDate: string;
+export type ApiResponseWrapped<T> = {
+  metadata?: ApiMetadata;
+  content: T;
 };
 
 export type ApiCheckbook = {
   id: string;
-  date: string;
-  active: boolean
+  serial_number: string;
+  issue_date: string;
+  is_active: boolean;
+  check_count: number;
 };
 
-export type ApiResponsePaginatedWrapped<T> = {
-  metadata: {
-    page: number;
-    rows: number;
-    total_pages: number;
-    total_rows: number;
-  },
-  content: T[];
+export type ApiActivity = {
+  id: string;
+  document_id: string;
+  description: string;
+  effective_date: string;
+  amount: number;
+  type: string;
 };
 
-export type ApiActivity = ApiDepositActivity | ApiLoanActivity;
+export type ApiDispute = {
+  id: string;
+  document_id: string;
+  description: string;
+  effective_date: string;
+  amount: number;
+  type: string;
+  dispute_id: string;
+  dispute_date: string;
+  settlement_date: string;
+  settlement_status: string;
+};
