@@ -1,16 +1,17 @@
-import {
-  DList,
-  DPaginator,
-} from '@dynamic-framework/ui-react';
+import { DList, DPaginator } from '@dynamic-framework/ui-react';
 import classnames from 'classnames';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import usePaginator from '../hooks/usePaginator';
+import useSelectedPage from '../hooks/useSelectedPage';
 import useDisputesEffect from '../services/hooks/useDisputesEffect';
 import { Account } from '../services/interface';
 import { useAppSelector } from '../store/hooks';
-import { getAccountSelected, getFilterActivities } from '../store/selectors';
+import {
+  getAccountSelected,
+  getFilterActivities,
+  getMetadata,
+} from '../store/selectors';
 
 import { ActivityListFilter } from './ActivityListFilter';
 import ListItemDispute from './ListItemDispute';
@@ -21,18 +22,13 @@ export default function Disputes() {
   const { t } = useTranslation();
   const account = useAppSelector(getAccountSelected) as Account;
   const { query } = useAppSelector(getFilterActivities);
+  const metadata = useAppSelector(getMetadata);
+  const { selectedPageHandler } = useSelectedPage();
 
   const {
     loading,
     disputes,
   } = useDisputesEffect(account);
-
-  const {
-    callback,
-    currentPage,
-    data,
-    totalPages,
-  } = usePaginator(disputes, 7);
 
   const emptyTransactionsText = useMemo(() => {
     if (query !== '') {
@@ -75,7 +71,7 @@ export default function Disputes() {
       )}
       <div>
         <DList flush>
-          {data.map((dispute) => (
+          {disputes.map((dispute) => (
             <ListItemDispute
               key={`activity-${dispute.id}`}
               dispute={dispute}
@@ -84,9 +80,9 @@ export default function Disputes() {
         </DList>
         <div className="d-flex flex-grow-1 justify-content-center py-4">
           <DPaginator
-            page={currentPage}
-            total={totalPages}
-            onPageChange={(page: number) => callback(page)}
+            page={metadata.page}
+            total={metadata.totalPages}
+            onPageChange={selectedPageHandler}
           />
         </div>
       </div>

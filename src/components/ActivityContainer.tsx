@@ -7,6 +7,7 @@ import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { API_ACCOUNT_LIST_FILTER } from '../config/widgetConfig';
+import useSelectedPage from '../hooks/useSelectedPage';
 import { useAppSelector } from '../store/hooks';
 import { getIsNotReady } from '../store/selectors';
 
@@ -21,6 +22,7 @@ const IS_CHECKING = API_ACCOUNT_LIST_FILTER === 'checking';
 export default function ActivityContainer() {
   const { t } = useTranslation();
   const isNotReady = useAppSelector(getIsNotReady);
+  const { selectedPageHandler } = useSelectedPage();
 
   const options: DTabOption[] = useMemo(() => [
     { label: t('tabs.transactions'), tab: 'transactions' },
@@ -43,6 +45,7 @@ export default function ActivityContainer() {
 
   const handlerSelected = (option: DTabOption) => {
     setContainer(option);
+    selectedPageHandler(1);
   };
 
   if (isNotReady) {

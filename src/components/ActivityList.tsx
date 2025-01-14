@@ -1,6 +1,6 @@
 import {
-  DPaginator,
   DListGroup,
+  DPaginator,
   useDPortalContext,
 } from '@dynamic-framework/ui-react';
 import classnames from 'classnames';
@@ -9,12 +9,16 @@ import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { FORMAT_DATE_FULL } from '../config/widgetConfig';
-import usePaginator from '../hooks/usePaginator';
+import useSelectedPage from '../hooks/useSelectedPage';
 import type { PortalAvailablePayload } from '../interface';
 import useActivitiesEffect from '../services/hooks/useActivitiesEffect';
 import { Account, Activity } from '../services/interface';
 import { useAppSelector } from '../store/hooks';
-import { getFilterActivities, getAccountSelected } from '../store/selectors';
+import {
+  getFilterActivities,
+  getAccountSelected,
+  getMetadata,
+} from '../store/selectors';
 
 import { ActivityListFilter } from './ActivityListFilter';
 import ListItemMovement from './ListItemMovement';
@@ -30,23 +34,18 @@ export default function ActivityList({ scheduled }: Props) {
 
   const account = useAppSelector(getAccountSelected) as Account;
   const { query } = useAppSelector(getFilterActivities);
+  const metadata = useAppSelector(getMetadata);
 
   const {
     loading,
     activities,
-    filteredActivities,
   } = useActivitiesEffect(account, scheduled);
 
   const openActivityDetail = (activity: Activity) => {
     openPortal('modalActivityDetail', { activity });
   };
 
-  const {
-    callback,
-    currentPage,
-    data,
-    totalPages,
-  } = usePaginator(filteredActivities, 7);
+  const { selectedPageHandler } = useSelectedPage();
 
   const emptyTransactionsText = useMemo(() => {
     if (query !== '') {
@@ -78,7 +77,7 @@ export default function ActivityList({ scheduled }: Props) {
 
       )}
       <DListGroup flush>
-        {data.map((activity) => (
+        {activities.map((activity) => (
           <ListItemMovement
             key={`activity-${activity.id}`}
             openModal={() => openActivityDetail(activity)}
@@ -91,9 +90,9 @@ export default function ActivityList({ scheduled }: Props) {
       </DListGroup>
       <div className="d-flex flex-grow-1 justify-content-center py-4">
         <DPaginator
-          page={currentPage}
-          total={totalPages}
-          onPageChange={(page: number) => callback(page)}
+          page={metadata.page}
+          total={metadata.totalPages}
+          onPageChange={selectedPageHandler}
           maxWidth={375}
         />
       </div>

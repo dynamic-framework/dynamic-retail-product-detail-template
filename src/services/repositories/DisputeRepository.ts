@@ -3,11 +3,13 @@ import ApiClient from '../clients/apiClient';
 import { AccountTypeConfig } from '../config';
 import { Account } from '../interface';
 import disputeMapper from '../mappers/disputeMapper';
+import metadataMapper from '../mappers/metadataMapper';
 
 import { RepositoryParams } from './repository';
 
 export async function list(params: RepositoryParams<{
   account: Account;
+  page: string;
 }>) {
   const group = params.account.baseType.toUpperCase();
   const type = AccountTypeConfig[params.account.type].apiType;
@@ -17,8 +19,14 @@ export async function list(params: RepositoryParams<{
       url: `accounts/${group}/${type}/account/disputes`,
       method: 'GET',
       signal: params.config?.abortSignal,
+      params: {
+        page: params.page,
+      },
     },
   );
 
-  return data.content.map(disputeMapper);
+  return {
+    data: data.content.map(disputeMapper),
+    metadata: metadataMapper(data.metadata!),
+  };
 }

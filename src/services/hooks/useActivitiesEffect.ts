@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { getActivities, getFilteredActivities } from '../../store/selectors';
-import { setActivities } from '../../store/slice';
+import { getActivities, getSelectedPage } from '../../store/selectors';
+import { setActivities, setMetadata } from '../../store/slice';
 import errorHandler from '../../utils/errorHandler';
 import type { Account } from '../interface';
 import { ActivityRepository } from '../repositories';
@@ -12,7 +12,7 @@ export default function useActivitiesEffect(account: Account, scheduled?: boolea
   const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
   const activities = useAppSelector(getActivities);
-  const filteredActivities = useAppSelector(getFilteredActivities);
+  const selectedPage = useAppSelector(getSelectedPage);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -20,16 +20,19 @@ export default function useActivitiesEffect(account: Account, scheduled?: boolea
     (async () => {
       setLoading(true);
       try {
-        const data = await ActivityRepository.list(
+        const { data, metadata } = await ActivityRepository.list(
           {
             account,
             upcoming: scheduled,
+            page: selectedPage,
             config: {
               abortSignal: abortController.signal,
             },
           },
         );
         dispatch(setActivities(data));
+        dispatch(setMetadata(metadata));
+
         setLoading(false);
       } catch (error) {
         if ((error as ApiError).name === 'CanceledError') return;
@@ -40,11 +43,10 @@ export default function useActivitiesEffect(account: Account, scheduled?: boolea
     return () => {
       abortController.abort();
     };
-  }, [account, dispatch, scheduled]);
+  }, [account, dispatch, scheduled, selectedPage]);
 
   return {
     loading,
     activities,
-    filteredActivities,
   };
 }

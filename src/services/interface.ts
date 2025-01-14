@@ -60,3 +60,8 @@ export type Dispute = {
   date: string;
   amount: number;
 };
+
+export type Metadata = {
+  page: number;
+  totalPages: number;
+};
