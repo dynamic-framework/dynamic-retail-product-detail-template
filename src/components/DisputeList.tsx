@@ -9,19 +9,19 @@ import { Account } from '../services/interface';
 import { useAppSelector } from '../store/hooks';
 import {
   getAccountSelected,
-  getFilterActivities,
+  getQueryFilter,
   getMetadata,
 } from '../store/selectors';
 
-import { ActivityListFilter } from './ActivityListFilter';
+import Filters from './Filters';
 import ListItemDispute from './ListItemDispute';
-import AccountListLoader from './loaders/AccountListLoader';
+import AccountListLoader from './loaders/ListLoader';
 import NewDisputeLink from './NewDisputeLink';
 
-export default function Disputes() {
+export default function DisputeList() {
   const { t } = useTranslation();
   const account = useAppSelector(getAccountSelected) as Account;
-  const { query } = useAppSelector(getFilterActivities);
+  const query = useAppSelector(getQueryFilter);
   const metadata = useAppSelector(getMetadata);
   const { selectedPageHandler } = useSelectedPage();
 
@@ -37,14 +37,11 @@ export default function Disputes() {
     return t('noData.noPayments');
   }, [t, query]);
 
-  if (loading) {
-    return <AccountListLoader />;
-  }
-
   return (
     <>
-      <ActivityListFilter
-        activities={disputes}
+      <Filters
+        disabled={disputes.length === 0}
+        offcanvasName="offcanvasAdvancedFilters"
         otherOptions={(
           <div className="ms-auto d-none d-lg-flex">
             <NewDisputeLink account={account} />
@@ -54,7 +51,8 @@ export default function Disputes() {
       <div className="d-flex d-lg-none justify-content-center mb-4 mb-lg-0">
         <NewDisputeLink account={account} />
       </div>
-      {(disputes.length < 1) && (
+      {loading && <AccountListLoader />}
+      {(!loading && disputes.length === 0) && (
         <div
           className={classnames(
             'd-flex flex-column justify-content-center align-items-center',
@@ -69,23 +67,25 @@ export default function Disputes() {
           />
         </div>
       )}
-      <div>
-        <DList flush>
-          {disputes.map((dispute) => (
-            <ListItemDispute
-              key={`activity-${dispute.id}`}
-              dispute={dispute}
+      {(!loading && disputes.length > 0) && (
+        <div>
+          <DList flush>
+            {disputes.map((dispute) => (
+              <ListItemDispute
+                key={`activity-${dispute.id}`}
+                dispute={dispute}
+              />
+            ))}
+          </DList>
+          <div className="d-flex flex-grow-1 justify-content-center py-4">
+            <DPaginator
+              page={metadata.page}
+              total={metadata.totalPages}
+              onPageChange={selectedPageHandler}
             />
-          ))}
-        </DList>
-        <div className="d-flex flex-grow-1 justify-content-center py-4">
-          <DPaginator
-            page={metadata.page}
-            total={metadata.totalPages}
-            onPageChange={selectedPageHandler}
-          />
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

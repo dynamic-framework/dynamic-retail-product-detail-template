@@ -1,4 +1,4 @@
-export default function AccountListLoader() {
+export default function ListLoader() {
   return (
     <div className="placeholder-glow d-flex flex-column gap-2">
       <div

@@ -11,6 +11,7 @@ export async function list(params: RepositoryParams<{
   account: Account;
   upcoming?: boolean;
   page: string;
+  query?: string,
 }>) {
   const group = params.account.baseType.toUpperCase();
   const type = AccountTypeConfig[params.account.type].apiType;
@@ -21,6 +22,7 @@ export async function list(params: RepositoryParams<{
       method: 'GET',
       signal: params.config?.abortSignal,
       params: {
+        ...params.query && { query: params.query },
         page: params.page,
       },
     },
