@@ -42,11 +42,10 @@ export async function get(
 ) {
   const group = params.account.baseType.toUpperCase();
   const type = AccountTypeConfig[params.account.type].apiType;
-  const hasDetails = type === ApiAccountType.Loan ? '/details' : '';
 
   const { data } = await ApiClient.request<ApiResponseWrapped<ApiAccount>>(
     {
-      url: `accounts/${group}/${type}/account${hasDetails}`,
+      url: `accounts/${group}/${type}/account`,
       method: 'GET',
       signal: params.config?.abortSignal,
     },
