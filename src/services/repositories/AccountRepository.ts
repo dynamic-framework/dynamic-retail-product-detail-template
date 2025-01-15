@@ -54,3 +54,13 @@ export async function get(
 
   return accountMapper(data.content);
 }
+
+export async function freezeCard(params: RepositoryParams) {
+  await ApiClient.request(
+    {
+      url: 'generics',
+      method: 'POST',
+      signal: params.config?.abortSignal,
+    },
+  );
+}

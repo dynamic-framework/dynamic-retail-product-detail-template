@@ -3,13 +3,13 @@ import {
   DInputSwitch,
   useDPortalContext,
 } from '@dynamic-framework/ui-react';
-import { useCallback, useMemo } from 'react';
+import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { PRODUCT_BLOCK_PATH, SITE_URL } from '../config/widgetConfig';
-import { useAppDispatch, useAppSelector } from '../store/hooks';
+import useFreezeCardCallback from '../services/hooks/useFreezeCardCallback';
+import { useAppSelector } from '../store/hooks';
 import { getAccountSelected, getAccountsFreezed } from '../store/selectors';
-import { setAccountsFreezed } from '../store/slice';
 
 import ActionsSelectorButton from './ActionsSelectorButton';
 
@@ -26,27 +26,15 @@ export default function ItemActions(
     text,
   }: Props,
 ) {
+  const { t } = useTranslation();
+  const account = useAppSelector(getAccountSelected)!;
+  const accountsFreezed = useAppSelector(getAccountsFreezed);
   const { openPortal } = useDPortalContext();
+  const { loading, freezeCard } = useFreezeCardCallback();
 
   const handlerInfoCard = useCallback(() => {
     openPortal('modalCardInformation', undefined);
   }, [openPortal]);
-
-  const account = useAppSelector(getAccountSelected)!;
-  const accountsFreezed = useAppSelector(getAccountsFreezed);
-  const dispatch = useAppDispatch();
-  const { t } = useTranslation();
-
-  const freeze = useMemo(
-    () => accountsFreezed[account.id],
-    [account.id, accountsFreezed],
-  );
-
-  const updateAccounts = (isFreezed: boolean) => {
-    if (account) {
-      dispatch(setAccountsFreezed({ [account.id]: isFreezed }));
-    }
-  };
 
   return (
     <div className="d-flex flex-column gap-4">
@@ -59,9 +47,10 @@ export default function ItemActions(
           {t('freezeCard')}
         </label>
         <DInputSwitch
-          onChange={(isFreezed) => updateAccounts(isFreezed)}
+          onChange={(isFreezed) => freezeCard(account.id, isFreezed)}
           id="freezeCard"
           checked={accountsFreezed[account.id]}
+          disabled={loading}
         />
       </div>
       <hr className="m-0 border-light" />
@@ -75,13 +64,13 @@ export default function ItemActions(
           text="View card info"
           icon="eye"
           action={() => openPortal('modalOTP', { callback: handlerInfoCard })}
-          disabled={freeze}
+          disabled={accountsFreezed[account.id]}
         />
         <ActionsSelectorButton
           text="Block"
           icon="ban"
           url={`${SITE_URL}/${PRODUCT_BLOCK_PATH}?card_id=${account.id}`}
-          disabled={freeze}
+          disabled={accountsFreezed[account.id]}
         />
         <ActionsSelectorButton
           text="More actions"
