@@ -16,12 +16,12 @@ export const useMoreActions = () => useCallback(
     const actions = [
       {
         text: 'modal.moreActions.bankStatements',
-        link: BANK_STATEMENTS_PATH,
+        link: `${BANK_STATEMENTS_PATH}?account_id=${accountId}`,
         icon: 'file-text',
       },
       {
         text: 'modal.moreActions.cashAdvance',
-        link: CASH_ADVANCE_PATH,
+        link: `${CASH_ADVANCE_PATH}?account_id=${accountId}`,
         icon: 'cash-coin',
       },
       {
@@ -41,7 +41,7 @@ export const useMoreActions = () => useCallback(
       },
       {
         text: 'modal.moreActions.configureRestrictions',
-        link: CONFIGURE_RESTRICTIONS_PATH,
+        link: `${CONFIGURE_RESTRICTIONS_PATH}?card_id=${accountId}`,
         icon: 'toggles',
       },
     ];
