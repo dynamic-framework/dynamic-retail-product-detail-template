@@ -1,12 +1,29 @@
 import { DIcon } from '@dynamic-framework/ui-react';
+import { useMemo } from 'react';
+
+import { useAppSelector } from '../store/hooks';
+import { getAccountsFreezed } from '../store/selectors';
 
 type Props = {
   text: string;
   value?: string | number;
-  freeze: boolean;
+  accountId?: string;
 };
 
-export default function ItemTitle({ text, value, freeze }: Props) {
+export default function ItemTitle(
+  {
+    text,
+    value,
+    accountId,
+  }: Props,
+) {
+  const accountsFreezed = useAppSelector(getAccountsFreezed);
+
+  const freeze = useMemo(
+    () => (accountId ? accountsFreezed[accountId] : false),
+    [accountId, accountsFreezed],
+  );
+
   return (
     <div className="d-flex flex-column align-items-center mb-3 my-lg-4">
       <small className="d-inline-flex gap-2 align-items-center">

@@ -2,7 +2,11 @@ import { useCallback, useMemo } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { getAccounts, getAccountSelected } from '../../store/selectors';
-import { setAccountSelected, setIsLoadingAccountDetail } from '../../store/slice';
+import {
+  setAccountSelected,
+  setIsLoadingAccountDetail,
+  setSelectedPage,
+} from '../../store/slice';
 import errorHandler from '../../utils/errorHandler';
 import type { Account, BaseAccount } from '../interface';
 import { AccountRepository } from '../repositories';
@@ -41,6 +45,7 @@ export default function useAccountCallback() {
         },
       ));
 
+      dispatch(setSelectedPage('1'));
       dispatch(setIsLoadingAccountDetail(false));
 
       setAccountIdQueryString(account.id);

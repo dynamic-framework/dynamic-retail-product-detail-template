@@ -21,7 +21,6 @@ export default function AccountDetailLoan({ account }: Props) {
       <ItemTitle
         text={t('collapse.details.outstandingBalance')}
         value={account.balanceOwed ? format(account.balanceOwed) : DETAIL_NO_VALUE}
-        freeze={account.freeze}
       />
       <hr className="m-0 border-light" />
       <div className="d-flex flex-column">
@@ -32,7 +31,7 @@ export default function AccountDetailLoan({ account }: Props) {
         <ItemDetail
           text={t('collapse.details.paymentNumber')}
           value={`
-            ${account.paymentLastPaidInstallmentNumber ? account.paymentLastPaidInstallmentNumber : DETAIL_NO_VALUE}
+            ${account.paymentNextDueInstallmentNumber ? account.paymentNextDueInstallmentNumber : DETAIL_NO_VALUE}
             /
             ${account.installments ? account.installments : DETAIL_NO_VALUE}
           `}

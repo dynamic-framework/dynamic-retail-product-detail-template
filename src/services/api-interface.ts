@@ -21,7 +21,6 @@ export type ApiAccount = {
   currency: string;
   deposit?: ApiDepositDetails;
   loan?: ApiLoanDetails;
-  last_paid_installment_number?: number;
   card: {
     is_frozen: boolean;
   }
@@ -161,7 +160,8 @@ export type ApiLoanDetails = {
     last_paid: string;
     due_since: string;
     next_due: string;
-  }
+  },
+  next_due_installment_number?: number;
 };
 
 export type ApiMetadata = {

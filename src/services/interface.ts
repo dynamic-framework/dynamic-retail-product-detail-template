@@ -33,7 +33,7 @@ export type LoanAccount = BaseAccountDiscriminator<AccountBaseType.Loan> & {
   balanceRemaining?: number;
   paymentNextDueDate?: string;
   paymentDue?: number;
-  paymentLastPaidInstallmentNumber?: number;
+  paymentNextDueInstallmentNumber?: number;
   installments?: number;
   interestRate?: number;
 };
