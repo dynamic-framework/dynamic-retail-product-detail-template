@@ -13,7 +13,7 @@ import {
 import { useTranslation } from 'react-i18next';
 
 import { useAppDispatch } from '../../store/hooks';
-import { setQueryFilterActivities } from '../../store/slice';
+import { setQueryFilter } from '../../store/slice';
 
 export default function FiltersOffcanvas() {
   const { closePortal } = useDPortalContext();
@@ -27,12 +27,12 @@ export default function FiltersOffcanvas() {
   const [maxAmount, setMaxAmount] = useState(minAmount);
 
   const filterHandler = useCallback(() => {
-    dispatch(setQueryFilterActivities(' '));
+    dispatch(setQueryFilter(' '));
     closePortal();
   }, [closePortal, dispatch]);
 
   const clearFilterHandler = useCallback(() => {
-    dispatch(setQueryFilterActivities(''));
+    dispatch(setQueryFilter(''));
     closePortal();
   }, [closePortal, dispatch]);
 

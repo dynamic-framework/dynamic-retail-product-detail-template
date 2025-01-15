@@ -2,7 +2,7 @@ import { useDContext } from '@dynamic-framework/ui-react';
 import { useEffect } from 'react';
 
 import Accounts from './components/Accounts';
-import ActivityContainer from './components/ActivityContainer';
+import TabsContainer from './components/TabsContainer';
 import { CONTEXT_CONFIG } from './config/widgetConfig';
 import useAccountEffect from './services/hooks/useAccountEffect';
 import useAccountsEffect from './services/hooks/useAccountsEffect';
@@ -24,7 +24,7 @@ export default function App() {
           <Accounts />
         </div>
         <div className="col-12 col-lg-7 col-xl-8 h-100">
-          <ActivityContainer />
+          <TabsContainer />
         </div>
       </div>
     </div>

@@ -6,22 +6,25 @@ import { useAppSelector } from '../store/hooks';
 import { getMetadata } from '../store/selectors';
 
 import CheckbookItem from './CheckbookItem';
-import CheckbookListFilter from './CheckbookListFilter';
+import Filters from './Filters';
 import CheckbookLoader from './loaders/CheckbookLoader';
 
-export default function Checkbooks() {
-  const { data: options, loading } = useCheckbooksEffect();
+export default function CheckbookList() {
+  const { checkbooks, loading } = useCheckbooksEffect();
   const { selectedPageHandler } = useSelectedPage();
   const metadata = useAppSelector(getMetadata);
 
   return (
     <>
-      <CheckbookListFilter />
+      <Filters
+        disabled={checkbooks.length === 0}
+        offcanvasName="offcanvasCheckbooksFilters"
+      />
       {loading && <CheckbookLoader />}
       {!loading && (
         <>
           <DList flush>
-            {options?.map((option) => (
+            {checkbooks?.map((option) => (
               <CheckbookItem
                 key={option.id}
                 id={option.id}

@@ -1,18 +1,19 @@
 import { useEffect, useState } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { getDisputes, getSelectedPage } from '../../store/selectors';
-import { setDisputes, setMetadata } from '../../store/slice';
+import { getQueryFilter, getSelectedPage } from '../../store/selectors';
+import { setMetadata } from '../../store/slice';
 import errorHandler from '../../utils/errorHandler';
-import type { Account } from '../interface';
+import type { Account, Dispute } from '../interface';
 import { DisputeRepository } from '../repositories';
 import ApiError from '../utils/ApiError';
 
 export default function useDisputesEffect(account: Account) {
   const [loading, setLoading] = useState(false);
-  const dispatch = useAppDispatch();
-  const disputes = useAppSelector(getDisputes);
+  const [disputes, setDisputes] = useState<Dispute[]>([]);
+  const query = useAppSelector(getQueryFilter);
   const selectedPage = useAppSelector(getSelectedPage);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -23,15 +24,16 @@ export default function useDisputesEffect(account: Account) {
         const { data, metadata } = await DisputeRepository.list(
           {
             account,
+            query,
             page: selectedPage,
             config: {
               abortSignal: abortController.signal,
             },
           },
         );
-        dispatch(setDisputes(data));
-        dispatch(setMetadata(metadata));
 
+        setDisputes(data);
+        dispatch(setMetadata(metadata));
         setLoading(false);
       } catch (error) {
         if ((error as ApiError).name === 'CanceledError') return;
@@ -42,7 +44,7 @@ export default function useDisputesEffect(account: Account) {
     return () => {
       abortController.abort();
     };
-  }, [account, dispatch, selectedPage]);
+  }, [account, dispatch, selectedPage, query]);
 
   return {
     loading,

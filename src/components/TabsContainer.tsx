@@ -12,14 +12,14 @@ import { useAppSelector } from '../store/hooks';
 import { getIsNotReady } from '../store/selectors';
 
 import ActivityList from './ActivityList';
-import Checkbooks from './Checkbooks';
-import Disputes from './Disputes';
-import AccountListLoader from './loaders/AccountListLoader';
+import CheckbookList from './CheckbookList';
+import DisputeList from './DisputeList';
+import ListLoader from './loaders/ListLoader';
 
 const IS_LOAN = API_ACCOUNT_LIST_FILTER === 'loan';
 const IS_CHECKING = API_ACCOUNT_LIST_FILTER === 'checking';
 
-export default function ActivityContainer() {
+export default function TabsContainer() {
   const { t } = useTranslation();
   const isNotReady = useAppSelector(getIsNotReady);
   const { selectedPageHandler } = useSelectedPage();
@@ -48,38 +48,31 @@ export default function ActivityContainer() {
     selectedPageHandler(1);
   };
 
-  if (isNotReady) {
-    return (
-      <DCard>
-        <DCard.Body>
-          <AccountListLoader />
-        </DCard.Body>
-      </DCard>
-    );
-  }
-
   return (
     <DCard>
       <DCard.Body>
-        <DTabs
-          options={filteredOptions}
-          defaultSelected={container.tab}
-          onChange={handlerSelected}
-          className="px-0 pt-0 mb-4"
-        >
-          <DTabs.Tab tab={options[0].tab}>
-            <ActivityList />
-          </DTabs.Tab>
-          <DTabs.Tab tab={options[1].tab}>
-            <ActivityList scheduled />
-          </DTabs.Tab>
-          <DTabs.Tab tab={options[2].tab}>
-            <Disputes />
-          </DTabs.Tab>
-          <DTabs.Tab tab={options[3].tab}>
-            <Checkbooks />
-          </DTabs.Tab>
-        </DTabs>
+        {isNotReady && <ListLoader />}
+        {!isNotReady && (
+          <DTabs
+            options={filteredOptions}
+            defaultSelected={container.tab}
+            onChange={handlerSelected}
+            className="px-0 pt-0 mb-4"
+          >
+            <DTabs.Tab tab={options[0].tab}>
+              <ActivityList />
+            </DTabs.Tab>
+            <DTabs.Tab tab={options[1].tab}>
+              <ActivityList scheduled />
+            </DTabs.Tab>
+            <DTabs.Tab tab={options[2].tab}>
+              <DisputeList />
+            </DTabs.Tab>
+            <DTabs.Tab tab={options[3].tab}>
+              <CheckbookList />
+            </DTabs.Tab>
+          </DTabs>
+        )}
       </DCard.Body>
     </DCard>
   );

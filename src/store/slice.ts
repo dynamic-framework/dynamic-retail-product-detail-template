@@ -3,8 +3,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import type {
   Account,
-  Activity,
-  Dispute,
   Metadata,
 } from '../services/interface';
 
@@ -14,12 +12,7 @@ export type WidgetState = {
   accountSelected?: Account;
   isLoadingAccountList: boolean;
   isLoadingAccountDetail: boolean;
-  activities: Array<Activity>;
-  disputes: Dispute[];
-  filterActivities: {
-    query: string;
-  },
-  filterCheckbooks: {
+  filter: {
     query: string;
   },
   selectedPage: string;
@@ -32,12 +25,7 @@ const initialState: WidgetState = {
   accountSelected: undefined,
   isLoadingAccountList: false,
   isLoadingAccountDetail: false,
-  activities: [],
-  disputes: [],
-  filterActivities: {
-    query: '',
-  },
-  filterCheckbooks: {
+  filter: {
     query: '',
   },
   selectedPage: getQueryString('page') || '1',
@@ -66,17 +54,8 @@ const slice = createSlice({
     setIsLoadingAccountDetail(state, action: PayloadAction<boolean>) {
       state.isLoadingAccountDetail = action.payload;
     },
-    setActivities(state, action: PayloadAction<Array<Activity>>) {
-      state.activities = action.payload;
-    },
-    setQueryFilterActivities(state, action: PayloadAction<string>) {
-      state.filterActivities.query = action.payload;
-    },
-    setQueryFilterCheckbook(state, action: PayloadAction<string>) {
-      state.filterCheckbooks.query = action.payload;
-    },
-    setDisputes(state, action: PayloadAction<Dispute[]>) {
-      state.disputes = action.payload;
+    setQueryFilter(state, action: PayloadAction<string>) {
+      state.filter.query = action.payload;
     },
     setSelectedPage(state, action: PayloadAction<string>) {
       state.selectedPage = action.payload;
@@ -92,11 +71,8 @@ export const {
   setAccountSelected,
   setIsLoadingAccountList,
   setIsLoadingAccountDetail,
-  setActivities,
-  setQueryFilterActivities,
+  setQueryFilter,
   setAccountsFreezed,
-  setQueryFilterCheckbook,
-  setDisputes,
   setSelectedPage,
   setMetadata,
 } = slice.actions;

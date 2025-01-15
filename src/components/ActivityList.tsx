@@ -15,14 +15,14 @@ import useActivitiesEffect from '../services/hooks/useActivitiesEffect';
 import { Account, Activity } from '../services/interface';
 import { useAppSelector } from '../store/hooks';
 import {
-  getFilterActivities,
+  getQueryFilter,
   getAccountSelected,
   getMetadata,
 } from '../store/selectors';
 
-import { ActivityListFilter } from './ActivityListFilter';
+import Filters from './Filters';
 import ListItemMovement from './ListItemMovement';
-import AccountListLoader from './loaders/AccountListLoader';
+import AccountListLoader from './loaders/ListLoader';
 
 type Props = {
   scheduled?: boolean;
@@ -33,7 +33,7 @@ export default function ActivityList({ scheduled }: Props) {
   const { openPortal } = useDPortalContext<PortalAvailablePayload>();
 
   const account = useAppSelector(getAccountSelected) as Account;
-  const { query } = useAppSelector(getFilterActivities);
+  const query = useAppSelector(getQueryFilter);
   const metadata = useAppSelector(getMetadata);
 
   const {
@@ -54,14 +54,14 @@ export default function ActivityList({ scheduled }: Props) {
     return t('noData.noPayments');
   }, [t, query]);
 
-  if (loading) {
-    return <AccountListLoader />;
-  }
-
   return (
     <>
-      <ActivityListFilter activities={activities} />
-      {activities.length === 0 && (
+      <Filters
+        disabled={activities.length === 0}
+        offcanvasName="offcanvasAdvancedFilters"
+      />
+      {loading && <AccountListLoader />}
+      {(!loading && activities.length === 0) && (
         <div className={classnames(
           'd-flex flex-column justify-content-center align-items-center',
           'w-100 my-6 gap-6 text-gray-500',
@@ -74,28 +74,31 @@ export default function ActivityList({ scheduled }: Props) {
             alt="Empty transactions"
           />
         </div>
-
       )}
-      <DListGroup flush>
-        {activities.map((activity) => (
-          <ListItemMovement
-            key={`activity-${activity.id}`}
-            openModal={() => openActivityDetail(activity)}
-            amount={activity.amount}
-            date={DateTime.fromISO(activity.date).toFormat(FORMAT_DATE_FULL)}
-            description={activity.name}
-            className="border-light"
+      {(!loading && activities.length > 0) && (
+      <>
+        <DListGroup flush>
+          {activities.map((activity) => (
+            <ListItemMovement
+              key={`activity-${activity.id}`}
+              openModal={() => openActivityDetail(activity)}
+              amount={activity.amount}
+              date={DateTime.fromISO(activity.date).toFormat(FORMAT_DATE_FULL)}
+              description={activity.name}
+              className="border-light"
+            />
+          ))}
+        </DListGroup>
+        <div className="d-flex flex-grow-1 justify-content-center py-4">
+          <DPaginator
+            page={metadata.page}
+            total={metadata.totalPages}
+            onPageChange={selectedPageHandler}
+            maxWidth={375}
           />
-        ))}
-      </DListGroup>
-      <div className="d-flex flex-grow-1 justify-content-center py-4">
-        <DPaginator
-          page={metadata.page}
-          total={metadata.totalPages}
-          onPageChange={selectedPageHandler}
-          maxWidth={375}
-        />
-      </div>
+        </div>
+      </>
+      )}
     </>
   );
 }

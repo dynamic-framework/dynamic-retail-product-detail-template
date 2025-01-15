@@ -14,7 +14,7 @@ export async function list(params: RepositoryParams<{
       url: 'accounts/account/checkbooks',
       method: 'GET',
       params: {
-        query: params.query ? params.query : undefined,
+        ...params.query && { query: params.query },
         page: params.page,
       },
       signal: params.config?.abortSignal,
