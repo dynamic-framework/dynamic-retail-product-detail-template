@@ -31,7 +31,7 @@ export default function AccountDetailLoan({ account }: Props) {
         <ItemDetail
           text={t('collapse.details.paymentNumber')}
           value={`
-            ${account.paymentLastPaidInstallmentNumber ? account.paymentLastPaidInstallmentNumber : DETAIL_NO_VALUE}
+            ${account.paymentNextDueInstallmentNumber ? account.paymentNextDueInstallmentNumber : DETAIL_NO_VALUE}
             /
             ${account.installments ? account.installments : DETAIL_NO_VALUE}
           `}

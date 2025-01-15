@@ -25,7 +25,7 @@ export default function accountMapper(apiAccount: ApiAccount): Account {
       balanceRemaining: apiAccount.loan?.details.balance.remaining,
       due: apiAccount.loan?.details.total,
       paymentDue: apiAccount.loan?.details.amount_due,
-      paymentLastPaidInstallmentNumber: apiAccount.last_paid_installment_number,
+      paymentNextDueInstallmentNumber: apiAccount.loan?.next_due_installment_number,
       installments: apiAccount.loan?.term.count,
       interestRate: apiAccount.loan?.details.interest.rate_settings.yearly_rate,
       paymentNextDueDate: apiAccount.loan?.dates.next_due,
