@@ -21,7 +21,7 @@ export default function AccountDetailChecking({ account, className }: Props) {
       <ItemTitle
         text={t('collapse.details.totalBalance')}
         value={account.balanceTotal ? format(account.balanceTotal) : DETAIL_NO_VALUE}
-        freeze={account.freeze}
+        accountId={account.id}
       />
       <div className="d-flex flex-column">
         <ItemDetail

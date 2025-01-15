@@ -3,7 +3,7 @@ import {
   DInputSwitch,
   useDPortalContext,
 } from '@dynamic-framework/ui-react';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { PRODUCT_BLOCK_PATH, SITE_URL } from '../config/widgetConfig';
@@ -36,6 +36,11 @@ export default function ItemActions(
   const accountsFreezed = useAppSelector(getAccountsFreezed);
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
+
+  const freeze = useMemo(
+    () => accountsFreezed[account.id],
+    [account.id, accountsFreezed],
+  );
 
   const updateAccounts = (isFreezed: boolean) => {
     if (account) {
@@ -70,11 +75,13 @@ export default function ItemActions(
           text="View card info"
           icon="eye"
           action={() => openPortal('modalOTP', { callback: handlerInfoCard })}
+          disabled={freeze}
         />
         <ActionsSelectorButton
           text="Block"
           icon="ban"
-          url={`${SITE_URL}/${PRODUCT_BLOCK_PATH}`}
+          url={`${SITE_URL}/${PRODUCT_BLOCK_PATH}?card_id=${account.id}`}
+          disabled={freeze}
         />
         <ActionsSelectorButton
           text="More actions"
