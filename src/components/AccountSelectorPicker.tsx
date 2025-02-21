@@ -30,7 +30,7 @@ export default function AccountSelectorPicker() {
   if (accounts.length === 1) {
     return (
       <DQuickActionButton
-        line1={selected.alias ?? selected.name}
+        line1={selected.name}
         line2={`N° ${selected.accountNumber}`}
         className="selected-account position-relative"
         representativeIcon={AccountTypeConfig[selected.type].icon}
@@ -48,7 +48,7 @@ export default function AccountSelectorPicker() {
         adjustContentToRender
         renderComponent={() => (
           <DQuickActionButton
-            line1={selected?.alias ?? selected?.name}
+            line1={selected?.name}
             line2={`N° ${selected?.accountNumber}`}
             className="selected-account position-relative"
             representativeIcon={AccountTypeConfig[selected.type].icon}
@@ -62,7 +62,7 @@ export default function AccountSelectorPicker() {
           {accounts.map((account: Account) => (
             <DQuickActionButton
               key={account.id}
-              line1={account.alias ?? account.name}
+              line1={account.name}
               line2={`N° ${account.accountNumber}`}
               className={selected?.id === account.id ? 'selected' : undefined}
               representativeIcon={AccountTypeConfig[account.type].icon}
