@@ -10,7 +10,7 @@ export default function accountMapper(apiAccount: ApiAccount): Account {
 
   const commonProps = {
     id: apiAccount.id,
-    name: apiAccount.account_holder_name,
+    name: apiAccount.account_name,
     alias: apiAccount.account_holder_name,
     accountNumber: apiAccount.masked_number,
     freeze: apiAccount.card?.is_frozen ?? false,

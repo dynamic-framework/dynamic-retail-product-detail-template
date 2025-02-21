@@ -18,6 +18,7 @@ export type ApiAccount = {
   group: ApiAccountGroupType;
   state: string;
   account_holder_name: string;
+  account_name: string;
   currency: string;
   deposit?: ApiDepositDetails;
   loan?: ApiLoanDetails;
