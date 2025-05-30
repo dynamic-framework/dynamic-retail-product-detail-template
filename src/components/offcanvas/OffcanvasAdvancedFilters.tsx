@@ -7,7 +7,6 @@ import {
 } from '@dynamic-framework/ui-react';
 import {
   useCallback,
-  useEffect,
   useState,
 } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -20,8 +19,8 @@ export default function FiltersOffcanvas() {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(startDate);
+  const [startDate, setStartDate] = useState<Date>(new Date());
+  const [endDate, setEndDate] = useState<Date | null>(startDate);
 
   const [minAmount, setMinAmount] = useState(0);
   const [maxAmount, setMaxAmount] = useState(minAmount);
@@ -35,12 +34,6 @@ export default function FiltersOffcanvas() {
     dispatch(setQueryFilter(''));
     closePortal();
   }, [closePortal, dispatch]);
-
-  useEffect(() => {
-    if (endDate < startDate) {
-      setEndDate(startDate);
-    }
-  }, [endDate, startDate]);
 
   return (
     <DOffcanvas
@@ -59,20 +52,24 @@ export default function FiltersOffcanvas() {
           <h5 className="fw-normal">
             {t('filters.dateRange')}
           </h5>
-          <div className="d-flex flex-column flex-sm-row gap-4">
-            <DDatePicker
-              inputLabel={t('filters.startDate')}
-              startDate={startDate}
-              onChange={(e) => setStartDate(e!)}
-              date={startDate.toISOString()}
-            />
-            <DDatePicker
-              minDate={startDate}
-              inputLabel={t('filters.endDate')}
-              endDate={endDate}
-              onChange={(e) => setEndDate(e!)}
-              date={endDate.toISOString()}
-            />
+          <div className="row g-4">
+            <div className="col-12 col-lg-6">
+              <DDatePicker
+                inputLabel={t('filters.startDate')}
+                startDate={startDate}
+                onChange={(date: Date | null) => setStartDate(date!)}
+                selected={startDate}
+              />
+            </div>
+            <div className="col-12 col-lg-6">
+              <DDatePicker
+                minDate={startDate}
+                inputLabel={t('filters.endDate')}
+                endDate={endDate}
+                onChange={(date: Date | null) => setEndDate(date)}
+                selected={endDate}
+              />
+            </div>
           </div>
         </div>
 
