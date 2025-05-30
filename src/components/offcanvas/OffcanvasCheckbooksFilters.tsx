@@ -12,8 +12,8 @@ import { useTranslation } from 'react-i18next';
 export default function OffcanvasCheckbooksFilters() {
   const { t } = useTranslation();
   const { closePortal } = useDPortalContext();
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(startDate);
+  const [startDate, setStartDate] = useState<Date>(new Date());
+  const [endDate, setEndDate] = useState<Date | null>(startDate);
 
   return (
     <DOffcanvas
@@ -35,19 +35,19 @@ export default function OffcanvasCheckbooksFilters() {
         </div>
       </DOffcanvas.Header>
       <DOffcanvas.Body>
-        <div className="d-flex flex-column gap-6 pt-4">
-          <div className="d-flex gap-4">
+        <div className="row g-4">
+          <div className="col-12 col-lg-6">
             <DDatePicker
-              className="w-100"
               inputLabel={t('filters.startDate')}
-              onChange={(e) => setStartDate(e!)}
-              date={startDate.toISOString()}
+              onChange={(date: Date | null) => setStartDate(date!)}
+              selected={startDate}
             />
-
+          </div>
+          <div className="col-12 col-lg-6">
             <DDatePicker
               inputLabel={t('filters.endDate')}
-              onChange={(e) => setEndDate(e!)}
-              date={endDate.toISOString()}
+              onChange={(date: Date | null) => setEndDate(date)}
+              selected={endDate}
             />
           </div>
         </div>
