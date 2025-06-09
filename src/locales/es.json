@@ -18,7 +18,10 @@
       "makePayment": "Pay",
       "advance": "Advances",
       "paymentHistory": "Payment history",
-      "simulate": "Simulate new credit"
+      "simulate": "Simulate new credit",
+      "block": "Block",
+      "moreActions": "More actions",
+      "viewCardInfo": "View card info"
     },
     "details": {
       "availableAmount": "Total available funds",
@@ -136,6 +139,7 @@
   },
   "card": {
     "name": "Cardholder name",
-    "date": "Expiry date"
+    "date": "Expiry date",
+    "copy": "Copy"
   }
 }

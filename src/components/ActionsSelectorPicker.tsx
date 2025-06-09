@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import ActionsSelectorButton from './ActionsSelectorButton';
 
 type Props = {
@@ -11,7 +13,6 @@ type Props = {
   tertiaryIcon: string;
   tertiaryAction: () => void;
 };
-
 export default function ItemActions({
   primaryText,
   primaryIcon,
@@ -23,6 +24,7 @@ export default function ItemActions({
   tertiaryIcon,
   tertiaryAction,
 }: Props) {
+  const { t } = useTranslation();
   return (
     <div className="d-flex flex-column gap-4">
       <hr className="m-0 border-light" />
@@ -43,9 +45,9 @@ export default function ItemActions({
           action={tertiaryAction}
         />
         <ActionsSelectorButton
-          text="More actions"
+          text={t('collapse.actions.moreActions')}
           icon="three-dots-vertical"
-          action={() => {}}
+          action={() => { }}
         />
       </div>
     </div>
