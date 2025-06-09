@@ -61,19 +61,19 @@ export default function ItemActions(
           url={url}
         />
         <ActionsSelectorButton
-          text="View card info"
+          text={t('collapse.actions.viewCardInfo')}
           icon="eye"
           action={() => openPortal('modalOTP', { callback: handlerInfoCard })}
           disabled={accountsFreezed[account.id]}
         />
         <ActionsSelectorButton
-          text="Block"
+          text={t('collapse.actions.block')}
           icon="ban"
           url={`${SITE_URL}/${PRODUCT_BLOCK_PATH}?card_id=${account.id}`}
           disabled={accountsFreezed[account.id]}
         />
         <ActionsSelectorButton
-          text="More actions"
+          text={t('collapse.actions.moreActions')}
           icon="three-dots-vertical"
           action={() => openPortal('modalMoreActions', undefined)}
         />
