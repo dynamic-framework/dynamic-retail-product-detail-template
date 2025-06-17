@@ -13,17 +13,14 @@ import {
   useCallback,
   useState,
 } from 'react';
-import { Trans } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 
 import OtpCountdown from './OtpCountdown';
 
 const OTP_LENGTH = 6;
 
 type Props = PropsWithChildren<{
-  actionText?: string;
   action: () => Promise<void> | void;
-  message?: string;
-  helpLink?: string;
   isLoading?: boolean;
   classNameActions?: string;
   closeAfterEnd?: boolean;
@@ -33,17 +30,15 @@ export default function Otp(
   {
     classNameActions,
     action,
-    actionText = 'Authorize and Continue',
     children,
-    helpLink = 'https://dynamicframework.dev',
     isLoading,
-    message = 'We will send you a 6-digit code to your associated phone number so you can continue with your request',
     closeAfterEnd = false,
   }: Props,
 ) {
   const { closePortal } = useDPortalContext();
   const [otp, setOtp] = useState('');
   const [invalid, setInvalid] = useState(false);
+  const { t } = useTranslation();
 
   const handler = useCallback(async () => {
     if (otp.length < OTP_LENGTH) {
@@ -68,7 +63,7 @@ export default function Otp(
   return (
     <>
       {children}
-      {message}
+      {t('otp.message')}
       <div className="d-flex flex-column gap-6 pb-4 px-3">
         <div className="d-flex flex-column gap-6">
           <DInputPin
@@ -88,7 +83,7 @@ export default function Otp(
           )}
         >
           <DButton
-            text={actionText}
+            text={t('otp.actions.continue')}
             onClick={handler}
             loading={isLoading}
           />
@@ -96,7 +91,7 @@ export default function Otp(
             i18nKey="otp.problems"
             components={{
               a: <a
-                href={helpLink}
+                href={t('otp.helpLink')}
                 className="link-primary text-nowrap"
                 target="_blank"
                 rel="noreferrer"

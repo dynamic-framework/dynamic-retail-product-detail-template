@@ -107,13 +107,15 @@
   "disputeStatus": "Active",
   "otp": {
     "title": "Authorize",
-    "message": "For authorization, please enter the 6-digit code we've sent to your associated phone number.",
+    "message": "We will send you a 6-digit code to your associated phone number so you can continue with your request",
     "problems": "<p>Problems with your digital token? <a>Contact us</a></p>",
-    "countdown": "<p>Didn't you get any code? Resend in {value} sec</p>",
+    "countdown": "<p>Didn't you get any code? Resend in {value}</p>",
     "countdownResend": "<p>Didn't you get any code? <button></button></p>",
     "helpLink": "https://dynamicframework.dev",
-    "resend": "Resend code",
-    "actionText": "Authorize and Continue"
+    "actions": {
+      "resend": "Resend code",
+      "continue": "Authorize and Continue"
+    }
   },
   "noData": {
     "noPayments": "You don't have any payment",

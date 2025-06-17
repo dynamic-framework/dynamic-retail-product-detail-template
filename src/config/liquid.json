@@ -30,7 +30,7 @@
     "new-dispute-path": "new-dispute",
     "checkbook-item-path": "#",
 
-    "api-path": "https://dynamic-integration.modyo.be/mocks/online-banking",
+    "api-path": "https://dynamic.api.connect.modyo.com/mocks/online-banking",
 
     "format-date": "MM/dd/yyyy",
     "format-date-full": "MM/dd/yyyy hh:mm a"

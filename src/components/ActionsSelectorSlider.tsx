@@ -63,7 +63,7 @@ export default function ItemActions(
         <ActionsSelectorButton
           text={t('collapse.actions.viewCardInfo')}
           icon="eye"
-          action={() => openPortal('modalOTP', { callback: handlerInfoCard })}
+          action={() => openPortal('modalOtp', { callback: handlerInfoCard })}
           disabled={accountsFreezed[account.id]}
         />
         <ActionsSelectorButton
