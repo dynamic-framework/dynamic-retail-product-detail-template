@@ -8,7 +8,7 @@ export type PortalAvailablePayload = {
     dispute: Dispute;
   };
   modalCardInformation: undefined
-  modalOTP: {
+  modalOtp: {
     callback: () => void;
   }
   offcanvasAdvancedFilters: undefined;

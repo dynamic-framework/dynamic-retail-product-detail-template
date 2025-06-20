@@ -11,7 +11,7 @@ import ModalActivityDetail from './components/modals/ModalActivityDetail';
 import ModalCardInformation from './components/modals/ModalCardInformation';
 import ModalDisputeDetail from './components/modals/modalDisputeDetail';
 import ModalMoreActions from './components/modals/ModalMoreActions';
-import ModalOTP from './components/modals/ModalOTP';
+import ModalOtp from './components/modals/ModalOtp';
 import OffcanvasAdvancedFilters from './components/offcanvas/OffcanvasAdvancedFilters';
 import OffcanvasCheckbooksFilters from './components/offcanvas/OffcanvasCheckbooksFilters';
 import type { PortalAvailablePayload } from './interface';
@@ -28,7 +28,7 @@ root.render(
       <DContextProvider<PortalAvailablePayload>
         portalName="portal"
         availablePortals={{
-          modalOTP: ModalOTP,
+          modalOtp: ModalOtp,
           modalCardInformation: ModalCardInformation,
           modalDisputeDetail: ModalDisputeDetail,
           modalActivityDetail: ModalActivityDetail,
