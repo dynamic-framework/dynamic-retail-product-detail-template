@@ -1,5 +1,5 @@
 import {
-  DButtonIcon,
+  DButton,
   DInputSearch,
   useDPortalContext,
 } from '@dynamic-framework/ui-react';
@@ -49,12 +49,12 @@ export default function Filters(
         onChange={(e) => setInputValue(e)}
         className="col col-lg-4"
       />
-      <DButtonIcon
+      <DButton
+        iconStart="filter-left"
+        theme="secondary"
         variant="outline"
-        icon="funnel"
         onClick={() => openPortal(offcanvasName, {})}
-        disabled={disabled}
-        size="lg"
+        text="filters"
       />
       {otherOptions}
     </div>

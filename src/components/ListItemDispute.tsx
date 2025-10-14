@@ -1,32 +1,27 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import {
-  DButtonIcon,
-  DListItem,
-  useDPortalContext,
+  DCollapse,
   useFormatCurrency,
 } from '@dynamic-framework/ui-react';
 import classNames from 'classnames';
 import { DateTime } from 'luxon';
 import { useMemo } from 'react';
-import type { ComponentProps } from 'react';
 
 import { FORMAT_DATE_FULL } from '../config/widgetConfig';
 import { Dispute } from '../services/interface';
 
-type Props = Omit<ComponentProps<typeof DListItem>, 'children'> & {
+import DisputeDetailItem from './DisputeDetailItem';
+
+type Props = {
   dispute: Dispute;
 };
 
 export default function ListItemDispute(
   {
     dispute,
-    style,
-    className,
-    ...props
   }: Props,
 ) {
   const { format } = useFormatCurrency();
-  const { openPortal } = useDPortalContext();
   const value = useMemo(() => {
     const valueFormatted = format(dispute.amount);
     if (dispute.amount > 0) {
@@ -42,31 +37,50 @@ export default function ListItemDispute(
   }, [format, dispute.amount]);
 
   return (
-    <DListItem
-      {...props}
-      className="border-light py-2 px-lg-4"
-    >
-      <div className="d-flex align-items-center py-1 gap-4">
-        <div className="d-flex flex-column">
-          <span className="fs-body-tiny">
-            {dispute.id}
+    <DCollapse
+      className="border-bottom rounded-0 shadow-none hover-bg-gray-25"
+      Component={(
+        <div className="d-flex align-items-center py-1 gap-4">
+          <div className="d-flex flex-column">
+            <small className="text-muted">
+              {dispute.id}
+            </small>
+            <span className="d-block text-capitalize">
+              {dispute.name}
+            </span>
+            <small>
+              {DateTime.fromISO(dispute.date).toFormat(FORMAT_DATE_FULL)}
+            </small>
+          </div>
+          <span className={classNames('fs-6 ms-auto', value.theme)}>
+            {value.valueFormatted}
           </span>
-          <span className="d-block text-capitalize">
-            {dispute.name}
-          </span>
-          <small>
-            {DateTime.fromISO(dispute.date).toFormat(FORMAT_DATE_FULL)}
-          </small>
         </div>
-        <span className={classNames('fs-6 ms-auto', value.theme)}>
-          {value.valueFormatted}
-        </span>
-        <DButtonIcon
-          onClick={() => openPortal('modalDisputeDetail', { dispute })}
-          icon="eye"
-          variant="link"
+        )}
+    >
+      <div className="py-1 gap-4 small">
+        <DisputeDetailItem
+          i18nKey="modal.dispute.date"
+          value={DateTime.fromISO(dispute.date).toFormat(FORMAT_DATE_FULL)}
+        />
+        <DisputeDetailItem
+          i18nKey="modal.dispute.amount"
+          value={format(dispute.amount)}
+        />
+        <DisputeDetailItem
+          i18nKey="modal.dispute.trxNumber"
+          value={dispute.id}
+        />
+        <DisputeDetailItem
+          i18nKey="modal.dispute.situation"
+        />
+        <DisputeDetailItem
+          i18nKey="modal.dispute.description"
+        />
+        <DisputeDetailItem
+          i18nKey="modal.dispute.state"
         />
       </div>
-    </DListItem>
+    </DCollapse>
   );
 }

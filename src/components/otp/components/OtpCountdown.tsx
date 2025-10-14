@@ -27,7 +27,6 @@ export default function OtpCountdown(
           <DButton
             text={t('otp.actions.resend')}
             variant="link"
-            className="p-0"
             onClick={() => restartCountdown()}
           />
         ),

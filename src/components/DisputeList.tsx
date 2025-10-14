@@ -1,4 +1,4 @@
-import { DList, DPaginator } from '@dynamic-framework/ui-react';
+import { DPaginator } from '@dynamic-framework/ui-react';
 import classnames from 'classnames';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -69,14 +69,12 @@ export default function DisputeList() {
       )}
       {(!loading && disputes.length > 0) && (
         <div>
-          <DList flush>
-            {disputes.map((dispute) => (
-              <ListItemDispute
-                key={`activity-${dispute.id}`}
-                dispute={dispute}
-              />
-            ))}
-          </DList>
+          {disputes.map((dispute) => (
+            <ListItemDispute
+              key={`activity-${dispute.id}`}
+              dispute={dispute}
+            />
+          ))}
           <div className="d-flex flex-grow-1 justify-content-center py-4">
             <DPaginator
               page={metadata.page}

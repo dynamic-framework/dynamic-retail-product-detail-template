@@ -6,6 +6,9 @@
 /.vscode
 .pnp.js
 .debug
+.yalc
+yalc.lock
+
 
 # testing
 /coverage

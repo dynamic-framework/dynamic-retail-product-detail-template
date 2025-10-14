@@ -20,8 +20,8 @@
       "paymentHistory": "Payment history",
       "simulate": "Simulate new credit",
       "block": "Block",
-      "moreActions": "More actions",
-      "viewCardInfo": "View card info"
+      "moreActions": "More",
+      "viewCardInfo": "Info"
     },
     "details": {
       "availableAmount": "Total available funds",
@@ -123,7 +123,8 @@
     "schedulePayment": "Schedule your first payment here",
     "noQueryPayments": "No transactions found with the search \"{search}\""
   },
-  "freezeCard": "Freeze card",
+  "on": "ON",
+  "off": "OFF",
   "filter": {
     "title": "Filters",
     "amountFrom": "From",

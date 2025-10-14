@@ -35,6 +35,12 @@ export const CHECKBOOK_ITEM_PATH = liquidParser.parse('{{vars.checkbook-item-pat
 
 export const API_ACCOUNT_LIST_FILTER = liquidParser.parse('{{vars.account-list-filter}}');
 
+export const STATUS = {
+  pending: 'warning',
+  completed: 'success',
+  error: 'danger',
+};
+
 // Accounts in slides
 export const SLIDE_VIEWS = ['saving', 'credit-card', 'checking'];
 

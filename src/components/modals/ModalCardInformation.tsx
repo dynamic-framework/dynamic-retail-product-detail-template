@@ -1,4 +1,5 @@
 import {
+  DCreditCard,
   DIcon,
   DModal,
   useDPortalContext,
@@ -9,7 +10,6 @@ import { API_ACCOUNT_LIST_FILTER } from '../../config/widgetConfig';
 import { Account } from '../../services/interface';
 import { useAppSelector } from '../../store/hooks';
 import { getAccountSelected } from '../../store/selectors';
-import CardItem from '../CardItem';
 import ItemCardInfo from '../ItemCardInfo';
 import ItemCardInfoCVC from '../ItemCardInfoCVC';
 import NumberCardInfo from '../NumberCardInfo';
@@ -35,7 +35,10 @@ export default function ModalCardInformation() {
       <DModal.Body className="p-8">
         <div className="d-block d-lg-flex gap-4 align-items-start">
           <div className="mb-8 rounded bg-secondary-25 p-4 col order-1">
-            <CardItem account={account} />
+            <DCreditCard
+              nameOnCard={account.alias}
+              cardNumber={account.accountNumber}
+            />
             <div className="text-center mt-2">
               <small className="d-inline-flex gap-2 align-items-center">
                 <DIcon

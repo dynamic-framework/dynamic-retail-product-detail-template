@@ -1,31 +1,30 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import {
-  DButtonIcon,
-  DListItem,
+  DCollapse,
   useFormatCurrency,
+  DBadge,
 } from '@dynamic-framework/ui-react';
 import classNames from 'classnames';
 import { useMemo } from 'react';
-import type { ComponentProps } from 'react';
+import { useTranslation } from 'react-i18next';
 
-type Props = Omit<ComponentProps<typeof DListItem>, 'children'> & {
-  description: string;
+import { STATUS } from '../config/widgetConfig';
+import { Activity } from '../services/interface';
+
+type Props = {
+  activity: Activity;
   date: string;
-  amount: number;
-  openModal?: () => void;
 };
 
 export default function ListItemMovement(
   {
-    description,
+    activity,
     date,
-    amount,
-    style,
-    openModal,
-    ...props
   }: Props,
 ) {
+  const { name, amount } = activity;
   const { format } = useFormatCurrency();
+  const { t } = useTranslation();
   const value = useMemo(() => {
     const valueFormatted = format(amount);
     if (amount > 0) {
@@ -35,31 +34,51 @@ export default function ListItemMovement(
       };
     }
     return {
-      theme: 'text-gray-500',
+      theme: 'text-gray-800',
       valueFormatted,
     };
   }, [format, amount]);
 
   return (
-    <DListItem {...props}>
-      <div className="d-flex align-items-center py-1 gap-4">
-        <div className="d-flex flex-column">
-          <span className="transaction-name fs-6">
-            {description}
-          </span>
-          <span className="small text-gray-700">
-            {date}
+    <DCollapse
+      className="border-bottom rounded-0 shadow-none hover-bg-gray-25"
+      Component={(
+        <div className="d-flex align-items-center py-1 gap-4">
+          <div className="d-flex flex-column">
+            <span className="transaction-name fs-6">
+              {name}
+            </span>
+            <span className="small text-muted">
+              {date}
+            </span>
+          </div>
+          <span className={classNames('fs-6 ms-auto fw-bold', value.theme)}>
+            {value.valueFormatted}
           </span>
         </div>
-        <span className={classNames('fs-6 ms-auto', value.theme)}>
-          {value.valueFormatted}
-        </span>
-        <DButtonIcon
-          onClick={openModal}
-          icon="eye"
-          variant="link"
-        />
+        )}
+    >
+      <div className="py-1 gap-4 small">
+        <p className="mb-1">
+          Name:
+          {name}
+        </p>
+        <p className="mb-1">
+          Date:
+          {date}
+        </p>
+        <p className="mb-1">
+          Amount:
+          {format(amount)}
+        </p>
+        {activity.status && (
+          <DBadge
+            soft
+            theme={STATUS[activity.status as keyof typeof STATUS]}
+            text={t(`modal.status.${activity.status}`)}
+          />
+        )}
       </div>
-    </DListItem>
+    </DCollapse>
   );
 }

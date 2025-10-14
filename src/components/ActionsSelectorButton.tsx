@@ -17,11 +17,11 @@ export default function ActionsButton({
   disabled = false,
 }: Props) {
   return (
-    <div className="d-flex flex-column gap-2 col">
+    <div className="d-flex flex-column gap-2">
       {url && (
         <a
           className={classNames(
-            'btn btn-primary rounded-pill p-3 mx-auto',
+            'btn btn-link-primary',
             { disabled },
           )}
           href={url}
@@ -32,7 +32,8 @@ export default function ActionsButton({
       {!url && (
         <DButton
           iconEnd={icon}
-          className="p-3 mx-auto"
+          // className="p-3 mx-auto"
+          variant="link"
           onClick={action}
           disabled={disabled}
         />

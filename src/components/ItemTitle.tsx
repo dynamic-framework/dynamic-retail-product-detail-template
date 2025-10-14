@@ -26,14 +26,14 @@ export default function ItemTitle(
 
   return (
     <div className="d-flex flex-column align-items-center mb-3 my-lg-4">
-      <small className="d-inline-flex gap-2 align-items-center">
+      <p className="d-inline-flex gap-2 align-items-center mb-4">
         <DIcon
           icon="circle-fill"
           theme={freeze ? 'warning' : 'success'}
           size="8px"
         />
         <span>{freeze ? 'Freeze' : 'Active'}</span>
-      </small>
+      </p>
       <small className="text-gray-700">
         {text}
       </small>

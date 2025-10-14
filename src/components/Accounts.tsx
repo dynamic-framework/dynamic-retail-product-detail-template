@@ -12,7 +12,6 @@ export default function Accounts() {
     <DCard
       className={classNames(
         'custom-details',
-        'border-0 shadow-none',
         SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) ? 'gap-0' : 'gap-4',
       )}
     >

@@ -1,5 +1,4 @@
 import {
-  DIcon,
   DInputSwitch,
   useDPortalContext,
 } from '@dynamic-framework/ui-react';
@@ -38,23 +37,16 @@ export default function ItemActions(
 
   return (
     <div className="d-flex flex-column gap-4">
-      <div className="d-flex gap-3">
-        <label
-          htmlFor="freezeCard"
-          className="d-inline-flex align-items-center gap-3 flex-grow-1 fs-6"
-        >
-          <DIcon icon="snow" />
-          {t('freezeCard')}
-        </label>
+      <div className="d-flex gap-3 justify-content-end">
         <DInputSwitch
-          onChange={(isFreezed) => freezeCard(account.id, isFreezed)}
-          id="freezeCard"
-          checked={accountsFreezed[account.id]}
+          label={t(!accountsFreezed[account.id] ? 'on' : 'off')}
+          onChange={(isFreezed) => freezeCard(account.id, !isFreezed)}
+          id="onOff"
+          checked={!accountsFreezed[account.id]}
           disabled={loading}
         />
       </div>
-      <hr className="m-0 border-light" />
-      <div className="d-flex justify-content-between flex-wrap gap-4">
+      <div className="d-flex justify-content-center flex-wrap gap-2">
         <ActionsSelectorButton
           text={text}
           icon={icon}
@@ -64,13 +56,11 @@ export default function ItemActions(
           text={t('collapse.actions.viewCardInfo')}
           icon="eye"
           action={() => openPortal('modalOtp', { callback: handlerInfoCard })}
-          disabled={accountsFreezed[account.id]}
         />
         <ActionsSelectorButton
           text={t('collapse.actions.block')}
           icon="ban"
           url={`${SITE_URL}/${PRODUCT_BLOCK_PATH}?card_id=${account.id}`}
-          disabled={accountsFreezed[account.id]}
         />
         <ActionsSelectorButton
           text={t('collapse.actions.moreActions')}
