@@ -38,13 +38,13 @@ Props) {
       </div>
       <DBadge
         soft
-        theme={active ? 'success' : 'danger'}
+        color={active ? 'success' : 'danger'}
         text={t(active ? 'active' : 'inactive')}
       />
       <DIcon
         icon="chevron-right"
         size="16px"
-        theme="primary"
+        color="primary"
       />
     </a>
   );

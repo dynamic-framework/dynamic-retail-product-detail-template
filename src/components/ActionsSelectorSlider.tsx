@@ -1,5 +1,4 @@
 import {
-  DIcon,
   DInputSwitch,
   useDPortalContext,
 } from '@dynamic-framework/ui-react';
@@ -43,7 +42,6 @@ export default function ItemActions(
           htmlFor="freezeCard"
           className="d-inline-flex align-items-center gap-3 flex-grow-1 fs-6"
         >
-          <DIcon icon="snow" />
           {t('freezeCard')}
         </label>
         <DInputSwitch
@@ -62,19 +60,19 @@ export default function ItemActions(
         />
         <ActionsSelectorButton
           text={t('collapse.actions.viewCardInfo')}
-          icon="eye"
+          icon="Eye"
           action={() => openPortal('modalOtp', { callback: handlerInfoCard })}
           disabled={accountsFreezed[account.id]}
         />
         <ActionsSelectorButton
           text={t('collapse.actions.block')}
-          icon="ban"
+          icon="Ban"
           url={`${SITE_URL}/${PRODUCT_BLOCK_PATH}?card_id=${account.id}`}
           disabled={accountsFreezed[account.id]}
         />
         <ActionsSelectorButton
           text={t('collapse.actions.moreActions')}
-          icon="three-dots-vertical"
+          icon="EllipsisVertical"
           action={() => openPortal('modalMoreActions', undefined)}
         />
       </div>

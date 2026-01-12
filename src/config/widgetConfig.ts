@@ -1,11 +1,11 @@
 import liquidParser from '../utils/liquidParser';
 
 export const ICONS = {
-  pay: 'credit-card',
-  transfer: 'send',
-  paymentHistory: 'file-text',
-  advance: 'wallet2',
-  simulate: 'currency-dollar',
+  pay: 'CreditCard',
+  transfer: 'Send',
+  paymentHistory: 'FileText',
+  advance: 'Wallet',
+  simulate: 'CircleDollarSign',
 };
 
 export const SITE_LANG = liquidParser.parse('{{site.language}}');

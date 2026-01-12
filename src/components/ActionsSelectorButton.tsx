@@ -1,4 +1,4 @@
-import { DButton, DIcon } from '@dynamic-framework/ui-react';
+import { DButtonIcon, DIcon } from '@dynamic-framework/ui-react';
 import classNames from 'classnames';
 
 type Props = {
@@ -17,11 +17,11 @@ export default function ActionsButton({
   disabled = false,
 }: Props) {
   return (
-    <div className="d-flex flex-column gap-2 col">
+    <div className="d-flex flex-column gap-2 col align-items-center">
       {url && (
         <a
           className={classNames(
-            'btn btn-primary rounded-pill p-3 mx-auto',
+            'btn btn-primary p-3 mx-auto',
             { disabled },
           )}
           href={url}
@@ -30,9 +30,8 @@ export default function ActionsButton({
         </a>
       )}
       {!url && (
-        <DButton
-          iconEnd={icon}
-          className="p-3 mx-auto"
+        <DButtonIcon
+          icon={icon}
           onClick={action}
           disabled={disabled}
         />

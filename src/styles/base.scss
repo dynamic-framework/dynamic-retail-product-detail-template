@@ -46,7 +46,10 @@
 
   .drop-account {
     background-color: var(--#{$prefix}white);
-    border: 1px solid var(--#{$prefix}gray-300);
+    border: 1px solid var(--#{$prefix}gray-100);
+    [role="button"] {
+      outline: 0;
+    }
 
     .d-quick-action-button {
       --#{$prefix}quick-action-button-component-border-radius: 0;

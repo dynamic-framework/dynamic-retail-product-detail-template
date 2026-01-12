@@ -21,25 +21,25 @@ export const AccountTypeConfig = {
   [AccountType.Checking]: {
     name: 'Checking',
     theme: 'orange',
-    icon: 'cash-coin',
+    icon: 'Coins',
     apiType: ApiAccountType.CurrentAccount,
   },
   [AccountType.Saving]: {
     name: 'Savings',
     theme: 'blue',
-    icon: 'piggy-bank',
+    icon: 'PiggyBank',
     apiType: ApiAccountType.RegularSavings,
   },
   [AccountType.CreditCard]: {
     name: 'Credit Cards',
     theme: 'indigo',
-    icon: 'credit-card',
+    icon: 'CreditCard',
     apiType: ApiAccountType.CreditCard,
   },
   [AccountType.Loan]: {
     name: 'Loans',
     theme: 'yellow',
-    icon: 'cash-stack',
+    icon: 'CircleDollarSign',
     apiType: ApiAccountType.Loan,
   },
 };

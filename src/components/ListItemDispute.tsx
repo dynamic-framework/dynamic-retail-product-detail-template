@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import {
   DButtonIcon,
-  DListItem,
+  DListGroupItem,
   useDPortalContext,
   useFormatCurrency,
 } from '@dynamic-framework/ui-react';
@@ -13,7 +13,7 @@ import type { ComponentProps } from 'react';
 import { FORMAT_DATE_FULL } from '../config/widgetConfig';
 import { Dispute } from '../services/interface';
 
-type Props = Omit<ComponentProps<typeof DListItem>, 'children'> & {
+type Props = Omit<ComponentProps<typeof DListGroupItem>, 'children'> & {
   dispute: Dispute;
 };
 
@@ -42,11 +42,11 @@ export default function ListItemDispute(
   }, [format, dispute.amount]);
 
   return (
-    <DListItem
+    <DListGroupItem
       {...props}
-      className="border-light py-2 px-lg-4"
+      // className="border-light py-2 px-lg-4"
     >
-      <div className="d-flex align-items-center py-1 gap-4">
+      <>
         <div className="d-flex flex-column">
           <span className="fs-body-tiny">
             {dispute.id}
@@ -63,10 +63,10 @@ export default function ListItemDispute(
         </span>
         <DButtonIcon
           onClick={() => openPortal('modalDisputeDetail', { dispute })}
-          icon="eye"
+          icon="Eye"
           variant="link"
         />
-      </div>
-    </DListItem>
+      </>
+    </DListGroupItem>
   );
 }

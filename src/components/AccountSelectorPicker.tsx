@@ -1,4 +1,4 @@
-import { DPopover, DQuickActionButton } from '@dynamic-framework/ui-react';
+import { DIcon, DPopover } from '@dynamic-framework/ui-react';
 import { useCallback, useState } from 'react';
 
 import { AccountTypeConfig } from '../services/config';
@@ -29,14 +29,15 @@ export default function AccountSelectorPicker() {
 
   if (accounts.length === 1) {
     return (
-      <DQuickActionButton
-        line1={selected.name}
-        line2={`N° ${selected.accountNumber}`}
-        className="selected-account position-relative"
-        representativeIcon={AccountTypeConfig[selected.type].icon}
-        representativeIconTheme={AccountTypeConfig[selected.type].theme}
-        representativeIconHasCircle
-      />
+      // <DQuickActionButton
+      //   line1={selected.name}
+      //   line2={`N° ${selected.accountNumber}`}
+      //   className="selected-account position-relative"
+      //   representativeIcon={AccountTypeConfig[selected.type].icon}
+      //   representativeIconTheme={AccountTypeConfig[selected.type].theme}
+      //   representativeIconHasCircle
+      // />
+      <p>No se q es esto</p>
     );
   }
 
@@ -47,30 +48,59 @@ export default function AccountSelectorPicker() {
         setOpen={setToggle}
         adjustContentToRender
         renderComponent={() => (
-          <DQuickActionButton
-            line1={selected?.name}
-            line2={`N° ${selected?.accountNumber}`}
-            className="selected-account position-relative"
-            representativeIcon={AccountTypeConfig[selected.type].icon}
-            representativeIconTheme={AccountTypeConfig[selected.type].theme}
-            representativeIconHasCircle
-            actionIcon={toggle ? 'chevron-up' : 'chevron-down'}
-          />
+          <div className="d-flex align-items-center gap-4">
+            <span>
+              <DIcon
+                hasCircle
+                icon={AccountTypeConfig[selected.type].icon}
+                color={AccountTypeConfig[selected.type].theme}
+              />
+            </span>
+            <div className="flex-1">
+              <p className="mb-0 fw-semibold">{selected?.name}</p>
+              <p className="text-muted mb-0">{selected?.accountNumber}</p>
+            </div>
+            <div>
+              <DIcon
+                icon={toggle ? 'ChevronUp' : 'ChevronDown'}
+              />
+            </div>
+          </div>
         )}
       >
         <div className="rounded overflow-hidden drop-account">
           {accounts.map((account: Account) => (
-            <DQuickActionButton
-              key={account.id}
-              line1={account.name}
-              line2={`N° ${account.accountNumber}`}
-              className={selected?.id === account.id ? 'selected' : undefined}
-              representativeIcon={AccountTypeConfig[account.type].icon}
-              representativeIconTheme={AccountTypeConfig[account.type].theme}
-              representativeIconHasCircle
-              actionIcon=""
+            // <DQuickActionButton
+            //   key={account.id}
+            //   line1={account.name}
+            //   line2={`N° ${account.accountNumber}`}
+            //   className={selected?.id === account.id ? 'selected' : undefined}
+            //   representativeIcon={AccountTypeConfig[account.type].icon}
+            //   representativeIconTheme={AccountTypeConfig[account.type].theme}
+            //   representativeIconHasCircle
+            //   actionIcon=""
+            //   onClick={() => handleSelect(account)}
+            // />
+            <div
               onClick={() => handleSelect(account)}
-            />
+              role="button"
+              tabIndex={0}
+              onKeyDown={() => handleSelect(account)}
+              key={account.id}
+              className="d-flex align-items-center gap-4 hover:bg-gray-50 p-1"
+            >
+              <span>
+                <DIcon
+                  hasCircle
+                  icon={AccountTypeConfig[selected.type].icon}
+                  color={AccountTypeConfig[selected.type].theme}
+                />
+              </span>
+              <div className="flex-1">
+                <p className="mb-0 fw-semibold">{selected?.name}</p>
+                <p className="text-muted mb-0">{selected?.accountNumber}</p>
+              </div>
+            </div>
           ))}
         </div>
       </DPopover>

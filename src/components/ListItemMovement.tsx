@@ -1,14 +1,14 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import {
   DButtonIcon,
-  DListItem,
+  DListGroupItem,
   useFormatCurrency,
 } from '@dynamic-framework/ui-react';
 import classNames from 'classnames';
 import { useMemo } from 'react';
 import type { ComponentProps } from 'react';
 
-type Props = Omit<ComponentProps<typeof DListItem>, 'children'> & {
+type Props = Omit<ComponentProps<typeof DListGroupItem>, 'children'> & {
   description: string;
   date: string;
   amount: number;
@@ -41,8 +41,8 @@ export default function ListItemMovement(
   }, [format, amount]);
 
   return (
-    <DListItem {...props}>
-      <div className="d-flex align-items-center py-1 gap-4">
+    <DListGroupItem {...props}>
+      <>
         <div className="d-flex flex-column">
           <span className="transaction-name fs-6">
             {description}
@@ -56,10 +56,10 @@ export default function ListItemMovement(
         </span>
         <DButtonIcon
           onClick={openModal}
-          icon="eye"
+          icon="Eye"
           variant="link"
         />
-      </div>
-    </DListItem>
+      </>
+    </DListGroupItem>
   );
 }

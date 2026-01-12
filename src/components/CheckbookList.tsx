@@ -1,4 +1,4 @@
-import { DList, DPaginator } from '@dynamic-framework/ui-react';
+import { DListGroup, DPaginator } from '@dynamic-framework/ui-react';
 
 import useSelectedPage from '../hooks/useSelectedPage';
 import useCheckbooksEffect from '../services/hooks/useCheckbooksEffect';
@@ -23,7 +23,7 @@ export default function CheckbookList() {
       {loading && <CheckbookLoader />}
       {!loading && (
         <>
-          <DList flush>
+          <DListGroup flush>
             {checkbooks?.map((option) => (
               <CheckbookItem
                 key={option.id}
@@ -32,7 +32,7 @@ export default function CheckbookList() {
                 active={option.active}
               />
             ))}
-          </DList>
+          </DListGroup>
           <div className="d-flex flex-grow-1 justify-content-center py-4">
             <DPaginator
               page={metadata.page}

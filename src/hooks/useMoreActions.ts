@@ -32,7 +32,7 @@ export const useMoreActions = () => useCallback(
       {
         text: 'modal.moreActions.newAdditionalCard',
         link: `${NEW_ADDITIONAL_CARDS_PATH}?card_id=${accountId}`,
-        icon: 'plus-circle',
+        icon: 'CirclePlus',
       },
       {
         text: 'modal.moreActions.newVirtualCard',

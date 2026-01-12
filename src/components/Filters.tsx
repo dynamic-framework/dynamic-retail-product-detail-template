@@ -1,6 +1,6 @@
 import {
   DButtonIcon,
-  DInputSearch,
+  DInput,
   useDPortalContext,
 } from '@dynamic-framework/ui-react';
 import {
@@ -41,20 +41,20 @@ export default function Filters(
 
   return (
     <div className="d-flex align-items-center gap-4 mb-4">
-      <DInputSearch
+      <DInput
         id="inputSearch"
         value={inputValue}
         disabled={disabled}
         placeholder={t('filters.search')}
+        iconStart="Search"
         onChange={(e) => setInputValue(e)}
         className="col col-lg-4"
       />
       <DButtonIcon
         variant="outline"
-        icon="funnel"
+        icon="SlidersHorizontal"
         onClick={() => openPortal(offcanvasName, {})}
         disabled={disabled}
-        size="lg"
       />
       {otherOptions}
     </div>
