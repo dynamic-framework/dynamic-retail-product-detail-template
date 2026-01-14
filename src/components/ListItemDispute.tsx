@@ -36,7 +36,7 @@ export default function ListItemDispute(
       };
     }
     return {
-      theme: 'text-gray-500',
+      theme: 'text-gray-700',
       valueFormatted,
     };
   }, [format, dispute.amount]);
@@ -44,11 +44,10 @@ export default function ListItemDispute(
   return (
     <DListGroupItem
       {...props}
-      // className="border-light py-2 px-lg-4"
     >
       <>
         <div className="d-flex flex-column">
-          <span className="fs-body-tiny">
+          <span className="fs-body-tiny text-muted">
             {dispute.id}
           </span>
           <span className="d-block text-capitalize">
@@ -58,7 +57,7 @@ export default function ListItemDispute(
             {DateTime.fromISO(dispute.date).toFormat(FORMAT_DATE_FULL)}
           </small>
         </div>
-        <span className={classNames('fs-6 ms-auto', value.theme)}>
+        <span className={classNames('fs-6 ms-auto fw-semibold', value.theme)}>
           {value.valueFormatted}
         </span>
         <DButtonIcon

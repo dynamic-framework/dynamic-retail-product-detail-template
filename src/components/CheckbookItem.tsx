@@ -1,5 +1,8 @@
-import { DBadge, DIcon } from '@dynamic-framework/ui-react';
-import classNames from 'classnames';
+import {
+  DBadge,
+  DIcon,
+  DListGroupItem,
+} from '@dynamic-framework/ui-react';
 import { DateTime } from 'luxon';
 import { useTranslation } from 'react-i18next';
 
@@ -23,15 +26,14 @@ Props) {
   const { t } = useTranslation();
 
   return (
-    <a
+    <DListGroupItem
       href={`${SITE_URL}/${CHECKBOOK_ITEM_PATH}?id=${id}`}
-      className={classNames(
-        'list-group-item list-group-item-action',
-        'd-flex py-2 px-lg-4 gap-4 align-items-center border-light',
-      )}
+      className="hover:bg-gray-25"
     >
       <div className="flex-1">
-        {t('checkbooks.title', { id })}
+        <p className="fw-semibold mb-0">
+          {t('checkbooks.title', { id })}
+        </p>
         <small className="d-block text-gray-500">
           {DateTime.fromISO(date).toFormat(FORMAT_DATE)}
         </small>
@@ -42,10 +44,10 @@ Props) {
         text={t(active ? 'active' : 'inactive')}
       />
       <DIcon
-        icon="chevron-right"
-        size="16px"
+        icon="ChevronRight"
+        size="1rem"
         color="primary"
       />
-    </a>
+    </DListGroupItem>
   );
 }

@@ -29,15 +29,24 @@ export default function AccountSelectorPicker() {
 
   if (accounts.length === 1) {
     return (
-      // <DQuickActionButton
-      //   line1={selected.name}
-      //   line2={`N° ${selected.accountNumber}`}
-      //   className="selected-account position-relative"
-      //   representativeIcon={AccountTypeConfig[selected.type].icon}
-      //   representativeIconTheme={AccountTypeConfig[selected.type].theme}
-      //   representativeIconHasCircle
-      // />
-      <p>No se q es esto</p>
+      <div className="d-flex align-items-center gap-4">
+        <span>
+          <DIcon
+            hasCircle
+            icon={AccountTypeConfig[selected.type].icon}
+            color={AccountTypeConfig[selected.type].theme}
+          />
+        </span>
+        <div className="flex-1">
+          <p className="mb-0 fw-semibold">{selected?.name}</p>
+          <p className="text-muted mb-0">{selected?.accountNumber}</p>
+        </div>
+        <div>
+          <DIcon
+            icon={toggle ? 'ChevronUp' : 'ChevronDown'}
+          />
+        </div>
+      </div>
     );
   }
 
@@ -70,17 +79,6 @@ export default function AccountSelectorPicker() {
       >
         <div className="rounded overflow-hidden drop-account">
           {accounts.map((account: Account) => (
-            // <DQuickActionButton
-            //   key={account.id}
-            //   line1={account.name}
-            //   line2={`N° ${account.accountNumber}`}
-            //   className={selected?.id === account.id ? 'selected' : undefined}
-            //   representativeIcon={AccountTypeConfig[account.type].icon}
-            //   representativeIconTheme={AccountTypeConfig[account.type].theme}
-            //   representativeIconHasCircle
-            //   actionIcon=""
-            //   onClick={() => handleSelect(account)}
-            // />
             <div
               onClick={() => handleSelect(account)}
               role="button"

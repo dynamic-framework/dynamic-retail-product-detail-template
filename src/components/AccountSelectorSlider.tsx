@@ -1,7 +1,9 @@
 import {
   DCarousel,
   DCarouselSlide,
+  DCreditCard,
 } from '@dynamic-framework/ui-react';
+import classNames from 'classnames';
 import {
   useCallback,
   useMemo,
@@ -52,7 +54,7 @@ export default function AccountSelectorSlider() {
   }
 
   return (
-    <div className="account-slider py-4">
+    <div className="account-slider">
       <DCarousel
         options={{
           perPage: 1,
@@ -76,8 +78,14 @@ export default function AccountSelectorSlider() {
           <DCarouselSlide
             key={account.id}
           >
-            <AccountCard
-              account={account}
+            <DCreditCard
+              name={account.name}
+              brand={account.type}
+              className={classNames(
+                { 'card-freeze': account.freeze },
+                account.type,
+              )}
+              number={account.accountNumber}
             />
           </DCarouselSlide>
         ))}

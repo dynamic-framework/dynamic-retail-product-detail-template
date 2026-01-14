@@ -1,4 +1,4 @@
-import { DIcon } from '@dynamic-framework/ui-react';
+import classNames from 'classnames';
 import { useMemo } from 'react';
 
 import { useAppSelector } from '../store/hooks';
@@ -25,12 +25,17 @@ export default function ItemTitle(
   );
 
   return (
-    <div className="d-flex flex-column align-items-center mb-3 my-lg-4">
-      <small className="d-inline-flex gap-2 align-items-center">
-        <DIcon
-          icon="circle-fill"
-          theme={freeze ? 'warning' : 'success'}
-          size="8px"
+    <div className="d-flex flex-column align-items-center mb-3">
+      <small className="d-inline-flex gap-2 align-items-center mb-4">
+        <span
+          style={{
+            width: 15,
+            height: 15,
+          }}
+          className={classNames(
+            freeze ? 'bg-warning-500' : 'bg-success-500',
+            'rounded-pill',
+          )}
         />
         <span>{freeze ? 'Freeze' : 'Active'}</span>
       </small>

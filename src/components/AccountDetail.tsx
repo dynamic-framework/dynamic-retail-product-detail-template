@@ -69,7 +69,7 @@ export default function AccountDetail() {
 
   return (
     <div className={classNames(
-      'd-flex flex-column p-6 gap-4',
+      'd-flex flex-column gap-4',
       { 'card border-0 shadow-none': !SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) },
     )}
     >

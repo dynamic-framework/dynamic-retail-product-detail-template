@@ -17,17 +17,17 @@ export const useMoreActions = () => useCallback(
       {
         text: 'modal.moreActions.bankStatements',
         link: `${BANK_STATEMENTS_PATH}?account_id=${accountId}`,
-        icon: 'file-text',
+        icon: 'File',
       },
       {
         text: 'modal.moreActions.cashAdvance',
         link: `${CASH_ADVANCE_PATH}?account_id=${accountId}`,
-        icon: 'cash-coin',
+        icon: 'Coins',
       },
       {
         text: 'modal.moreActions.additionalCardsList',
         link: `${ADDITIONAL_CARDS_PATH}?card_id=${accountId}`,
-        icon: 'credit-card-2-back',
+        icon: 'CreditCard',
       },
       {
         text: 'modal.moreActions.newAdditionalCard',
@@ -37,12 +37,12 @@ export const useMoreActions = () => useCallback(
       {
         text: 'modal.moreActions.newVirtualCard',
         link: `${NEW_VIRTUAL_CARD_PATH}?card_id=${accountId}`,
-        icon: 'phone',
+        icon: 'Phone',
       },
       {
         text: 'modal.moreActions.configureRestrictions',
         link: `${CONFIGURE_RESTRICTIONS_PATH}?card_id=${accountId}`,
-        icon: 'toggles',
+        icon: 'SlidersHorizontal',
       },
     ];
 

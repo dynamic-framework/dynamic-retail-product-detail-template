@@ -44,14 +44,14 @@ export default function ListItemMovement(
     <DListGroupItem {...props}>
       <>
         <div className="d-flex flex-column">
-          <span className="transaction-name fs-6">
+          <span className="transaction-name fs-6 fw-semibold">
             {description}
           </span>
           <span className="small text-gray-700">
             {date}
           </span>
         </div>
-        <span className={classNames('fs-6 ms-auto', value.theme)}>
+        <span className={classNames('fs-6 ms-auto fw-semibold', value.theme)}>
           {value.valueFormatted}
         </span>
         <DButtonIcon

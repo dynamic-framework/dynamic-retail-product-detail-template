@@ -1,4 +1,4 @@
-import { DCard } from '@dynamic-framework/ui-react';
+import { DBox } from '@dynamic-framework/ui-react';
 import classNames from 'classnames';
 
 import { API_ACCOUNT_LIST_FILTER, SLIDE_VIEWS } from '../config/widgetConfig';
@@ -9,22 +9,21 @@ import AccountSelectorSlider from './AccountSelectorSlider';
 
 export default function Accounts() {
   return (
-    <DCard
+    <DBox
       className={classNames(
-        'custom-details',
-        'border-0 shadow-none',
+        'custom-details p-8',
         SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) ? 'gap-0' : 'gap-4',
       )}
     >
       {!SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) && (
         <AccountSelectorPicker />
       )}
-      <DCard className="shadow-none border-0">
+      <div className="">
         {SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) && (
           <AccountSelectorSlider />
         )}
         <AccountDetail />
-      </DCard>
-    </DCard>
+      </div>
+    </DBox>
   );
 }

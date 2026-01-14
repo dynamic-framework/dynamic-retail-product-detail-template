@@ -46,7 +46,7 @@ export default function ItemActions({
         />
         <ActionsSelectorButton
           text={t('collapse.actions.moreActions')}
-          icon="three-dots-vertical"
+          icon="EllipsisVertical"
           action={() => { }}
         />
       </div>

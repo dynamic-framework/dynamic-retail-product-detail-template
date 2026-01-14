@@ -21,7 +21,7 @@ export default function ActionsButton({
       {url && (
         <a
           className={classNames(
-            'btn btn-primary p-3 mx-auto',
+            'btn btn-primary p-3 mx-auto bg-primary-50 text-primary-700 border-0 hover:bg-primary-100',
             { disabled },
           )}
           href={url}
@@ -32,11 +32,12 @@ export default function ActionsButton({
       {!url && (
         <DButtonIcon
           icon={icon}
+          className="bg-primary-50 text-primary-700 border-0 hover:bg-primary-100"
           onClick={action}
           disabled={disabled}
         />
       )}
-      <small className="text-wrap text-center">{text}</small>
+      <small className={`text-wrap text-center ${disabled ? 'opacity-50' : ''}`}>{text}</small>
     </div>
   );
 }
