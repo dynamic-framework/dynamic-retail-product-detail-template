@@ -35,7 +35,7 @@ export default function ListItemMovement(
       };
     }
     return {
-      theme: 'text-gray-500',
+      theme: '',
       valueFormatted,
     };
   }, [format, amount]);
@@ -47,7 +47,7 @@ export default function ListItemMovement(
           <span className="transaction-name fs-6 fw-semibold">
             {description}
           </span>
-          <span className="small text-gray-700">
+          <span className="small text-muted">
             {date}
           </span>
         </div>

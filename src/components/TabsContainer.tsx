@@ -1,7 +1,7 @@
 import {
   DTabs,
   DTabOption,
-  DCard,
+  DBox,
 } from '@dynamic-framework/ui-react';
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -49,31 +49,29 @@ export default function TabsContainer() {
   };
 
   return (
-    <DCard>
-      <DCard.Body>
-        {isNotReady && <ListLoader />}
-        {!isNotReady && (
-          <DTabs
-            options={filteredOptions}
-            defaultSelected={container.tab}
-            onChange={handlerSelected}
-            className="px-0 pt-0 mb-4"
-          >
-            <DTabs.Tab tab={options[0].tab}>
-              <ActivityList />
-            </DTabs.Tab>
-            <DTabs.Tab tab={options[1].tab}>
-              <ActivityList scheduled />
-            </DTabs.Tab>
-            <DTabs.Tab tab={options[2].tab}>
-              <DisputeList />
-            </DTabs.Tab>
-            <DTabs.Tab tab={options[3].tab}>
-              <CheckbookList />
-            </DTabs.Tab>
-          </DTabs>
-        )}
-      </DCard.Body>
-    </DCard>
+    <DBox>
+      {isNotReady && <ListLoader />}
+      {!isNotReady && (
+        <DTabs
+          options={filteredOptions}
+          defaultSelected={container.tab}
+          onChange={handlerSelected}
+          className="px-0 pt-0 mb-4"
+        >
+          <DTabs.Tab tab={options[0].tab}>
+            <ActivityList />
+          </DTabs.Tab>
+          <DTabs.Tab tab={options[1].tab}>
+            <ActivityList scheduled />
+          </DTabs.Tab>
+          <DTabs.Tab tab={options[2].tab}>
+            <DisputeList />
+          </DTabs.Tab>
+          <DTabs.Tab tab={options[3].tab}>
+            <CheckbookList />
+          </DTabs.Tab>
+        </DTabs>
+      )}
+    </DBox>
   );
 }
