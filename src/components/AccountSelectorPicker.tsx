@@ -57,7 +57,7 @@ export default function AccountSelectorPicker() {
         setOpen={setToggle}
         adjustContentToRender
         renderComponent={() => (
-          <div className="d-flex align-items-center gap-4">
+          <div className="d-flex align-items-center gap-4 border rounded p-2 mb-4">
             <span>
               <DIcon
                 hasCircle
@@ -85,18 +85,18 @@ export default function AccountSelectorPicker() {
               tabIndex={0}
               onKeyDown={() => handleSelect(account)}
               key={account.id}
-              className="d-flex align-items-center gap-4 hover:bg-gray-50 p-1"
+              className="d-flex align-items-center gap-4 hover:bg-gray-50 p-2"
             >
               <span>
                 <DIcon
                   hasCircle
-                  icon={AccountTypeConfig[selected.type].icon}
-                  color={AccountTypeConfig[selected.type].theme}
+                  icon={AccountTypeConfig[account.type].icon}
+                  color={AccountTypeConfig[account.type].theme}
                 />
               </span>
               <div className="flex-1">
-                <p className="mb-0 fw-semibold">{selected?.name}</p>
-                <p className="text-muted mb-0">{selected?.accountNumber}</p>
+                <p className="mb-0 fw-semibold">{account?.name}</p>
+                <p className="text-muted mb-0">{account?.accountNumber}</p>
               </div>
             </div>
           ))}
