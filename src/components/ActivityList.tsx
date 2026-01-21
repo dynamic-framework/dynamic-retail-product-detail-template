@@ -76,27 +76,27 @@ export default function ActivityList({ scheduled }: Props) {
         </div>
       )}
       {(!loading && activities.length > 0) && (
-      <>
-        <DListGroup flush>
-          {activities.map((activity) => (
-            <ListItemMovement
-              key={`activity-${activity.id}`}
-              openModal={() => openActivityDetail(activity)}
-              amount={activity.amount}
-              date={DateTime.fromISO(activity.date).toFormat(FORMAT_DATE_FULL)}
-              description={activity.name}
+        <>
+          <DListGroup flush>
+            {activities.map((activity) => (
+              <ListItemMovement
+                key={`activity-${activity.id}`}
+                openModal={() => openActivityDetail(activity)}
+                amount={activity.amount}
+                date={DateTime.fromISO(activity.date).toFormat(FORMAT_DATE_FULL)}
+                description={activity.name}
+              />
+            ))}
+          </DListGroup>
+          <div className="d-flex flex-grow-1 justify-content-center py-4">
+            <DPaginator
+              current={metadata.page}
+              total={metadata.totalPages}
+              onPageChange={selectedPageHandler}
+              maxWidth={375}
             />
-          ))}
-        </DListGroup>
-        <div className="d-flex flex-grow-1 justify-content-center py-4">
-          <DPaginator
-            page={metadata.page}
-            total={metadata.totalPages}
-            onPageChange={selectedPageHandler}
-            maxWidth={375}
-          />
-        </div>
-      </>
+          </div>
+        </>
       )}
     </>
   );
