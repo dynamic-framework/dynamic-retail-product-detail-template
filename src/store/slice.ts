@@ -10,6 +10,7 @@ export type WidgetState = {
   accounts: Array<Account>;
   accountsFreezed: Record<string, boolean>;
   accountSelected?: Account;
+  number?: string;
   isLoadingAccountList: boolean;
   isLoadingAccountDetail: boolean;
   filter: {

@@ -24,6 +24,8 @@ export type ApiAccount = {
   loan?: ApiLoanDetails;
   card: {
     is_frozen: boolean;
+    card_security_code: string;
+    expiration: string;
   }
 };
 
@@ -47,7 +49,7 @@ export type ApiDepositDetails = {
     accrued_amount: {
       total: number;
       positive: number;
-      negative:number;
+      negative: number;
     }
   },
   settings: {
