@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import {
-  DButton,
   DModal,
-  DModalBody,
   DModalHeader,
   PortalProps,
   useFormatCurrency,
@@ -12,7 +10,7 @@ import classNames from 'classnames';
 import { DateTime } from 'luxon';
 import { useTranslation } from 'react-i18next';
 
-import { FORMAT_DATE } from '../../config/widgetConfig';
+import { FORMAT_DATE_FULL } from '../../config/widgetConfig';
 import type { PortalAvailablePayload } from '../../interface';
 
 export default function ModalActivityDetail(
@@ -41,9 +39,9 @@ export default function ModalActivityDetail(
           {activity.name}
         </h5>
       </DModalHeader>
-      <DModalBody>
+      <DModal.Body>
         <div className="d-flex flex-column gap-6">
-          <div className="bg-surface-gray rounded-1 p-4">
+          <div className="bg-gray-50 rounded-1 p-4">
             <div className="d-flex flex-column gap-1">
               <div className="d-flex align-items-center gap-1">
                 <span className="fw-bold">
@@ -65,7 +63,16 @@ export default function ModalActivityDetail(
                   :
                 </span>
                 <span className="flex-grow-1">
-                  {DateTime.fromISO(activity.date).toFormat(FORMAT_DATE)}
+                  {DateTime.fromISO(activity.date).toFormat(FORMAT_DATE_FULL)}
+                </span>
+              </div>
+              <div className="d-flex align-items-center gap-1">
+                <span className="fw-bold">
+                  {t('modal.details.id')}
+                  :
+                </span>
+                <span className="flex-grow-1">
+                  {activity.id}
                 </span>
               </div>
               <div className="d-flex align-items-center gap-1">
@@ -81,14 +88,8 @@ export default function ModalActivityDetail(
               </div>
             </div>
           </div>
-          <div className="d-flex justify-content-center">
-            <DButton
-              text={t('modal.actions.accept')}
-              onClick={closePortal}
-            />
-          </div>
         </div>
-      </DModalBody>
+      </DModal.Body>
     </DModal>
   );
 }

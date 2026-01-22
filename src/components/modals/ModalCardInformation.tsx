@@ -55,7 +55,7 @@ export default function ModalCardInformation() {
           </div>
           <div className="col">
             <DCreditCard
-              name={account.name}
+              name={account.alias}
               brand={account.type}
               className={classNames(
                 { 'card-freeze': account.freeze },
