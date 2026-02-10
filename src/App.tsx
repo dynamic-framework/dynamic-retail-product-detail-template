@@ -1,4 +1,4 @@
-import { useDContext } from '@dynamic-framework/ui-react';
+import { useDContext, DLayout } from '@dynamic-framework/ui-react';
 import { useEffect } from 'react';
 
 import Accounts from './components/Accounts';
@@ -19,14 +19,20 @@ export default function App() {
 
   return (
     <div className="container">
-      <div className="row">
-        <div className="col-12 col-lg-5 col-xl-4 mb-4 mb-lg-0">
+      <DLayout>
+        <DLayout.Pane
+          cols={12}
+          colsMd={4}
+        >
           <Accounts />
-        </div>
-        <div className="col-12 col-lg-7 col-xl-8 h-100">
+        </DLayout.Pane>
+        <DLayout.Pane
+          cols={12}
+          colsMd={8}
+        >
           <TabsContainer />
-        </div>
-      </div>
+        </DLayout.Pane>
+      </DLayout>
     </div>
   );
 }
