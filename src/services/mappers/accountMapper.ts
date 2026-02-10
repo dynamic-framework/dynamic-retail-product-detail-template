@@ -16,7 +16,7 @@ export default function accountMapper(apiAccount: ApiAccount): Account {
     accountCompleteNumber: apiAccount.number,
     freeze: apiAccount.card?.is_frozen ?? false,
     type: ApiAccountTypeConfig[apiAccount.group],
-    cardSecurityCode: apiAccount.card.card_security_code,
+    cardSecurityCode: apiAccount.card?.card_security_code,
     expiration: apiAccount.card?.expiration,
   };
 
