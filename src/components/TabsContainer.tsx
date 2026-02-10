@@ -49,7 +49,7 @@ export default function TabsContainer() {
   };
 
   return (
-    <DBox>
+    <DBox className="tabs-container">
       {isNotReady && <ListLoader />}
       {!isNotReady && (
         <DTabs
