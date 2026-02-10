@@ -13,8 +13,11 @@ export default function accountMapper(apiAccount: ApiAccount): Account {
     name: apiAccount.account_name,
     alias: apiAccount.account_holder_name,
     accountNumber: apiAccount.masked_number,
+    accountCompleteNumber: apiAccount.number,
     freeze: apiAccount.card?.is_frozen ?? false,
     type: ApiAccountTypeConfig[apiAccount.group],
+    cardSecurityCode: apiAccount.card.card_security_code,
+    expiration: apiAccount.card?.expiration,
   };
 
   if (baseType === AccountBaseType.Loan) {

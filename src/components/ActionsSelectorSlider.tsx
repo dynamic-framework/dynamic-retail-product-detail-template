@@ -52,7 +52,7 @@ export default function ItemActions(
         />
       </div>
       <hr className="m-0 border-light" />
-      <div className="d-flex justify-content-between flex-wrap gap-4">
+      <div className="row row-cols-4 row-cols-lg-2 g-4">
         <ActionsSelectorButton
           text={text}
           icon={icon}

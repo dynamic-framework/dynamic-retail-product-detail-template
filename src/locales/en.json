@@ -72,7 +72,8 @@
     "details": {
       "paymentDate": "Payment date",
       "status": "Status",
-      "value": "Amount"
+      "value": "Amount",
+      "id": "Transaction Id"
     },
     "actions": {
       "accept": "Accept"

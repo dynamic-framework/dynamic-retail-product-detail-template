@@ -35,7 +35,7 @@ export default function CheckbookList() {
           </DListGroup>
           <div className="d-flex flex-grow-1 justify-content-center py-4">
             <DPaginator
-              page={metadata.page}
+              current={metadata.page}
               total={metadata.totalPages}
               onPageChange={selectedPageHandler}
             />

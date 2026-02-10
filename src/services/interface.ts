@@ -9,9 +9,12 @@ export type BaseAccount = {
   name: string;
   alias?: string;
   accountNumber: string;
+  accountCompleteNumber: string;
+  cardSecurityCode: string;
   type: AccountType;
   freeze: boolean;
   expiryDate?: string;
+  expiration: string;
 };
 
 export type BaseAccountDiscriminator<T extends AccountBaseType> = BaseAccount & {
@@ -32,6 +35,7 @@ export type LoanAccount = BaseAccountDiscriminator<AccountBaseType.Loan> & {
   balanceOwed?: number;
   balanceRemaining?: number;
   paymentNextDueDate?: string;
+  expiryDate: string;
   paymentDue?: number;
   paymentNextDueInstallmentNumber?: number;
   installments?: number;

@@ -16,7 +16,7 @@ export default function NewDisputeLink({ account }: Props) {
       href={`${SITE_URL}/${NEW_DISPUTE_PATH}?account_id=${account.id}`}
       className="ms-lg-auto btn btn-primary text-nowrap col"
     >
-      <DIcon icon="plus" />
+      <DIcon icon="Plus" />
       {t('button.newDispute')}
     </a>
   );

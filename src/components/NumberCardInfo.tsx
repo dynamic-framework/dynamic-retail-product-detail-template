@@ -14,8 +14,8 @@ export default function NumberCardInfo({ cardNumber }: Props) {
         onClick={() => navigator.clipboard.writeText(cardNumber)}
         className="ml-auto"
         text={t('card.copy')}
-        theme="secondary"
-        iconStart="copy"
+        color="primary"
+        iconStart="Copy"
         variant="link"
       />
     </div>

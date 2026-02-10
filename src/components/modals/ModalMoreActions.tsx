@@ -41,7 +41,7 @@ export default function ModalMoreActions() {
               <span className="flex-grow-1 text-gray-900">
                 {t(action.text)}
               </span>
-              <DIcon icon="chevron-right" />
+              <DIcon icon="ChevronRight" />
             </a>
           ))}
         </div>
