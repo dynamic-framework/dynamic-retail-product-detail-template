@@ -51,7 +51,7 @@ export default function AccountSelectorPicker() {
   }
 
   return (
-    <div className="p-4 mb-8 border border-gray-100 rounded-2 account-selector ">
+    <div className="account-selector">
       <DPopover
         open={toggle}
         setOpen={setToggle}
