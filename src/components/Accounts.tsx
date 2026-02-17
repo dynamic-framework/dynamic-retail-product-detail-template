@@ -12,7 +12,7 @@ export default function Accounts() {
     <DBox
       className={classNames(
         SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) ? 'gap-0' : 'gap-4',
-        'custom-details p-8',
+        'custom-details p-4 p-md-8',
       )}
     >
       {!SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) && (
