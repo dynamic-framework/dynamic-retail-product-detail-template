@@ -28,7 +28,7 @@ export default function ItemActions({
   return (
     <div className="d-flex flex-column gap-4">
       <hr className="m-0 border-light" />
-      <div className="row row-cols-4 row-cols-lg-2 g-4">
+      <div className="row row-cols-1 row-cols-lg-2 g-4">
         <ActionsSelectorButton
           text={primaryText}
           icon={primaryIcon}

@@ -1,3 +1,4 @@
+/* stylelint-disable declaration-no-important */
 @import "@dynamic-framework/ui-react/src/style/abstracts/+import";
 @import "./loadingCircle";
 
@@ -54,5 +55,9 @@
 
   .d-carousel {
     --bs-carousel-pagination-bottom: calc(var(--#{$prefix}ref-spacer-5) * -1);
+  }
+  .d-credit-card-details,
+  .d-credit-card-number {
+    display: block !important;
   }
 }
