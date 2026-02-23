@@ -1,4 +1,4 @@
-import { DBox } from '@dynamic-framework/ui-react';
+import { DBox, useMediaBreakpointUpSm } from '@dynamic-framework/ui-react';
 import classNames from 'classnames';
 
 import { API_ACCOUNT_LIST_FILTER, SLIDE_VIEWS } from '../config/widgetConfig';
@@ -8,6 +8,7 @@ import AccountSelectorPicker from './AccountSelectorPicker';
 import AccountSelectorSlider from './AccountSelectorSlider';
 
 export default function Accounts() {
+  const isMobile = useMediaBreakpointUpSm(true);
   return (
     <DBox
       className={classNames(
@@ -15,13 +16,8 @@ export default function Accounts() {
         'custom-details p-4 p-md-8',
       )}
     >
-      {!SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) && (
-        <AccountSelectorPicker />
-      )}
+      {!isMobile ? <AccountSelectorPicker /> : <AccountSelectorSlider />}
       <div className="">
-        {SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) && (
-          <AccountSelectorSlider />
-        )}
         <AccountDetail />
       </div>
     </DBox>
