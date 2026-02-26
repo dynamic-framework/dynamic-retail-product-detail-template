@@ -1,3 +1,4 @@
+import { DLayout } from '@dynamic-framework/ui-react';
 import { useTranslation } from 'react-i18next';
 
 import ActionsSelectorButton from './ActionsSelectorButton';
@@ -28,7 +29,7 @@ export default function ItemActions({
   return (
     <div className="d-flex flex-column gap-4">
       <hr className="m-0 border-light" />
-      <div className="row row-cols-1 row-cols-lg-2 g-4">
+      <DLayout>
         <ActionsSelectorButton
           text={primaryText}
           icon={primaryIcon}
@@ -49,7 +50,7 @@ export default function ItemActions({
           icon="EllipsisVertical"
           action={() => { }}
         />
-      </div>
+      </DLayout>
     </div>
   );
 }
