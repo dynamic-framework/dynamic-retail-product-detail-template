@@ -31,7 +31,7 @@ export default function ListItemMovement(
     if (amount > 0) {
       return {
         theme: 'text-success',
-        valueFormatted,
+        valueFormatted: `+${valueFormatted}`,
       };
     }
     return {
@@ -55,6 +55,7 @@ export default function ListItemMovement(
           {value.valueFormatted}
         </span>
         <DButtonIcon
+          ariaLabel="View details"
           onClick={openModal}
           icon="Eye"
           variant="link"

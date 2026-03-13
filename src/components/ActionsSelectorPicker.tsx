@@ -14,7 +14,7 @@ type Props = {
   tertiaryIcon: string;
   tertiaryAction: () => void;
 };
-export default function ItemActions({
+export default function ActionsSelectorPicker({
   primaryText,
   primaryIcon,
   primaryAction,

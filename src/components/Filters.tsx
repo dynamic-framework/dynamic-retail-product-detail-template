@@ -43,6 +43,7 @@ export default function Filters(
     <div className="d-flex align-items-center gap-4 mb-4">
       <DInput
         id="inputSearch"
+        iconStartAriaLabel="Search"
         value={inputValue}
         disabled={disabled}
         placeholder={t('filters.search')}
@@ -51,6 +52,7 @@ export default function Filters(
         className="col col-lg-4"
       />
       <DButtonIcon
+        ariaLabel={t('filters.filters')}
         variant="outline"
         icon="SlidersHorizontal"
         onClick={() => openPortal(offcanvasName, {})}

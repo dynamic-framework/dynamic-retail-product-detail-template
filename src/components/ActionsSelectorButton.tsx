@@ -1,5 +1,8 @@
-import { DIcon, DLayout } from '@dynamic-framework/ui-react';
-import classNames from 'classnames';
+import {
+  DIcon,
+  DLayout,
+  DButton,
+} from '@dynamic-framework/ui-react';
 
 type Props = {
   text: string;
@@ -7,12 +10,14 @@ type Props = {
   icon: string;
   action?: () => void;
   disabled?: boolean;
+  type?: 'primary' | 'danger' | 'success' | 'warning' | 'info' | 'light' | 'dark';
 };
 
-export default function ActionsButton({
+export default function ActionsSelectorButton({
   icon,
   url,
   text,
+  type = 'primary',
   action,
   disabled = false,
 }: Props) {
@@ -22,41 +27,22 @@ export default function ActionsButton({
       colsXs={3}
       className="d-flex gap-2 justify-content-center align-items-center"
     >
-      {url && (
-        <a
-          className={classNames(
-            'btn btn-link w-md-100 p-0 justify-content-start text-gray-700 hover:text-primary',
-            { disabled },
-          )}
-          href={url}
-        >
-          <DIcon
-            color="primary"
-            hasCircle
-            className="rounded"
-            size="1.5rem"
-            icon={icon}
-          />
-          <small className={`lh-1 text-wrap text-start d-none d-md-inline ${disabled ? 'opacity-50' : ''}`}>{text}</small>
-        </a>
-      )}
-      {!url && (
-        <button
-          type="button"
-          className="btn btn-link p-0 w-md-100 justify-content-start text-gray-700 hover:text-primary"
-          onClick={action}
-          disabled={disabled}
-        >
-          <DIcon
-            color="primary"
-            hasCircle
-            className="rounded"
-            size="1.5rem"
-            icon={icon}
-          />
-          <small className={`lh-1 text-wrap d-none d-md-inline text-start ${disabled ? 'opacity-50' : ''}`}>{text}</small>
-        </button>
-      )}
+      <DButton
+        variant="link"
+        href={url}
+        className="w-100 justify-content-start"
+        color={type}
+        onClick={action}
+        disabled={disabled}
+      >
+        <DIcon
+          color={type}
+          hasCircle
+          size="1rem"
+          icon={icon}
+        />
+        <span className={`lh-1 text-wrap d-none d-md-inline text-start ${disabled ? 'opacity-50' : ''}`}>{text}</span>
+      </DButton>
     </DLayout.Pane>
   );
 }

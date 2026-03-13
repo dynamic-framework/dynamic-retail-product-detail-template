@@ -38,22 +38,8 @@ export default function ItemActions(
 
   return (
     <div className="d-flex flex-column gap-4">
-      <div className="d-flex gap-3">
-        <label
-          htmlFor="freezeCard"
-          className="d-inline-flex align-items-center gap-3 flex-grow-1 fs-6"
-        >
-          {t('freezeCard')}
-        </label>
-        <DInputSwitch
-          onChange={(isFreezed) => freezeCard(account.id, isFreezed)}
-          id="freezeCard"
-          checked={accountsFreezed[account.id]}
-          disabled={loading}
-        />
-      </div>
-      <hr className="m-0 border-light" />
-      <DLayout>
+      <hr className="m-0" />
+      <DLayout gap={0}>
         <ActionsSelectorButton
           text={text}
           icon={icon}
@@ -68,6 +54,7 @@ export default function ItemActions(
         <ActionsSelectorButton
           text={t('collapse.actions.block')}
           icon="Ban"
+          type="danger"
           url={`${SITE_URL}/${PRODUCT_BLOCK_PATH}?card_id=${account.id}`}
           disabled={accountsFreezed[account.id]}
         />
@@ -77,6 +64,22 @@ export default function ItemActions(
           action={() => openPortal('modalMoreActions', undefined)}
         />
       </DLayout>
+      <hr className="m-0" />
+      <div className="d-flex gap-3">
+        {/* <label
+          htmlFor="freezeCard"
+          className="d-inline-flex align-items-center gap-3 flex-grow-1 fs-6"
+        >
+          {t('freezeCard')}
+        </label> */}
+        <DInputSwitch
+          label={t('freezeCard')}
+          onChange={(isFreezed) => freezeCard(account.id, isFreezed)}
+          id="freezeCard"
+          checked={accountsFreezed[account.id]}
+          disabled={loading}
+        />
+      </div>
     </div>
   );
 }
