@@ -47,10 +47,10 @@ export default function ListItemDispute(
     >
       <>
         <div className="d-flex flex-column">
-          <span className="fs-body-tiny text-muted">
+          <span className="small text-muted">
             {dispute.id}
           </span>
-          <span className="d-block text-capitalize">
+          <span className="d-block text-capitalize fw-semibold">
             {dispute.name}
           </span>
           <small>

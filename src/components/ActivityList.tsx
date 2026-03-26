@@ -64,7 +64,7 @@ export default function ActivityList({ scheduled }: Props) {
       {(!loading && activities.length === 0) && (
         <div className={classnames(
           'd-flex flex-column justify-content-center align-items-center',
-          'w-100 my-6 gap-6 text-gray-500',
+          'w-100 my-6 gap-6 text-muted',
         )}
         >
           <span>{emptyTransactionsText}</span>
@@ -77,7 +77,10 @@ export default function ActivityList({ scheduled }: Props) {
       )}
       {(!loading && activities.length > 0) && (
         <>
-          <DListGroup flush>
+          <DListGroup
+            flush
+            className="fade-in"
+          >
             {activities.map((activity) => (
               <ListItemMovement
                 key={`activity-${activity.id}`}

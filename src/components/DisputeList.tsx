@@ -56,7 +56,7 @@ export default function DisputeList() {
         <div
           className={classnames(
             'd-flex flex-column justify-content-center align-items-center',
-            'w-100 my-6 gap-6 text-gray-500',
+            'w-100 my-6 gap-6 text-muted',
           )}
         >
           <span>{emptyTransactionsText}</span>
@@ -69,7 +69,10 @@ export default function DisputeList() {
       )}
       {(!loading && disputes.length > 0) && (
         <div>
-          <DListGroup flush>
+          <DListGroup
+            flush
+            className="fade-in"
+          >
             {disputes.map((dispute) => (
               <ListItemDispute
                 key={`activity-${dispute.id}`}

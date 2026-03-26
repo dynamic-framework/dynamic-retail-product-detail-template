@@ -7,7 +7,7 @@ import { getMetadata } from '../store/selectors';
 
 import CheckbookItem from './CheckbookItem';
 import Filters from './Filters';
-import CheckbookLoader from './loaders/CheckbookLoader';
+import ListLoader from './loaders/ListLoader';
 
 export default function CheckbookList() {
   const { checkbooks, loading } = useCheckbooksEffect();
@@ -20,10 +20,13 @@ export default function CheckbookList() {
         disabled={checkbooks.length === 0}
         offcanvasName="offcanvasCheckbooksFilters"
       />
-      {loading && <CheckbookLoader />}
+      {loading && <ListLoader />}
       {!loading && (
         <>
-          <DListGroup flush>
+          <DListGroup
+            flush
+            className="fade-in"
+          >
             {checkbooks?.map((option) => (
               <CheckbookItem
                 key={option.id}

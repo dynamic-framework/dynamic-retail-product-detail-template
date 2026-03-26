@@ -5,10 +5,11 @@ import { API_ACCOUNT_LIST_FILTER, SLIDE_VIEWS } from '../config/widgetConfig';
 
 import AccountDetail from './AccountDetail';
 import AccountSelectorPicker from './AccountSelectorPicker';
+import AccountSelectorResponsive from './AccountSelectorResponsive';
 import AccountSelectorSlider from './AccountSelectorSlider';
 
 export default function Accounts() {
-  const isMobile = useMediaBreakpointUpMd(true);
+  const isDesktop = useMediaBreakpointUpMd(true);
   return (
     <DBox
       className={classNames(
@@ -16,8 +17,9 @@ export default function Accounts() {
         'custom-details',
       )}
     >
-      {!isMobile || !SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER)
-        ? <AccountSelectorPicker /> : <AccountSelectorSlider />}
+      {(isDesktop && !SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER)) && <AccountSelectorPicker />}
+      {isDesktop && SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) && <AccountSelectorSlider />}
+      {!isDesktop && SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) && <AccountSelectorResponsive />}
       <div className="">
         <AccountDetail />
       </div>

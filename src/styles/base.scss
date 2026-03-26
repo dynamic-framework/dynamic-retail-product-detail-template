@@ -60,4 +60,20 @@
   .d-credit-card-number {
     display: block !important;
   }
+
+  .no-info {
+    --bs-d-credit-card-logo-size: 35%;
+    height: 40px;
+    padding: .75rem;
+    border-radius: .5rem !important;
+    .d-credit-card-chip,
+    .d-credit-card-details {
+      display: none !important;
+    }
+    .d-credit-card-header {
+      min-height: 0 !important;
+    }
+  }
+
+
 }
