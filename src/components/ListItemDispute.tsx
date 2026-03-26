@@ -53,7 +53,7 @@ export default function ListItemDispute(
           <span className="d-block text-capitalize fw-semibold">
             {dispute.name}
           </span>
-          <small>
+          <small className="text-muted">
             {DateTime.fromISO(dispute.date).toFormat(FORMAT_DATE_FULL)}
           </small>
         </div>
