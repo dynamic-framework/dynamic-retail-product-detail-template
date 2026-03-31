@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import {
   DModal,
+  DBadge,
   DModalHeader,
   PortalProps,
   useFormatCurrency,
@@ -12,6 +13,7 @@ import { useTranslation } from 'react-i18next';
 
 import { FORMAT_DATE_FULL } from '../../config/widgetConfig';
 import type { PortalAvailablePayload } from '../../interface';
+import { ActivityStatus } from '../../services/config';
 
 export default function ModalActivityDetail(
   {
@@ -41,51 +43,51 @@ export default function ModalActivityDetail(
       </DModalHeader>
       <DModal.Body>
         <div className="d-flex flex-column gap-6">
-          <div className="bg-gray-50 rounded-1 p-4">
-            <div className="d-flex flex-column gap-1">
-              <div className="d-flex align-items-center gap-1">
-                <span className="fw-bold">
-                  {t('modal.details.value')}
-                  :
-                </span>
-                <span
-                  className={classNames(
-                    'flex-grow-1',
-                    activity.amount > 0 ? 'text-success' : 'text-danger',
-                  )}
-                >
-                  {formatCurrency.format(activity.amount)}
-                </span>
-              </div>
-              <div className="d-flex align-items-center gap-1">
-                <span className="fw-bold">
-                  {t('modal.details.paymentDate')}
-                  :
-                </span>
-                <span className="flex-grow-1">
-                  {DateTime.fromISO(activity.date).toFormat(FORMAT_DATE_FULL)}
-                </span>
-              </div>
-              <div className="d-flex align-items-center gap-1">
-                <span className="fw-bold">
-                  {t('modal.details.id')}
-                  :
-                </span>
-                <span className="flex-grow-1">
-                  {activity.id}
-                </span>
-              </div>
-              <div className="d-flex align-items-center gap-1">
-                <span className="fw-bold">
-                  {t('modal.details.status')}
-                  :
-                </span>
-                {activity.status && (
-                  <span className="flex-grow-1">
-                    {t(`modal.status.${activity.status}`)}
-                  </span>
+          <div className="d-flex flex-column gap-1">
+            <div className="d-flex align-items-center gap-1 justify-content-between">
+              <span className="fw-semibold">
+                {t('modal.details.value')}
+                :
+              </span>
+              <span
+                className={classNames(
+                  'flex-grow-1 fw-semibold text-end',
+                  activity.amount > 0 ? 'text-success' : 'text-danger',
                 )}
-              </div>
+              >
+                {formatCurrency.format(activity.amount)}
+              </span>
+            </div>
+            <div className="d-flex align-items-center gap-1 justify-content-between">
+              <span className="fw-semibold">
+                {t('modal.details.paymentDate')}
+                :
+              </span>
+              <span className="text-end">
+                {DateTime.fromISO(activity.date).toFormat(FORMAT_DATE_FULL)}
+              </span>
+            </div>
+            <div className="d-flex align-items-center gap-1 justify-content-between">
+              <span className="fw-semibold">
+                {t('modal.details.id')}
+                :
+              </span>
+              <span className="text-muted">
+                {activity.id}
+              </span>
+            </div>
+            <div className="d-flex align-items-center gap-1 justify-content-between">
+              <span className="fw-semibold">
+                {t('modal.details.status')}
+                :
+              </span>
+              {activity.status && (
+                <DBadge
+                  soft
+                  color={activity.status === ActivityStatus.Completed ? 'success' : 'danger'}
+                  text={t(`modal.status.${activity.status}`)}
+                />
+              )}
             </div>
           </div>
         </div>

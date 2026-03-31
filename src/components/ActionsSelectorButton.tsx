@@ -30,7 +30,7 @@ export default function ActionsSelectorButton({
       <DButton
         variant="link"
         href={url}
-        className="w-100 justify-content-start"
+        className="w-md-100 justify-content-start"
         color={type}
         onClick={action}
         disabled={disabled}
