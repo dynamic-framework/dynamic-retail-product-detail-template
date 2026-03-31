@@ -53,14 +53,6 @@
     opacity: .5;
   }
 
-  .d-carousel {
-    --bs-carousel-pagination-bottom: calc(var(--#{$prefix}ref-spacer-5) * -1);
-  }
-  .d-credit-card-details,
-  .d-credit-card-number {
-    display: block !important;
-  }
-
   .no-info {
     --bs-d-credit-card-logo-size: 35%;
     height: 40px;
