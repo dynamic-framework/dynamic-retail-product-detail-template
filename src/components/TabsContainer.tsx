@@ -54,6 +54,7 @@ export default function TabsContainer() {
       {!isNotReady && (
         <DTabs
           options={filteredOptions}
+          aria-label="Tabs"
           defaultSelected={container.tab}
           onChange={handlerSelected}
           className="px-0 pt-0 mb-4"

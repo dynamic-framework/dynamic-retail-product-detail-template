@@ -55,7 +55,7 @@ export default function ListItemMovement(
           {value.valueFormatted}
         </span>
         <DButtonIcon
-          ariaLabel="View details"
+          aria-label="View details"
           onClick={openModal}
           icon="Eye"
           variant="link"

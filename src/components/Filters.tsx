@@ -52,7 +52,7 @@ export default function Filters(
         className="col col-lg-4"
       />
       <DButtonIcon
-        ariaLabel={t('filters.filters')}
+        aria-label={t('filters.filters')}
         variant="outline"
         icon="SlidersHorizontal"
         onClick={() => openPortal(offcanvasName, {})}
