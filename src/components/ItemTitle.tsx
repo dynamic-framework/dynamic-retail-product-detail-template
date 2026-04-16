@@ -25,28 +25,32 @@ export default function ItemTitle(
   );
 
   return (
-    <div className="d-flex flex-column align-items-center mb-3">
-      <small className="d-inline-flex gap-2 align-items-center mb-4">
-        <span
-          style={{
-            width: 15,
-            height: 15,
-          }}
-          className={classNames(
-            freeze ? 'bg-warning-500' : 'bg-success-500',
-            'rounded-pill',
-          )}
-        />
-        <span>{freeze ? 'Freeze' : 'Active'}</span>
-      </small>
-      <small className="text-gray-700">
-        {text}
-      </small>
-      {value && (
-        <span className="fs-4">
-          {value}
-        </span>
-      )}
-    </div>
+    <>
+      <div className="d-flex justify-content-center mb-4 status-container">
+        <small className="d-inline-flex gap-2 align-items-center">
+          <span
+            style={{
+              width: 15,
+              height: 15,
+            }}
+            className={classNames(
+              freeze ? 'bg-warning-500' : 'bg-success-500',
+              'rounded-pill',
+            )}
+          />
+          <span>{freeze ? 'Freeze' : 'Active'}</span>
+        </small>
+      </div>
+      <div className="d-flex flex-column align-items-center mb-3 total-balance">
+        <small className="text-gray-700">
+          {text}
+        </small>
+        {value && (
+          <span className="fs-4">
+            {value}
+          </span>
+        )}
+      </div>
+    </>
   );
 }

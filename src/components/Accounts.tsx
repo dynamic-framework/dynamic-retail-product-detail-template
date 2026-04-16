@@ -13,14 +13,13 @@ export default function Accounts() {
   return (
     <DBox
       className={classNames(
-        SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) ? 'gap-0' : 'gap-4',
-        'custom-details',
+        'd-flex flex-column gap-4 custom-details',
       )}
     >
       {(isDesktop && !SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER)) && <AccountSelectorPicker />}
       {isDesktop && SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) && <AccountSelectorSlider />}
       {!isDesktop && SLIDE_VIEWS.includes(API_ACCOUNT_LIST_FILTER) && <AccountSelectorResponsive />}
-      <div className="">
+      <div className="account-detail-container">
         <AccountDetail />
       </div>
     </DBox>
