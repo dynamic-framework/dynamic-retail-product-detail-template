@@ -27,27 +27,31 @@ Props) {
 
   return (
     <DListGroupItem
-      href={`${SITE_URL}/${CHECKBOOK_ITEM_PATH}?id=${id}`}
-      className="hover:bg-gray-25"
+      className="py-1 px-0"
     >
-      <div className="flex-1">
-        <p className="fw-semibold mb-0">
-          {t('checkbooks.title', { id })}
-        </p>
-        <small className="d-block text-gray-500">
-          {DateTime.fromISO(date).toFormat(FORMAT_DATE)}
-        </small>
-      </div>
-      <DBadge
-        soft
-        color={active ? 'success' : 'danger'}
-        text={t(active ? 'active' : 'inactive')}
-      />
-      <DIcon
-        icon="ChevronRight"
-        size="1rem"
-        color="primary"
-      />
+      <a
+        href={`${SITE_URL}/${CHECKBOOK_ITEM_PATH}?id=${id}`}
+        className="hover:bg-primary-25 text-body rounded-2 py-2 px-4 d-flex align-items-center gap-2 w-100"
+      >
+        <div className="flex-1">
+          <p className="fw-semibold mb-0">
+            {t('checkbooks.title', { id })}
+          </p>
+          <small className="d-block text-gray-500">
+            {DateTime.fromISO(date).toFormat(FORMAT_DATE)}
+          </small>
+        </div>
+        <DBadge
+          soft
+          color={active ? 'success' : 'danger'}
+          text={t(active ? 'active' : 'inactive')}
+        />
+        <DIcon
+          icon="ChevronRight"
+          size="1rem"
+          color="primary"
+        />
+      </a>
     </DListGroupItem>
   );
 }
