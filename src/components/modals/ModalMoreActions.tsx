@@ -30,11 +30,11 @@ export default function ModalMoreActions() {
         <h5>{t('modal.moreActions.title')}</h5>
       </DModal.Header>
       <DModal.Body>
-        <div className="d-flex flex-column gap-4">
+        <div className="d-flex flex-column gap-1">
           {moreActions.map((action) => (
             <a
               key={action.text}
-              className="link link-primary d-inline-flex gap-2 text-decoration-none py-2"
+              className="link link-primary d-inline-flex gap-2 text-decoration-none p-2 rounded hover:bg-gray-50"
               href={`${SITE_URL}/${action.link}`}
             >
               <DIcon icon={action.icon} />

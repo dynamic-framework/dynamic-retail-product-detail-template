@@ -59,12 +59,12 @@ export const useMoreActions = () => useCallback(
       {
         text: 'modal.moreActions.managePayments',
         link: '#',
-        icon: 'receipt',
+        icon: 'ReceiptText',
       },
       {
         text: 'modal.moreActions.changeDate',
         link: '#',
-        icon: 'calendar-date',
+        icon: 'Calendar',
       }];
   },
   [],
