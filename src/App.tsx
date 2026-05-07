@@ -22,13 +22,13 @@ export default function App() {
       <DLayout>
         <DLayout.Pane
           cols={12}
-          colsMd={4}
+          colsLg={4}
         >
           <Accounts />
         </DLayout.Pane>
         <DLayout.Pane
           cols={12}
-          colsMd={8}
+          colsLg={8}
         >
           <TabsContainer />
         </DLayout.Pane>

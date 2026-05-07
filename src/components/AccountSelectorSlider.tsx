@@ -54,7 +54,7 @@ export default function AccountSelectorSlider() {
   }
 
   return (
-    <div className="account-slider">
+    <div className="mb-2 account-slider">
       <DCarousel
         options={{
           perPage: 1,

@@ -42,11 +42,11 @@ export default function ItemTitle(
         </small>
       </div>
       <div className="d-flex flex-column align-items-center mb-3 total-balance">
-        <small className="text-gray-700">
+        <small className="text-muted">
           {text}
         </small>
         {value && (
-          <span className="fs-4">
+          <span className="fs-4 fw-semibold">
             {value}
           </span>
         )}

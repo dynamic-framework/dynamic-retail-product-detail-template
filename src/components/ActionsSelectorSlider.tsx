@@ -39,7 +39,10 @@ export default function ItemActions(
   return (
     <div className="d-flex flex-column gap-4">
       <hr className="m-0" />
-      <DLayout gap={0}>
+      <DLayout
+        gap={2}
+        gapLg={0}
+      >
         <ActionsSelectorButton
           text={text}
           icon={icon}

@@ -29,7 +29,10 @@ export default function ActionsSelectorPicker({
   return (
     <div className="d-flex flex-column gap-4">
       <hr className="m-0 border-light" />
-      <DLayout gap={0}>
+      <DLayout
+        gap={2}
+        gapLg={0}
+      >
         <ActionsSelectorButton
           text={primaryText}
           icon={primaryIcon}
