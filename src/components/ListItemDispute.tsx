@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import {
-  DButtonIcon,
+  DCollapse,
   DListGroupItem,
-  useDPortalContext,
   useFormatCurrency,
+  DIcon,
 } from '@dynamic-framework/ui-react';
 import classNames from 'classnames';
 import { DateTime } from 'luxon';
@@ -13,6 +13,8 @@ import type { ComponentProps } from 'react';
 import { FORMAT_DATE_FULL } from '../config/widgetConfig';
 import { Dispute } from '../services/interface';
 
+import DisputeDetailItem from './DisputeDetailItem';
+
 type Props = Omit<ComponentProps<typeof DListGroupItem>, 'children'> & {
   dispute: Dispute;
 };
@@ -20,13 +22,10 @@ type Props = Omit<ComponentProps<typeof DListGroupItem>, 'children'> & {
 export default function ListItemDispute(
   {
     dispute,
-    style,
-    className,
     ...props
   }: Props,
 ) {
   const { format } = useFormatCurrency();
-  const { openPortal } = useDPortalContext();
   const value = useMemo(() => {
     const valueFormatted = format(dispute.amount);
     if (dispute.amount > 0) {
@@ -36,36 +35,57 @@ export default function ListItemDispute(
       };
     }
     return {
-      theme: 'text-gray-700',
+      theme: '',
       valueFormatted,
     };
   }, [format, dispute.amount]);
 
-  return (
-    <DListGroupItem
-      {...props}
-    >
-      <>
-        <div className="d-flex flex-column">
-          <span className="small text-muted">
-            {dispute.id}
-          </span>
-          <span className="d-block text-capitalize fw-semibold">
-            {dispute.name}
-          </span>
-          <small className="text-muted">
-            {DateTime.fromISO(dispute.date).toFormat(FORMAT_DATE_FULL)}
-          </small>
-        </div>
-        <span className={classNames('fs-6 ms-auto fw-semibold', value.theme)}>
-          {value.valueFormatted}
+  const header = (
+    <div className="d-flex align-items-center w-100">
+      <DIcon
+        icon="MessageCircleWarning"
+        strokeWidth={1}
+        className="rounded bg-warning-50 p-2 me-3 text-warning-700"
+      />
+      <div className="d-flex flex-column">
+        <span className="d-block text-capitalize fw-semibold">
+          {dispute.name}
         </span>
-        <DButtonIcon
-          onClick={() => openPortal('modalDisputeDetail', { dispute })}
-          icon="Eye"
-          variant="link"
-        />
-      </>
+        <small className="text-muted">
+          {DateTime.fromISO(dispute.date).toFormat(FORMAT_DATE_FULL)}
+        </small>
+      </div>
+      <span className={classNames('fs-6 ms-auto fw-semibold me-2', value.theme)}>
+        {value.valueFormatted}
+      </span>
+    </div>
+  );
+
+  return (
+    <DListGroupItem {...props}>
+      <DCollapse
+        className="w-100 border-0 rounded p-0 shadow-none hover:bg-primary-25"
+        Component={header}
+        defaultCollapsed
+      >
+        <div className="">
+          <DisputeDetailItem
+            i18nKey="modal.dispute.date"
+            value={DateTime.fromISO(dispute.date).toFormat(FORMAT_DATE_FULL)}
+          />
+          <DisputeDetailItem
+            i18nKey="modal.dispute.amount"
+            value={format(dispute.amount)}
+          />
+          <DisputeDetailItem
+            i18nKey="modal.dispute.trxNumber"
+            value={dispute.id}
+          />
+          <DisputeDetailItem i18nKey="modal.dispute.situation" />
+          <DisputeDetailItem i18nKey="modal.dispute.description" />
+          <DisputeDetailItem i18nKey="modal.dispute.state" />
+        </div>
+      </DCollapse>
     </DListGroupItem>
   );
 }

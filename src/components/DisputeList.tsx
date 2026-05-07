@@ -75,6 +75,7 @@ export default function DisputeList() {
           >
             {disputes.map((dispute) => (
               <ListItemDispute
+                className="px-0 py-1 list-dispute-item"
                 key={`activity-${dispute.id}`}
                 dispute={dispute}
               />

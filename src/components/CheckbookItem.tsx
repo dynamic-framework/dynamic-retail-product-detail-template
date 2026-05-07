@@ -33,6 +33,11 @@ Props) {
         href={`${SITE_URL}/${CHECKBOOK_ITEM_PATH}?id=${id}`}
         className="hover:bg-primary-25 text-body rounded-2 py-2 px-4 d-flex align-items-center gap-2 w-100"
       >
+        <DIcon
+          icon="BookOpen"
+          strokeWidth={1}
+          className="rounded bg-primary-50 p-2 me-3 text-primary-700"
+        />
         <div className="flex-1">
           <p className="fw-semibold mb-0">
             {t('checkbooks.title', { id })}

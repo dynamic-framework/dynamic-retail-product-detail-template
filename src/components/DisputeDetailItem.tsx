@@ -13,7 +13,7 @@ export default function DisputeDetailItem(
   }: Props,
 ) {
   return (
-    <div>
+    <div className="d-flex justify-content-between align-items-center">
       <Trans
         i18nKey={i18nKey}
         values={{ value }}
@@ -21,7 +21,7 @@ export default function DisputeDetailItem(
           bld: <strong />,
           cmp: <DBadge
             soft
-            theme="success"
+            color="success"
           />,
         }}
       />

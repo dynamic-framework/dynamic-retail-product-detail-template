@@ -1,7 +1,6 @@
 import {
   DListGroup,
   DPaginator,
-  useDPortalContext,
 } from '@dynamic-framework/ui-react';
 import classnames from 'classnames';
 import { DateTime } from 'luxon';
@@ -10,9 +9,8 @@ import { useTranslation } from 'react-i18next';
 
 import { FORMAT_DATE_FULL } from '../config/widgetConfig';
 import useSelectedPage from '../hooks/useSelectedPage';
-import type { PortalAvailablePayload } from '../interface';
 import useActivitiesEffect from '../services/hooks/useActivitiesEffect';
-import { Account, Activity } from '../services/interface';
+import { Account } from '../services/interface';
 import { useAppSelector } from '../store/hooks';
 import {
   getQueryFilter,
@@ -30,7 +28,6 @@ type Props = {
 
 export default function ActivityList({ scheduled }: Props) {
   const { t } = useTranslation();
-  const { openPortal } = useDPortalContext<PortalAvailablePayload>();
 
   const account = useAppSelector(getAccountSelected) as Account;
   const query = useAppSelector(getQueryFilter);
@@ -40,10 +37,6 @@ export default function ActivityList({ scheduled }: Props) {
     loading,
     activities,
   } = useActivitiesEffect(account, scheduled);
-
-  const openActivityDetail = (activity: Activity) => {
-    openPortal('modalActivityDetail', { activity });
-  };
 
   const { selectedPageHandler } = useSelectedPage();
 
@@ -84,7 +77,9 @@ export default function ActivityList({ scheduled }: Props) {
             {activities.map((activity) => (
               <ListItemMovement
                 key={`activity-${activity.id}`}
-                openModal={() => openActivityDetail(activity)}
+                id={activity.id}
+                status={activity.status}
+                className="px-0 py-1 list-movement-item"
                 amount={activity.amount}
                 date={DateTime.fromISO(activity.date).toFormat(FORMAT_DATE_FULL)}
                 description={activity.name}

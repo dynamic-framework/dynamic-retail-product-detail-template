@@ -67,5 +67,15 @@
     }
   }
 
+  .list-movement-item {
+    --bs-list-group-border-color: var(--bs-gray-50);
+  }
+
+  .list-movement-item,
+  .list-dispute-item {
+    .collapse-button {
+      padding: var(--#{$prefix}ref-spacer-2) var(--#{$prefix}ref-spacer-3);
+    }
+  }
 
 }
